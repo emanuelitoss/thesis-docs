@@ -1,0 +1,1463 @@
+\documentclass[12pt,a4paper,openright]{article}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{pdfpages}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[skins]{tcolorbox}
+\usepackage[british]{babel}
+\usepackage{tikz,pgf}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{amsfonts}
+\usepackage[mathscr]{eucal}
+\hypersetup{
+  colorlinks,
+  citecolor = black,
+  filecolor = black,
+  linkcolor = black,
+  urlcolor = black
+}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\colg}{\textcolor{PineGreen}}
+\newcommand{\colr}{\textcolor{BrickRed}}
+\newcommand{\colbv}{\textcolor{BlueViolet}}
+\newcommand{\bare}{^{\text{bare}}}
+\newcommand{\ren}{{\text{ren}}}
+\newcommand{\cpt}{$\chi\text{PT}$}
+\newcommand{\mev}{\text{ MeV}}
+\newcommand{\fm}{\text{ fm}}
+\newcommand{\oai}{$O(a)-$improved}
+\newcommand{\oait}{$O(a)-$improvement}
+\newcommand{\obc}{Open Boundary Conditions}
+\newcommand{\tr}{\text{Tr}}
+\newcommand{\spc}{\hspace*{1mm}}
+
+
+\begin{document}
+
+\title{
+  \vskip 3cm
+  {\bf \textcolor{PineGreen}{Quantum Oscillating Lettuce Fields}} \\ \textcolor{PineGreen}{Topics in colored vegetables}
+}
+\author{Emanuele Rosi}
+\date{La Sapienza - Universit\'a di Roma}
+
+\begin{figure}[!b]
+  \centering
+  \includegraphics*[width=\textwidth]{ottetto.pdf}
+  \vspace*{5mm}
+\end{figure}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Kaon Mixing - ETM Collaboration (KMBSM)}
+
+Impostazioni della simulazione:
+\begin{itemize}
+  \item [-] $N_f = 2$ sea flavours degeneri tra di loro: $up$ e $down$ nel MtmQCD:
+    \begin{equation*}
+      a^4 \sum_{x\in \Lambda} \bar \psi (x) \left\{ \frac{1}{2} \gamma_\mu (\nabla_\mu + \nabla_\mu^*) - i \gamma_5 \sigma^3 r_{sea} \left[ M_{cr}-\frac{a}{2}\nabla_\mu^* \nabla_\mu \right] +\mu_{sea} \right\} \psi (x)
+    \end{equation*}
+    in cui sappiamo che l'\oait\space è automatico.
+  \item [-] Valence: Osterwalder- Seiler quarks:
+    \begin{equation*}
+      a^4 \sum_{x\in \Lambda} \bar q_f (x) \left\{ \frac{1}{2} \gamma_\mu (\nabla_\mu + \nabla_\mu^*) - i \gamma_5 r_f \left[ M_{cr}-\frac{a}{2}\nabla_\mu^* \nabla_\mu \right] +\mu_{f} \right\} q_f (x)
+    \end{equation*}
+    Qui ogni quark ruota chiralmente a modo suo, non come nella Mtm in cui sono organizzati a coppie.
+  \item [-] Renormalization: Ri-MOM scheme.
+  \item [-] 4 values of the lattice spacing in $[0.05, 0.1]$ fm and 4 values of $\beta$.
+  \item [-] Condizioni al contorno periodiche per tutti i campi, eccetto l'antiperiodicità dei fermioni nella coordinata temporale.
+\end{itemize}
+
+\subsection{Introduction}
+Si prendono gli operatori a 4 quark di dimensione 6, con 2 flavour dinamici (down e strange), e si calcolano dei parametri chiamati bag parameters utili per il calcolo di effetti sul sistema di kaoni neutri che derivano da new physics.
+Diciamo che c'è dietro della new physics che entra nei loop proprio come entrò il quark charm nel meccanismo GIM per l'interazione di Fermi, oppure come il bosone $W$.
+Questo conto però viene fatto in lattice field theory in modo che sia non perturbativo.
+
+\subsection{$\Delta S = 2$ Effective Weak Hamiltonian}
+Ci sono i soliti operatori di dimensione 6 che violano stranezza e flavour di 2 unità.
+Questi derivano dalla \colg{SUSY} e danno contributo alle \colg{FCNC}.
+Dal momento che nelle interazioni forti la parità è preservata, noi prendiamo solo le parti \textit{parity even} di questi operatori;
+questo perché siamo interessati a queste ampiezze/elementi di matrice: $\la \bar K^0 | O_i | K^0 \ra$.
+Davanti a questi operatori, che sono di dimensione 6, ci saranno dei coefficienti di dimensione $[E]^{-2}$.
+È giusto accennare che, se uno si sofferma solamente al Modello Standard, ha effetto solamente l'operatore $O_1$ tra tutti.
+\newline
+Poi si definiscono i parametri "bag parameters" $B_i$ e i rapporti tra ampiezze $R_i$ così:
+\begin{equation*}
+  \begin{aligned}
+    & \la \bar K^0 | O_1(\mu) | K^0 \ra = \xi_1 B_1 (\mu) m_K^2 f_K^2 & \text{ for $O_1$, or $i=1$}
+    \\
+    & \la \bar K^0 | O_i(\mu) | K^0 \ra = \xi_i B_i (\mu) \left( \frac{m_K^2 f_K}{m_s(\mu) + m_d(\mu)} \right)^2 & \text{ for $i = 2, \dots, 5$}
+  \end{aligned}
+\end{equation*}
+dove le $\xi_i$ hanno dei valori ben precisi; invece la $B_1$ è quella già presente nello StdModel e si chiama $B_K$.
+Notare che, nel limite chirale, la prima tende a zero, mentre le altre quattro equazioni nella seconda linea no.
+Le $R_i = \la \bar K^0 | O_i(\mu) | K^0 \ra / \la \bar K^0 | O_1(\mu) | K^0 \ra$ si possono calcolare non direttamente così ma in altro modo.
+
+\subsection{Model-independent constraints on $\Delta S = 2$ operators and New Physics scale from the Unitarity Triangle analysis}
+Tocca studiarsi un pochino di supersimmetria per capire quale tipo di nuova fisica può entrare in gioco, ad esempio considerando lo scambio di \textit{gluinos} nei loop nascosti in questi operatori di dimensione 6.
+I coefficienti di questi operatori sono parametrizzati così:
+\begin{equation*}
+  C_i(\mu) = \frac{L_i F_i}{\Lambda^2}
+\end{equation*}
+dove $\Lambda$ è la scala di nuova fisica, $F_i$ è il nuovo "coupling" (anche numero complesso $\in \mathcal{C}$) e $L_i$ è il loop factor che per ora è parametrizzato perché non abbiamo la minima idea di cosa ci sia nei loop di nuova fisica (altrimenti sarebbe vecchia fisica).
+Si può usare $F_i = \alpha_{strong} = 1, \alpha_{weak} = 0.03$ ad una scala di $2$ GeV a seconda che la new physics sia strong interacting o weak interacting.
+\newline
+In ogni caso non c'è nulla di particolarmente esplicito nell'articolo. Al massimo lo puoi andare a vedere nelle referenze.
+La cosa importante da tenere a mente è che \colg{le misure delle oscillazioni dei Kaoni sono le più stringenti.
+Una buona stima dei parametri $B_i$ è fondamentale per incrementare i constraintes sulla nuova fisica}
+\colr{Questa combinazione di parametrizzazione teorica e valori dei $B_i$ è fondamentale per la nuova fisica e io vorrei che ci fosse una parte del genere a concludere la mia tesi}. 
+
+\subsection{Non-perturbative lattice computation of the $\Delta S = 2$ matrix elements}
+Questa è la parte più corposa dell'articolo.
+Spiega come è settata la simulazione, come vengono calcolati gli elementi di matrice e come vengono analizzati.
+Sul paper c'è tutta una parte storica su come sono stati calcolati i bag parameters sul reticolo fino alla pubblicazione di questo articolo.
+\colg{Una parte del genere potrei metterla anche io nell'introduzione alla mia tesi, sembra carino e mette in risalto la differenza tra il mio lavoro e quello precedentemente svolto}.
+\newline
+La combinazione tra le due regolarizzazioni dei quark di mare e di valenza è stata proposta in \textit{R. Frezzotti and G. C. Rossi, “Chirally improving Wilson fermions. II: Four-quark operators”}.
+È stato proposto come setup apposito per gli $\{O_i\}$ per avere due vantaggi:
+\begin{enumerate}
+  \item \colg{avere un improvement $O(a)$ automatico sugli elementi di matrice}
+  \item \colg{non avere effetti di mixing di chiralità sbagliate dovute alla rottura chirale di simmetria causata dai fermioni di Wilson}.
+        Che signinifica questa cosa? Se avessimo fermioni di Wilson standard, la simmetria chirale sarebbe rotta; allora, in fase di rinormalizzazione, gli operatori parity-even e quelli parity-odd mixerebbero tra loro.
+        Invece con la regolarizzazione scelta questo non avviene (questo è dimostrato nell'Appendice A e provato numericamente nell'appendice B). 
+\end{enumerate}
+La differente regolarizzazione dei quark di mare e di valenza porta ad una violazione dell'unitarietà della matrice $V_{CKM}$, tuttavia questi sono effetti di ordine $O(a^2)$ e quindi non ce ne preoccupiamo;
+però sono di ordine $O(a^2)$ solamente se \colg{le masse dei quark di valenza e di quelli di mare sono matchate}.
+Nel nostro caso questo match viene fatto prendendo lo stesso valore per le masse bare dei quark di valenza e di mare: $m_{B,sea}^f = m_{B,val}^f \forall \text{ flavour } f$.
+\colr{Un metodo più semplice per fare il matching di queste masse viene introdotto in un altro articolo (ora non ricordo quale, ma comunque uno di quelli obbligatori), e consiste semplicemente nel mettere le masse degli pseudoscalari derivate dalla PCAC del mare e della valenza allo stesso valore}.
+\newline
+\newline
+{\bf Valence quarks}:\newline
+Per i quark di valenza si usa la OS (Osterwalder-Seiler) regularization (\textit{K. Osterwalder and E. Seiler, “Gauge Field Theories on the Lattice”, Ann. Phys. 110 (1978) 440}).
+Qui si può notare una twisted mass.
+Inoltre si nota che ogni singolo flavour contribuisce singolarmente; questo non varrà per i quark di mare.
+\begin{equation}\label{eqn:OS}
+  S_{val}^{OS} = a^4 \sum_{x,f} \bar \psi_f(x)\left( \frac{1}{2}\sum_\mu \gamma_\mu (\nabla_\mu + \nabla_\mu ^*) - i \gamma_5 r_{f} [ M_{cr} - \frac{a}{2}\sum_\mu \nabla_\mu^* \nabla_\mu ] + \mu_{f} \right) \psi_f (x) 
+\end{equation}
+
+\noindent
+{\bf Sea quarks}:\newline
+Invece per il mare i Mtm (maximally twisted mass) regularized quarks che sono anche $O(a)$ improved:
+\begin{equation}\label{eqn:Mtm}
+  S_{sea}^{Mtm} = a^4 \sum_x \bar \psi(x)\left( \frac{1}{2}\sum_\mu \gamma_\mu (\nabla_\mu + \nabla_\mu ^*) - i \gamma_5 \tau^3 r_{sea} [ M_{cr} - \frac{a}{2}\sum_\mu \nabla_\mu^* \nabla_\mu ] + \mu_{sea} \right) \psi (x) 
+\end{equation}
+Il subscript $sea$ ricorda che questo genera unquenched gauge configurations.
+Il campo $\psi$ descrive un doppietto up e down degenere in massa con massa twisted $\mu_{sea}$.
+$M_{cr}$ è la massa critica da fissare non perturbativamente al suo valore ottimale, cioè il valore tale che viene garantito l'$O(a)$-improvement (cerca \textit{R. Frezzotti, G. Martinelli, M. Papinutto, and G. Rossi, “Reducing cutoff effects in maximally twisted lattice QCD close to the chiral limit”, JHEP 0604 (2006) 038}).
+\\\\
+Si segue la strategia proposta da Frezzotti e Rossi nella loro coppia di articoli.
+I tipi di quark utilizzati per la valenza (OS quarks) hanno quattro flavour 1,2,3,4 dove le masse sono $\mu_1 = \mu_3 := \mu_s$ (strange) e $\mu_4 = \mu_2 := \mu_{u,d}$, che è un quark leggero.
+I corrispondenti parametri di Wilson seguono $r_1 = r_2 = r_3 = - r_4$; nell'articolo si sceglie $r_1 = \pm 1$ e si fa la media tra i due casi.
+\newline
+\newline
+{\bf Operators and correlation functions}:\newline
+Bisognerà considerare correnti assiali $A_\mu^{12}, A_\mu^{34}$ e gli pseudoscalari $P^{12}, P^{34}$ definiti così:
+\begin{equation*}
+  \begin{aligned}
+    & A_\mu^{12} = \bar\psi^1 \gamma_\mu \gamma_5 \psi^2 \qquad \quad P^{12} = \bar\psi^1 \gamma_5 \psi^2&\\
+    & A_\mu^{34} = \bar\psi^3 \gamma_\mu \gamma_5 \psi^4 \qquad \quad P^{34} = \bar\psi^3 \gamma_5 \psi^4&
+  \end{aligned}
+\end{equation*}
+\newline
+Invece, per quanto rigurda gli operatori, si definiscono \colg{10 operatori} $O_{i[\pm]}^{MA}$ (che qui non riporto), dove $MA$ sta per \colg{Mixed-Action}, che è esattamente quanto stiamo facendo qui.
+Sempre nella referenza di Frezzotti e Rossi sono dimostrate alcune proprietà di questi operatori:
+\begin{enumerate}
+  \item Gli operatori $O_{i[+]}^{MA}$, nel limite continuo, mixano tra loro senza mixare con gli $O_{i[-]}^{MA}$. Quindi mixano seguendo la $Z_{ij}$ descritta solitamente.
+  \item Le correnti assiali e le densità pseudoscalari rinormalizzano così:
+        \begin{equation*}
+          \begin{aligned}
+            & [A_\mu^{12}]_{REN} = Z_A A_\mu^{12} &\quad [A_\mu^{34}]_{REN} = Z_V A_\mu^{34} &\\
+            & [P^{12}]_{REN} = Z_S P^{12} &\quad [P^{34}]_{REN} = Z_P P^{34}
+          \end{aligned}
+        \end{equation*}
+        \colr{cercare un attimo di capire perché!}
+  \item Nel limite continuo ${a \rightarrow 0} $, gli elementi di matrice tendono a $\la P^{43} | O_{i+}^{MA} | P^{12} \ra_{REN} \longrightarrow \la \bar K^0 | O_i | K^0 \ra$, dove gli operatori $O_i$ sono la parte parity-even di quelli definiti nel continuo a inizio articolo!
+        Inoltre questo limite avviene con errori di ordine $O(a^2)$.
+  \item Gli elementi di matrice degli operatori $O_{i+}^{MA}$ e le loro costanti di rinormalizzazione (nel Ri-MOM) sono entrambi liberi da $O(a)$ cutoff effects.
+        Di conseguenza segue l'oridine $O(a^2)$ del punto precedente.
+\end{enumerate}
+\colg{Si usano condizioni periodiche su tutti i campi eccetto l'antiperiodicità temporale dei fermioni} (\colg{io implementerò proprio questo: le {\bf open boundary conditions}}).
+Nella costruzione degli operatori si segue una referenza esterna.
+Alle timeslices $t_0$ e $t_0 + T/2$ vengono inseriti "wall operators" con numeri quantici di $K^0$. Come si fa questa cosa? 
+Costruiamo questi operatori wall $\mathcal{P}^{12}_{y_0}$ e $\mathcal{P}^{34}_{y_0+T/2}$:
+\begin{equation*}
+  \begin{aligned}
+    & \mathcal{P}^{12}_{y_0} = \left(\frac{a}{L}\right)^3 \sum_{\vec{y}} \bar{q}_2(\vec y, y_0) \gamma_5 q_1 (\vec y, y_0) \\
+    & \mathcal{P}^{34}_{y_0+T/2} = \left(\frac{a}{L}\right)^3 \sum_{\vec{y}} \bar{q}_4(\vec y, y_0+T/2) \gamma_5 q_3 (\vec y, y_0+T/2)
+  \end{aligned}
+\end{equation*}
+I correlatori da calcolare sono:
+\begin{equation*}
+  \begin{aligned}
+    & C_i(x_0) = \left(\frac{a}{L}\right)^3 \sum_{\vec{x}} \la \mathcal{P}^{43}_{y_0+T/2} O_{i[+]}^{MA} (\vec x, x_0) \mathcal{P}^{21}_{y_0} \ra & \longrightarrow \la \bar K^0 | O_i | K^0 \ra \\
+    & C_{PP}(x_0) = \left(\frac{a}{L}\right)^3 \sum_{\vec{x}} \la P^{12} (\vec x, x_0) \mathcal{P}^{21}_{y_0} \ra & \longrightarrow \la \bar K^0 | P^{12} | 0 \ra \\
+    & C'_{PP}(x_0) = \left(\frac{a}{L}\right)^3 \sum_{\vec{x}} \la \mathcal{P}^{43}_{y_0+T/2} P^{34}(\vec x, x_0) \ra & \longrightarrow \la 0 | P^{34} | K^0 \ra
+  \end{aligned}
+\end{equation*}
+Il primo è per l'oscillazione del sistema $\bar K^0 - K^0$, il secondo e il terzo per i propagatori di $K^0$ e $\bar K^0$. 
+Lo si vede dal loro comportamento per tempi $y_0 << x_0 << y_0 + \frac{T}{2}$, come indicato sopra.
+\newline
+Gli improvement da fare sono:
+\begin{itemize}
+  \item [-] è stata fatta una somma su $\vec x$ nella prima linea per incrementare segnale/rumore.
+  \item [-] per lo stesso motivo si è sommato su $\vec y$ nelle definizioni di $\mathcal{P}^{12}$ e $\mathcal{P}^{34}$.
+  \item [-] per ogni configurazione di campi di gauge è stata scelta una $y_0$ random.
+\end{itemize}
+Notare che una delle sue somme sulle componenti spaziali è \colg{necessaria per proiettare sugli stati con momento nullo (Fourier transform with $\vec p = 0$)}.
+Un'altra nota importante è per l'operatore con indice 1, quello del Modello Standard: in questo caso non bisogna utilizzare la densità pseudoscalare, ma la quarta componente della corrente assiale (vedi nota con pedice 7 nell'articolo, pag. 12 in basso).
+\newline
+Psso costruire queste quantità:
+\begin{equation*}
+  \begin{aligned}
+    & E[B_i] = \frac{C_i(x_0)}{C_{PP}(x_0)C'_{PP}(x_0)} \longrightarrow \frac{\la \bar K^0 | O_i | K^0 \ra}{\la \bar K^0 | P^{12} | 0 \ra \la 0 | P^{34} | K^0 \ra} = \xi_i B_i^{\text{bare}} \\
+    & E[R_i] = \frac{C_i(x_0)}{C_1(x_0)} \longrightarrow \frac{\la \bar K^0 | O_i | K^0 \ra}{\la \bar K^0 | O_1 | K^0 \ra} = R_i^{\text{bare}}
+  \end{aligned}
+\end{equation*}
+con $i = 2,3,4,5$; qui le $\xi_i$ sono dei numeri conosciuti, vedi articolo.
+\newline
+Ora che si sono calcolate le quantità bare, bisogna rinormalizzarle tramite la moltiplicazione per le costanti di rinormalizzazione:
+\begin{equation*}
+  B_i^\ren = \frac{Z_{ij}}{Z_S Z_P} B_j\bare
+\end{equation*}
+questa formula si basa sulla rinormalizzazione degli operatori $O_i$ e delle densità pseudoscalari.
+Simile anche per le $R_i$ rinormalizzate; in principio dovremmo calcolarle così:
+\begin{equation*}
+  R_i^\ren = \frac{Z_{ij}}{Z_{11}}R_j\bare
+\end{equation*}
+tuttavia nel limite chirale e nel limite continuo sappiamo che $\la \bar K^0 | O_1 | K^0 \ra$ è nullo, quindi si modifica così:
+\begin{equation*}
+  \tilde{R}_i = \left(\frac{f_K^{\text{exp}}}{m_K^{\text{exp}}}\right)^2 \frac{M^{12}M^{34}}{F^{12}F^{34}} \frac{Z_{ij}}{Z_{11}}R_j\bare
+\end{equation*}
+dove $f_K^{\text{exp}} = 151.6$ MeV e $m_K^{\text{exp}} = 494.4$ MeV.
+Invece $M^{ab}$ e $F^{ab}$ sono relativamente le masse e le costanti di decadimento del mesone pseudoscalare composto dai flavour $(\bar q^a q^b)$.
+In questo modo, nel limite continuo e nel limite di masse esatte, i contributi sperimentali e reticolari si cancellano e rimane $R_i^\ren$.
+Tant'è che in questi limiti si dimostra che $\tilde{R}_i$ tende a $\la \bar K^0 | O_i | K^0 \ra / \la \bar K^0 | O_1 | K^0 \ra$.
+
+\subsection{Simulations, data analysis and results}
+I "pioni" hanno masse bare in [280, 500] MeV e i "Kaoni" nel range [450, 650] MeV.
+Le masse dei quark leggeri u,d sono le stesse $a\mu_l$ per quark di valenza e di mare. Invece lo strange è quenched.
+\begin{itemize}
+  \item [-] Per arrivare alla massa fisica del Kaone bisogna arrivare alle masse fisiche del quark down e dello stange. Come? Boh non l'ho ben capito
+  \item [-] Le costanti di rinormalizzazione $Z_P$ e $Z_S$ delle densità pseudoscalari sono calcolate in una reference attraverso lo schema Ri-MOM.
+\end{itemize}
+Il primo step da fare è calcolare le quantità $R_i\bare$ e $B_i\bare$.
+Questo si fa prendendo la regione di plateau per le funzioni a 2 e 3 punti.
+Dopodiché bisogna fare un'estrapolazione al punto fisico: lattice spacing nullo $a\rightarrow 0$ e valore fisico delle masse dei quark.
+\newline
+\newline
+{\bf RCs computation and combined continuum-chiral extrapolation}
+Si rinormalizza con l'approccio Ri-MOM non perturbativo. Si ricorda che gli effetti residui sono di ordine $O(a^2p^2)$.
+Questi vengono trattati in due modi diversi:
+\begin{enumerate}
+  \item [(M1)] dopo la sottrazione perturbativa, estrapolare a 0 i termini residui di ordine $O(p^2a^2)$;
+  \item [(M2)] (o anche "$p^2$-window method") si calcolano i bilineari facendo una media su un intervallo di momenti molto stretto;
+\end{enumerate}
+Per ogni bag parameter e per ogni ratio si usa un ansatz di questo tipo:
+\begin{equation*}
+  Y = \sum_{n=0}^2 A_Y^{(n)} (r_0\hat\mu_s) [r_0 \hat\mu_l]^n + D_Y (r_0\hat\mu_s) \left[\frac{a}{r_0}\right]
+\end{equation*}
+( $\hat{}$ symbol used for $\bar{MS}$ renormalized quark masses at 2 GeV).
+Per i $B_i$ e $R_i$ ci sono anche delle formule da fittare basate su NLO Chiral Perturbation Theory.
+
+\subsection{Conclusioni}
+Facciamo tutti questi conti per calcolare alcuni parametri, cioè i bag parameters $B_i$ e i ratio $R_i$, che parametrizzano gli effetti BSM delle oscillazioni del sistema $K^0 - \bar K^0$.
+O comunque se non li parametrizzano direttamente, esiste qualche loro funzione che li parametrizza.
+Questo articolo è il primo che pubblica una loro determinazione senza quenched approximation.
+Grazie a Frezzotti e Rossi questi calcoli sono già $O(a)$ improved.
+La violazione dell'unitarietà dovuta ad artefatti del reticolo è di ordine $O(a^2)$, quindi trascurabile.
+\newline
+Si usano dati per lattice spacing a 4 valori distinti nel range $[0.05, 0.1]$ fm e masse degli pseudoscalari (pioni) in $[280, 500]$ MeV.
+Lo schema di rinormalizzazione è il Ri-MOM.
+L'errore ottenuto sugli $R_i$ è in 4-6\% e sui $B_i$ è 3-7\%.
+\newline
+\colg{Sui bag parameters $B_i$ c'è grande differenza rispetto ad altre precedenti simulazioni (quenched) circa tra il 5\% e il 25\%.
+Queste differenze aumentano se si considerano i ratio $R_i$ perché nelle vecchie pubblicazioni era stato sovrastimato $B_1$ e la massa dello strange.
+La simulazione attuale un-quenched è migliore.
+In questa versione dovrebbe essere possibile far vedere che eventuali errori sistematici dovuti al quenching dei quark strange e charm sono trascurabili rispetto alle incertezze attuali.
+Questo potrà essere provato in simulazioni con $N_f = 2+1$ o $N_f = 2+1+1$}
+\colr{Questo dovrebbe essere l'argomento della mia tesi.}
+\newline
+Da questo lavoro emergono anche upper bounds più stringenti ai coefficienti di Wilson degli operatori di dimensione 6 non appartenenti al modello standard.
+
+
+%\newpage
+%
+
+\newpage
+
+\section{Lattice QCD with a chirally twisted mass term}
+Qui si riportano i punti salienti dell'articolo \textit{Frezzotti, Grassi, Sint, Weisz - Lattice QCD with a chirally twisted mass term}
+
+\subsubsection*{Introduzione generale}
+Partiamo dai problemi dei fermioni di Wilson (non improved); questi rompono esplicitamente la simmetria chirale.
+Questo non è un problema, perché tanto possono essere reintrodotti degli appositi counterterms che la ripristinano.
+Tuttavia la simmetria chirale proteggeva l'operatore di Dirac dagli \textit{zero modes}; invece l'operatore di Wilson-Dirac, che non ha questa simmetria, ha potenzialmente degli zero modes.
+\colg{Infatti negli algoritmi HMC (Hybrid Monte Carlo) si osservano degli tempi di autocorrelazione molto lunghi e si suppone che siano dati dagli zero modes.}
+Per questo motivo è importante sviluppare una regolarizzazione che eviti la comparsa di questi zero-modes.
+\newline
+L'operatore proposto è il seguente:
+\begin{equation}\label{eq:twisted-mass-operator}
+  D_{\text{tmQCD}} = D_W + m_0 + i\mu_q \gamma_5 \sigma^3
+\end{equation}
+dove la matrice di Pauli agisce sullo spazio del flavour: quindi può essere applicata solo nel caso di due flavour degeneri.
+\newline
+\newline
+\colr{\bf Per ora metto in pausa la trascrizione di questo articolo, non ha senso copiare una cosa così lunga.}
+
+
+\newpage
+
+\section{Chirally improving Wilson fermions - Frezzotti, Rossi}
+{\bf Questo è l'articolo numero I di Frezzotti, Rossi. Il numero II segue dopo.}
+\\
+Topics:
+\begin{itemize}
+  \item[-] Si fa vedere che, pendendo fermioni di Wilson con segni opposti (prima $r$ e poi $-r$) e facendo la media aritmetica dei correlatori, si ottiene un improvement chirale (\textit{Wilson Average} = WA).
+  \item[-] In più, per evitare i problemi legati agli zero-modes dell'operatore di Wilson-Dirac, si propone una twisted mass. Si analizza nel particolare il caso di maximal twist, in cui si possono ottenere le quantità $O(a)$ improved senza dover mediare come al punto precedente.
+\end{itemize}
+Già è stato fatto un $O(a)$-improvement dell'azione di Wilson-Dirac tramite l'aggiunta del termine di Sheikholeslami–Wohlert:
+\begin{equation*}
+  S_{SW}^L = a^5 c_{SW}(g_0^2) \sum_{{x}} \bar\psi (x) \frac{i}{4} \sigma_{\mu\nu} P_{\mu\nu} (x)\psi (x)
+\end{equation*}
+Sono stati fatti improvements anche per azioni chirali. Tuttavia sono costose numericamente ed è preferibile usare la twisted mass.
+\newline
+In questo articolo si dimostra che, se i fermioni di Wilson sono disposti in doppietti di $SU(2)_f$ allora, prendendo la media dei correlatori sui fermioni di Wilson che hanno segni opposti nell'azione (\textit{Wilson Average} = WA) ma stessa massa $m_q = M_0 - M_{\text{cr}}$, allora tali funzioni di correlazione saranno automaticamente $O(a)$-improved.
+Questa prova di assenza di ordini $a$ viene fatta introducendo la $\mathcal{R}_5-parity$ e facendo l'espansione di Symanzik delle funzioni di correlazione del lattice in termini delle funzioni di correlazione continue;
+si utilizza anche il fatto che $\mathcal{R}_5$ è un elemento del gruppo chirale $SU(2)_L \times SU(2)_R$.
+\newline
+\colg{Questo però non risolve il problema degli zero-modes dell'operatore di Wilson-Dirac, per il quale servirà introdurre la teisted mass QCD.}
+\newline \newline
+\colr{\bf Si passa subito alla parte di twisted mass (sezione 4), saltando quella in cui si fa la media sui fermioni di Wilson con $r_i = \pm r$;
+questo perché tanto il problema degli zero-modes non era comunque risolto.}
+
+\subsection{Twisted Mass Lattice QCD}
+Prima di tutto si riporta l'azione della tmQCD:
+\begin{equation}\label{eq:tmlacdFR}
+  S_F^{L-tm} = a^4 \sum_{x} \bar \psi (x) \left[ \frac{1}{2} \gamma_\mu \left(\nabla_\mu + \nabla_\mu^*\right) - a \frac{r}{2} \nabla_\mu \nabla_\mu^*e^{-i\omega_r \gamma_5 \tau_3} + M_0' + M_0''(-i\gamma_5 \tau_3)\right] \psi (x)
+\end{equation}
+che descrive un doppietto $SU(2)_f$ degenere in massa. Appaiono anche tre parametri nuovi: $M_0', M_0'', \omega_r$.
+Si ricorda che la derivata covariante è descritta tramite:
+\begin{equation*}
+  \begin{aligned}
+    & \nabla_\mu \psi (x) = \frac{1}{a} [ U_\mu (x) \psi (x + a \hat\mu) - \psi (x)] \\
+    & \nabla_\mu^* \psi (x) = \frac{1}{a} [ \psi (x) - U_\mu^\dagger (x-a \hat\mu) \psi (x - a \hat\mu)]
+  \end{aligned}
+\end{equation*}
+per ottenere l'azione di Wilson bisogna porre $\omega_r = M_0'' = 0$ mentre per la tm-LQCD $\omega_r = M_0' = 0$ e $M_0'' = -\mu_q$.
+Si può dimostrare che la \ref{eq:tmlacdFR} sotto traformazioni:
+\begin{equation*}
+  \begin{cases}
+    \psi (x) \rightarrow T(\theta)^{-1}\psi (x) \\
+    \bar \psi (x) \rightarrow \bar \psi (x)T(\theta)^{-1}
+  \end{cases}
+\end{equation*}
+con $T(\theta) = \exp\left(i \theta \gamma_5 \tau_3 /2 \right)$, rimane invariata in forma mentre i coefficienti subiscono questa trasformazione:
+\begin{equation*}
+  \begin{cases}
+    \omega_r \rightarrow \omega_r +  \theta \\
+    M_0' \rightarrow M_0'\cos \theta - M_0 ''\sin\theta \\
+    M_0'' \rightarrow M_0''\cos \theta + M_0 '\sin\theta
+  \end{cases}
+\end{equation*}
+L'azione trovata è invariante sotto coniugazione di carica, una trasformazione discreta simile alla parità e, per $M_0' = M_0'' = 0$, sotto parità e sotto tre trasformazioni continue (con indici b= 1,2,3: $J_\mu^{b}$) la cui corrente è esplicitamente calcolata nell'articolo.
+Inoltre la $J_\mu^3$ è conservata anche per $M_0', M_0'' \ne 0$.
+Notare anche che, attraverso queste trasformazioni e una rotazione assiale-chirale, si può tornare indietro alla base fisica e scrivere un'azione alla Wilson-Dirac (o simile), che è poi quella che useremo:
+\begin{equation}\label{eq:tmlacdFRprime}
+  S_F^{L-tm} = a^4 \sum_{x} \bar \psi (x) \left[ \frac{1}{2} \gamma_\mu \left(\nabla_\mu + \nabla_\mu^*\right) + \left( - a \frac{r}{2} \nabla_\mu^* \nabla_\mu + M_{cr}(r) \right)e^{-i\omega_r \gamma_5 \tau_3} +m_q e^{i \omega_m \gamma_5 \tau_3}\right] \psi (x)
+\end{equation}
+Si dimostra anche che il determinante fermionico è:
+\begin{equation*}
+  \begin{aligned}
+    \mathcal D_F = \text{det} \left[\left(D_W^{cr} + m_q \cos \omega\right)^\dagger\left(D_W^{cr} + m_q \cos \omega\right) + m_q^2 \sin^2 \omega\right]\\
+    \text{ con } \space D_W^{cr} = \frac{1}{2}\gamma_\mu(\nabla_\mu + \nabla_\mu^*)  - a \frac{r}{2} \nabla_\mu^+ \nabla_\mu + M_{cr}(r)
+  \end{aligned}
+\end{equation*}
+dove $\omega, m_q$ sono definite nell'articolo. Questa forma dimostra che il determinante è reale e positivo (easy to prove), e di conseguenza \colg{\bf per $m_q, \omega \ne 0$ non ci possono essere zero modes}.
+È dimostrato nelle referenze \textit{S. Aoki and A. Gocksch, Phys. Rev. Lett. 63 (1989) 1125 and Phys. Lett. B231 (1989) 449}.
+\newline
+La MtmQCD è molto strettamente legata alla proposta di regolarizzazione di Osterwalder and Seiler (OS), tuttavia ci sono delle differenze.
+\colg{Mentre la OS twista i diversi flavour con lo stesso angolo, la tmQCD twista i due flavour di angoli opposti}.
+Questa caratteristica sblocca due proprietà che la OS non ha:
+\begin{enumerate}
+  \item La positività del determinante fermionico.
+  \item L'indipendenza dall'angolo di twist di tutte le funzioni di correlazione rinormalizzate nel limite continuo.
+  Questa si può dimostrare in due diversi modi, vedi articolo.
+\end{enumerate}
+Vogliamo ora derivare la forma che hanno gli operatori (rinormalizzati) non singoletti di flavour che entrano Ward-Takahashi identities, cioè correnti e densità pseudoscalari.
+Si utilizza l'azione della tmQCD, la \ref{eq:tmlacdFRprime}. Una possibilità è emulare i calcoli fatti in \textit{Bochicchio, Maiani, Martinelli, Rossi, Testa - Chiral symmetry on the lattice with Wilson fermions}.
+Sull'articolo sono riportate una marea di formule che esprimono questi operatori rinormalizzati in funzione di quelli bare, con tanto di constanti di rinormalizzazione.
+Riporto solo alcune formule interessanti:
+\begin{equation*}
+  \begin{aligned}
+    & \la \partial_\mu^* A_{a\mu}^\ren (x) O(y)^\ren \ra = 2 m_q^\ren \la P_a^\ren (x) O^\ren (y) \ra +  O(a) \\
+    & \la \partial_\mu^* V_{a\mu}^\ren (x) O(y)^\ren \ra = O(a)
+  \end{aligned}
+\end{equation*}
+Senza stare a vedere i particolari, la cosa importante è che le correnti e le densità pseudoscalari mixano tra loro a causa del twist.
+Tutte le formule riportate nell'articolo servono a \colg{passare da un'azione "fisica" ad una twistata (per capire quali vedi l'articolo)}.
+
+\subsection{Improved physics from tm-LQCD}
+Qui si usa ancora un'altra formulazione della twisted mass action, la 4.18 nell'articolo.
+Si dimostra che le funzioni di correlazione rinormalizzate nel continuo soffrono di ordini $a^2$ se calcolate con azione twistata. Ci sono anche delle discussioni sulla parità, che a questo punto non si capisce bene cosa sia.
+
+\subsection{A special case: $\omega = \pm \pi/2$}
+Come già detto, una scelta particolare è quella di maximal twist $\omega = \pm \pi/2$.
+In questo modo nell'azione che non avevo riportato:
+\begin{equation}\label{eq:tmlqcdaction}
+  S_F^{\text{L-tm}} = a^4 \sum_{ x} \bar\psi (x) \left[ \frac{1}{2}\gamma_\mu (\nabla_\mu + \nabla_\mu^*) + \left(- a\frac{r}{2}\nabla_\mu^*\nabla_\mu + M_{cr}(r)\right)e^{- i \omega \gamma_5 \tau_3} + m_q\right] \psi (x)
+\end{equation}
+tutte le quantità pari sotto $\omega \rightarrow -\omega$ sono in automatico $O(a)$-improved.
+Questo è causato da alcune peculiarità che riportano al caso non riportato di mediare su $r, -r$ (WA Wilson Average).
+Tra le quantità $O(a)$-improved ci sono anche:
+\begin{itemize}
+  \item Masse adroniche.
+  \item Elementi di matrice $\la \Psi_1 | \Theta | \Psi_2 \ra$ di operatori $\Theta$ la cui parità è uguale al prodotto delle parità degli stati esterni $\Psi_{1,2}$.
+  \item Si può dimostrare anche che, prendendo un'appropriata combinazione lineare di quantità calcolate con momenti opposti, si ha un $O(a)$-improvement.
+\end{itemize}
+Seguono le dimostrazioni di questi tre punti, che non ho letto e non riporterò.
+\newline
+Si riporta anche un altro fatto: l'operatore di Wilson-Dirac, nel caso di $\omega = \pm \pi/2$, è:
+\begin{equation}\label{eq:WDoperator-Mtm}
+  D_W^{(\pm \pi/2)} = \frac{1}{2}\gamma_\mu \left(\nabla_\mu + \nabla_\mu^*\right) \pm i \gamma_5 \tau_3 \left( a \frac{r}{2} \nabla_\mu^* \nabla_\mu - M_{cr}(r) \right)
+\end{equation}
+ed è antihermitiano $D_W^{(\pm \pi/2)} = - (D_W^{(\pm \pi/2)})^\dagger$ e quindi il suo spettro è puramente immaginario (a contrario degli operatori Hermitiani che lo hanno completamente reale).
+Di conseguenza, per $m_q \ne 0$, questo operatore non può avere autovalori nulli.
+
+\subsubsection*{Application: computation of $F_\pi$}
+We now compute the pion decay constant throught the matximal twisted lattice QCD.
+In the continuum limit, this relation holds (for $m_q > 0$):
+\begin{equation*}
+  \la \Omega | A^{1,\ren}_0 | \pi \ra =  \sqrt{2} F_\pi m_\pi
+\end{equation*}
+dove $A^{1,\ren}_0$ è la componente temporale della corrente assiale rinormalizzata.
+L'indice di isospin 1 corrisponde al pione carico.
+Per tempi grandi:
+\begin{equation*}
+  \frac{e^{m_pi t/2}}{\sqrt{m_\pi}} \frac{a^3 \sum_{\vec x} \la A^{1,\ren}_0 (\vec x, t) P^1 (0)\ra}{\sqrt{ a^3 \sum_{\vec x} \la P^1(\vec x, t)P^1 (0) \ra }} \longrightarrow F_\pi
+\end{equation*}
+per tempi sufficientemente grandi $t\rightarrow \infty$. Notare che le $P^1$ non sono quelle rinormalizzate perché tanto i fattori $Z_P$ si eliderebbero nella frazione.
+Rivedendo le correnti rinormalizzate, che non ho riportato qui, si vede che per $\omega = \pm \pi/2$, la nostra corrente rinormalizzata è:
+\begin{equation*}
+  A_\mu^{1,\ren} (x) = Z_V \bar\psi (x) \frac{\tau_1}{2} \gamma_\mu \gamma_5 \psi (x)
+\end{equation*}
+con la $\psi$ presa dall'azione \ref{eq:tmlqcdaction}. 
+
+\subsection{Conclusions}
+Sono stati mostrati due metodi per ottenere funzioni di correlazione \oai: \textit{Wilson average} e \textit{mass average}.
+Questi però non sono stati riportati in quanto non mi interessano per la tesi.
+\newline
+Per evitare poi i problemi legati allo spettro dell'operatore di Wilson-Dirac è stata implementata la tmLQCD e poi la MtmLQCD.
+\newline
+\hrule
+\subsection*{Four Quarks operators}
+Abstract: in questo articolo si riportano e dimostrano alcuni risultati validi in Maximal tmLQCD:
+\begin{enumerate}
+  \item Nonostante la rottura esplicita della simmetria chirale dovuta al termine di Wilson, si bypassa il problema della chiralità rotta da Wilson e del mixing degli operatori nell'Hamiltoniana effettiva con $\Delta S = 1,2$.
+  \item Determinante fermionico positivo.
+  \item \oai automatico senza counterterms aggiuntivi.
+\end{enumerate}
+Si adotteranno \colg{diverse regolarizzazioni per i quark di valenza (OS) e per quelli del mare (MtmQCD)}.
+I quark del mare non saranno degeneri tra loro, e per descrivere due quark non degeneri con la MtmQCD bisogna avere delle accortezze riportate in \textit{Twisted-mass lattice QCD with mass non-degenerate quarks - Frezzotti, Rossi}.
+\newline
+L'azione totale sarà:
+\begin{equation}\label{eq:setup-action}
+  S = S_g[U] + \sum_{f = l, h} S_{\text{sea, tm}}^{(\pi/2)}[\psi_q, \bar\psi_q,U] + \sum_f \left[ S_{OS}^{(\pi/2)} [q_f, \bar q_f, U] + S_{gh}^{(\pi/2)} [\phi_f, U] \right]
+\end{equation}
+dove:
+\begin{itemize}
+  \item L'azione, per ogni flavour (e non doppietti di flavours) $f$ dei quark di valenza, è:
+        \begin{equation}\label{eq:OSaction}
+          \begin{aligned}
+            & S_{OS}^{(\pi/2)} = a^4 \sum_{ x} \bar q_f (x) \left[ \gamma_\mu \tilde{\nabla}_\mu - i\gamma_5 W_{cr}(r_f) + m_f \right] q_f (x) \\
+            & \text{with}\hspace{3mm} \gamma_\mu\tilde{\nabla}_\mu = \frac{1}{2}\gamma_\mu (\nabla_\mu + \nabla_\mu^*) \\
+            & \text{and }\hspace{3mm} W_{cr}(r_f) = - a \frac{r_f}{2} \nabla_\mu^* \nabla_\mu + M_{cr} (r_f)
+          \end{aligned}
+        \end{equation}
+        Questa azione è scritta nella così detta {\it base fisica}. Sarà poi necessario un duplicato per ogni flavour: $u,u',d,d',s,s',c,c'$.
+        Qui ogni flavour ruota dello stesso angolo $\pi/2$, differentemente dalla MtmQCD.
+        Inoltre qui stiamo lavorando nella {\it base fisica}.
+  \item L'azione del mare è divisa in due multipletti $l = \text{light} =$ u,d e $h = $heavy = c,s.
+        È descritta da una maximally twisted action:
+        \begin{equation*}
+          S_{\text{sea, tm}}^{(\pi/2)}[\psi_q, \bar\psi_q,U] = a^4 \sum_{x} \bar\psi_q (x) \left[ \gamma_\mu \tilde{\nabla}_\mu - i \gamma_5 \tau_1 W_{cr}(r_q) + m_q - \epsilon_q \tau_3 \right]\psi_q (x)
+        \end{equation*}
+        Se $m_q > \epsilon_q$ allora l'integrazione sui campi di mare lascia un determinante fermionico maggiore di zero (e infatti questa condizione di solito è soddisfatta).
+  \item Poi è necessaria \colg{un'azione di ghosts relativa ai fermioni di valenza} come presentato da Morel {\it A. Morel, Chiral logarithms in quenched QCD, J. Phys. (France) 48 (1987) 1111}:
+        \begin{equation*}
+          S_{gh}[\phi_f,U] = a^4 \sum_x \phi_f^\dagger (x) \text{sign}(m_f)\left[ \gamma_\mu \tilde{\nabla}_\mu - i \gamma_5 M_{cr} (r_f) + m_f \right] \phi_f(x)
+        \end{equation*}
+        Questa viene serve a dare come contributo nell'integrale funzionale un determinante inverso a quello dei quark di valenza, in modo da cancellarlo.
+        {\it S.R. Sharpe and N. Shoresh, Partially quenched chiral perturbation theory without phi0}.
+        Vedi sull'articolo questa parte, è un po' complessa (pag 4, a metà). 
+\end{itemize}
+Notare che i ghosts $\phi_f$ hanno indici di Dirac $\alpha = 1,\dots,4$ ma statistica come dei bosoni.
+Ovviamente le masse fisiche (rinormalizzate) dei quark di mare e di valenza dello stesso flavour devono essere uguali.
+Per fare ciò, c'è bisogno delle costanti di rinormalizzazione in entrambe le regolarizzazioni.
+Un piccolo report è il seguente:
+\begin{itemize}
+  \item [-] Le masse rinormalizzate in funzione dei parametri non rinormalizzati sono:
+            \begin{equation*}
+              \begin{aligned}
+                &m_q^{\pm,\ren} = Z_P^{-1} (r_q) m_q \pm Z_S^{-1} (r_q) \epsilon_q \hspace*{3mm} \text{ con $q=l,h$ }\\
+                &m_f^{\ren} = Z_m (r_f) m_f
+              \end{aligned}
+            \end{equation*}
+            dove $\pm$ si riferisce alla massa grande o piccola del doppietto di flvour del mare.
+  \item [-] $Z_P(r_q)$ e $Z_S(r_q)$ sono le costanti di rinormalizzazione di $\bar\psi_q\gamma_5 \tau_{2,3} \psi_q$ e $\bar\psi_q \tau_{2,3} \psi_q$.
+  \item [-] $Z_m (r_f)$ è la costante di rinormalizzazione di $\bar q_f q_f$
+\end{itemize}
+Tutte queste quantità sono ben definite e \colg{riportate nell'Appendice A}.
+\newline\newline
+{\bf poi c'è la parte di simmetrie, renormalization constants and \oait.}
+\newline\newline
+{\bf\oai via WA}
+Il wilson averaging (WA) ci fornisce \oait\space sui valori di aspettazione.
+
+\subsection{$B_K$ parameter}
+Il $B_K$ parameter si puà estrarre dal valore d'aspettazione nel continuo di:
+\begin{equation*}
+  \la \bar K^0 | O_{VV+AA}(\mu)^\ren | K^0 \ra = \frac{16}{3}M_K^2 F_K^2 B_K (\mu)
+\end{equation*}
+che sul reticolo si estrapola dal correlatore seguente:
+\begin{equation}\label{eq:correlator-for-BK}
+  \la (\bar d \gamma_5 s)(x) \Theta (\bar d \gamma_5 s)(y)  \ra
+\end{equation}
+con $\Theta = (\bar s \gamma_\mu d)(\bar s \gamma_\mu d)+(\bar s \gamma_\mu\gamma_5 d)(\bar s \gamma_\mu\gamma_5 d)$.
+Una volta che si introducono le copie primate dei fermioni si può calcolare $\la (\bar d' \gamma_5 s')(x) 2\Omega (\bar d \gamma_5 s)(y) \ra$
+dove questa volta:
+\begin{equation*}
+  \Omega = (\bar s \gamma_\mu d)(\bar s' \gamma_\mu d')+(\bar s \gamma_\mu\gamma_5 d)(\bar s' \gamma_\mu\gamma_5 d')
+  +(\bar s \gamma_\mu d')(\bar s' \gamma_\mu d)+(\bar s \gamma_\mu\gamma_5 d')(\bar s' \gamma_\mu\gamma_5 d)
+\end{equation*}
+e si può {\bf \colg{dimostrare tramite contrazioni di Wick che il contenuto dei due correlatori è identico (fai il check!)}}.
+\newline
+\newline
+Una scelta conveniente per i flavour è introdurre, nella valenza $u,d,d',s,s',c$;
+invece nel mare si utilizza un doppietto leggero $\psi_l = (u_{sea}, d_{sea})$ e uno pesante $\psi_h = (c_{sea}, s_{sea})$.
+Questo modello viene detto $(4s6v)_{tm}^L$.
+Per senso comune bisognerà imporre che le masse rinormalizzate del mare e della valenza coincidano:
+\begin{equation*}
+  \begin{aligned}
+    & m_u^\ren = m_l^{-,\ren}\\
+    & m_d^\ren = m_d'^\ren = m_l^{+,\ren} \\
+    & m_s^\ren = m_s'^\ren = m_h^{+,\ren} \\
+    & m_c^\ren = m_h^{-,\ren}
+  \end{aligned}
+\end{equation*}
+e in termine di masse bare (della valenza) avremo $m_d = m_d'$ e $m_s = m_s'$.
+La particolarità importante proviene dalla scelta dei parametri di Wilson:
+\begin{equation*}
+  r_d = r_{d'} = r_s = - r_{s'}
+\end{equation*}
+Ora si vuole dimostrare che integrando (sommando) in $\vec x,\vec y$ la formula \ref{eq:correlator-for-BK} si può estrarre l'elemento di matrice desiderato nel continuo.
+Si inseriscono due set completi di stati intermedi, si considera il limite di leading contributions e la normalizzazione, alla fine si ottiene:
+\begin{equation*}
+  \frac{e^{-m_K |x_0|-m_{K'}|y_0|}}{4 m_K m_{K'}} \la 0 | \bar d'  \gamma_5 s'  | \bar K'^0 \ra \la \bar K'^0 | 2\Omega | K^0 \ra\la K^0 | \bar d \gamma_5 s | 0 \ra 
+\end{equation*}
+Nel continuo l'elemento di matrice interessato dovrebbe essere: $\la \bar K'^0 | 2\Omega | K^0 \ra = \frac{16}{3} m_K^2 F_K^2 B_K\bare$
+però non è così perché ho i fermioni e i fermioni'. Quindi quella vera è:
+\begin{equation*}
+  \la \bar K'^0 | 2\Omega | K^0 \ra = \frac{16}{3} m_K m_{K'} F_K F_{K'} B_K\bare
+\end{equation*}
+dove tutti questi valori tranne $B_K\bare$ possono essere ricavati dalle funzioni di correlazione a due punti.
+È chiaro che questa funzione di correlazione deve essere sottoposta alla WA in modo che sia \oai.
+\colg{Tuttavia non è necessario perché le masse, le costanti di decadimento e i correlatori sono già \oai\space a causa delle simmetrie! Vedi l'articolo a pagina 16 per saperne di più.}
+\newline
+Poi bisognerebbe trovare quello rinormalizzato $B_K^\ren (\mu) = Z (a\mu) B_K\bare$, dove la costante di rinormalizzazione è quella che rinormalizza $2\Omega$.
+Ora c'è tutta la dimostrazione che questo operatore non mixa sotto rinormalizzazione, che non riporto.
+Allo stesso modo non riporto la dimostrazione della $Z_{ij}$ totale.
+
+\newpage
+
+\section{A tmQCD mixed-action approach to flavour physics (:: tmMixAct)}
+Setting:
+\begin{itemize}
+  \item Sea: Wilson-Dirac per $N_f = 2+1$ CLS ensembles con il termine di Sheikholeslami-Wohlert per l'$O(a)$-improvement: $$S_f = a^4 \sum_f \sum_x \bar\psi_f (x) \left[ \frac{1}{2}\gamma_\mu(\nabla_\mu+\nabla_\mu^*) -\frac{1}{2}a\nabla_\mu^*\nabla_\mu + \frac{i}{4}ac_{SW} \sigma_{\mu\nu}F_{\mu\nu} + m_0 \right] \psi_f (x)$$  
+  \item Valence: Sempre termine di Wilson-Dirac, stavolta al maximal twist, più il termine di Sheikholeslami-Wohlert. L'operatore corrispondente è: $$\frac{1}{2}\left(\gamma_\mu(\nabla_\mu+\nabla_\mu^*) -a\nabla_\mu^*\nabla_\mu \right)+ \frac{i}{4}ac_{SW} \sigma_{\mu\nu}F_{\mu\nu} + m_0 + i\gamma_5 \mu_0$$ dove $m_0 = $ diag($m_{cr},m_{cr},m_{cr},m_{cr}$) per ottenere il maximal twist. Invece la matrice diagonale $\mu_0$ ha come elementi le bare masses di ogni flavour.
+        \colg{L'inclusione in entrambe le azioni del termine di Sheikholeslami-Wohler ($({i}/{4})ac_{SW} \sigma_{\mu\nu}F_{\mu\nu}$) garantisce che i parametri delle due azioni condividano le stesse costanti di rinormalizzazione}.
+  \item Gauge: Luscher-Weisz tree level improved Gauge action $$S_g[U] = \frac{1}{g_0^2} \left[c_0 \sum_p \tr \left(1-U(p)\right) + c_1 \sum_r \tr \left(1-U(r)\right)\right]$$ con $c_0 = 5/3$ e $c_1 = -1/12$.
+  \item \obc e condizioni periodiche nelle componenti spaziali.
+\end{itemize}
+L'analisi è basata su valori del lattice spacing tra $0.087\fm$ e $0.050\fm$.
+Gli ensemble generati (sea) soddisfano:
+\begin{equation}\label{eq:traceCLSmasses}
+  \tr M_q = 2m_{q,u} + m_{q,s} = \text{const}
+\end{equation}
+dove $m_{q,f} = m_{0,f} - m_{cr}$.
+Questo per far sì che il bare coupling (corretto dalla presenza di quark nel mare) sia costante.
+Nell'approcciare il punto fisico, si considera la \colg{renormalized chiral trajectory} basata sulle masse del pione e del kaone, che sono relazionate a quelle dei quark tramite il più basso ordine della \cpt.
+Nel particolare si considerano queste:
+\begin{equation}\label{eq:phi2,4}
+  \phi_2 = 8t_0 m_\pi^2 \propto 2m_{u,d} \qquad \qquad \phi_4 = 8t_0 \left( m_K^2 + m_\pi^2/2 \right) \propto 2m_{u,d} + m_s
+\end{equation}
+(per la definizione di $t_0$ vedere l'articolo o altri articoli sul Wilson flow);
+per la determinazione delle traiettorie chirali si fa rimerimento a {\bf :: Bruno}.
+Il punto fisico si fissa utilizzando la traiettoria chirale in cui $\phi_4$ è costante e che interseca il punto fisico.
+\subsubsection*{Correzioni di masse}
+Questa cosa sopra riportata implica che alle bare quark masses siano applicate piccole correzioni di massa (\colr{\bf a me questa frase risulta vagamente oscura}).
+Queste correzioni alla massa hanno ripercussioni sulle funzioni di correlazione.
+Anziché fare dei conti estremamente faticosi e poco efficaci, si usa espandere in serie di Taylor i valori d'aspettazione attorno alle masse bare e applicare correzioni in questo modo.
+Per formule, vedere l'articolo.
+
+\subsection{Matching of Sea and Valence Quark Masses}
+Come già detto, \colg{il parametro standard di massa nell'azione deve essere impostato al valore critico in modo che la massa fisica sia tutta nella parte twisted}.
+Questo può essere fatto ad esempio richiedendo il ripristino di una simmetria, in questo caso la twisted vector symmetry;
+si può ripristinare tale simmetria richiedendo che le masse (light) PCAC dei quark di valenza $m_{12}^\ren$ siano nulle.
+Questo come si fa? Basta utilizzare $am_{0,u}$ differenti e scegliere quella tale che $m_{12}^\ren =0$.
+\newline
+\newline
+L'altro aspetto importante da curare è il \colg{matching tra le masse di valenza e di mare}. Questo si può fare in due modi:
+\begin{enumerate}
+  \item Eguagliare le masse del pione composto da quark di mare a quello del pione composto da quark di valenza: $m_\pi^{\text{sea}} = m_\pi^{\text{val}}$. Entrambi i lati dell'equazione sono in automatico \oai. Questo metodo di contro ha più errori statistici, ma Papinutto ha premuto su questo perché più semplice.
+  \item L'altro metodo consiste nell'eguagliare proprio le masse (rinormalizzate) dei quarks: $m_{12}^{\ren,\text{sea}} = \mu_1^{\ren,\text{val}}$.
+        Tuttavia nel calcolo di $m_{12}^{\ren,\text{sea}}$ vanno inclusi dei termini per l'\oai. Dopo di questo la condizione precedente si riscrive come $$\frac{\mu_1}{Z_P} = \frac{Z_A}{Z_P} m_{12}^\text{sea} \left( 1 + (\tilde b_A -\tilde b_P) a m_{12}^\text{sea} + (\bar b_A -\bar b_P)a \tr M_q^\text{sea} \right)$$
+        che è decisamente più complicata della precedente. I fattori $Z_P$ si possono semplificare; la $Z_A$ è calcolata in una referenza.
+\end{enumerate}
+La procedura di matching è semplificata dal fatto che l'azione di valenza e di mare condividono le stesse constanti di rinormalizzazione.
+
+
+\subsection{Observables and \obc}
+\colg{Si usano le \obc; l'efficienza dell'algoritmo HMC nel fare il sampling dei settori topologici si deteriora sotto $0.05\fm$;
+l'utilizzo di \obc  permette alla carica topologica di scorrere dentro e fuori il bulk: questo permette ai tempi di autocorrelazione di essere migliorati e quindi le simulazioni a lattice spacing piccolo migliorano anch'esse}.
+\newline \newline
+\colg{La presenza delle \obc fa sì che ci sia un ground state $|\Omega \ra$ nel boundary differente dal ground state $| 0 \ra$ del bulk, che è quello fisico nel limite continuo.}
+Nel formalismo della transfer matrix una tipica funzone a due punti è calcolata così:
+\begin{equation*}
+  \begin{aligned}
+    & \la X(x) P(y) \ra = \frac{1}{\mathcal Z} \la \Omega | e^{-H (T-x_0)} X(\vec{x}) e^{-H(x_0 -y_0)} P(\vec y) e^{-Hy_0} | \Omega \ra \\
+    & \quad\quad\quad \text{con} \quad \mathcal{Z} = \la \Omega | e^{-HT} | \Omega \ra
+  \end{aligned}
+\end{equation*}
+\colg{Affinchè vengano cancellati effetti non triviali dovuti alle \obc, bisogna creare degli opportuni rapporti che permettano l'elisione di questi.}
+\newline
+Esempi seguono. Si definiscono queste timeslices:
+\begin{equation}\label{eq:timelices-PP-AP}
+  \begin{aligned}
+    & f_P(x_0,y_0) = a^6 \sum_{\vec x \vec y} \la P(x)P(y) \ra \\
+    & f_A(x_0,y_0) = a^6 \sum_{\vec x \vec y} \la A_0(x)P(y) \ra 
+  \end{aligned}
+\end{equation}
+con $P^{rs}(x) = \bar\psi^r (x) \gamma_5 \psi^s (x)$ dove $r,s$ sono indici di flavour, sopra omessi;
+invece $A^{rs}_\mu (x) = \bar\psi^r (x) \gamma_\mu \gamma_5 \psi^s (x) + a c_A \partial_\mu P^{rs} (x)$ è la corente assiale \oai.
+\colg{Si impostano le sorgenti delle funzioni di correlazione vicino ai boundaries e si simmetrizza rispetto a $x_0$ "by taking advantage of the time reversal symmetry"}.
+\begin{itemize}
+  \item Allora le masse psudoscalari sono estratte facendo la media su una regione di plateau delle masse effettive (di seguito questa operazione di indicherà con il subscript 'average'):
+        \begin{equation*}
+          am_{eff} (x_0) = \log \frac{f_P (x_0, a)}{f_P (x_0 +a, a)}
+        \end{equation*}
+        \textcolor{gray}{Prova a dimostrare che questa formula funziona}.
+  \item Le masse PCAC dei quark leggeri da:
+        \begin{equation*}
+          m_{12} = \left(\frac{\tilde\partial_0 f_A (x_0, a)}{2f_P(x_0,a)}\right)^\text{average}
+        \end{equation*}
+        dove la tilde sulla derivata significa $(\partial_\mu + \partial_\mu^*)/2$, \colr{almeno credo}.
+  \item Le costanti di decadimento idem:
+        \begin{equation*}
+          R_X (x_0) = \sqrt{\frac{f_X (x_0, a) f_X (x_0,T- a)}{f_P (T-a, a)}}
+        \end{equation*}
+        dove $X$ è un operatore fermionico. Ad esempio le costanti di decadimento pseudoscalari si trovano da: $f_{PS}^{\text{sea}} = \sqrt{\frac{2}{m_{PS}L^3}}R_P^{\text{average}}$.
+\end{itemize}
+
+\subsection{Numerical Simulations}
+Si parla più approfonditamente di come è stato fatto il tuning al maximal twist (c'è un plot). Si usa il fatto che $m_\pi \propto \sqrt{(m^R)^2 + (\mu^R)^2}$, quindi porre $m^R =0$ significa minimizzare la massa del pione.
+
+\newpage
+
+\section{Light meson physics and scale setting from a mixed action with Wilson twisted mass valence quarks (:: LightMesons)}
+Settings (mixed action):
+\begin{itemize}
+  \item [-] Gauge: Lüscher-Weisz tree-level improved gauge action.
+  \item [-] Valence: Wilson fermions + maximal twist.
+  \item [-] Sea: CLS $N_f = 2+1$ ensembles \oai Wilson quarks.
+  \item [-] \obc.
+\end{itemize}
+Contents:
+\begin{itemize}
+  \item [-] Update of matching sea and valence quarks.
+  \item [-] Continuum limit scaling of light-quarks observables (up, down and strange).
+\end{itemize}
+I fermioni generati nel mare soddisfano la \ref{eq:traceCLSmasses} ($\tr M_q = $ const), in modo che gli errori di cut-off, che sono proporzionali a tale traccia, siano costanti quando si variano le masse dei quark.
+Da queste masse bare si passa a quelle rinormalizzate e si definiscono i parametri $\phi_2$ e $\phi_4$ come in \ref{eq:phi2,4}, dove si usano le masse rinormalizzate.
+In questo modo si definiscono delle traiettorie chirali con le masse rinormalizzate.
+Per prendere in considerazione lo shift dalle masse bare a quelle rinormalizzate si effettua un espansione al primo ordine di Taylor nelle osservabili (dà come referenza \textit{Setting the scale for the CLS 2 + 1 flavour ensemble}).
+
+\subsection{Matching of Valence and Sea Quark Masses}
+Bisogna settare, come nel precedente articolo, $m_{12}^\text{val}=$ 0; questo si fa ensemble per ensemble.
+Il match si esegue richiedendo che le quantità $\phi_2$ e $\phi_4$ siano uguali nel mare e nella valenza, cioè richiedendo che le masse degli pseudoscalari siano uguali.
+In alternativa si possono matchare le masse rinormalizzate dei quark di mare e valenza. \colg{Qui c'è un grafico che compara i due metodi}.
+
+\subsection{Scale Setting + Light and Strange Quark Masses}
+Qui si segue di nuovo \textit{Setting the scale for the CLS 2 + 1 flavor ensembles}.
+Si utlizza la quantità definita anche in \ref{eq:fpik}:
+\begin{equation*}
+  f_{\pi K} = \frac{2}{3} \left(\frac{1}{2}f_\pi + f_K\right)
+\end{equation*}
+considerata al NLO in \cpt, che si vede rimanere costante lungo la traiettoria chirale a $\tr M_q =$ const.
+\newline
+C'è anche un pezzetto sulle masse dei quark $u,d,s$, ma quasi inutile; lo salto. 
+
+
+
+\newpage
+
+\newpage
+
+\section{Lattice QCD without topology barriers (:: OBC\_top)}
+
+{\it As the continuum limit is approached, lattice QCD simulations tend to get trapped in the
+topological charge sectors of field space and may consequently give biased results in practice.
+We propose to bypass this problem by imposing \colg{open (Neumann) boundary conditions on
+the gauge field in the time direction}. The topological charge can then flow in and out of
+the lattice, while many properties of the theory (the hadron spectrum, for example) are
+not affected.}
+\newline\newline
+{\bf Spiegazione generale:}\newline
+\colg{Per preservare l'invarianza per traslazione temporale si è soliti mettere delle condizioni periodiche al contorno temporale sul reticolo.
+Questo però ha come effetto l'emergenza di settori topologici disconnessi nello spazio dei campi di Gauge anche nel limite continuo.
+Perché? Come si vede in {\it Properties and uses of Wilson flow in lattice QCD}, il peso statistico tra i diversi settori topologici dei campi di gauge decresce con un'alta potenza del lattice spacing $a$.
+Quindi nel continuo diventa impossibile transitare per alcuni settori topologici e quindi emerge la "disconnessione topologica" di cui si parla.
+Per rendere possibile questa transizione a bassi valori del lattice spacing $a$ sarebbero necessarie delle simulazioni più lunghe di quanto realizzabile (dal momento che i tempi di autocorrelazione diventano enormi)
+\newline
+Implementando le \obc gli algoritmi di simulazione dei campi di gauge non avranno più nessun problema probabilistico ad esplorare ogni configurazione di campo possibile, anche per lattice spacing piccoli}.
+\newline\newline
+\colr{\bf Si riportano solo le cose importanti e non si copiano nemmeno tutte le formule, altrimenti diventa un lavoro da amanuense. La filosofia però è tutta qui.}
+
+\subsection{QCD with \obc}
+\subsubsection*{Boundary conditions in the continuum theory}
+Manifold $\mathcal{M} = L \times L \times L \times T$. Dato $F_{\mu\nu} (x)$ dai campi di Gauge, si impone:\
+\begin{equation}\label{eq:obc}
+  F_{0i}(\vec{x}, x_0 = 0) = F_{0i}(\vec{x}, x_0 = T) = 0 \quad \quad \forall i = 1,2,3
+\end{equation}
+Mentre per i campi fermionici:
+\begin{equation*}
+  \begin{aligned}
+    & P_+ \psi (\vec x, x_0 = 0) = P_- \psi (\vec x, x_0 = T) = 0  & \quad P_{\pm} = \frac{1 \pm \gamma_0}{2} \\
+    & \bar \psi (\vec x, x_0 = 0) P_- = \bar \psi (\vec x, x_0 = T) P_+ = 0
+  \end{aligned}
+\end{equation*}
+(simili a quelle dello Schrodinger functional). Queste ultime due sono obbligate se vogliamo che le simmetrie discrete $\mathbb{P}$ e $\mathbb{T}$ ci siano.
+L'azione della teoria continua è:
+\begin{equation*}
+  S = -\frac{1}{2g_0^2} \int_\mathcal{M} d^4 x \spc \tr \left(F_{\mu\nu}(x) F_{\mu\nu}(x) \right) + \int_\mathcal{M} d^4 x \spc \bar \psi (x) \left( \gamma_\mu{D_\mu} + M_0\right)\psi (x)
+\end{equation*}
+Si può dimostrare che $\mathcal{M}$ è contraibile ad un toro tridimensionale. Come conseguenza ogni fibrato principale di $SU(3)$ è trivializzabile (cioè è isomorfo a un cross product tra il base space e una fibra).
+La conseguenza di ciò è che i campi di gauge classici sono differenziabili in tutto lo spazio.
+Tuttavia le condizioni al contorno imposte non sono lineari e quindi lo spazio dei campi di gauge non è uno spazio lineare.
+\newline
+In più si può dimostrare che \colg{lo spazio dei campi di gauge è connesso}.
+Lo si fa dimostrando che esiste sempre una curva di trasformazioni di Gauge, parametrizzata con $s$, tale che per $s=0$ si ha il campo iniziale e per $s=1$ si ha il campo di Gauge in cui la componente temporale è nulla.
+Una volta arrivati a $s=1$, il campo ottenuto può essere connesso con la configurazione di vuoto classica, cha chiamo $\mathbb{I}$.
+Se ogni configurazione di campo è connessa con $\mathbb{I}$ allora lo spazio dei campi è connesso. $\square$
+\newline
+\colr{Sarà proprio questa curva di trasformazioni che sarà inaccessibile e darà il problema dei settori topologici}.
+\newline
+Poi posso definire queste:
+\begin{equation*}
+  Q = \int_\mathcal{M} d^4x \spc q(x) =\int_\mathcal{M} d^4x \spc  \left[ - \frac{1}{32 \pi^2} \epsilon_{\mu\nu\rho\sigma} \tr \left(F_{\mu\nu} (x) F_{\rho\sigma} (x) \right) \right]
+\end{equation*}
+Per ora non ci sono settori topologici, tant'è che \colg{questa carica non è quantizzata}.
+
+\subsubsection*{Boundary conditions in lattice theory}
+Si sceglie la classica Wilson Gauge Action $S_G[U]$. L'azione dei fermioni invece è quella di Wilson-Dirac, solo che nella somma sui siti sono esclusi i siti in cui $x_0 = 0, T$, quindi solo sul bulk temporale
+(si può tranquillamente settare ogni componente di ogni campo $\psi$ e $\bar\psi$ a 0 sui corner temporali).
+Ora \colg{le funizoni di correlaizone e il functional integral sono definiti nella maniera standard, non c'è niente di particolare da fare}.
+\newline
+A questo punto non è scontato che nel limite continuo emergano le condizioni al contorno menzionate prima.
+Tuttavia è provato (non so dove) che le condizioni al contorno menzionate nel continuo sono stabili sotto fluttuazioni quantistiche: quindi basta sviluppare il lattice al primo ordine di teoria perturbativa, fare il limite al continuo e far vedere che emergono le condizioni al contorno per dimostrare che energono anche in modo non perturbativo.
+
+\subsubsection*{Quantum-mechanical representation}
+\begin{itemize}
+  \item [$\star$] Spazio di Hilbert $\mathcal{H}$ degli stati fisici.
+  \item [$\star$] Stato $| \Omega \ra$ di vuoto al bordo $x_0 = 0,T$ che incapsula le condizioni al contorno (diverso dal vuoto "fisico" del bulk $| 0 \ra$).
+  \item [$\star$] Esiste una transfer matrix $\mathbb{T}$ definita positiva e limitata.
+  \item [$\star$] La funzione di partizione è $\mathcal{Z} = \la \Omega | \mathbb{T}^{T/a} | \Omega \ra$.
+\end{itemize}
+Il formalismo della transfer matrix si inizializza introducendo delle funzioni d'onda fermioniche $\chi (\vec x), \bar\chi (\vec x)$ e dei campi di Gauge $V_i (\vec x)$. Allora lo stato di vuoto sui boundaries è dato da:
+\begin{equation*}
+  \Omega (V, \chi, \bar\chi) = \left\{ \text{det} \left[1+aM_0-\frac{1}{2}a^2 \nabla_k^* \nabla_k\right] \right\}^{-1}
+\end{equation*}
+con $\nabla_k$ la derivata covariante in presenza del campo di Gauge $V$. Essendo questa espressione invariante sotto simmetria di Gauge, simmetrie di lattice e trasformazioni vettoriali di flavour, allora $\Omega$ ha i numeri quantici del vuoto.
+Adesso posso calcolare le funzioni di correlazione nel modo classico, ad esempio per $\phi$ scalare e $x_0 > y_0$:
+\begin{equation*}
+  \la \phi (x) \phi (y) \ra = \frac{1}{\mathcal Z} \la \Omega | \mathbb{T}^{(T-x_0)/a} \phi (\vec x) \mathbb{T}^{(x_0-y_0)/a} \phi (\vec y) \mathbb{T}^{y_0/a} | \Omega \ra 
+\end{equation*}
+Poi segue una parte sull'$O(a)$ improvement dell'azione di Gauge e di fermioni. Non l'ho scritta.
+
+\subsection{Dynamical properties of QCD simulations}
+Le simulazioni funzionano così: \colg{\bf ogni configurazione di Gauge generata è utilizzata per generare la successiva in accordo con una certa probabilità di transizione tra le due. Alla fine di tale ricorsione si ottiene un ensemble di configurazioni di campi di Gauge}.
+Indichiamo con $x_0, y_0$ la variabile temporale, mentre con $t$ il tempo della simulazione.
+\newline
+Gli algoritmi di simulazione considerati sono l'HCM (Hybrid Monte Carlo) e il SMD (stochastic molecular dynamics o generalized Hybrid Monte Carlo).
+\newline
+Se abbiamo un set di operatori $O_i (t)$, chiamiamo la parte connessa di una funzione a $N$ punti così:
+\begin{equation*}
+  \mathcal{A}(t_1,\dots,t_N)_{i_1,\dots,i_N} = \ll O_{i_1}(t_1) \dots O_{i_N}(t_N) \gg 
+\end{equation*}
+dove $\ll \cdot \gg$ indica una media su infinite simulazioni parallele (è solamente una formalità matematica).
+La parte connessa ad esempio:
+\begin{equation*}
+  \Gamma_{ij} (t) = \ll O_i (t) O_j(0) \gg - \ll O_i (t) \gg \ll O_j(0) \gg
+\end{equation*}
+tende a \colg{andare a 0 esponenzialmente con dei tempi tipici $\tau_n$ detti {\it tempi di autocorrelazione}} dell'algoritmo:
+\begin{equation*}
+  \Gamma_{ij} (t) = \sum_{n=0}^\infty \text{Re} \left[ c_{in} c_{jn} e^{-|t|/\tau_n}\right]
+\end{equation*}
+Se si usano le Periodic Boundary Conditions allora la probabilità per unità di tempo di simulazione di passare da un settore topologico all'altro decresce rapidamente con il lattice spacing({\it M. Luscher, Topology, the Wilson flow and the HMC algorithm, PoS(Lattice 2010)015} +  altre due referenze).
+Allora il tempo integrato di autocorrelazione (formula sull'articolo) diventa molto grande (come operatore si prende la carica topologica).
+\colg{Qui entrano in gioco le \obc!}
+Nel caso di condizioni periodiche per l'HMC il tempo di correlazione è $\propto 1/a$.
+\newline\newline
+\colr{Si parla poi di 'renormalizable algorithms', 'Making QCD simulations safer', studi numerici e dettagli sugli algoritmi di simulazione e di integrazione delle equazioni di evoluzione.
+Si parla anche di Wilson flow e osservabili (carica topologica e densità di energia). Alla fine ci sono anche i risultati numerici e vari plot.}
+
+
+
+
+\newpage
+
+\section{Lattice QCD with open boundary conditions and twisted-mass reweighting (:: OBC\_tm)}
+When open boundary conditions are imposed, the QCD Hamiltonian and the space
+of physical states remain unchanged, but the presence of the boundaries at time 0
+and T potentially complicates the analysis of the calculated correlation functions.
+Quindi si parla di nuovo di timeslices, del tempo $t_0$ da estrarre, etc.
+\newline\newline
+Si parla di nuovo dei due problemi principali:
+\begin{itemize}
+  \item I fermioni di Wilson hanno degli 0 modes che accrescono i tempi di correlazione.
+        Sebbene uno possa utilizzare \oai Wilson fermions, la simmetria chirale è violata nell'ordine $a^2$ e quindi lo spettro dell'operatore di Dirac non è protetto da modi 0 accidentali.
+        Allora uso i twisted-mass \oai Wilson fermions e dovrò fare un ripesaggio/reweighting dell'integrale funzionale. Perché la twisted mass evita che ci siano gli 0-modes? Perché funge da regolarizzatore infrarosso (un po' come quando si inserisce la massa al fotone).
+  \item Il trapping della carica topologica nel caso di condizioni periodiche crea tempi di correlaizone lunghi per lattice spacings piccoli, quindi utilizzo le \obc.
+\end{itemize}
+
+\subsection{Twisted-mass determinant reweighting}
+Si utilizzano $N_f = 2+1$ Wilson quark con $O(a)$ improvement. Ci saranno 2 light quark e uno strange. Qui si setta $a=1$ per semplicità ma non è così.
+\newline
+Sia $D$ l'operatore di Wilson Dirac \oai per il quark up. Ci sono due regolarizzazioni possibili con la twisted mass:
+\begin{equation*}
+  \begin{aligned}
+    & \text{det}\left[D^\dagger D\right] \rightarrow \text{det}\left[D^\dagger D +  \mu^2\right] \\
+    & \text{det}\left[D^\dagger D\right] \rightarrow \text{det}\left[\frac{(D^\dagger D + \mu^2)^2}{D^\dagger D + 2\mu^2}\right]
+  \end{aligned}
+\end{equation*}
+Con queste regolarizzazioni bisogna fare un ripesaggio degli ensemble di campi {\bf di Gauge } generati per avere i giusti valori d'aspettazione.
+I fattori di ripesaggio sono i seguenti:
+\begin{equation}
+  \begin{aligned}
+    & W_1 = \text{det}\left[\frac{D^\dagger D}{D^\dagger D + \mu^2}\right] \\
+    & W_2 = \text{det}\left[\frac{D^\dagger D(D^\dagger D + 2\mu^2)}{(D^\dagger D + \mu^2)^2}\right]
+  \end{aligned}
+\end{equation}
+entrambi sono rapporti di determinanti di quark, che possono essere calcolati stocasticamente (vedi dopo o nell'articolo).
+La seconda scelta dovrebbe funzionare meglio della prima perché riduce di più la presenza di zero modes. Gli studi empirici lo confermano, $W_2$ fluttua meno di $W_1$.
+Quindi da qui in poi tutto vale per la regolarizzazione $W_1$.
+\newline
+L'operatore di dirac $D$ si può scomporre così:
+\begin{equation*}
+  D = \begin{vmatrix}
+    D_{ee} & D_{eo} \\
+    D_{oe} & D_{oo}
+  \end{vmatrix}
+\end{equation*}
+dove la decomposizione è fatta in base ai punti del lattice su cui si agisce (ad esempio $e =$ even sta per $x_1 + x_2 + x_3 + x_4 = $ even).
+I blocchi sulla diagonale sono sempre invertibili, allora posso definire questo $\hat D = D_{ee} - D_{eo}D_{oo}^{-1}D_{oe}$ e lo chiamo "even odd preconditioned operator" che agisce solo sui campi che stanno nei punti even del lattice.
+Adesso posso ri-esprimere il det$(D^\dagger D)$ e il $\hat W_2$ in termini di $\hat D$ e $D_{oo}$ (definiti sull'articolo).
+\newline
+Il calcolo di $W_2$ e $\hat W_2$ viene fatto tramite $N$ steps in modo stocastico (vedi articolo); di solito si prende N nel range da 12 a 48.
+
+\subsection{Frequency splitting of the quark determinant}
+Questa parte l'ho saltata. Una parte parla della fattorizzazione per calcolare il determinante dei quark light.
+Un'altra della razionalizzazione per il determinante dello strange quark. Un'ultima sulle forze della dinamica molecolare.
+
+\subsection{Integration of the molecular-dynamics equations}
+Si usano un OMF integrator (Omelyan, Mryglod and Folk) e un locally deflated solver for the lattice Dirac equation.
+Le equazioni di dinamica molecolare permettono di evolvere i campo di Gauge $U_\mu (x)$ e il loro momento $\pi_\mu (x) = \pi_\mu^a (x) T^a$.
+Si definisicono le equazioni, la deflation acceleration, i metodo di integrazione, etc\dots
+
+\subsection{Algorithm stability and performance}
+Lo scopo di questo paper è quello di \colg{sperimentare il twisted mass reweighting, vedere se funziona al variare delle masse dei quark vicine al loro valore fisico}.
+\newline
+\colr{questa parte la salto a piedi pari}
+
+\subsection{Computation of physical quantities}
+\colg{\bf Quando si impongono condizioni al contorno in $t = 0,T$ lo spazio di Hilbert degli spazi fisici non cambia, ma la presenza dei boundaries complica l'analisi dei correlatori.}
+Vediamone alcuni esempi.
+\newline
+Il primo riguarda il flow time di referenza $t_0$, definito attraverso:
+\begin{equation*}
+  t_0^2 \la E(\vec x)|_{t_0} \ra = 0.3 \qquad \text{ con } E(x) = \frac{1}{4} G_{\mu\nu}^a (x) G_{\mu\nu}^a (x)
+\end{equation*}
+Nel caso di \obc la time translation invariance è rotta e quindi $E(x)$ dipende da $x_0$.
+Sul paper c'è un grafico che lo mostra, infatti vicino a $t = 0,T$ cresce mentre al centro oscilla. Noi prendiamo la media e sommiamo sulle $\vec x$ per aumentare la statistica.
+\newline
+L'altra quantità calcolata è il correlatore del pione, che troviamo da $G\pi (x_0,y_0)$:
+\begin{equation*}
+  G\pi (x_0,y_0) = - \sum_{\vec x, \vec y} \la (\bar u \gamma_5 d)(x) (\bar d \gamma_5 u)(y) \ra 
+\end{equation*}
+Si trova una curva esponenzialmente decrescente con $x_0$, mentre $y_0$ è tenuto fisso $y_0 = a$. Come nel caso di codizioni periodiche, per valori piccoli di $x_0$ si hanno contributi da stati eccitati più pesanti, perché non sufficientemente smorzati.
+
+
+\section{Simulation of QCD with $N_f = 2+1$ flavors of non-perturbatively improved Wilson fermions (:: Bruno)}
+Ho $N_f = 2+1$ fermioni si mare \oai e l'azione di Gauge è Luscher-Weisz. Sono implementate le \obc e c'è reweighting a causa del twisted mass.
+\subsection{Physical parameters}
+\obc imposte ai tempi $0,T$. Si usa la Gauge action di Luscher-Weisz.
+L'azione fermionica è quella di Dirac-Wilson con l'improvement O(a) dato dal termine di Sheikholeslami-Wohlert (coefficiente $c_{SW}$ calcolato in una referenza).
+Le masse bare up e down sono prese degeneri $m_u^0 = m_d^0 := m_l^0$ mentre quella dello strange è scelta in base al valore della massa leggera. La $r$ di Wilson è impostata ad $r = 1$.
+\newline
+Per determinare le masse fisiche dei quark abbiamo bisogno di utilizzare delle quantità fisiche.
+Le masse dei quark sono settate utlizzando le masse di pione e kaone.
+Una volta conosciuto $t_0$ dal Wilson flow, si utilizzano le quantità $\phi_2$ e $\phi_4$. Notare che al primo ordine in \cpt corrispondono alla somma delle masse dei quark leggeri e leggeri+strange, come in formula \ref{eq:phi2,4}.
+La cosa positiva è che facendo così non abbiamo bisogno di estrapolazioni chirali o di costanti di rinormalizzazione.
+La costante $t_0$ è presa da varie referenze; le masse dei mesoni da una referenza che le calcola (come è giusto che sia) sul lattice e senza includere il settore eletrodebole, quindi solo QCD con isospin (massa up = massa down).
+In questo modo si calcolano:
+\begin{equation*}
+  \phi_2^{\text{phys}} = 0.0801(27) \qquad \qquad \phi_4^{\text{phys}} = 1,117(38)
+\end{equation*}
+In questo modo si possono fissare le masse dei quark.
+\newline\newline
+In più, per avere l'\oai, c'è bisogno di modificare il bare coupling $g_0^2 \rightarrow \tilde g_0^2$. Per avere questo costante mentre si cambia la massa dei quark, c'è bisogno che $\tr M_q = const$.
+Questa richiesta fissa una traiettoria chirale nel piano $\phi_2 - \phi_4$ \colr{QUESTA COSA LA DEVO CAPIRE MEGLIO!}.
+\colr{Poi viene riportata la strategia di tuning per le masse fisiche dei quark. Io non l'ho capita e quindi non la copio. Quando avrò voglia di capirla, mi ci metterò.}
+\subsection{Algorithmic parameters}
+Come si sa, non si è protetti dai 0 modes dell'operatore di Dirac (e da quelli negativi) e quindi si fa come proposto da Luscher e Palombi in una referenza: si inserisce un piccolo twisted mass term.
+\colg{È per questo motivo che serve un reweighting}, in cui la massa $\mu_0$ funge da cutoff infrarosso (a volte scrivo solo $\mu$). A differenza della proposta nella referenza, non si applica $Q = \gamma_5 D$ ma si applica $\hat Q$, l'operatore di Dirac con even-preconditioning del precedente articolo.
+Da qui esce il fattore $W_0$ di ripesaggio:
+\begin{equation*}
+  W_0 = \text{det}\frac{ \left(\hat Q^2 + 2\mu^2\right) \hat Q^2} {\left(\hat Q^2 + \mu^2\right)^2}
+\end{equation*}
+Il determinante det$\left(\hat Q^2 + \mu^2\right)$ si calcola tramite il metodo di \colg{fattorizzazione del determinante} attraverso $N_{mf}$ steps.
+Questo porta ad esprimere un'azione effettiva per degli \colg{pseudo-fermioni} abbastanza lunga da scrivere, che quindi non riporto.
+\newline
+Il quark strano è simulato utilizzando l'RHMC, il determinante di una radice quadrata è calcolato utilizzando l'approssimazione razionale (anche questa formulona non la riporto).
+La parte rimanente (quella non calcolata nel modo qui sopra) \colg{la simuliamo utilizzando degli pseudo-fermioni} con un'azione effettiva riportata nel paper.
+\newline
+\colr{Qui si entra nel dettaglio di solvers, HMC, costi di produzione, integrazione della dinamica molecolare. Cose che non mi riguardano.}
+\subsection{Autocorrelators}
+Per una quantità $A$, si definisce l'autocorrelatore $\Gamma_A (t)$, dove $t$ è il tempo di simulazione: $\Gamma_A (t) = \la A_t A_0 \ra - \la A \ra^2$.
+Nell'analisi delle autocorrelazioni entra il correlatore normalizzato $\rho_A (t)$ e il tempo integrato totale di autocorrelazione $\tau_\text{int}(A)$.
+\newline
+A causa del {\it critical slowing down}, ci aspettiamo che nel limite continuo i tempi di autocorrelazione vadano come $\propto a^{-2}$ e quindi crescano all'infinito.
+\colg{Le \obc adottate dovrebbero evitare questo comportamento}.
+C'è un plot che mostra tali tempi per due osservabili notoriamente "lente": $E(t)$ e la carica topologica.
+Si mostra che rimane una dipendenza del tipo $a^{-2}$ ma che non è catastrofica (\colr{\it non ha senso, spero di aver capito male}).
+\subsection{Reweighting factors}
+Le osservabili sono ripesate così:
+\begin{equation*}
+  \la A \ra = \frac{\la AW \ra_W}{\la W \ra_W}
+\end{equation*}
+dove il fattorei di ripesaggio è $W = W_0W_1$, dove i due fattori sono quelli per il quark strange e per i quark leggeri.
+\newline
+Segue una parte sull'anticorrelazione tra $W_0$ e il correlatore pseudoscalare, per questo il reweighting ha più effetto.
+Dopo segue un metodo per il calcolo di $W_0$ e una sezioncina su $W_1$.
+\subsection{Observables}
+Si definisce il Wilson flow, la densità di energia e la carica topologica; si definisce anche $t_0$.
+A causa delle \obc la time translation invariance è persa e le tecniche usuali si possono utilizzare solo {\it lontano} dai bordi (poi capiremo che significa lontano).
+\colg{\it c'è un grafico che mostra molto bene i boundary effects}.
+\newline
+Poi un pezzo che spiega come determinare $t_0$, ma è più comprensibile leggendo l'articolo.
+Bisogna fare un fit (su articolo) per determinare il range di dati buoni per la regione di plateau. Poi si fa il fit costante (media) nella regione di plateau.
+\newline
+Poi si parla di {\bf correlatori pseudoscalari}: si definisce il correlatore come al solito e \colg{\bf si posizionano le sorgenti stocastiche ad $y_0 = a$ e $y_0 = T-a$}.
+In seguito si analizza:
+\begin{equation}
+  \begin{aligned}
+    f_{PP}(x_0) & = \frac{1}{2}\left[ f_{PP}(x_0 +a, a) + f_{PP}(T-a-x_0,T- a) \right] \\
+                & \simeq A \sinh\left(m_{PS}(\tilde{T}-x_0)\right)
+  \end{aligned}
+\end{equation}
+the behavior is expected for $0 << x_0 << T$. $\tilde{T}$ is a free parameter of the fit.
+\newline
+\newline
+{\bf Confronto con le condizioni PERIODICHE al contorno:}\newline
+Un problema delle \obc è la non attendibilità di molti punti del reticolo vicino ai boundaries.
+\colg{\bf Quanta frazione di punti va eliminata dall'analisi dati, dipende dall'osservabile scelta}, in ogni caso gli effetti di contorno cadono nel limite chirale come exp$\left( -2m_\pi x_0\right)$.
+Invece ci sono effetti sistematici di bordo proporzionali a exp$(-m_\pi L)$. Misure numeriche sul paper.
+
+\subsection{Scaling violation}
+Una paginetta e mezzo saltata.
+
+\newpage
+\section{Setting the scale for the CLS 2 + 1 flavour ensembles (:: scale\_CLS\_opt1)}
+Settings:
+\begin{itemize}
+  \item [-] $N_f = 2+1$ Wilson fermions con $O(a)$-improvement.
+  \item [-] Tree level Lüscher-Weisz gauge action.
+  \item [-] Tre valori del coupling che corrispondono a tre valori del lattice spacing.
+\end{itemize}
+Le quantità rilevanti per settare la scala qui sono $f_\pi, f_K, t_0$, rispettivamente le costanti di decadimento dei più leggeri pseudoscalari e la grafient-flow scale introdotta da Luscher nel Wison flow.
+Altre osservabili usate sono la massa dell'$\Omega^-$, la differenza di massa $\Upsilon-\Upsilon'$, la scala di Smmer $r_0$.
+In particolare le scale $r_0$ e $t_0$ non necessitano l'inclusione di quark di valenza;
+quindi possono essere usate come fattore di collegamento tra i diversi flavour di quark nel mare.
+\newline
+Gli ensemble sono generati con $3m_{\text{symm}} = \text{Tr} M_q = 2 m_{u,d} + m_s = \text{const}$, dove queste masse sono quelle bare.
+Questo serve a garantire un $O(a)$-improved bare coupling:
+\begin{equation*}
+  \tilde{g}_0^2 = g_0^2 \left( 1+ \frac{1}{3} \space b_g \space a \space \text{Tr}M_q \right)
+\end{equation*}
+dove $b_g$ dovrebbe essere conosciuto.
+Di nuovo si definiscono le variabili:
+\begin{equation*}
+  \phi_2 = 8t_0 m_\pi^2 \qquad \qquad \phi_8 = 8t_0 \left(m_K^2 + \frac{1}{2}m_\pi^2\right)
+\end{equation*}
+Sappiamo che a $\phi_4 = 1.15$ la traiettoria di $\phi_4$ interseca quella di masse uguali $m_{u,d} = m_s$. In questo modo si estrapolano le masse $m_i$ bare nel punto simmetrico.
+Poi si sa che, variando una, le altre due devono essere compensate in virtù del fatto che $\text{Tr}M_q = \text{const}$.
+Però questa strategia ha dei punti da sottolineare:
+\begin{enumerate}
+  \item La somma $\text{Tr} M_q$ costante nelle masse bare NON implica una somma costante nelle masse rinormalizzate, che è violata in ordine $a$: $$\text{Tr}M_q^\ren = Z_m r_m \left[\left(1 + a \bar d_m \text{Tr}M_q\right)\text{Tr}M_q + a d_m \text{Tr}M_q^2\right]$$ come si vede in una referenza.
+  \item Il punto fisico di estrapolazione non è veramente "fisico" dal momento che per trovarlo si utilizza $t_0$, il cui valore sperimentale non è conosciuto. È dunque preferibile utilizzare le masse pseudoscalari e le costanti di decadimento.
+\end{enumerate}
+
+\subsection{Observables}
+Si utilizza una costante fisica, la $f_{\pi K}$, per convertire le misure sul reticolo in misure con dimensioni; questa costante è conosciuta al NLO expansion in chiral perturbation theory:
+\begin{equation}\label{eq:fpik}
+  f_{\pi K} = \frac{2}{3}\left(f_K + \frac{1}{2}f_\pi\right) = \dots \text{ una formulona}
+\end{equation}
+questa quantità è costante lungo le traiettorie chirali (Tr$M_q=$ const) secondo la \cpt; un'altra quantità costante lungo tale traiettoria secondo la \cpt\space è:
+\begin{equation*}
+  y_{\pi K} = \frac{1}{2} y_\pi + y_K = \frac{1}{2}\frac{m_\pi^2}{(4\pi f_{\pi K})^2} + \frac{m_K^2}{(4\pi f_{\pi K})^2}
+\end{equation*}
+Si usano come input parameters i seguenti dati sperimentali presi da PDG:
+\begin{equation*}
+  \begin{aligned}
+    & m_\pi = 134.8(3)\mev & m_K = 494.2(3)\mev \\
+    & f_\pi = 30.4(2)\mev & f_K = 156.2(7) \mev
+  \end{aligned}
+\end{equation*}
+Affinché gli effetti di volume finito siano piccoli bisogna assicurarsi che $Lf_\pi >> 1$ e $Lf_K >> 1$ (nel pratico, di solito si richiede che sia maggiore di 4).
+
+\subsection{Open boundaries and hadronic observables}
+Le osservabili fermioniche sono di tre tipi:
+\begin{enumerate}
+  \item Le masse dei più leggeri mesoni pseudoscalari.
+  \item Le costanti di decadimento dei più leggeri mesoni pseudoscalari.
+  \item Le masse dei quark PCAC (cioè estratte dalla PCAC).
+\end{enumerate}
+Le open boundary conditons non pognono nessun problema particolare, visto che la transfer matrix non è cambiata rispetto alle condizoni periodiche.
+\colg{
+  Tuttavia l'invarianza per traslazione temporale ai bordi $x_0 = 0,T$ è rotta e quindi alcune parti devono essere riadattate.
+  Per costruzione, i boundary states hanno i numeri quantici del vuoto e, se le sorgenti sono troppo vicine ai boundaries, questi stati contibuiranno in maniera principale alle funzoni di correlazione
+}(\colr{in tutto ciò, ancora non ho capito quanto distante dai boundaries bisogna essere...}).
+Come al solito si definiscono:
+\begin{equation*}
+  \begin{aligned}
+    & P^{rs} = \bar\psi^r \gamma_5 \psi^s & A_\mu^{rs} = \bar \psi^r \gamma_\mu \gamma_5 \psi^s + ac_A \tilde{\partial}_\mu P^{rs}
+  \end{aligned}
+\end{equation*}
+con il coefficiente $c_A$ in una referenza.
+La derivata con la tilde è la derivata simmetrica rispetto alla direzione temporale (è forse $= \frac{1}{2}\left(\partial_\mu + \partial_\mu^*\right)$?).
+Le funzioni a due punti da calcolare sono:
+\begin{equation*}
+  \begin{aligned}
+    & f_P^{rs} (x_0,y_0) = - \frac{a^6}{L^3} \sum_{\vec x \vec y} \la P^{rs}(x) P^{sr}(y) \ra \\
+    & f_A^{rs} (x_0,y_0) = - \frac{a^6}{L^3} \sum_{\vec x \vec y} \la A_0^{rs}(x) P^{sr}(y) \ra
+  \end{aligned}
+\end{equation*}
+Le sorgenti stocastiche sono posizionate alle timeslices $y_0$, dove si usa $y_0 = a$ oppure $y_0 = T-a$.
+Questo segue da quanto proposto in \textit{M. Bruno, P. Korcyl, T. Korzec, S. Lottini and S. Schaefer, On the extraction of spectral quantities with open boundary conditions, PoS LATTICE2014 (2014) 089}.
+\newline
+\newline
+Per poter definire i VEV, dobbiamo \colg{isolare i contributi dati dal ground state dagli stati eccitati}.
+Nella referenza \textit{ALPHA collaboration, P. Fritzsch, F. Knechtli, B. Leder, M. Marinkovic,
+S. Schaefer et al., The strange quark mass and Lambda parameter of two flavor QCD, Nucl.Phys. B865 (2012) 397–429} è riportata una strategia per isolare la regione di plateau, composta da due steps:
+\begin{enumerate}
+  \item Si fa un fit includendo il ground state e il primo stato eccitato; la regione di dati utilizzati per fare il fit è scelta in modo tale che il $\chi^2$ sia decente.
+  \item Si restringe il range del fit e si fitta solamente con il contributo del ground state; il range di dati è ristretto in modo che i contributi dati dal primo stato eccitato, conosciuti grazie allo step precedente, siano piccoli comparati alle fluttuazioni statistiche.
+\end{enumerate}
+È da notare anche un comportamento particolare: \colg{i boundary effects si fanno più evidenti man mano che le masse dei quark leggeri decrescono}, ed è intuibile dalla definizone di lunghezza Compton di una particella data da Papinutto.
+Invece le masse PCAC dei quark deviano dalla regione flat quasi unicamente a causa degli effetti di discretizzazione, quindi man mano che varia $\beta$.
+\newline
+\newline
+{\bf Meson masses} \newline
+A causa delle OBC, il comportamento asintotico della due punti pseudoscalare è:
+\begin{equation*}
+  f_P^{rs} (x_0,y_0) \approx A_1(y_0)e^{-m_{PS}x_0}+A_2(y_0)e^{-m'x_0}+B_1(y_0)e^{-(E_{2PS}-m_{PS})(T-x_0)}+\dots
+\end{equation*}
+per $T >> x_0 >> y_0$, dove $E_{2PS}$ è il primo stato eccitato, un 2-pion state, dunque in volumi grandi $E_{2PS} \simeq 2m_{PS}$.
+Ne risulta la seguente formula:
+\begin{equation*}
+  am_{\text{eff}}(x_0) = \log\frac{f_P(x_0)}{f_P(x_0+a)} \approx a m_{PS} \left( 1 + c_1 e^{-E_1 x_0} + c_2 e^{- E_{2PS}(T-x_0)} + \dots \right)
+\end{equation*}
+con $E_1 = m' - m_{PS}$ e dove solamente $c_1$ e $c_2$ dipendono dalla posizione della sorgente $y_0$.
+\newline
+\newline
+{\bf Decay constants} \newline
+(da qui si omettono gli indici di flavour $rs$) Nella regione di plateau per le $x_0$ si definiscono:
+\begin{equation*}
+  R_{PS}(x_0,y_0) = \sqrt{ \frac{f_A (x_0,y_0)f_A (x_0,T-y_0)}{f_P(y_0,T-y_0)} }
+\end{equation*}
+e questa forma operatoriale è scelta in modo che \colg{gli elementi di matrice degli operatori vicino ai boundaries si cancellino} (\colr{notare che è lo stesso che deve avvenire nel lavoro che devo fare io}).
+Infatti il fit viene fatto con:
+\begin{equation*}
+  R_{PS}(x_0,y_0) = R(1 + c_1(y_0)\cosh[-E_1(T/2 - x0)])
+\end{equation*}
+e da qui si deduce quale è la regione di plateau in cui solo il primo termine può essere tenuto.
+Una volta che l'elemento di matrice rilevante è conosciuto, le costanti di decadimento degli pseudoscalari sono calcolate da:
+\begin{equation*}
+  f_{PS} = Z_A (\tilde g_0)\left[1+ \bar b_A a\text{Tr}M_q + \tilde b_A am_{rs} \right]f_{PS}\bare
+\end{equation*}
+dove $f_{PS}\bare = \sqrt{2/m_{PS}} R_{PS}^{\text{aver}}$, con $R_{PS}^{\text{aver}}$ che è la media sulla regione di plateau.
+\newline
+\newline
+{\bf PCAC quark masses} \newline
+Le masse PCAC dei quark si ritrovano da:
+\begin{equation*}
+  m_{rs}(x_0,y_0) = \frac{\tilde{\partial}_{x_0}f_A^{rs} (x_0,y_0)}{2 f^{rs}_P (x_0,y_0)}
+\end{equation*}
+Si fanno gli stessi step fatti per le masse dei quark per trovare la regione di plateau.
+Poi questa massa viene rinormalizzata:
+\begin{equation*}
+  m_{rs}^\ren = \frac{Z_A}{Z_P}m_{rs}\left(1 + ( \bar b_A - \bar b_P)a\text{Tr} M_q + ( \tilde b_A -  \tilde b_P)am_{rs}\right)
+\end{equation*}
+a meno di ordini $O(a^2)$. I coefficienti $b_i$ sono calcolati in una referenza al primo ordine in teoria delle perturbazioni.
+$Z_A$ è calcolata utilizzando lo Schrodinger functional e la sua verione chiralmente ruotata.
+In un'altra referenza si calcola invece $Z_P$.
+\newline
+Notare che un'altra possibilità di calcolare le costanti di decadomento è proprio attraverso la PCAC, utilizzando un rapporto simile a quello per le $R_{PS}$. 
+
+\subsection{Mass corrections}
+C'è una paginetta sulla correzione alle masse. Di solito si fa con il reweighting, ma qui lo si fa semplicemente al primo ordine nell'espansione di Taylor.
+Non mi interessa e quindi lo salto.
+
+\subsection{Chiral and continuum extrapolation}
+Nelle traiettorie chirali nel piano $m_{ud} - m_s$ non c'è un'unica scelta e nemmeno nelle condizioni di matching a diverse scale. Ma delle buona scelte rendono più facile l'estrapolazione.
+\newline
+Come già detto, il vincolo Tr$M_q = $ const dà delle correzioni $O(am)$ sulle stesse quantità rinormalizzate (vedi equazione precedente).
+Per evitare questi artefatti ci sono due possibilità:
+\begin{enumerate}
+  \item le masse PCAC dei quark;
+  \item le masse degli pseudoscalari;
+\end{enumerate}
+Come accennò M. Papinutto, è meglio la seconda opzione perché ha l'improvement $O(a)$ automatico.
+In ogni caso sull'articolo sono ben descritte entrambe le strategie!
+Un contro della strategia numero 2 è l'essere meno precisa.
+
+\subsection{Conclusioni} 
+Alla fine si determina il parametro scala del Wilson flow. Si usa $f_{\pi K}$ come input esterno e si estrapola lungo le curve con $\phi_4 = {8 t_0}\left( m_K^2 + m_\pi^2/2 \right) $ costante.
+In questo modo si ricava $\sqrt{8t_0} = 0.415(4)(2)\fm$. Questo risultato è in accordo con tante altre misure fatte da altre collaborazioni, rientrando negli errori statistici.
+
+\newpage
+
+\section{Charmed pseudoscalar decay constants on three-flavour CLS ensembles with open boundaries (:: OBC\_charmed\_opt2)}
+Come nel precedente articolo, si determinano masse e costanti di decadimento dei mesoni pseudoscalari $D$ e $D_s$.
+Ma chiaramente a noi non interessa questo ma il {\bf come} ciò viene fatto.
+\newline
+Si usano, con il CLS effort, ensemble di $N_f = 2+1$ fermioni di Wilson O(a) improved (Sheikholeslami-Wohlert) e solo due diversi valori del lattice spacing, con massa del pione che varia da 200 a 420 MeV.
+La guage action è tree-level Symanzik improved (Lüscher-Weisz gauge action).
+Si usano le \colg{\obc}.
+Per i due fermioni leggeri si usa la twisted mass oer evitare instabilità vicino agli zero-modes dell'operatore di Dirac; invece per lo strange si usa un'{\it approssimazione razionale};
+in entrambi i casi bisogna fare un reweighting dei valori d'aspettazione deglle osservabili.
+Per info più dettagliate sull'algoritmo di simulazione di fa riferimento a {\bf :: Bruno}.
+Di nuovo si seguono le due direzioni chirali seguenti:
+\begin{itemize}
+  \item [-] La prima è la solita: $2m_l + m_s =$ const.
+  \item [-] La seconda è quella con $m_s =$ const.
+\end{itemize}
+poi si parla ancora di questi due modi di fare... ma non li riporto qui. Il "punto fisico" è raggiunto usando $\phi_2, \phi_4, m_\pi, m_K$.
+\newline
+Una cosa importante da riportare è la seguente: a causa degli open boundaries abbiamo bisogno di range temporali $[0,T]$ molto grandi perché le timeslices vicino ai bordi devono essere scartate.
+
+\subsection{Observables}
+Si definiscono le correnti assiali: $A_\mu^{ab} = \bar \psi_a \gamma_\mu \gamma_5 \psi_b$, dove $a,b$ sono flavours. Di conseguenza queste ampiezze danno le costanti di decadimento degli pseudoscalari:
+\begin{equation*}
+  \la 0 | A_\mu^{ab} | \text{state} \ra = i f_{ab}p_\mu 
+\end{equation*}
+Affinché le correzioni del lettice siano di ordine $O(a^2)$ si implementa la corrente assiale così:
+\begin{equation*}
+  A_\mu^{ab} \rightarrow A_\mu^{ab} + ac_A \frac{1}{2}\left(\partial_\mu + \partial_\mu^*\right) P^{ab}
+\end{equation*}
+dove chiaramente $P^{ab} = \bar \psi_a \gamma_5 \psi_b$. Invece il coefficiente $c_A$ è calcolato non perturbativamente in una refernza.
+\newline
+In più la corrente deve essere rinormalizzata; questo perché stiamo usando dei fermioni di tipo Wilson che rompono la simmetria chirale (altrimenti avremmo $Z=1$ per il teorema sul Collins).
+Il valore della costante $Z_A$ è anch'esso presa da una referenza, la formula invece è nell'articolo.
+\newline
+Le quantità calcolate sono:
+\begin{equation*}
+  \begin{aligned}
+    & C_A(x_0,y_0) = -\frac{a^6}{L^3} \sum_{\vec x \vec y} \la A_4^{ab}(x) P^{ab}(y)^\dagger \ra \simeq \frac{f_{ab}^{\text{bare}}}{2}A(y_0)e^{-m_{ab}(x_0-y_0)} \\
+    & C_P(x_0,y_0) = -\frac{a^6}{L^3} \sum_{\vec x \vec y} \la P^{ab}(x) P^{ab}(y)^\dagger \ra \simeq \frac{|A_0(y_0)|^2}{2m_{ab}}e^{-m_{ab}(x_0-y_0)}
+  \end{aligned}
+\end{equation*}
+Nota: questo vale per $x_0-y_0$ e $T-x_0$ abbastanza grandi, e anche $T$ abbastanza grande. In questo modo queste timeslices ci aiutano a trovare le ampiezze citate sopra.
+Qui $f_{ab}^{\text{bare}} = \la 0 | A_4^{ab} | \text{phys}_{ab} \ra$ mentre $A(y_0)$ incapsula $\la 0 | P^{ab} | \text{phys}_{ab} \ra$;
+per $y_0$ abbastanza lontano dai boundaries vale $A(y_0) = \la 0 | P^{ab} | \text{phys}_{ab} \ra$.
+\newline
+In questo articolo hanno estratto così la costante di decadimento:
+\begin{equation*}
+  f^{\text{bare}}_{ab}(x_0,y_0) = \sqrt{\frac{C_A(x_0,y_0)C_A(x_0,T-y_0)}{C_P(T-y_0,y_0)}}
+\end{equation*}
+Queste cose sono state prese da \textit{On the estraction of spectral quantities with open boundary conditions}.
+
+\subsection{Distance preconditioning of heavy quark propagators}
+È una tecnica sviluppata per calcolare il propagatore del quark charm che, essendo molto pesante, a grandi distanze di tempo non è facilmente invertibile; o meglio, non con la precisione necessaria.
+Non ho riportato nulla su questo perché tanto io non includo il quark charm.
+
+\subsection{Analysis details}
+Come già detto, si utilizza la twisted mass, quindi si ripesano le osservabili in questo modo:
+\begin{equation*}
+  \la O \ra = \frac{\la OW_0W_1 \ra_{W}}{\la W_0 W_1 \ra_{W}}
+\end{equation*}
+The twisted-mass (W0) and rational approximation reweighting (W1) factors are defined in Ref \textit{Bruno}.
+Per studiare le funzioni a due punti, le $C_X(x_0, y_0)$ sono state mediate tra tre $y_0$ diverse: $30a,47a,65a$ ad esempio.
+\newline \newline
+Altre cose sono dette nell'articolo ma sono troppo relative al charm quark per essere rilevanti qui.
+
+
+\newpage
+
+\section{Boundary conditions}
+The boss M. Papinutto mi ha dato da leggere i seguenti, inviati in questo ordine:
+\begin{enumerate}
+  \item {\it A tmQCD mixed-action approach to flavour physics} (:: tmMixAct).
+  \item {\it Light meson physics and scale setting from a mixed action with Wilson twisted mass valence quarks} (:: LightMesons).
+  \item {\it Lattice QCD without topology barriers} (:: OBC\_top).
+  \item {\it Lattice QCD with open boundary conditions and twisted-mass reweighting} (:: OBC\_tm).
+  \item {\it Simulation of QCD with $N_f = 2 + 1$ flavors of non-perturbatively improved Wilson fermions} (:: Bruno).
+  \item OBC1: {\it Setting the scale for the CLS 2 + 1 flavor ensembles} (:: scale\_CLS\_opt1).
+  \item OBC2: {\it Charmed pseudoscalar decay constants on three-flavour CLS ensembles with open boundaries} (:: OBC\_charmed\_opt2).
+  \item OBC3: {\it Towards the continuum limit with improved Wilson fermions employing open boundary conditions} (:: OBC\_continuum\_opt3).
+\end{enumerate}
+In più io ho letto questi:
+\begin{itemize}
+  \item [$\star$] {\it M. Luscher - Topology of Lattice GaugeFields}
+  \item [$\star$] {\it M. Luscher - Properties and uses of the Wilson flow in lattice QCD}
+  \item [$\star$] {\it M. Luscher - Topology, the Wilson flow and the HMC algorithm}
+  \item [$\star$] {\it M. Bruno, P. Korcyla, T. Korzecb, S. Lottinia and S. Schaefer - On the extraction of spectral quantities with open boundary conditions}
+\end{itemize}
+\hrule
+\vspace*{2mm}
+Questo è ciò di cui vorrei parlare nella tesi riguardo l'argomento \obc.
+\begin{itemize}
+  \item Periodic boundary conditions in lattice field theory: perché?
+  \item Tempi di autocorrelazione, Wilson flow e HCM algorithm.
+  \item Il problema del freezing della carica topologica: cosa è la carica topologica? Perché il suo freezing è un problema? Come è collegato il problema del freezing ai tempi di autocorrelazione e al Wilson flow?
+  \item Open boundary conditions: implementazione pratica delle \obc (stato di vuoto nel bulk e ai boundaries, matrice di transizione, etc).
+  \item Prova che le \obc risolvono il problema del freezing dei settori topologici e che ci sia un improvement dei tempi di autocorrelazione (sia teorica che numerica).
+  \item Rottura della simmetria per traslazione temporale, necessità di ricalcolare le funzioni di correlazione.
+  \item Bulk and boundary effects. Estimate of needed distance from the boundaries.
+  \item Calcolo degli elementi di matrice dei Four Quarks Operators con le \obc (\colr{questo spetta a me}).
+\end{itemize}
+\hrule
+
+\subsection{Properties and uses of the Wilson flow in lattice QCD - Luscher}
+Vengono definite le equazioni del flow per i campi di Gauge.
+Poi si sceglie la Wilson plaquette action, quella standard. Le equazioni del flow nei campi di gauge inducono un "Wilson" flow nelle plaquettes.
+Queste ultime sono le equazioni del Wilson flow (uno può fare tutti i calcoli che vuole per ricavarle).
+\begin{equation*}
+  \begin{cases}
+    \frac{d}{dt}V_{\mu,t}(x) = - g_0^2 \cdot \left(\partial_{\mu}^x S_g [V_t]\right) \cdot V_{\mu,t}(x)
+    \\
+    V_{\mu, t =0} (x)= U_\mu (x)
+  \end{cases}
+\end{equation*}
+Chiaramente cambiando l'azione scelta (ad esempio O(a) improved o altre), cambiano le equazioni del Wilson flow.
+Da questa uno vede subito che l'azione è un funzionale che con il tempo $t$ decresce.
+\newline
+Poi nell'articolo c'è una calcolo perturbativo nel continuo di $\la E \ra$ dove $E = \frac{1}{4}G_{\mu\nu}^aG_{\mu\nu}^a$ con conseguente rinormalizzazione perturbativa;
+questo però l'ho solo citato, a noi non interessa.
+\newline
+\newline
+{\bf Lattice studies of the Wilson flow}: \newline
+In questo articolo il lattice serve solo per vedere fino a che punto l'espansione perturbativa di $\la E \ra$ è valida.
+simulation settings:
+\begin{itemize}
+  \item lattice spacing from 0.1 fm to 0.05 fm.
+  \item Numero di configurazioni: 100
+  \item $t_0/(a^2)$ da 2.78 a 11.2
+\end{itemize}
+Affinché vengano soppresse le autocorrelazioni tra le $N_{cnfg} = 100$ configurazioni generate, la separazione in tempo $t$ tra le configurazioni generate è stato preso circa 10 volte più grande del tempo integrato di autocorrelazione della carica topologica.
+\newline
+Passiamo alle \underline{osservabili}: per ogni campo $U_\mu(x)$, posso integrare fino al tempo $t$ e ottenere $V_{\mu,t}(x)$.
+Da questo poi calcolare delle osservabili, ad esempio:
+\begin{equation*}
+  E = 2\sum_{p \in P_x} \text{Re} \spc \text{Tr} \left( 1 - V_{t}(p)\right)
+\end{equation*}
+dove $P_x$ sono le plaquettes che hanno angolo in basso a sinistra corrispondente a $x$. Un'altra definizione si ottiene usando le $G_{\mu\nu}$, che è quella usata negli altri articoli.
+Nessun integratore particolare è stato utilizzato. Come dipende $E$ dal tempo di integrazione $t$?
+\begin{itemize}
+  \item in teoria delle perturbazioni al tree level ho $t^2E$ costante. Dopo no.
+  \item Per $t\rightarrow 0$ questa combinazione deve andare a 0, quindi $E$ è limitata superiormente da $cost/t^2$.
+  \item si vede che, oltre la PT, la combinazione cresce linearmente con $t$
+\end{itemize}
+Si introduce la reference scale $t_0$ come sempre (stavolta giustificata dal behavior della combinazione).
+I lattice spacing effects sono di ordine $a^2$.
+\newline
+Gli studi sul reticolo supportano la congettura già data: i campi di gauge del flow a $t>0$ sono smooth renormalized fields.
+\newline
+\newline
+{\bf Functional Integral and topological sectors}: \newline
+In lattice gauge theory, the space of gauge fields is connected and the concept of a
+topological sector has therefore no a priori well-defined meaning.
+I settori topologici dei campi di Gauge, nella teoria del reticolo, non sono ben definiti. Nel senso che i settori topologici esistono ma non sono separati tra loro.
+Usando il Wilson flow si dimostra che, per il lattice spacing che tende a 0, cioè il limite continuo, questi settori topologici si dividono.
+Vediamo bene come:
+il cambio di variabili $U_\mu \leftrightarrow V_{\mu,t}$ è invertibile (è un diffeomorfismo nello spazio ei campi di gauge) e il Jacobiano della trasformazione è calcolato in una referenza [4] dell'articolo:
+\begin{equation*}
+  \begin{cases}
+    \la O \ra = \frac{1}{Z} \int DV O(V) e^{-\tilde{S}(V)}
+    \\
+    \tilde{S}(V) = S(U) + \frac{16g_0^2}{3a^2}\int_0^{t_0} dt S_W(V_t)
+  \end{cases}
+\end{equation*}
+allora posso calcolare tutte le quantità nel formalismo dell'integrale funzionale tramite i nuovi campi $V_t$.
+Qui si è scelto di farlo al tempo $t-0$.
+Si definisce:
+\begin{equation*}
+  h = \text{max}_p \text{Re} \text{Tr} \left[ 1 - V_t(p) \right] 
+\end{equation*}
+più è grande il valore di $h$, più il campo considerato è soppresso.
+\newline
+È stato dimostrato (\textit{Luscher - Topology of Lattice Gauge Fields}) che, se si richiede che i campi soddsfino certe condizioni, allora questi si dividono in settori topologici ben distinti.
+La dimostrazione è basata su un calcolo della carica topologica sul reticolo che può assumere solamente determinati valori interi.
+Allora cosa succede: considerando la QCD, i campi con $h < 0.067$ vengono inclusi e crean dei settori topologici distinit. Invece quelli con $h \ge 0.067$ sono quei campi che si trovano "tra i settori topologici", in quanto hanno peso vicino allo 0.
+Variando il lattice spacing, quindi tendendo allo 0 nel limite continuo, si hanno sempre più campi esclusi da questo bound (in percentuale):
+\begin{equation*}
+  a = 0.1 \text{ fm }: 0\% \quad \rightarrow \quad a = 0.07 \text{ fm }: 8\% \quad \rightarrow \quad a = 0.05 \text{ fm }: 70\%
+\end{equation*}
+nel limite continuo, i campi di gauge quindi hanno tutti peso vicino allo 0.
+La probabilità di eccitare questi campi di gauge scala come $a^6$.
+\newline
+Ora parliamo di \underline{suscettività topologica}. Ora che l'integrale funzionale si è splittato in somma di integrali su settori topologici diversi, la carica topologica è ben definita e calcolabile.
+Per la costruzione della carica vedere sempre \textit{Luscher - Topology of Lattice Gauge Fields}.
+In virtù dell'universalità delle diverse discretizzazioni, tutti i risultati topologici e fisici devono coincidere nel limite continuo, quindi anche i momenti della carica topologica $\la Q^n \ra$.
+Qui si calcola il momento secondo $\la Q^2 \ra$. Si calcola quindi la suscettività topologica $\chi_t^{1/4} = 187.4(3.9) \text{MeV}$ che risulta essere indipendente dal lattice spacing.
+which differs by less than two standard deviations from the value 194.5(2.4) MeV
+[16] obtained at flow time t = 0 using a chiral lattice Dirac operator and the index
+theorem [15].
+All these empirical results support the conjecture that the moments of the charge
+distribution in the functional integral (4.2) coincide with those obtained from the
+index theorem [15–18] and thus the ones appearing in the chiral Ward identities
+[19,20].
+\newline
+\hrule
+
+\subsection{Topology of Lattice Gauge Fields - Luscher}
+\underline{Abstract}: Non-Abelian gauge fields on a four-dimensional hypercubic lattice
+with small action density ($\text{Tr}[1-U(p)]<0.03$ for SU(2) gauge fields) are
+shown to carry an integer topological charge Q, which is invariant under
+continuous deformations of the field. A concrete expression for Q is given and
+it is verified that Q reduces to the familiar Chern number in the classical
+continuum limit.
+\newline \newline
+\underline{Introduction} \newline
+Se i campi di Gauge SU(2) sono antihermitiani ($A_{\mu} = - A_{\mu}^\dagger$) e in un toro $\mathbb T^4$ con condizioni al contorno, allora la carica topologica così definita è un numero intero (numero di Chern):
+\begin{equation*}
+  Q = - \frac{1}{16 \pi^2} \int_{\mathbb T^4} \text{Tr}\left[ F_{\mu\nu} \star F_{\mu\nu} \right]
+\end{equation*}
+Si definisce anche la suscettività topologica, che entra in gioco nelle identità di Ward chirali:
+\begin{equation*}
+  \chi_{t} = \frac{\la Q^2 \ra}{V}
+\end{equation*}
+Uno allora può mettersi nel reticolo, formulare la teoria attraverso l'azione di Wilson con le classiche plaquettes, e alla fine restringere il dominio di integrazione del functional integral a quei campi tali che: Tr$\left[1-U(p)\right] < \epsilon$ con un $\epsilon$ fissato.
+Poi vengono dette altre cose INTERESSANTI MOLTO, ma riportate in dettaglio nel resto ell'articolo.
+Dunque si fa un bel riassuntino. Si definisce la carica topologica come sopra riportata e si dimostrano alcune proprietà:
+\begin{enumerate}
+  \item Q viene definita su tutti i reticoli con condizioni periodiche al contorno, tranne che per alcuni campi che hanno misura nulla nell'integrale funzionale. Questi campi sono detti "eccezionali".
+  \item Tutti i campi con $\text{Tr}[1-U(p)]<0.03$ non sono eccezionali.
+  \item Q assume valori interi e, se modifico i campi con deformazioni lisce (evitando le configurazioni eccezionali), il suo valore non cambia.
+  \item Q ha questa forma: $$ Q = \sum_n q(n)$$ dove $q(n)$ è la densità di carica (locale) e gli $n$ sono i punti del reticolo.
+  \item Nel limite continuo: $$q(n) = -\frac{a^4}{16\pi^2} \text{Tr}\left[F_{\mu\nu}\star F_{\mu\nu}\right] + O(a^5)$$ quindi si approccia il limite dell'usuale numero di Chern.
+\end{enumerate}
+L'esistenza di questa carica Q ci fa capire che i campi con $\text{Tr}[1-U(p)]<0.03$ sono topologicamente distaccati dalla configurazione eccezionale di vuoto $U(\mu, x) = 1$. O meglio, non sono raggiungibili senza toccare le configurazioni con $\text{Tr}[1-U(p)]\ge 0.03$.
+\newline
+Nell'articolo {\bf OBC\_top} Luscher dimostra che lo spazio dei campi è connesso, tramite l'argomentazione che ogni configurazione può essere deformata in quella di vuoto. Ora, se si escludono le configurazioni con $\text{Tr}[1-U(p)]\ge 0.03$, questo non vale più: lo spazio dei campi di gauge in generale è disconnesso. Per questo motivo si parla di settori topologici.
+\newline
+\hrule
+
+\subsection{Topology, the Wilson flow and the HMC algorithm}
+Ne ho vista una parte sola, quella sulle OBC. Invece ho saltato tutto ciò che riguarda HMC.
+\newline
+In pratica come emergono i settori topologici nelle simulazioni? Così: nell'integrale funzionale si fa il cambio di variabili riportato in \textit{Properties and uses of the Wilson flow in lattice QCD - Luscher}. A quel punto si prendono solamente le configurazioni di campo di gauge con peso piccolo $\text{Tr}[1-U(p)]<0.03$ (o 0.067 in questo articolo).
+I settori topologici che non soddisfano questa condizione vengono estratti con probabilità proporzionale ad $a^6$, quindi nel limite continuo sono improbabili. Questo causa una divisione dinamica dello spazio dei campi di gauge in settori topologici.
+\newline
+Qui entrano in gioco le Open Boundary Conditions. I campi di gauge non sono più definite su un toro $\mathbb T^4$ ma su $\mathbb T^3 \times \mathbb [0,T]$.
+Le open boundary conditions si impongono così:
+\begin{itemize}
+  \item Neumann boundary conditions: $F_{0k}|_{x_0=0} = F_{0k}|_{x_0=T} = 0$
+  \item Dirichlet (Schrodinger functional) boundary conditions for quarks.
+\end{itemize}
+\hrule
+
+\subsection{On the extraction of spectral quantities with open boundary conditions}
+Gli ensemble sono generati con CLS effort e con $N_f = 2+1$ flavours di O(a) improved Wilson fermions con una piccola twisted mass (non Mtm).
+Sono implementate anche le OBC.
+\newline
+Qui si investigano alcune osservabili gluoniche e altre fermioniche. Ad esempio l'energy density:
+\begin{equation*}
+  t^2 \la E(t, x_0) \ra = \frac{t^2}{L^3} \sum_{\vec x} \frac{1}{4} \la G_{\mu\nu}^a (x) G_{\mu\nu}^a (x) \ra
+\end{equation*} 
+Mentre per i fermioni queste:
+\begin{equation*}
+  f_X(x_0,y_0) = -\frac{a^3}{L^3} \sum_{\vec x, \vec y} \la X^{rs} (x) P^{sr} (y) \ra
+\end{equation*}
+dove $P^{rs} (x) = \bar \psi^r (x) \gamma_5 \psi^s(x)$ e $X^{rs}$ può essere $P^{rs}$ oppure $A_0^rs (x) = \bar \psi^r (x) \gamma_0\gamma_5 \psi^s(x)$.
+La massa effettiva del pione si calcola usando:
+\begin{equation*}
+  am_{eff} (x_0 +a/2;y_0) = \log \frac{f_P(x_0;y_0)}{f_P(x_0+a;y_0)}
+\end{equation*}
+e
+\begin{equation*}
+  am_{eff}^{average}(y_0) = \frac{1}{}N_{points} \sum_{x_0 \in plateau} m_{eff} (x_0;y_0)
+\end{equation*}
+Invece le costanti di decadimento si calcolano in questo modo: per tempi grandi ($T, x_0-y_0, T-y_0, >> 1$) abbiamo questi andamenti:
+\begin{equation*}
+  f_A (x_0,y_0) = A(y_0) \hat f_\pi e^{-m_{eff} (x_0-y_0)} \quad \quad f_P (T-y_0,y_0) = A(y_0)^2  e^{-m_{eff} (T-2y_0)}
+\end{equation*}
+dove qui $\hat f_\pi$ indica $\la 0 | A_0 | \pi \ra$ e $A(y_0)$ è l'ampiezza legata a $\la 0 | P | \pi \ra$;
+quest'ultimo dipende dalla distanza dal boundary $y_0$ in quanto è posto vicino a un boundary: questo fa sì che gli stati eccitati non siano soppressi (vedi pagina 2, non ho capito bene).
+\newline
+Nel caso di implementazione di Schrodinger functional (vedi referenza 6 di questo articolo), le constanti di decadimento hanno questo comportamento:
+\begin{equation}
+  F_{\pi}\bare \propto \frac{f_A (x_0,y_0)}{\sqrt{f_P(T-y_0,y_0)}}e^{-m_{\text{eff}}T/2 - x_0}
+\end{equation}
+e quindi un modo di eliminare sia $A(y_0)$ che l'esponenziale è:
+\begin{equation}
+  F_{\pi}\bare \propto \sqrt{\frac{f_A (x_0,y_0) f_A (x_0,T-y_0)}{f_P(T-y_0,y_0)}}  
+\end{equation}
+\newline
+\hrule
+
+\subsection{OBC\_continuum\_opt3}
+Settings:
+\begin{itemize}
+  \item $N_f = 2+1$ O(a)-improved Wilson fermions with OBC in time.
+  \item Ensemble creati con l'aiuto di CLS in 5 diversi valori del lattice spacing (da 0.085 fm a 0.04 fm).
+  \item La gauge action è una tree-level Symanzik improved. 
+\end{itemize}
+Le configurazioni sono generate seguendo tre diverse \textit{traiettorie chirali}:
+\begin{enumerate}
+  \item Le simulazioni sono fatte tenendo fissato $\bar m = 2m_l + m_s$, che è euqivalente a tenere fissato $2/k_l + 1/k_s$, cioè tenere fissate anche le somme delle masse rinormalizzate: $2\hat m_l + \hat m_sm = const + O(a)$.
+  \item Si tiene fissata la massa fisica dello strange $\tilde{m}_s$, che si entrapola dall'axial Ward identity.
+  \item Poi c'è la semplice linea simmetrica: $m_l = m_s$.
+\end{enumerate}
+Poi si parla di nuovo di $\phi_2, \phi_4, m_\pi, m_K$, come fissare le masse dei quarks, etc etc.
+Si parla anche un po' di rewighting, HMC stability, etc. ma solamente per cenni.
+\newline
+\newline
+{\bf How to fix the $\tilde{m}_s = \tilde{m}_{s,phys}$ trajectory}
+\newline
+Le masse sul lattice dei quark sono date da: $m_j = \left( 1/k_j - 1/k_{j,crit} \right)/(2a)$ e la media delle masse AWI (Axial Wark Ientities) è data da:
+\begin{equation*}
+  \frac{\tilde{m}_j+\tilde{m}_k}{2} = \tilde{m}_{jk} = \frac{\partial_4 \la 0 | A_4^{jk} | \pi^{jk} \ra}{2\la 0 | P^{jk} | \pi^{jk} \ra} 
+\end{equation*}
+Prendo la linea simmetrica in cui $m_1 = m_2 = m_3$ (cioè $m_l = m_s$) e qui uso $\tilde{m}_{jk} = 0$ per trovare $k_{crit}$.
+Attenzione che i light quarks e lo strange hanno normalizzazioni diverse (vedi articolo).
+\newline
+Si simulano poi diverse masse del pione variando $k_l$ ma tenendo costante $\tilde{m}_s = \tilde{m}_{s,phys}$.
+Qui sull'articolo ci sono un po' di conti fatti sulla rinormalizzazione delle masse. Alla fine trovo $k_{l,phys}$ e $k_{s,phys}$, e quindi anche le masse fisiche dei quark.
+\newline \newline
+Poi ho pisciato l'articolo perché non mi sembrava fosse particolarmente utile...
+
+
+
+\end{document}
