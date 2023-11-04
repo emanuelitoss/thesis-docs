@@ -1559,7 +1559,7 @@ The metric used in this work is the Eucledian metric $\delta_{\mu\nu}$.
 In this case there is no distinction between upper and lower Dirac indices. 
 Usually I prefer to use lower indices.
 \newline\newline
-The Dirac matrices are the one of the so called ``chiral representation''\cite{Itzykson-Zuber} and Lorentz generators for spinors are the following:
+The Dirac matrices used are the matrices of so called ``chiral representation'' \cite{Itzykson-Zuber} and Lorentz generators for spinors are the following:
 \begin{equation*}
     \begin{gathered}
         \gamma_i = \sigma_2 \otimes \sigma_i \qquad \gamma_0 = - \sigma_1 \otimes \mathbb{I}_2 = -\gamma_4 \\
@@ -1569,14 +1569,14 @@ The Dirac matrices are the one of the so called ``chiral representation''\cite{I
         \tilde{\sigma}_{\mu\nu} = \frac{1}{2}\epsilon_{\mu\nu\rho\omega}\sigma_{\rho\omega} = \gamma_5 \sigma_{\mu\nu} 
     \end{gathered}
 \end{equation*}
-In this case the Minkowski and eucledian Lagrangian densities are:
+Lagrangian densities in Minkowski and Eucledian spaces are:
 \begin{equation*}
     \begin{gathered}
         \mathcal{L}^M = - \bar{\psi} \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi \\
         \mathcal{L}^E = \bar{\psi} \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi
     \end{gathered}
 \end{equation*}
-Dirac equations are:
+it follows the Dirac equation with its DIrac conjugate (valid both in Minkowski and Eucledian metrics):
 \begin{equation*}
     \begin{gathered}
         \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi = 0 \\
@@ -1588,17 +1588,18 @@ Dirac operators belong to this set:
 \begin{equation*}
     \Gamma^{\alpha} \in \{\mathbb{I}_4,\gamma_\mu, \gamma_5, \gamma_\mu\gamma_5, \sigma_{\mu\nu}, \tilde\sigma_{\mu\nu} \}
 \end{equation*}
-and a short notation is $X^{12} = \bar \psi^1 \Gamma^\alpha \psi^2$ where $X = S, V, P, A, T, \tilde{T}$.
+and a short notation is $X^{12} = \bar \psi^1 \Gamma^\alpha \psi^2$ where $X = S, V, P, A, T, \tilde{T}$ indicates which matrix is choosen.
 For example $V^{12}A^{34} = \bar \psi^1 \gamma_\mu \psi^2 \bar \psi^3 \gamma_\mu \gamma_5 \psi^4$.
 \newline
 \newline
 A very useful property \cite{Itzykson-Zuber} follows:
 \begin{equation*}
     \begin{aligned}
-        & \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^* = \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^\dag = \bar\psi^2 \bar \Gamma^\alpha \psi^1 \\
+        & \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^* = \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^\dag = -\bar\psi^2 \bar \Gamma^\alpha \psi^1 \\
         & \text{with } \bar \Gamma^\alpha = \gamma_0 \Gamma^{\alpha,\dag} \gamma_0.
     \end{aligned}
 \end{equation*}
+for example in the case of Kaons $\left(K^0\right)^* = \bar K^0$.
 
 \chapter{Twisted basis vs physical basis}\label{app:physical-basis}
 
@@ -1764,6 +1765,28 @@ Identical definitions are used in the twisted basis.
     \end{aligned}
 \end{equation}
 These two cases have a direct application in the change from the physical to twisted basis in operators $O_{i,[+]}^\text{phys} \mapsto O_{i,[+]}^\text{tw}$ discussed in Chapter \ref{ch:operators}.
+\newline
+A particular application of the above formulae involve the PCAC and PCVC relations.
+In the physical basis, in continuum limit, they read: $\partial_\mu A_{\mu,12}^\text{phys} = (m_1+m_2)P_{12}^\text{phys}$ and $\partial_\mu A_{\mu,12} = 0$.
+They must change according to the twist transformations.
+Again, I consider the two cases:
+\newline
+\newline
+{\bf Case \#1: } $r_1 = r_2 = \pm 1$
+\begin{equation*}
+    \begin{aligned}
+        & \text{PCAC: } \partial_\mu A_{\mu,12}^\text{tw} = (m_1+m_2)\left[\cos (\alpha) P_{12}^\text{tw} \pm i \sin (\alpha) S_{12}^\text{tw}\right] \xrightarrow{\alpha = \pi/2} \pm i (m_1+m_2) S^\text{tw}_{12}\\
+        & \text{PCVC: } \partial_\mu V_{\mu,12}^\text{tw} = 0
+    \end{aligned}
+\end{equation*}
+\newline
+{\bf Case \#2: } $r_1 = - r_2 = \pm 1$
+\begin{equation*}
+    \begin{aligned}
+        & \text{PCAC: } \partial_\mu A_{\mu,12}^\text{tw} = \cos (\alpha) (m_1+m_2) P_{12}^\text{tw} \xrightarrow{\alpha = \pi/2} 0 \\
+        & \text{PCVC: } \partial_\mu V_{\mu,12}^\text{tw} = \pm i \sin (\alpha) (m_1+m_2) P_{12}^\text{tw} \xrightarrow{\alpha = \pi/2} \pm i (m_1+m_2) P_{12}^\text{tw} \hspace*{3cm}
+    \end{aligned}
+\end{equation*}
 
 \chapter{Fierz transformations}\label{app:fierz}
 \noindent
