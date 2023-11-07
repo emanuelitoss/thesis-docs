@@ -58,6 +58,7 @@
 \newcommand{\obc}{Open Boundary Conditions}
 \newcommand{\tr}{\text{Tr}}
 \newcommand{\spc}{\hspace*{1mm}}
+\newcommand{\proved}{\newline \hspace*{.97\textwidth} $\square$}
 
 \title{Non-perturbative evaluation of Kaons oscillation amplitudes in Lattice Quantum Chromodynamics with $N_f = 2+1$ maximally twisted quarks and Open Boundary Conditions}
 \author{Emanuele Rosi}
@@ -987,27 +988,28 @@ It is the principal feature of this work and it will described in [\colr{X}].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIRD CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Operators $\Theta_i^{[+]}$s on the lattice and amplitudes extraction}\label{ch:operators}
-\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter described the general workspace of lattice QCD with particular attention to the regularization used in the present work.
-This chapter describes the formulation on the lattice of the mixing operators $\{\Theta_i\}$ and focuses on some properties of such lattice operators.
+\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter described the general workspace of lattice QCD with particular attention to the regularizations used in the present work.
+This chapter describes the formulation of the mixing operators $\{\Theta_i\}$ on the lattice and it focuses on some properties of such lattice operators.
 These properties are:
 \begin{enumerate}
+    \item An automatic \oait\space of the three points correlators needed to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ without the need of multiple simulations (Wilson average) or other specific strategies.
     \item The absence of wrong chirality mixing of operators in renormalization procedure.
         This should be present because Wilson term in actions \ref{eq:valence-action} and \ref{eq:sea-action} explicitly breaks chiral symmetry.
         Despite the symmetry breaking, this mixing comes out to be absent.
     \item A specific blocks-like renormalization matrix $Z_{ij}$ that simplify the renormalization procedure.
-    \item An automatic \oait\space of the three points correlators needed to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ without the need of multiple simulations (Wilson average).
 \end{enumerate}
 
 \noindent
-In order to achieve these properties, some reformulations and strategies are needed.
-The second part of the chapter is reserved to the description of the strategy to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from three point correlators.
+In order to achieve these properties, some reformulations of the operators and strategies are needed.
+In the first part (and most) of the chapter I describe the four fermions, dimension six, mizing operators on the lattice.
+The second part of the chapter is reserved to the description of the strategy to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from two and three points correlators.
 
 
 \section{Continuum $\Theta_i^{[\pm]}$s and the new operators $Q_i^{[\pm]}$s}
 \noindent
 The SUSY operator basis for \kkb oscillations was introduced in \ref{eq:Thetai-operators}.
 Despite its historical significance, the basis $\{\Theta_i\}$ will be replaced by an other basis $\{Q_i\}$ because of its particular renormalization properties.
-But first I need to present some changes to the old SUSY basis.
+But first I need to present some changes to the ``old'' SUSY basis.
 \newline
 I want to rewrite operators $\Theta_3$ and $\Theta_5$ with the contractions of spin indices and colour indices within the same couple of quarks.
 This can be done by applying the Fierz relations\cite{Itzykson-Zuber}, described in Appendix \ref{app:fierz} along with calculation of $\Theta_{3,5}$.
@@ -1051,7 +1053,7 @@ Then the parity even parts $\{\Theta_i^{[+]}\}$ and parity odd parts $\{\Theta_i
         & \Theta_5^{[-]} = \frac{1}{2}\left(AV-VA\right) \\
     \end{split}
 \end{equation}
-Now I introduce the new basis $\{Q_i^{[\pm]}\}$ \cite{DoniniMartinelliOperators}:
+For reasons that will be clear later in this chapter, I introduce a new basis $\{Q_i^{[\pm]}\}$ of parity even and parity odd operators \cite{DoniniMartinelliOperators}:
 \begin{equation}\label{eq:Q_i-continuum}
     \begin{split}
         & Q_1^{[+]} = VV + AA \\
@@ -1090,24 +1092,28 @@ once regularized in the way explained in this chapter, they have renormalization
 \colr{eventualmente aggiungere anche il fatto che non c'è mixing PE PO chirale}
 This will be better explained in \ref{sec:renormalization-properties}.
 \newline
-I will show how the matrix elements $\la \bar K^0 | Q_i^{[\pm]} | K^0 \ra$ can be asymptotically extracted from three points correlators.
-I introduce such correlators here:
+I will show in section \ref{sec:asympt-behav} how the matrix elements $\la \bar K^0 | Q_i^{[\pm]} | K^0 \ra$ can be asymptotically extracted from two and three points correlators.
+I introduce such correlators\footnote{To be precise, these are not the usual $n-$points correlators but their projections over null momenta.} in continuum QFT:
 \begin{equation}\label{eq:3pts-correlators}
-    C_i^\text{QCD}(x_4,y_4,z_4) = a^6\sum_{\vec x, \vec y, \vec z} \left\la \bar K^0(x) Q_i(y) \bar K^0(z) \right\ra
+    C_i^\text{QCD}(x_4,y_4,z_4) = \int d^3y \hspace*{.3mm} d^3z \left\la \bar K^0(x) Q_i(y) \bar K^0(z) \right\ra
 \end{equation}
-The source operator $\bar K^0$ is defined in Chapter \ref{chap:kaons}, while the superscript QCD remembers that these are the usual correlation functions in continuum theory.
+\begin{equation*}
+    G_{K^0 \bar K^0}^\text{QCD}(x_4,y_4) = \int d^3y \left\la \bar K^0(x) K^0(y) \right\ra
+\end{equation*}
+The source operators $\bar K^0$ and $K^0$ are defined in Chapter \ref{chap:kaons} as the pseudoscalar densities of $d$ and $s$ doublet of quarks, while the superscript QCD remembers that these are the usual correlation functions in continuum quantum chromodynamics.
 The amplitudes are recovered by taking its asymptotic behaviour for $0 \ll z_4 \ll y_4 \ll x_4 \ll T$,then the condition $x_4 > y_4 > z_4$ is supposed to be always satisfied.
 The full discussion about the extraction is left to section \ref{sec:asympt-behav}.
 
 \section{Flavour replicas on the lattice}
 \noindent
 The regularized action \ref{eq:valence-action} contains replicas of the $d$ and $s$ flavours, then the entire set of valence quarks is $u,d,d',s,s'$.
-The choice of multiple quarks of the same flavour comes from \cite{FR2} and it is formulated in order to ``unlock'' some properties of the three points correlators described in \ref{sec:operators-properties}.
-I refer to the model with flavour doublers with the symbol FR (::Flavour Replicas).
+The choice of multiple quarks of the same flavour comes from \cite{FR2} and it is formulated in order to achieve some properties of the three points correlators;
+such properties are well described in \ref{sec:operators-properties}.
+I refer to the model with flavour replicas with the symbol FR (::Flavour Replicas).
 \newline
 I focus on \textit{how} the FR model must be built in order to simulate the same flavour content of the standard QCD (simply named QCD).
 In particular, I want to build three points correlators in FR model such that they give the same Wick contractions of functions \ref{eq:3pts-correlators}.
-The proof is given in the below section.
+The proof is given below.
 
 \subsection{Proof of equivalence of Wick contractions}
 \noindent
@@ -1116,7 +1122,7 @@ Let's consider a general three points correlator in standard model QCD:
     G^\text{QCD}(x,y,z) = \left\la \bigg(\bar d(x) \Gamma_\xi s(x)\bigg) \bigg(\bar s(y) \Gamma_\rho d(y) \bar s(y) \Gamma_\sigma d(y)\bigg) \bigg(\bar d(z) \Gamma_\omega s(z)\bigg) \right\ra
 \end{equation*}
 with $\Gamma_{\xi,\rho,\sigma,\omega}$ some matrices in spin space.
-The correlaion functions \ref{eq:3pts-correlators} are nothing but the sum over spatial components of the above quantity.
+The correlation functions \ref{eq:3pts-correlators} are nothing but the sum over spatial components of the above quantity.
 The Wick contractions are the following\footnote{I use the indices $c,d$ to refer to connected or disconnected diagrams}:
 \begin{equation*}
     \begin{split}
@@ -1141,7 +1147,7 @@ then the total contribution to $G^\text{QCD}(x,y,z)$ is given by:
 \end{equation*}
 I want to replicate this contributions by using the new flavours $d,d',s,s'$ built on the lattice.
 The strength of this method consists in the fact that primed and unprimed flavours cannot contract with each other, then I can build an appropriate operator for each contraction.
-I define a source in $x$ with primed flavours $\bar d' (x) \Gamma_\xi s'(x)$ and an other in $z$ with unprimed flavours $\bar d (z) \Gamma_\omega s(z)$.
+I define an antikaon source in $x$ with primed flavours $\bar d' (x) \Gamma_\xi s'(x)$ and an other in $z$ with unprimed flavours $\bar d (z) \Gamma_\omega s(z)$.
 The intermediate operator is replaced by: 
 \begin{equation*}
     \begin{aligned}
@@ -1156,7 +1162,7 @@ In this case the correlator:
 \end{equation*}
 gives a Wick contraction for each term of $\Phi_{\rho,\sigma}(y)$, thus four contractions identical to equations \ref{eq:wick-contractions-general} up to primed flavours.
 Such contractions are labeled by $G_{d1}^\text{FR}, G_{d2}^\text{FR}, G_{c1}^\text{FR}, G_{c2}^\text{FR}$ and are shown in Figure \ref{fig:contractions-general}.
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -1184,7 +1190,8 @@ Such contractions are labeled by $G_{d1}^\text{FR}, G_{d2}^\text{FR}, G_{c1}^\te
 
 \section{From physical basis to twisted basis}
 \noindent
-Thanks to the previous proof, the parity even operators $Q_{i}^{[+]}$ (equation \ref{eq:Q_i-continuum}) can be built on the lattice in the FR framework.
+Thanks to the previous proof, the parity even operators $Q_{i}^{[+]}$ (equation \ref{eq:Q_i-continuum}) can be built on the lattice in the FR framework by introducing four different flavours.
+The flavours used are the lattice regularized Ostervalder-Seiler quarks, as described in previous Chapter.
 The following notation for valence flavours is adopted:
 \begin{equation*}
     \begin{aligned}
@@ -1198,7 +1205,7 @@ The following notation for valence flavours is adopted:
     \qquad
     \text{with } \chi^i = \mathbf{J}(\pi/2,r_i)\psi^i
 \end{equation*}
-The operators $Q_{i}^{[+]}$s are replaced by the new operators $O_{i,[+]}^\text{phys}$ in the fermion physical basis:
+The operators $Q_{i}^{[+]}$ is continuum QCD are replaced by the new operators $O_{i,[+]}^\text{phys}$ in the lattice QCD fermion physical basis:
 \begin{equation*}
     \begin{split}
         & O_{1[+]}^\text{phys} = 2 \left\{\big[\bar\chi^1 \gamma_\mu \chi^2 \big] \big[\bar\chi^3 \gamma_\mu \chi^4 \big] + \big[ \bar\chi^1 \gamma_\mu \gamma_5 \chi^2 \big] \big[ \bar\chi^3 \gamma_\mu \gamma_5 \chi^4 \big] + \left(2\leftrightarrow 4\right)\right\} \\
@@ -1234,18 +1241,30 @@ The other quantites that need to be twisted are the Kaon sources:
 \end{equation*}
 It is notable that the OS twist maps the parity even operators into parity odd ones.
 However also the source $K^{0}$ changes parity, then the overall sign of the correlator under $\mathbb{P}$ is preserved and equal to $+1$, as strong interactions should do.
-Now the work in Maximally twisted OS valence QCD is well defined and, by construction, the correlators:
+Now the work in Maximally twisted OS valence QCD is well defined and, by construction, the correlation functions:
 \begin{equation}\label{eq:lattice-correlators}
     C_i^\text{FR}(x_4,y_4,z_4) = \pm i a^6 \sum_{\vec x, \vec y, \vec z}\left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) O_{i[+]}^\text{tw} (y) \left(\bar\psi^2 \psi^1 \right) (z)\right\ra
 \end{equation}
-gives the same processes of the functions in equation \ref{eq:3pts-correlators}.
+gives the same Wick contractions of the correlators in equation \ref{eq:3pts-correlators}, showed in Figure \ref{fig:contractions-general}.
+To be rigorous, in this definition there is one more sum with respect to equation \ref{eq:3pts-correlators}.
+This additive sum over $\vec x$ is a (sort of) statistical average and it is used to give more precise results in the simulation.
+Similarly, the two points correlation functions are:
+\begin{equation}\label{eq:lattice-propagators}
+    \begin{split}
+        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) = a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) \left(\bar\psi^3 \gamma_5 \psi^4 \right) (x) \right\ra \\
+        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) = - a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^2 \psi^1 \right) (x) \left(\bar\psi^1 \psi^2 \right) (y) \right\ra \\
+    \end{split}
+\end{equation}
+the use of the first or the second correlator is equivalent, since one consists in the ``flavour replica'' of the other and vice versa.
+Similar definitions hold for $C_{K^0 \bar K^0 }^\text{FR}(x_4,y_4)$; they differ for an exchange of flavours $(1\leftrightarrow 2)$ or $(3\leftrightarrow 4)$.
+
 
 \section{Properties of correlators and $O_{i[+]}$ operators}\label{sec:operators-properties}
 \subsection{Automatic \oait}
 \noindent
 In the first paper by Frezzotti and Rossi \cite{FR1} it was introduced a strategy to $O(a)-$improve observables based on of Wilson Dirac fermions or twisted fermions.
 The operation needed to improve the observables is called \textit{Wilson Average} (WA) and it consists in averaging observables evaluated with different signs of Wislon parameters $r_i$.
-In a shorthand notation I refer to the set of Wilson parameters of the theory through $R = \{r_1,\dots,r_N\}$.
+In a shorthand notation I refer to the set of Wilson parameters of the theory with $R = \{r_1,\dots,r_N\}$.
 \newline
 Given an observable $\mathcal{X}$ functional of the valence fields and Gauge fields, the WA of its vacuum expectation value is:
 \begin{equation*}
@@ -1253,10 +1272,10 @@ Given an observable $\mathcal{X}$ functional of the valence fields and Gauge fie
     = \zeta_\mathcal{X}(R)  \left\la \mathcal{X} \right\ra\Big|^\text{continuum} + O(a^2)
 \end{equation*}
 where $\zeta_\mathcal{X}(R)$ is a constant, dependent on Wilson parameters, needed to match lattice VEV with continuum VEV.
-The proof that the Wilson average gives an \oait\space is in \cite{FR1}. 
+The proof that the Wilson average gives an \oait\space is reported in \cite{FR1}. 
 \newline
 The WA method implies that multiple simulations must be done.
-However there are particular cases in which this is not necessary because $\left\la \mathcal{X} \right\ra\big|_{\pm R}^a$ are automatically improved and the WA is not necessary.
+However there are particular cases in which this is not necessary because each $\left\la \mathcal{X} \right\ra\big|_{\pm R}^a$ is automatically improved and the WA is not necessary.
 This is exactly the case of correlators of the type \ref{eq:lattice-correlators}.
 In fact the valence and sea actions \ref{eq:valence-action} and \ref{eq:sea-action} admit the spurionic symmetry $\mathbb{P}\x (R\mapsto -R)$.
 In particular $\mathbb{P}$ is the parity operation ($\mathbb{P}x = x_p$) and $(R\mapsto -R)$ is the cahnge of signs of the Wilson parameters.
@@ -1264,18 +1283,113 @@ Under this discrete symmetry the a correlator of the type \ref{eq:lattice-correl
 \begin{equation*}
     \sum_{\vec x, \vec y, \vec z} f(x,y,z) =  \sum_{\vec x_p, \vec y_p, \vec z_p} f(x_p,y_p,z_p)
 \end{equation*}
-for any function $f$ of the coordinates.
+for any function $f$ of the lattice coordinates.
 Then, in simple words, the statement asserts that in this case $\left\la \mathcal{X} \right\ra\big|_{+R}^a = \left\la \mathcal{X} \right\ra\big|_{-R}^a$ and then the WA is not necessary for the \oait.
 The same proof can be applied to a simple meson propagator of the type\footnote{regard the symbol $\bar\Gamma^\alpha$ see Appendix \ref{app:notations}}:
 \begin{equation*}
     G(x,y)=a^3\sum_{\vec x, \vec y} \Big\la \bar \psi^1 (x) \Gamma^\alpha \psi^2 (x) \bar\psi^2 (y) \bar\Gamma^\alpha \psi^1 (y) \Big\ra 
 \end{equation*}
+and then to two points correlators.
 It is important to notice that this proof holds not only for $r_1=r_2=r_3=-r_4$ but for all the possible values of each $r_i$ choosen independently.
 
 
-\subsection{Absence of chiral mixing and renormalization constants $Z_{ij}$}\label{sec:renormalization-properties}
+\subsection{Renormalization and mixing of operators $O_{i[\pm]}$}\label{sec:renormalization-properties}
 \noindent
-\colr{questa ultima è ancora da fare bene}
+There are two arguments left to be tested, as mentioned at the very beginning of the chapter.
+Both points concern the specific renormalization properties owned by the parity even and parity odd operators $O_{i,[\pm]}^\text{phys}$.
+The following has been taken from the paper \cite{DoniniMartinelliOperators}.
+\newline
+The first thing I need are notations.
+In this section, I will denote generic parity even operators (PE) with the symbol $\Phi_{E}$, and generic parity odd operators (PO) with $\Phi_{O}$.
+I define the following quantities:
+\begin{equation*}
+    \begin{split}
+        & \Phi_{AB} = \left( \bar \psi^1 \Gamma^A \psi^2 \right) \left( \bar \psi^3 \Gamma^B \psi^4 \right) \\
+        & \Phi_{AB}^F = \left( \bar \psi^1 \Gamma^A \psi^4 \right) \left( \bar \psi^3 \Gamma^B \psi^2 \right) \\
+        & \Phi_{AB \pm CD} = \Phi_{AB} \pm \Phi_{CD} \\
+        & \Phi_{AB}^\pm = \Phi_{AB} \pm \Phi_{AB}^F \\
+    \end{split}
+\end{equation*}
+In the last definition, note that the signs $\pm$ have nothing to do with parity, but indicate the sign of the flavour exchange.
+\newline
+To address the mixing issue under renormalization, both natural and accidental symmetries of these operators will be used.
+Before that, it must be noted that these operators composed of four quarks
+$(i)$ do not mix with higher dimensional operators due to a theorem \cite{Collins} and
+$(ii)$ do not mix with lower dimensional operators because it is not possible to replicate four fermions flavour content through lower dimensions less than 6.
+At this point, I define the symmetries used:
+\begin{itemize}
+    \item Parity $\mathbb{P}$: $\psi^i (x) \mapsto \gamma_4 \psi^i (x_p)$
+    \item Charge conjugation $\mathbb{C}$: $\psi^i (x) \mapsto C \left(\bar\psi^{i}\right)^T (x)$
+    \item First flavour exchange $\mathbb{S}$: $(\psi^2 \leftrightarrow \psi^4)$
+    \item Second flavour exchange $\mathbb{S}'$: $(\psi^1 \leftrightarrow \psi^2, \psi^3 \leftrightarrow \psi^4)$
+    \item Third flavour exchange $\mathbb{S}''$: $(\psi^1 \leftrightarrow \psi^4, \psi^2 \leftrightarrow \psi^3)$
+\end{itemize}
+Clearly, the symmetry $\mathbb{S}$ maps $\Phi$ to $\Phi^F$ and vice versa.
+Other useful properties are $\mathbb{S}'' = \mathbb{S}\cdot \mathbb{S}'$, $\mathbb{S}' = \mathbb{S}\cdot \mathbb{S}''$, $\mathbb{S}^2 = 1$.
+Next, the following parity even (left column) and parity odd (right column) operators are defined:
+\begin{equation*}
+    \begin{split}
+        & O_{1,E}^\pm = \Phi^\pm_{VV+AA} \qquad O_{1,O}^\pm = \Phi^\pm_{VA+AV} \\
+        & O_{2,E}^\pm = \Phi^\pm_{VV-AA} \qquad O_{2,O}^\pm = \Phi^\pm_{VA-AV} \\
+        & O_{3,E}^\pm = \Phi^\pm_{SS-PP} \qquad O_{3,O}^\pm = \Phi^\pm_{PS-SP} \\
+        & O_{4,E}^\pm = \Phi^\pm_{SS+PP} \qquad O_{4,O}^\pm = \Phi^\pm_{PS+SP} \\
+        & O_{5,E}^\pm = \Phi^\pm_{TT}    \hspace*{40pt} O_{5,O}^\pm = \Phi^\pm_{T\tilde{T}} \\
+    \end{split}
+\end{equation*}
+This set consists of 20 operators composed by four fermions and dimensionality 6.
+It should be clear that the $O_{i[\pm]}$ used in this work are some operators in the above set.
+Below is a table taken from \cite{DoniniMartinelliOperators} that shows how these symmetry transformations act on basis operators.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|ccccc}
+        $\Phi_{AB}$ & $\mathbb{P}$ & $\mathbb{CS}'$ & $\mathbb{CS}''$ & $\mathbb{CPS}'$ & $\mathbb{CPS}'' $\\
+        \hline
+        $\Phi_{VV}$        & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ \\
+        $\Phi_{AA}$        & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ \\
+        $\Phi_{PP}$        & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ \\
+        $\Phi_{SS}$        & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ \\
+        $\Phi_{TT}$        & $+1$ & $+1$ & $+1$ & $+1$ & $+1$ \\
+        \hline
+        $\Phi_{VA}$        & $-1$ & $-1$ & $-\Phi_{AV}$ & $+1$ & $\Phi_{AV}$    \\
+        $\Phi_{AV}$        & $-1$ & $-1$ & $-\Phi_{VA}$ & $+1$ & $\Phi_{VA}$    \\
+        $\Phi_{SP}$        & $-1$ & $+1$ & $\Phi_{PS}$  & $-1$ & $-\Phi_{PS}$   \\
+        $\Phi_{PS}$        & $-1$ & $+1$ & $\Phi_{SP}$  & $-1$ & $-\Phi_{SP}$   \\
+        $\Phi_{T\tilde T}$ & $-1$ & $+1$ & $+1$         & $-1$ & $-1$           \\
+    \end{tabular}
+    \vspace*{.6mm}
+    \label{tab:symmetries-of-operators}
+    \caption{Transformations acting on operators. The trivial $\mathbb{S}$ transformation and the flavour exchanged operators $\Phi^F$ are not shown.}
+\end{table}
+\newline
+The crux of the proof of the mixing of these operators lies in the fact that the considered transformations are symmetries of the Wilson action and the operators defined above.
+Therefore, the quantum numbers - or charges - associated with these symmetries are conserved.
+So only operators with the same quantum numbers can mix with each other.
+As can be inferred from the table, there is no simplification in the mixing of the PE operators; they all mix with each other.
+On the other hand, the situation for the PO operators is different.
+The renormalization matrix is a block diagonal matrix:
+\begin{equation*}
+    \begin{split}
+        O_{i,O}^{\pm,\ren} = Z_{ij}^\pm O_{i,O}^{\pm}
+    \end{split}
+    \qquad\qquad
+    Z_{ij} = 
+    \begin{pmatrix}
+        Z_{11} & 0 & 0 & 0 & 0 \\
+        0 & Z_{22} & Z_{23} & 0 & 0 \\
+        0 & Z_{32} & Z_{33} & 0 & 0 \\
+        0 & 0 & 0 & Z_{44} & Z_{45} \\
+        0 & 0 & 0 & Z_{54} & Z_{55} \\
+    \end{pmatrix}
+\end{equation*}
+This greatly simplifies the renormalization process.
+Regarding the PE operators, the situation is more complicated, and the reader must refer to the article \cite{DoniniMartinelliOperators}.
+Explicit chiral symmetry breaking introduced by the Wilson term plays a fundamental role and allows the operators to mix their chirality.
+However, the matrix elements are \oaid, so even the effects of mixing with wrong chirality have an effect of order $O(a^2)$ or higher.
+\newline
+To conclude this section, I want to revisit a brilliant reasoning made in \cite{KMBSM}.
+For vanishing twisted masses $\mu_i$, the action of Wilson and Ostervalder-Seiler fermions in the twisted basis is indistinguishable.
+Therefore, using a massless renormalization scheme, the renormalization properties of the parity odd operators $O_{i[+]}^\text{tw}$ are reflected in those of the parity even operators before the base twist $O_{i[+]}^\text{phys}$.
+This result has been formally developed in \cite{FR2}.
 
 \section{Asymptotic behaviours}\label{sec:asympt-behav}
 \noindent
@@ -1307,7 +1421,7 @@ First of all I need some notations:
         & \text{Vacuum state: } \Omega \qquad H|\Omega\ra = 0 \\
         & \text{Other states: } \Psi_{n,p} \qquad H|\Psi_{n,p}\ra = \left(\sum_i E_i(p_i)\right)|\Psi_{n,p}\ra \\
         & \text{Other states projected on zero momenta: } \Psi_{n} \qquad H|\Psi_{n}\ra = \left(\sum_i m_i\right)|\Psi_{n}\ra \\
-        & \text{where $i$ runs over all the particles in the given state.}
+        & \text{where $i$ runs over the set of particles in the given state.}
     \end{split}
 \end{equation*}
 I use the transfer matrix formalism to re-express $M_A, M_B$ and $\Xi$:
@@ -1318,7 +1432,7 @@ I use the transfer matrix formalism to re-express $M_A, M_B$ and $\Xi$:
         & \qquad = \left\la \Omega | M_A (0,\vec x) e^{-H(x_4-y_4)} \Xi (0,\vec y) e^{-H(y_4-z_4)} M_B (0,\vec z) | \Omega \right\ra
     \end{split}
 \end{equation*}
-I insert a complete set of states between each pair of operators and I use the property
+I insert a complete set of states between each pair of operators and I use the property of any local operator $\mathcal{O}$:
 $$\mathcal{O}(\vec x) = \text{exp}\left(i \vec P \cdot \vec x\right)\mathcal{O}(\vec 0)\text{exp}\left(-i \vec P \cdot \vec x\right)$$
 The projection over zero momenta allows to simplify the expression.
 The resulting correlator is:
@@ -1346,54 +1460,30 @@ For $x_4 \gg y_4$ it can be proved that the asymptotic behaviours of such correl
     G_{C\bar C}(x_4,y_4) \approx a^3 \sum_{\vec x} \la \Omega | M_C (0) | \Psi_C \ra \la \Psi_C | \bar M_C (0) | \Omega \ra \hspace*{0.5mm} e^{-m_C(x_4-y_4)}
 \end{equation}
 Now let's focus on the particular case of this work.
-To evaluate matrix elements I will use $M_A = M_B = \bar K^0$ and $\Xi = O_{i[+]}$ with some properties\footnote{The used ones are: $m_A = m_B = m_K$ and $(K^0(x))^* = \bar K^0(x)$ from Appendix \ref{app:notations}.}.
-The asymptotic behaviours of the given correlators are:
+To evaluate matrix elements I will use $M_A = M_B = \bar K^0$ and $\Xi = O_{i[+]}$.
+Such choices give the three points correaltors $C_i^\text{FR}$ in formula \ref{eq:lattice-correlators} and the two points $G_{\bar K^0 K^0}^\text{FR}, G_{K^0 \bar  K^0}^\text{FR}$ in formula \ref{eq:lattice-propagators}.
+Moreover I suppose the neutral Kaons to have the same mass $m_K = m_{\bar K}$.
+Then their asymptotic behaviours are:
 \begin{equation*}
     \begin{split}
-        & C_i(x_4,y_4,z_4) \approx a^6\sum_{\vec x} \la \bar K^0 | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^0 | \bar K^0 \ra  \la K^0 | \bar K^0 | \Omega \ra  \hspace*{.5mm} e^{-m_K(x_4-z_4)}  \\
-        & G_{\bar K^0 K^0}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega | \bar K^0 | \bar K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
-        & G_{K^0\bar K^0}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
+        & C_i^\text{FR}(x_4,y_4,z_4) \approx a^6\sum_{\vec x} \la \bar K^0 | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^0 | \bar K^0 \ra  \la K^0 | \bar K^0 | \Omega \ra  \hspace*{.5mm} e^{-m_K(x_4-z_4)}  \\
+        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega | \bar K^0 | \bar K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
+        & G_{K^0\bar K^0}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
     \end{split}
 \end{equation*}
 Fortunately the two matrix elements $\la \Omega | \bar K^0 | \bar K^0 \ra$ and $\la K^0 | \bar K^0 | \Omega \ra$ are equal and real because of the PCAC relation.
-I leave the proof of that at the end of the chapter.
+I leave the very simple proof of that in Appendix \ref{sec:reality}.
 In particular I use the following chain of equalities:
 $$\la \Omega | \bar K^0 (0) | \bar K^0 \ra = \la K^0 | \bar K^0 (0) | \Omega \ra = \la \Omega | K^0 (0) | K^0 \ra = \la \bar K^0 | K^0 (0) | \Omega \ra $$
 Then the matrix elements of Kaons oscillations with insertion of mixing operators can be asymptotically extracted in the following way for $x_4 \gg y_4 \gg z_4$:
 \begin{equation}\label{eq:matrix-elements-extraction}
     \begin{split}
-        & \text{On the lattice:} \quad \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i (x_4,y_4,z_4)}{G_{\bar K^0 K^0}(x_4,z_4)} \\
+        & \text{On the lattice:} \quad \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
         & \text{Continuum limit:} \quad \mathcal{A}_i (a) \xrightarrow{a \rightarrow 0} \mathcal{A}_i^\text{continuum} + O(a^2)
     \end{split}
 \end{equation}
-
-\subsection*{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real:}
-\noindent
-From Goldstone theorem \cite{Goldstone-Theorem} I know that there exist some pseudoscalar single particle states $| \phi^a (\vec p) \ra$ and some local operators $\phi^a(x)$ that interpolate such states in the simple way $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
-In this case I will use $|\phi^a(\vec p)\ra = | K^0 (\vec 0)\ra \equiv | K^0 \ra$.
-The operators $\phi^a$ are related, in QCD, to the vector axial currents by:
-\begin{equation*}
-    j_\mu^{\text{A},a} (x) = F_\pi^a \partial_\mu \phi^a (x)
-    \quad \Rightarrow \quad
-    \partial_\mu j_\mu^{\text{A},a} (x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
-\end{equation*}
-but the vector axial current it is also defined by $j_\mu^a(x) = \bar \psi^i (x) T^a_{ij}\gamma_\mu \gamma_5 \psi^j (x)$ where $T^a$ are SU(3) generators and $i,j$ are flavour indices.
-By applying the four divergence to $j_\mu^a(x)$ and by using the Dirac equation in Eucledian notation (Appendix \ref{app:notations}), I obtain:
-\begin{equation*}
-    \partial_\mu j_\mu^{\text{A},a} (x) = (m_i + m_j) T^a_{ij}\bar\psi^i (x) \gamma_5 \psi^j (x) := (m_i + m_j) T^a_{ij} P^{ij}(x)
-\end{equation*}
-Through a comparison of the four divergencies I obtain the equality:
-\begin{equation*}
-    (m_i + m_j) T^a_{ij} P^{ij}(x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
-\end{equation*}
-in particular $(m_s + m_d) \bar K^0(x) = F_K m_{K}^2 \phi^{\bar K^0} (x)$ according to definition \ref{eq:kkbar-operators} of the operator $\bar K^0 = P^{ds}$.
-Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ and not the unknown operators $\phi^a (x)$, then my matrix elements are:
-\begin{equation*}
-    \la \Omega | \bar K^0 (0) |  \bar K^0 \ra = \la \Omega | K^0 (0) | K^0 \ra = \frac{F_K m_K^2}{m_s + m_d}
-\end{equation*}
-Since these are real, they are also equal to their conjugates $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
-The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
-\newline \hspace*{.97\textwidth} $\square$
+I underline again that the first or second definition of the correlator $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$ in formula \ref{eq:lattice-propagators} are equivalent choices.
+Because of the reality of this propagator, I can also use its complex conjugate, i.e. $G_{K^0 \bar K^0}^\text{FR}(x_4,z_4)$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1414,7 +1504,7 @@ These propagators are defined on the lattice by the equation:
 \end{equation*}
 The inversion of the Dirac operator\footnote{To be rigorous, I must call it ``Osterwalder-Seiler operator'' because of the presence of twisted mass term. I will call it simply Dirac operator because it should be clear that the OS tm QCD is the choosen regularization.}
 in a simulation program requires, in principle, the inversion of a matrix in $(N\x N,\mathbb{R})$, where
-$$N = N_T \x N_L^3 \x N_\text{colour} \x 4 \x 2 $$
+$$N = N_T \x N_{L_x} \x N_{L_y} \x N_{L_z} \x N_\text{colour} \x 4 \x 2 $$
 The multiplicative factor $4$ is the number of components in a Dirac spinor while the factor $2$ is given because the matrix elements are complex numbers.
 The inversion of this matrix gives the propagator of a single flavour for a given Gauge configuration.
 It is not difficult to guess that the number of computational resources needed to directly compute the inversion is very large.
@@ -1890,6 +1980,34 @@ It is usual to \colr{redefine (sarà vero?)} the parity odd parts with a minus s
 \noindent
 In this phantom chapter I want just to give some proofs that are not proved in the chapter of the thesis.
 
+\section{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real:}\label{sec:reality}
+\noindent
+From Goldstone theorem \cite{Goldstone-Theorem} I know that there exist some pseudoscalar single particle states $| \phi^a (\vec p) \ra$ and some local operators $\phi^a(x)$ that interpolate such states in the simple way $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
+In this case I will use $|\phi^a(\vec p)\ra = | K^0 (\vec 0)\ra \equiv | K^0 \ra$.
+The operators $\phi^a$ are related, in QCD, to the vector axial currents by:
+\begin{equation*}
+    j_\mu^{\text{A},a} (x) = F_\pi^a \partial_\mu \phi^a (x)
+    \quad \Rightarrow \quad
+    \partial_\mu j_\mu^{\text{A},a} (x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
+\end{equation*}
+but the vector axial current it is also defined by $j_\mu^a(x) = \bar \psi^i (x) T^a_{ij}\gamma_\mu \gamma_5 \psi^j (x)$ where $T^a$ are SU(3) generators and $i,j$ are flavour indices.
+By applying the four divergence to $j_\mu^a(x)$ and by using the Dirac equation in Eucledian notation (Appendix \ref{app:notations}), I obtain:
+\begin{equation*}
+    \partial_\mu j_\mu^{\text{A},a} (x) = (m_i + m_j) T^a_{ij}\bar\psi^i (x) \gamma_5 \psi^j (x) := (m_i + m_j) T^a_{ij} P^{ij}(x)
+\end{equation*}
+Through a comparison of the four divergencies I obtain the equality:
+\begin{equation*}
+    (m_i + m_j) T^a_{ij} P^{ij}(x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
+\end{equation*}
+in particular $(m_s + m_d) \bar K^0(x) = F_K m_{K}^2 \phi^{\bar K^0} (x)$ according to definition \ref{eq:kkbar-operators} of the operator $\bar K^0 = P^{ds}$.
+Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ and not the unknown operators $\phi^a (x)$, then my matrix elements are:
+\begin{equation*}
+    \la \Omega | \bar K^0 (0) |  \bar K^0 \ra = \la \Omega | K^0 (0) | K^0 \ra = \frac{F_K m_K^2}{m_s + m_d}
+\end{equation*}
+Since these are real, they are also equal to their conjugates $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
+The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
+\proved
+
 \section{Proof of $\gamma_5 S_{(i,\pm)} (u,v) \gamma_5 = S_{(i,\mp)}^\dag (v,u)$}\label{app:proof-G5-DW}
 \noindent
 The starting point is a well known property of the Dirac-Wilson operator $D_W$: $\gamma_5 D_W(x,y) \gamma_5 = D_W^\dag(y,z)$.
@@ -1909,10 +2027,7 @@ As a consequence:
     \sum_z \left[\gamma_5 S_{(\pm)} (z,y) \gamma_5\right] \left( D_W \mp i\gamma_5 \mu \right)^\dag (z,x) = \delta^{(4)}_{yx}
 \end{equation*}
 The term $\gamma_5 S_{(\pm)} (z,y) \gamma_5$ it is clearly $S_{(\mp)}^\dag (y,z)$ for definition.
-\begin{equation*}
-    \hspace*{12cm}\square
-\end{equation*}
-
+\proved
 
 
 
