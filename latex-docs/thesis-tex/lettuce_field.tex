@@ -1645,40 +1645,40 @@ To summarize, the path to evaluate the correlators is:
 
 \chapter{Notations and conventions}\label{app:notations}
 \noindent
-The metric used in this work is the Eucledian metric $\delta_{\mu\nu}$.
-In this case there is no distinction between upper and lower Dirac indices. 
-Usually I prefer to use lower indices.
+The metric employed in this study is the Euclidean metric $\delta_{\mu\nu}$.
+In this context, there is no differentiation between upper and lower Dirac indices.
+I usually prefer to use lower indices.
 \newline\newline
-The Dirac matrices used are the matrices of so called ``chiral representation'' \cite{Itzykson-Zuber} and Lorentz generators for spinors are the following:
+The Dirac matrices employed belong to the so-called ``chiral representation'' \cite{Itzykson-Zuber} and the Lorentz generators for spinors are as follows:
 \begin{equation*}
     \begin{gathered}
         \gamma_i = \sigma_2 \otimes \sigma_i \qquad \gamma_0 = - \sigma_1 \otimes \mathbb{I}_2 = -\gamma_4 \\
         \gamma_5 = \gamma_0 \gamma_1 \gamma_2 \gamma_3 = \sigma_3 \otimes \mathbb{I}_2 \\
-        \qquad \text{with properties } \left\{ \gamma_\mu , \gamma_\nu \right\} = 2 \delta_{\mu\nu} \mathbf{I}_4 \text{ and } \left\{ \gamma_\mu , \gamma_5 \right\} = 0 \\
+        \qquad \text{properties } \left\{ \gamma_\mu , \gamma_\nu \right\} = 2 \delta_{\mu\nu} \mathbf{I}_4 \text{ and } \left\{ \gamma_\mu , \gamma_5 \right\} = 0 \\
         \sigma_{\mu\nu} = \frac{i}{2} \left[\gamma_\mu , \gamma_\nu\right] = i \left(\gamma_\mu \gamma_\nu - \delta_{\mu\nu} \mathbf{I}_4\right) \\
         \tilde{\sigma}_{\mu\nu} = \frac{1}{2}\epsilon_{\mu\nu\rho\omega}\sigma_{\rho\omega} = \gamma_5 \sigma_{\mu\nu} 
     \end{gathered}
 \end{equation*}
-Lagrangian densities in Minkowski and Eucledian spaces are:
+The Lagrangian densities in Minkowski and Euclidean spaces are:
 \begin{equation*}
     \begin{gathered}
         \mathcal{L}^M = - \bar{\psi} \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi \\
         \mathcal{L}^E = \bar{\psi} \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi
     \end{gathered}
 \end{equation*}
-it follows the Dirac equation with its DIrac conjugate (valid both in Minkowski and Eucledian metrics):
+This leads to the Dirac equation and its Dirac conjugate (valid in both Minkowski and Euclidean metrics):
 \begin{equation*}
     \begin{gathered}
         \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) + m \right) \psi = 0 \\
         \bar{\psi} \left( \gamma_\mu \left( \partial_\mu + i A_\mu \right) - m \right) = 0
     \end{gathered}
 \end{equation*}
-Dirac bilinears are usually expressed in the following form: $\bar \psi^1 \Gamma^\alpha \psi^2$ with $\psi^1$ and $\psi^2$ two distinct flavours.
-Dirac operators belong to this set:
+Dirac bilinears are typically expressed in the following form: $\bar \psi^1 \Gamma^\alpha \psi^2$ with $\psi^1$ and $\psi^2$ representing two distinct flavours.
+The Dirac operators belong to this set:
 \begin{equation*}
     \Gamma^{\alpha} \in \{\mathbb{I}_4,\gamma_\mu, \gamma_5, \gamma_\mu\gamma_5, \sigma_{\mu\nu}, \tilde\sigma_{\mu\nu} \}
 \end{equation*}
-and a short notation is $X^{12} = \bar \psi^1 \Gamma^\alpha \psi^2$ where $X = S, V, P, A, T, \tilde{T}$ indicates which matrix is choosen.
+and a shorthand notation is $X^{12} = \bar \psi^1 \Gamma^\alpha \psi^2$ where $X = S, V, P, A, T, \tilde{T}$ indicates which matrix is chosen.
 For example $V^{12}A^{34} = \bar \psi^1 \gamma_\mu \psi^2 \bar \psi^3 \gamma_\mu \gamma_5 \psi^4$.
 \newline
 \newline
@@ -1695,47 +1695,49 @@ for example in the case of Kaons $\left(K^0\right)^* = \bar K^0$.
 
 \section{Twisted and physical basis in tmQCD}
 \noindent
-In the context of twisted mass lattice QCD described in \ref{sec:tmLQCD}, it is possible to define a physical fermion basis by:
+In the context of twisted mass lattice QCD described in \ref{sec:tmLQCD}, it is possible to define a physical fermion basis as follows:
 \begin{equation*}
     \chi = \mathbf{T}(\alpha)\hspace*{0.5mm} \psi \hspace*{1cm} \overline{\chi} = \bar\psi\hspace*{0.5mm}\mathbf{T}(\alpha)
 \end{equation*}
-where $\mathbf{T}(\alpha)$ is the twist rotation \ref{eq:twist}.
-In this case the twisted mass action takes the following form:
+Here, $\mathbf{T}(\alpha)$ represents the twist rotation \ref{eq:twist}.
+In this scenario, the twisted mass action takes the following form:
 \begin{equation}\label{eq:physical-action}
     S^\text{phys}_\text{tm} [\chi,\overline{\chi},U] = a^4 \sum_{x,y} \overline{\chi} (x) \left( D_{xy}^\text{tm} + M_q \mathbb{I}_2 \delta_{xy}\right) \chi (y)
 \end{equation}
-where the new bilinear operator is:
+where the new bilinear operator is given by:
 \begin{equation*}
     D^\text{tm}_{xy} = -\frac{1}{2a} \sum_{\mu = \pm 1}^{\pm 4} \left[ (\mathbf{T}(-2\alpha) - \gamma_\mu) U_\mu (x) \delta_{x+\hat\mu,y} \right] +\frac{4}{a} \hspace*{0.5mm} \mathbf{T}(-2\alpha)
 \end{equation*}
-The main ingredients to prove it follows:
+The key steps to establish this are:
 \begin{enumerate}
-    \item Remember that $(\gamma_5)^2=\mathbb{I}_4$ and $(\sigma^3)^2=\mathbb{I}_2$
+    \item Recall the properties $(\gamma_5)^2=\mathbb{I}_4$ and $(\sigma^3)^2=\mathbb{I}_2$
     \item Expand the exponential: $\mathbf{T}(\alpha) = \cos(\alpha/2)\mathbb{I}_4\otimes\mathbb{I}_2 + i\sin(\alpha/2)\gamma_5\otimes\sigma^3$
     \item Use the Clifford algebra $\{\gamma_\mu,\gamma_\nu\}= 2\delta_{\mu\nu}\mathbb{I}_4$ and Lie algebra of $SU(2)$ $[\sigma^a,\sigma^b]=2i\epsilon^{abc}\sigma^c$ to modify the Wilson-Dirac operator $D_{xy} \mapsto D_{xy}^\text{tm}$
 \end{enumerate}
-The new set of variables $\{\chi,\bar\chi\}$ is called {\it physical} basis because it does not involve the (unphysical) term $\mu_q$.
-In other words, the mass is entirely rotated and contained in $M_q = \sqrt{m^2+\mu_q^2}$.
-The twist rotation only affects the Wilson term, that results modified.
-Despite this fact, it is known that the Wilson term disappear in the continuum limit, so the action \ref{eq:physical-action} tends to the physical continuum action.
-Then it is the ``true'' discretization of the continuum theory and the twisted action defined in \ref{eq:tmQCD-action} is the modified action.
+The new set of variables $\{\chi,\bar\chi\}$ is referred to as the {\it physical} basis because it doesn't involve the (unphysical) term $\mu_q$.
+In other words, the mass is entirely transformed and encapsulated in $M_q = \sqrt{m^2+\mu_q^2}$.
+The twist rotation only impacts the Wilson term, which undergoes modification. 
+Despite this, it's understood that the Wilson term vanishes in the continuum limit.
+Consequently, the action \ref{eq:physical-action} tends towards the physical continuum action.
+Thus, it represents the ``true'' discretization of the continuum theory, while the twisted action defined in \ref{eq:tmQCD-action} is the modified action.
 \newline
-\noindent
-The link between the two actions is the twist rotation of fermion fields and I will show that an expectation value can be evaluated in both theories.
-Remember that the environment in which the theory is applied is the functional integral formalism, thus we must take care about integration measure.
+The link between the two actions lies in the twist rotation of fermion fields.
+I will demonstrate that an expectation value can be computed in both theories.
+It's important to bear in mind that the framework in which the theory is applied is the functional integral formalism, so we must pay attention to the integration measure.
 The variable change:
 \begin{equation*}
     \mathcal{D}\chi \hspace*{0.5mm} \mathcal{D}\overline{\chi} \mapsto \mathcal{D}\psi \hspace*{0.5mm} \mathcal{D}\overline{\psi}
 \end{equation*}
-it is not anomalous\footnote{i.e. it does not introduce measure anomalies} and the Jacobian is the identity.
-Then I report the main result of this section: given an observable $\mathcal{X}$ field-dependent, its expectation value is the two formulations coincides:
+it is not anomalous\footnote{i.e. it does not introduce measure anomalies}.
+Moreover, the Jacobian is the identity.
+Next, I present the main result of this section: for a field-dependent observable $\mathcal{X}$, its expected value in both formulations coincides:
 \begin{equation*}
     \la \mathcal{X} [\chi, \overline{\chi}, U] \ra_{(M_q,0)} = \la \mathcal{X}' [\psi, \overline{\psi}, U] \ra_{(m,\mu_q)}
 \end{equation*}
 with $\mathcal{X}' [\psi, \overline{\psi}, U] = \mathcal{X} [\mathbf{T}(\alpha)\psi, \overline{\psi}\mathbf{T}(\alpha), U]$.
-The strength of tmQCD theory lies in this variables replacement.
+The power of tmQCD theory lies in this substitution of variables.
 \newline
-Now I report a list of some simple operators - currents and densities - and their transformation rules.
+Now, I provide a list of some straightforward operators - currents and densities - along with their transformation rules.
 First of all I define four quantites:
 \begin{itemize}
     \item [] $\qquad$ Scalar density: \hspace*{5mm} $S^{0,\text{phys}} = \bar\chi \chi$
@@ -1764,7 +1766,7 @@ I apply a twist $\mathbf{T}(\alpha)$ to get the twisted operators:
         A_\mu^{3,\text{tm}} & \text{if } a=3
     \end{cases}$
 \end{itemize}
-The very particular case of maximal twist ($\alpha = \pm \pi/2$) reads:
+The very special case of maximal twist ($\alpha = \pm \pi/2$) reads:
 \begin{itemize}
     \item [] $ \qquad S^{0,\text{phys}} = \pm 2i P^{3,\text{tm}}$
     \item [] $ \qquad P^{a,\text{phys}} =
@@ -1786,7 +1788,7 @@ The very particular case of maximal twist ($\alpha = \pm \pi/2$) reads:
 
 \section{Twisted and physical basis in OS regularization}
 \noindent
-In the case of OS regularization, the physical and twisted basis are realted by the following:
+In the case of OS regularization, the physical and twisted basis are realted as follows:
 \begin{equation*}\label{eq:OSbasischange}
     \begin{cases}
         f =  \mathbf{J}(\alpha, r)\hspace*{.5mm} q \\
@@ -1798,8 +1800,8 @@ In the case of OS regularization, the physical and twisted basis are realted by 
         \bar q = \bar f \hspace*{.5mm} \mathbf{J}(-\alpha, r)
     \end{cases}
 \end{equation*}
-By expanding in series the exponential, it can be proved that $\mathbf{J} (\alpha, r) = \mathbb{I}_4 \cos (\alpha r/2) + i \gamma_5 \sin (\alpha r/2)$.
-The proof that the two actions reported in section \ref{sec:OS-regularization} are equivalent is trivial and based on the following identities:
+Expanding the exponential in a series, it can be shown that $\mathbf{J} (\alpha, r) = \mathbb{I}_4 \cos (\alpha r/2) + i \gamma_5 \sin (\alpha r/2)$.
+The demonstration that the two actions outlined in section \ref{sec:OS-regularization} are equivalent is straightforward and relies on the following identities:
 \begin{equation*}
     \begin{gathered}
         \mathbf{J}(\alpha,r) \gamma_\mu = \gamma_\mu \mathbf{J}(-\alpha,r) \\
@@ -1807,19 +1809,19 @@ The proof that the two actions reported in section \ref{sec:OS-regularization} a
         \mathbf{J}(\alpha,r) \mathbf{J}(\beta,r) = \mathbf{J}(\alpha+\beta,r) 
     \end{gathered}
 \end{equation*}
-Also in this case, the change of coordinates does not instroduce any anomalous term in the integration measure.
-Moreover, the Jacobian of the transformation is the identity:
+Once again, the change of coordinates introduces no anomalous term in the integration measure.
+Furthermore, the Jacobian of the transformation is the identity:
 \begin{equation*}
     \mathcal{D} f \mathcal{D} \bar f = \mathcal{D} q \mathcal{D} \bar q
 \end{equation*}
-Also in this cases masses are rotated and the formula \ref{eq:new-masses} is still valid.
-Then I can use \ref{eq:OSbasischange} to express some observables in the twisted basis at maximal twist $\alpha = \pi/2$.
-I will describe two cases:
+In this scenario as well, masses are rotated, and formula \ref{eq:new-masses} is still valid.
+I can then use \ref{eq:OSbasischange} to express some observables in the twisted basis at maximal twist $\alpha = \pi/2$.
+I will consider two different cases:
 \begin{enumerate}
     \item Observables of the form $\bar f_1 \Gamma f_2$ in which the Wilson parameters are equal $r_1 = r_2 = \pm 1$.
     \item Observables of the same form, but Wilson parameters are of opposite sign and modulo 1: $r_1 = -r_2 = \pm 1$.
 \end{enumerate}
-Let's start with some definitions, valid in both cases:
+Let's introduce with some definitions, applicable in both cases:
 \begin{itemize}
     \item [] $\quad$ Scalar densities: \hspace*{5mm} $S_{12}^\text{phys} = \bar f_1 f_2$
     \item [] $\quad$ Pseudoscalarcalar densities: \hspace*{5mm} $P^{\text{phys}}_{12} = \bar f_1 \gamma_5 f_2$
@@ -1880,21 +1882,22 @@ Again, I consider the two cases:
 
 \chapter{Fierz transformations}\label{app:fierz}
 \noindent
-Suppose to have four flavours of quarks $\{\psi^1,\psi^2,\psi^3,\psi^4\}$ and a product of two Dirac bilinears of the following form:
+Suppose to have four flavours of quarks $\{\psi^1,\psi^2,\psi^3,\psi^4\}$ and a product of two Dirac bilinears in the following form:
 \begin{equation*}
     \mathcal{E} = \left(\bar\psi^1 \Gamma^\alpha \psi^2 \right)\cdot\left(\bar\psi^3 \Gamma^\beta \psi^4 \right)
 \end{equation*}
 where $\Gamma^{\alpha,\beta} \in \{\mathbb{I}_4,\gamma_\mu, \gamma_5, \gamma_\mu\gamma_5, \sigma_{\mu\nu} \}$.
-I want to express the same quantity $\mathcal{E}$ by contracting $\bar\psi^1$ with $\psi^4$ and $\bar\psi^3$ with $\psi^2$, i.e. find $M$ and $N$ such that:
+I aim to express the same quantity $\mathcal{E}$ by contracting $\bar\psi^1$ with $\psi^4$ and $\bar\psi^3$ with $\psi^2$.
+In other words, I want to find $M$ and $N$ such that:
 \begin{equation*}
     \mathcal{E} = \left(\bar\psi^1 M \psi^4 \right)\cdot\left(\bar\psi^3 N \psi^2 \right)
 \end{equation*} 
-In order to build up $M$ and $N$, I need the following theorem:
+To construct $M$ and $N$, I need the following theorem:
 
 \section{Fierz decomposition}
 \noindent
 I know that the set $\mathcal{B} = \{\mathbb{I}_4,\gamma_\mu, \gamma_5, \gamma_\mu\gamma_5, \sigma_{\mu\nu} \}$ is a basis for Mat($4 \x 4, \mathbb{C}$).
-Moreover, this is a normal basis, i.e. there exists a scalar product such that the matrices of the basis are normal:
+Furthermore, this is a normal basis, i.e. there exists a scalar product such that the matrices of the basis are normal:
 \begin{equation*}
     \begin{aligned}
         &\text{Tr}\left[\Gamma^\alpha \Gamma_\beta\right] = 4 \delta^\alpha_\beta \\
@@ -1902,13 +1905,13 @@ Moreover, this is a normal basis, i.e. there exists a scalar product such that t
     \end{aligned}
 \end{equation*}
 in particular $\Gamma_\alpha \in \{\mathbb{I}_4,\gamma_\mu, \gamma_5, -\gamma_\mu\gamma_5, -\sigma_{\mu\nu} \} := \mathcal{B}^{-1}$.
-Then any matrix $X \in$ Mat($4 \x 4, \mathbb{C}$) can be expressed in the following way:
+Then any matrix $X \in$ Mat($4 \x 4, \mathbb{C}$) can be expressed as follows:
 \begin{equation}\label{eq:fierz_decomposition}
     X = x_\alpha \Gamma^{\alpha} = \frac{1}{4} \Gamma^{\alpha} \text{Tr} \left[\Gamma_{\alpha} X\right] 
     \quad \text{i.e.} \quad x_\alpha = \frac{1}{4}\text{Tr} \left[\Gamma_{\alpha} X\right] 
 \end{equation}
 As usual, repeated indices imply a sum.
-By Making the indices explicit:
+Making the indices explicit:
 \begin{equation*}
     \frac{1}{4} \left(\Gamma^\alpha\right)_{ij} \left(\Gamma_\alpha\right)_{kl} = \delta_{il} \delta_{jk}
 \end{equation*}
@@ -1916,11 +1919,11 @@ By Making the indices explicit:
     \hspace*{13cm}\square
 \end{equation*}
 Now let's go back to the specific $\mathcal{E}$ case.
-I rewrite it with explicit indices and I stress that $\left[\psi^2 \bar\psi^3\right]$ is a matrix:
+I rewrite it with explicit indices and I emphasize that $\left[\psi^2 \bar\psi^3\right]$ is a matrix:
 \begin{equation*}
     \mathcal{E} = \bar\psi^1_i \Gamma^\alpha_{ij} \left[\psi^2 \bar\psi^3\right]_{jk} \Gamma^\beta_{kl} \psi^4_l 
 \end{equation*}
-now I express the matrix $X = \left[\psi^2 \bar\psi^3\right]$ through formula \ref{eq:fierz_decomposition}:
+now I express the matrix $X = \left[\psi^2 \bar\psi^3\right]$ using formula \ref{eq:fierz_decomposition}:
 \begin{equation*}
     \begin{aligned}
         \left[\psi^2 \bar\psi^3\right]_{jk}
@@ -1929,18 +1932,18 @@ now I express the matrix $X = \left[\psi^2 \bar\psi^3\right]$ through formula \r
     \end{aligned}
 \end{equation*}
 Pay attention to the minus sign coming from the fermion variables exchange.
-Then the expression $\mathcal{E}$ becomes:
+Consequently, the expression $\mathcal{E}$ becomes:
 \begin{equation}\label{eq:fierz_transformation}
     \mathcal{E} = \left(\bar\psi^1 \Gamma^\alpha \psi^2 \right)\cdot\left(\bar\psi^3 \Gamma^\beta \psi^4 \right) = -\frac{1}{4} \left(\bar\psi^1 \Gamma^\alpha \Gamma^\lambda \Gamma^\beta \psi^4\right) \cdot \left(\bar\psi^3 \Gamma_\lambda \psi^2 \right)
 \end{equation}
-The last formula is known under the name of \textit{Fierz transformation} of Dirac bilinears and it is usually used to re-express Fermi interactions \cite{Itzykson-Zuber}.
+The last formula is known under the name of \textit{Fierz transformation} of Dirac bilinears and it is commonly used to re-express Fermi interactions \cite{Itzykson-Zuber}.
 Similar Fierz transformations can be developed in $SU(N_C)$ Gauge groups by following the same procedure.
 
 \section{Application to $\Theta_3$ and $\Theta_5$}
 \noindent
-Then I just need to apply the transformations \ref{eq:fierz_transformation} to the operators $\Theta_3$ and $\Theta_5$ defined in \ref{eq:Thetai-operators}.
-In this way the colour indices $a,b$ are contracted in the same couple of fermions as the Dirac indices and the evaluation of Wick contractions is simplified.
-I will develop the evaluation in the case of $\Theta_3$ and the case of $\Theta_5$ is similar.
+Now I just apply the transformations \ref{eq:fierz_transformation} to the operators $\Theta_3$ and $\Theta_5$ defined in \ref{eq:Thetai-operators}.
+Consequently, the colour indices $a,b$ are contracted in the same couple of fermions as the Dirac indices and the evaluation of Wick contractions is simplified.
+I will develop the explicit calculation in the case of $\Theta_3$ and the case of $\Theta_5$ is similar.
 \newline
 I report only the essential steps. The main properties used are:
 \begin{itemize}
@@ -1963,7 +1966,7 @@ Then:
     \end{aligned}
 \end{equation*}
 The game consists into multiply togheter the projectors, thus evaluate $\Gamma^\xi$ such that $ P_R \Gamma^\alpha P_R = P_R\Gamma^\xi $.
-Due to the projectors properties, only a subset of the dirac matrices will survive.
+Due to the projectors properties, only a subset of the Dirac matrices will survive.
 The parity even and parity odd parts are respectively:
 \begin{equation*}
     \begin{aligned}
@@ -1978,33 +1981,33 @@ It is usual to \colr{redefine (sarà vero?)} the parity odd parts with a minus s
 
 \chapter{Some proofs}\label{app:proofs}
 \noindent
-In this phantom chapter I want just to give some proofs that are not proved in the chapter of the thesis.
+In this supplementary chapter, I aim to provide proofs for certain aspects that were not covered in the main thesis chapters.
 
 \section{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real:}\label{sec:reality}
 \noindent
-From Goldstone theorem \cite{Goldstone-Theorem} I know that there exist some pseudoscalar single particle states $| \phi^a (\vec p) \ra$ and some local operators $\phi^a(x)$ that interpolate such states in the simple way $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
+Based on the Goldstone theorem \cite{Goldstone-Theorem} there exist pseudoscalar single particle states $| \phi^a (\vec p) \ra$ (Nambu Goldstone bosons) and corresponding local operators $\phi^a(x)$ that interpolate these states in a simple manner, expressed as $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
 In this case I will use $|\phi^a(\vec p)\ra = | K^0 (\vec 0)\ra \equiv | K^0 \ra$.
-The operators $\phi^a$ are related, in QCD, to the vector axial currents by:
+The operators $\phi^a$ are related, within QCD, to the vector axial currents by:
 \begin{equation*}
     j_\mu^{\text{A},a} (x) = F_\pi^a \partial_\mu \phi^a (x)
     \quad \Rightarrow \quad
     \partial_\mu j_\mu^{\text{A},a} (x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
 \end{equation*}
-but the vector axial current it is also defined by $j_\mu^a(x) = \bar \psi^i (x) T^a_{ij}\gamma_\mu \gamma_5 \psi^j (x)$ where $T^a$ are SU(3) generators and $i,j$ are flavour indices.
+However, the vector axial current is also defined as $j_\mu^a(x) = \bar \psi^i (x) T^a_{ij}\gamma_\mu \gamma_5 \psi^j (x)$ where $T^a$ are SU(3) generators and $i,j$ are flavour indices.
 By applying the four divergence to $j_\mu^a(x)$ and by using the Dirac equation in Eucledian notation (Appendix \ref{app:notations}), I obtain:
 \begin{equation*}
     \partial_\mu j_\mu^{\text{A},a} (x) = (m_i + m_j) T^a_{ij}\bar\psi^i (x) \gamma_5 \psi^j (x) := (m_i + m_j) T^a_{ij} P^{ij}(x)
 \end{equation*}
-Through a comparison of the four divergencies I obtain the equality:
+Through a comparison of the four divergences, I obtain the equality:
 \begin{equation*}
     (m_i + m_j) T^a_{ij} P^{ij}(x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
 \end{equation*}
 in particular $(m_s + m_d) \bar K^0(x) = F_K m_{K}^2 \phi^{\bar K^0} (x)$ according to definition \ref{eq:kkbar-operators} of the operator $\bar K^0 = P^{ds}$.
-Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ and not the unknown operators $\phi^a (x)$, then my matrix elements are:
+Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ and not the unknown operators $\phi^a (x)$, then our matrix elements are:
 \begin{equation*}
     \la \Omega | \bar K^0 (0) |  \bar K^0 \ra = \la \Omega | K^0 (0) | K^0 \ra = \frac{F_K m_K^2}{m_s + m_d}
 \end{equation*}
-Since these are real, they are also equal to their conjugates $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
+As these are real values, they are also equal to their conjugates  $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
 The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
 \proved
 
