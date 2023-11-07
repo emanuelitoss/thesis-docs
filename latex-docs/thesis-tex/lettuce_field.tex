@@ -360,35 +360,35 @@ The results \ref{eq:b_i-in-kmbsm} wil be compared to the new ones at the end of 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECOND CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Lattice regularization and improvements}\label{ch:lattice-regularization}
-\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he purpose of this chapter is to introduce the reader to the basics of lattice regularization and to describe the adopted one in this work.
+\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he purpose of this chapter is to introduce the reader to the fundamentals of lattice regularization and to detail the specific approach adopted in this study.
 \newline
 In order to calculate Kaon matrix elements, a non perturbative approach is required and the path integral formulation provides for this \cite{Itzykson-Zuber}.
-As known, path integral is an \textit{infinite} sum of fields configurations defined over an \textit{infinite} volume and time extension.
-Despite this, vacuum expectation values of physical observables are \textit{finite} quantities.
+As known, a path integral involves an \textit{infinite} sum of field configurations defined across an \textit{infinite} volume and time extension.
+Despite this, vacuum expectation values of physical observables yield \textit{finite} quantites.
 A well defined simualtion needs a regularization that faces the problem of these infinites.
 For this reason lattice QFT is a very useful regularization.
-It consists into a discretization of spacetime - called lattice - and a consequent finite volume.
+It involves discretizing spacetime, referred to as the lattice, along with a consequent finite volume.
 The two most relevant sources of errors are the discretization of the space and the finite volume effects.
-To deal with these errors, a large number of improvements has been developed in past years and some of them are applied in this work.
+To deal with these errors, a large number of improvements has been developed in the years and some of them find application in this work.
 \newline
-In the first section I will expose generalites about lattice regularization.
+The first section will provide a general overview of lattice regularization.
 In the second and third sections I will discuss respectively about Gauge and fermion fields regularizations on the lattice;
 I will start from the simplest regularizations and I will progressively extend them to the improved ones, which are used.
-In the fourth section a particular set of bosonic ghost fields are described.
-At the end, the fifth section describe the lattice regularization used in the present simulation.
+In the fourth section, a specific set of bosonic ghost fields will be described.
+Finally, the fifth section will delineate the lattice regularization employed in the present simulation.
 
 \section{Lattice regularization of QFT}\label{sec:lattice-discretization}
 \noindent
-A finite and discretized functional integral can be formulated by applying the following changes to the continous functional integral \cite{montvay-munster}\cite{gattringer-lang}:
+A finite and discretized functional integral can be formulated by implementing the following modifications to the continuous functional integral \cite{montvay-munster}\cite{gattringer-lang}:
 \begin{itemize}
-    \item [$\triangleright$] The Minkowski space $\mathbb{M}^4$ is replaced by an hypercubic lattice of $N_\text{time} \times N_\text{space}^3$ points.
+    \item [$\triangleright$] The Minkowski space $\mathbb{M}^4$ is replaced with an hypercubic lattice of $N_\text{time} \times N_\text{space}^3$ points.
         The volume $V$ and time extention $T$ become finite quantities and the separation between two adjacent lattice points takes the name of \textit{lattice spacing} $a$.
-        Thus the lattice space is defined by:
+        Therefore, the lattice space is defined as:
         \begin{equation*}
             \Lambda = \{x = a\cdot(n_1,n_2,n_3,n_4) | n_{1,2,3} = 0,\dots,N_\text{space}-1 \text{ and } n_4 = 0,\dots,N_\text{time}-1 \}
         \end{equation*}
         Clearly the physical extension of the lattice is given by $a\cdot(N_\text{time},N_\text{space}^3) = (T,L\times L\times L)$.
-        Continous spacetime symmetries - e.g rotations - are now replaced by hypercubic symmetries on the lattice.
+        Continous spacetime symmetries - e.g. rotations - are now replaced by hypercubic symmetries on the lattice.
     \item [$\triangleright$] Consider a set of quantum fields $\tilde\phi_i(x), i = 1,\dots, N_\text{fields}$ in the continuum theory.
         In lattice path integral formulation they are treated as local functions defined on $\Lambda$:
         \begin{equation*}
@@ -406,7 +406,7 @@ A finite and discretized functional integral can be formulated by applying the f
         \end{equation*}
         For notational simplicity the measure is again denoted by $\mathcal{D}\phi$.
 \end{itemize}
-The set of the previous changes takes the name of \textit{lattice regularization} of a continuum theory.
+These changes together constitute the \textit{lattice regularization} of a continuum theory. 
 Sometimes I will use the word `regularization' to refer to the action discretization. 
 \newline
 As usual in continuum path integral, given an observable $\mathcal{X}$ functional of the fields, its expectation value on the vacuum is given by:
@@ -414,9 +414,10 @@ As usual in continuum path integral, given an observable $\mathcal{X}$ functiona
     \la \mathcal{X} (x_1,\dots,x_K) \ra = \frac{1}{\mathcal Z} \int \mathcal{D} \phi \hspace*{0.5mm} e^{-S_E[\phi_i]} \mathcal{X}\left[\phi_1,\dots,\phi_{N_\text{fields}}\right] (x_1,\dots,x_K)
 \end{equation*}
 where $\mathcal Z$ is the usual partition funciton $\mathcal Z = \la 1 \ra$.
-The path integral provides theoretical tools to treat a non perturbative theory, then all the quantites in lattice simulations are evaluated through expectation values of some choosen observables.
+The path integral provides theoretical tools to handle a non perturbative theory then all the quantites in lattice simulations must be evaluated through vacuum expectation values of some choosen observables.
+This fact has consequences, for example the asymptotic extractions described in section \ref{sec:asympt-behav}.
 \newline
-In the case of QCD described in the previous chapter, the integration can be splitted in two pieces: the {\it fermionic integration} $\la \hspace*{0.5mm} \cdot \hspace*{0.5mm} \ra_F$ with measure $\mathcal{D}\psi\mathcal{D}\bar\psi$ and the {\it Gauge integration} $\la \hspace*{0.5mm} \cdot \hspace*{0.5mm} \ra_G$ with measure $\mathcal{D}U$.
+In the case of QCD described in the previous chapter, the integration can be split in two parts: the {\it fermionic integration} $\la \hspace*{0.5mm} \cdot \hspace*{0.5mm} \ra_F$ with measure $\mathcal{D}\psi\mathcal{D}\bar\psi$ and the {\it Gauge integration} $\la \hspace*{0.5mm} \cdot \hspace*{0.5mm} \ra_G$ with measure $\mathcal{D}U$.
 Since it is impossible to numerically simulate Grassman variables, the fermionic integral requires a theoretical calculation while the simulation allows us to evaluate the Gauge integral:
 \begin{equation*}
     \la \mathcal{X} \ra = \la \la \mathcal{X} \ra_F^\text{th.} \ra_G^\text{sim.}
@@ -453,8 +454,8 @@ This approximation corresponds to the neglection of sea quarks loops; to underst
 The general strategy to evaluate correlators like $\la\mathcal{X}\ra$ follows.
 First, the correlator must be calculated at different values of lattice spacing $\la\mathcal{X}\ra |_a$.
 Then a {\it continuum limit} of $\la\mathcal{X}\ra \equiv \la\mathcal{X}\ra |_0$ can be extracted for $a \rightarrow 0$.
-Since physics resides in the continuum limit, there is freedom in the choice of the regularization.
-All the valid regularizations share the same physical continuum limit, but they differ one from each other by $O(a^n)$ terms, with $n\ge 1$.
+Since physics resides in the continuum limit, there is a sort of freedom in the choice of the regularization.
+All the valid regularizations share the same physical continuum limit, differing only by $O(a^n)$ terms, with $n\ge 1$.
 Clearly these terms are nothing but lattice artifacts that don't give contributions to the exact continuum limit and don't have any physical meaning.
 However the continuum limit is approached by extrapolation, then actions that contains only $O(a^2)$ lattice terms or higher give more precise values than actions with $O(a)$ terms.
 These regularized actions are called {\it \oaid \space actions} and some of them are described below.
@@ -988,31 +989,32 @@ It is the principal feature of this work and it will described in [\colr{X}].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIRD CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Operators $\Theta_i^{[+]}$s on the lattice and amplitudes extraction}\label{ch:operators}
-\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter described the general workspace of lattice QCD with particular attention to the regularizations used in the present work.
+\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter outlined the general framework of lattice QCD, paying particular attention to the regularizations employed in the present work.
 This chapter describes the formulation of the mixing operators $\{\Theta_i\}$ on the lattice and it focuses on some properties of such lattice operators.
 These properties are:
 \begin{enumerate}
-    \item An automatic \oait\space of the three points correlators needed to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ without the need of multiple simulations (Wilson average) or other specific strategies.
+    \item An automatic \oait\space of two and three points meson correlators without the need of multiple simulations (Wilson average) or other specific strategies..
+        Such correlators are required to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$.
     \item The absence of wrong chirality mixing of operators in renormalization procedure.
         This should be present because Wilson term in actions \ref{eq:valence-action} and \ref{eq:sea-action} explicitly breaks chiral symmetry.
         Despite the symmetry breaking, this mixing comes out to be absent.
-    \item A specific blocks-like renormalization matrix $Z_{ij}$ that simplify the renormalization procedure.
+    \item A specific blocks-like renormalization matrix $Z_{ij}$, which simplify the renormalization procedure.
 \end{enumerate}
 
 \noindent
-In order to achieve these properties, some reformulations of the operators and strategies are needed.
-In the first part (and most) of the chapter I describe the four fermions, dimension six, mizing operators on the lattice.
-The second part of the chapter is reserved to the description of the strategy to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from two and three points correlators.
+In order to achieve these properties, some reformulations of the operators and strategies are required.
+The initial and majority of the chapter is dedicated to describing the four-fermion, dimension-six, mixing operators on the lattice. 
+The second part of the chapter is reserved to a detailed description of the strategy to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from two and three points correlators.
 
 
 \section{Continuum $\Theta_i^{[\pm]}$s and the new operators $Q_i^{[\pm]}$s}
 \noindent
 The SUSY operator basis for \kkb oscillations was introduced in \ref{eq:Thetai-operators}.
 Despite its historical significance, the basis $\{\Theta_i\}$ will be replaced by an other basis $\{Q_i\}$ because of its particular renormalization properties.
-But first I need to present some changes to the ``old'' SUSY basis.
+However, before introducing this new basis, I need to present some modifications to the ``old'' SUSY basis.
 \newline
-I want to rewrite operators $\Theta_3$ and $\Theta_5$ with the contractions of spin indices and colour indices within the same couple of quarks.
-This can be done by applying the Fierz relations\cite{Itzykson-Zuber}, described in Appendix \ref{app:fierz} along with calculation of $\Theta_{3,5}$.
+I aim to reformulate operators $\Theta_3$ and $\Theta_5$ by rearranging the spin and colour indices constractions within the same couple of quarks. 
+This can be done by applying the Fierz relations\cite{Itzykson-Zuber}, as outlined in Appendix \ref{app:fierz} along with calculation of $\Theta_{3,5}$.
 The new set of operators comes out to be:
 \begin{equation*}
     \begin{aligned}
@@ -1088,42 +1090,42 @@ Once evaluated the matrix elements $\la \bar K^0 | Q_i^{[\pm]} | K^0 \ra$, the e
     \end{pmatrix}
 \end{equation*}
 The $\{Q_i^{[\pm]}\}$ operators possess a relevant advantage with respect to the $\{\Theta_i^{[\pm]}\}$:
-once regularized in the way explained in this chapter, they have renormalization mixing properties that simplify the evaluation of renormalized operators and renormalization constants.
-\colr{eventualmente aggiungere anche il fatto che non c'è mixing PE PO chirale}
+once regularized as outlined in this chapter, they have renormalization mixing properties that simplify the evaluation of renormalized operators and renormalization constants.
 This will be better explained in \ref{sec:renormalization-properties}.
 \newline
 I will show in section \ref{sec:asympt-behav} how the matrix elements $\la \bar K^0 | Q_i^{[\pm]} | K^0 \ra$ can be asymptotically extracted from two and three points correlators.
-I introduce such correlators\footnote{To be precise, these are not the usual $n-$points correlators but their projections over null momenta.} in continuum QFT:
+Firstly, I introduce such correlators\footnote{To be precise, these are not the usual $n-$points correlators but their projections over null momenta.} in continuum QFT:
 \begin{equation}\label{eq:3pts-correlators}
     C_i^\text{QCD}(x_4,y_4,z_4) = \int d^3y \hspace*{.3mm} d^3z \left\la \bar K^0(x) Q_i(y) \bar K^0(z) \right\ra
 \end{equation}
 \begin{equation*}
     G_{K^0 \bar K^0}^\text{QCD}(x_4,y_4) = \int d^3y \left\la \bar K^0(x) K^0(y) \right\ra
 \end{equation*}
-The source operators $\bar K^0$ and $K^0$ are defined in Chapter \ref{chap:kaons} as the pseudoscalar densities of $d$ and $s$ doublet of quarks, while the superscript QCD remembers that these are the usual correlation functions in continuum quantum chromodynamics.
-The amplitudes are recovered by taking its asymptotic behaviour for $0 \ll z_4 \ll y_4 \ll x_4 \ll T$,then the condition $x_4 > y_4 > z_4$ is supposed to be always satisfied.
+The source operators $\bar K^0$ and $K^0$ are defined in Chapter \ref{chap:kaons} as the pseudoscalar densities of $d$ and $s$ doublet of quarks, while the superscript QCD stresses that these are the correlation functions in continuum quantum chromodynamics.
+The amplitudes $$\mathcal{A}_i^\text{QCD} = \la \bar K^0 | Q_i^{[+]} | K^0 \ra$$ are recovered by taking asymptotic behaviour of correlators for $0 \ll z_4 \ll y_4 \ll x_4 \ll T$.
+So the condition $x_4 > y_4 > z_4$ is supposed to be always satisfied.
 The full discussion about the extraction is left to section \ref{sec:asympt-behav}.
 
 \section{Flavour replicas on the lattice}
 \noindent
 The regularized action \ref{eq:valence-action} contains replicas of the $d$ and $s$ flavours, then the entire set of valence quarks is $u,d,d',s,s'$.
-The choice of multiple quarks of the same flavour comes from \cite{FR2} and it is formulated in order to achieve some properties of the three points correlators;
-such properties are well described in \ref{sec:operators-properties}.
-I refer to the model with flavour replicas with the symbol FR (::Flavour Replicas).
+The choice of multiple quarks of the same flavour comes from \cite{FR2}  and is formulated to achieve specific properties of the three-point correlators;
+such properties are outlined in section \ref{sec:operators-properties}.
+I refer to the model with flavour replicas as the FR model (::Flavour Replicas).
 \newline
 I focus on \textit{how} the FR model must be built in order to simulate the same flavour content of the standard QCD (simply named QCD).
-In particular, I want to build three points correlators in FR model such that they give the same Wick contractions of functions \ref{eq:3pts-correlators}.
+Specifically, I aim to construct three points correlators in the FR model such that they yield the same Wick contractions of functions \ref{eq:3pts-correlators}.
 The proof is given below.
 
 \subsection{Proof of equivalence of Wick contractions}
 \noindent
-Let's consider a general three points correlator in standard model QCD:
+Let's consider a general three points correlator in standard QCD:
 \begin{equation*}
     G^\text{QCD}(x,y,z) = \left\la \bigg(\bar d(x) \Gamma_\xi s(x)\bigg) \bigg(\bar s(y) \Gamma_\rho d(y) \bar s(y) \Gamma_\sigma d(y)\bigg) \bigg(\bar d(z) \Gamma_\omega s(z)\bigg) \right\ra
 \end{equation*}
 with $\Gamma_{\xi,\rho,\sigma,\omega}$ some matrices in spin space.
 The correlation functions \ref{eq:3pts-correlators} are nothing but the sum over spatial components of the above quantity.
-The Wick contractions are the following\footnote{I use the indices $c,d$ to refer to connected or disconnected diagrams}:
+The Wick contractions of such correlator follow:\footnote{I use the indices $c,d$ to refer to connected or disconnected diagrams}:
 \begin{equation*}
     \begin{split}
         & G_{d1}^\text{QCD}(x,y,z): \wick{\c1{\bar d (x)} \Gamma_\xi \c2{s(x)} \cdot \c2{\bar s (y)} \Gamma_\rho \c1{d (y)} \cdot \c1{\bar s (y)} \Gamma_\sigma \c2{d(y)} \cdot \c2{\bar d (z)} \Gamma_\omega \c1{s (z)} } \\
@@ -1132,7 +1134,7 @@ The Wick contractions are the following\footnote{I use the indices $c,d$ to refe
         & G_{c2}^\text{QCD}(x,y,z): \wick{\c1{\bar d (x)} \Gamma_\xi \c2{s(x)} \cdot \c4{\bar s (y)} \Gamma_\rho \c1{d (y)} \cdot \c2{\bar s (y)} \Gamma_\sigma \c3{d(y)} \cdot \c3{\bar d (z)} \Gamma_\omega \c4{s (z)} } \\
     \end{split}
 \end{equation*}
-They generates these single or double traces functions:
+They generates single or double traces functions:
 \begin{equation}\label{eq:wick-contractions-general}
     \begin{split}
         & G_{d1}^\text{QCD}(x,y,z) = \left\la \tr \Big[ \Gamma_\xi S_{s} (x,y) \Gamma_\rho S_{d} (y,x) \Big] \hspace*{.5mm} \tr \Big[ \Gamma_\omega S_{s} (z,y) \Gamma_\sigma S_{d} (y,z) \Big] \right\ra \\
@@ -1145,8 +1147,9 @@ then the total contribution to $G^\text{QCD}(x,y,z)$ is given by:
 \begin{equation*}
     G^\text{QCD}(x,y,z) = G_{d1}^\text{QCD}(x,y,z) + G_{d2}^\text{QCD}(x,y,z) + G_{c1}^\text{QCD}(x,y,z) + G_{c2}^\text{QCD}(x,y,z)
 \end{equation*}
-I want to replicate this contributions by using the new flavours $d,d',s,s'$ built on the lattice.
-The strength of this method consists in the fact that primed and unprimed flavours cannot contract with each other, then I can build an appropriate operator for each contraction.
+I want to replicate this contributions using the new flavours $d,d',s,s'$ built on the lattice.
+The strength of this method lies in the fact that primed and unprimed flavours cannot contract with each other.
+Therefore I can build an appropriate operator for each contraction.
 I define an antikaon source in $x$ with primed flavours $\bar d' (x) \Gamma_\xi s'(x)$ and an other in $z$ with unprimed flavours $\bar d (z) \Gamma_\omega s(z)$.
 The intermediate operator is replaced by: 
 \begin{equation*}
@@ -1867,7 +1870,7 @@ Again, I consider the two cases:
 {\bf Case \#1: } $r_1 = r_2 = \pm 1$
 \begin{equation*}
     \begin{aligned}
-        & \text{PCAC: } \partial_\mu A_{\mu,12}^\text{tw} = (m_1+m_2)\left[\cos (\alpha) P_{12}^\text{tw} \pm i \sin (\alpha) S_{12}^\text{tw}\right] \xrightarrow{\alpha = \pi/2} \pm i (m_1+m_2) S^\text{tw}_{12}\\
+        & \text{PCAC: } \partial_\mu A_{\mu,12}^\text{tw} = (m_1+m_2)\left[\cos (\alpha) P_{12}^\text{tw} \pm i \sin (\alpha) S_{12}^\text{tw}\right] \xrightarrow{\alpha = \pi/2} \pm i (m_1+m_2) S^\text{tw}_{12} \hspace*{3cm}\\
         & \text{PCVC: } \partial_\mu V_{\mu,12}^\text{tw} = 0
     \end{aligned}
 \end{equation*}
