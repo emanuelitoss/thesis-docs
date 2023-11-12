@@ -1572,35 +1572,37 @@ The average over sea Gauge configurations gives the usual VEV in path integral f
 \noindent
 The case of three points correlators is a complexified version of the previous paragraph, but there are no conceptual complications.
 The method is the same and the step followed are similar to the two point correlator case.
-We want to calculate correlation funcitons of this two types:
-\begin{equation}
+We want to calculate correlation functions of the following two types:
+\begin{equation}\label{eq:GdGc-strategy}
     \begin{gathered}
         G_d(x_0,y_0,z_0) = \sum_{\vec x, \vec y, \vec z} \bigg\langle
-        \bar\psi_4(x) \Gamma_A \psi_1 (x)\hspace*{.3mm}
-        \bar\psi_3(y) \Gamma_D \psi_2 (y) \bar\psi_1(y) \Gamma_B \psi_4 (y)\hspace*{.3mm}
-        \bar\psi_2(z) \Gamma_C \psi_3 (z)\hspace*{.3mm}
+        \bar\psi_4(x) \Gamma_A \psi_3 (x)\hspace*{.3mm}
+        \bar\psi_1(y) \Gamma_D \psi_2 (y) \bar\psi_3(y) \Gamma_B \psi_4 (y)\hspace*{.3mm}
+        \bar\psi_2(z) \Gamma_C \psi_1 (z)\hspace*{.3mm}
         \bigg\rangle^{\text{sea}}\\
         G_c(x_0,y_0,z_0) = \sum_{\vec x, \vec y, \vec z} \bigg\langle
-        \bar\psi_4(x) \Gamma_A \psi_1 (x)\hspace*{.3mm}
-        \bar\psi_3(y) \Gamma_D \psi_4 (y) \bar\psi_1(y) \Gamma_B \psi_2 (y)\hspace*{.3mm}
-        \bar\psi_2(z) \Gamma_C \psi_3 (z)\hspace*{.3mm}
+        \bar\psi_4(x) \Gamma_A \psi_3 (x)\hspace*{.3mm}
+        \bar\psi_1(y) \Gamma_B \psi_4 (y) \bar\psi_3(y) \Gamma_D \psi_2 (y)\hspace*{.3mm}
+        \bar\psi_2(z) \Gamma_C \psi_1 (z)\hspace*{.3mm}
         \bigg\rangle^{\text{sea}}\\
     \end{gathered}
 \end{equation}
 The subscripts $c$ and $d$ refer to {\it connected} and {\it disconnected} correlators.
+The flavour exchange between the two correlators is not $(2\leftrightarrow 4)$ but $(1\leftrightarrow 3)$.
+The reason behind that will be clear soon.
 Picture \ref{fig:contractions-stochastic-method} shows the correlators in a simple representative way for $x_4>y_4>z_4$.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{imgs-MSc-thesis/Wick_stochastic_disc.png}
-    \includegraphics[width=0.7\textwidth]{imgs-MSc-thesis/Wick_stochastic_conn.png}
+    \includegraphics[width=0.75\textwidth]{imgs-MSc-thesis/Wick_stochastic_conn.png}
     \caption{On the top: graph of disconnected Wick contraction. On the bottom: graph of connected Wick contraction. The variables are such that $x_4 > y_4 > z_4$.}
 \end{figure}\label{fig:contractions-stochastic-method}
 \newline
 The Wick contractions acting on the correlators are:
 \begin{equation}\label{eq:contractions-stochastic-method}
     \begin{gathered}
-        G_d = \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_{(1,+)}(x,y)\Gamma_B S_{(4,+)}(y,x)\right]\cdot\text{Tr}\left[\Gamma_C S_{(3,+)}(z,y)\Gamma_D S_{(2,+)}(y,z)\right] \bigg\rangle^{\text{sea}} \\
-        G_c = - \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_{(1,+)}(x,y)\Gamma_B S_{(2,+)}(y,z)\Gamma_C S_{(3,+)}(z,y)\Gamma_D S_{(4,+)}(y,x)\right] \bigg\rangle^{\text{sea}}
+        G_d = \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_{(3,+)}(x,y)\Gamma_B S_{(4,+)}(y,x)\right]\cdot\text{Tr}\left[\Gamma_C S_{(1,+)}(z,y)\Gamma_D S_{(2,+)}(y,z)\right] \bigg\rangle^{\text{sea}} \\
+        G_c = - \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_{(3,+)}(x,y)\Gamma_D S_{(2,+)}(y,z)\Gamma_C S_{(1,+)}(z,y)\Gamma_B S_{(4,+)}(y,x)\right] \bigg\rangle^{\text{sea}}
     \end{gathered}
 \end{equation}
 \newline
@@ -1625,21 +1627,59 @@ I define the following derived stochastic spinors:
 It could be easily checked that the contractions in (\ref{eq:contractions-stochastic-method}) are obtained by the following formulae:
 \begin{equation*}
     \begin{gathered}
-        G_d =   \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(1,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \cdot \left(\gamma_5\xi^{(3,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}} \\
-        G_c = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(1,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(3,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
+        G_d =   \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}} \\
+        G_c = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
     \end{gathered}
 \end{equation*}
 Then, to evaluate the previous couple of Wick contraction I need only four quantites for each couple of stochastic spinors:
 \begin{equation*}
-    \xi^{(1,-)}_{1,A} (y) \qquad  \zeta^{(4,+)}_1 (y) \qquad \xi^{(3,-)}_{C,2} (y) \qquad  \zeta^{(2,+)}_2 (y)
+    \xi^{(3,-)}_{1,A} (y) \qquad  \zeta^{(4,+)}_1 (y) \qquad \xi^{(1,-)}_{C,2} (y) \qquad  \zeta^{(2,+)}_2 (y)
 \end{equation*}
 To summarize, the path to evaluate the correlators is:
 \begin{itemize}
     \item [$\triangleright$] For each Gauge-sea configuration evaluate 2$N_{\text{noise}}$ spinors - $N_{\text{noise}}$ for $\eta^1$ and $N_{\text{noise}}$ for $\eta^2$. 
-    \item [$\triangleright$] For each noise spinor evaluate the quantites $\zeta$ and $\xi$ needed.
+    \item [$\triangleright$] For each noise spinor evaluate the quantites $\zeta^{(i,\pm)}_j$ and $\xi^{(i,\pm)}_{j,X}$ needed.
     \item [$\triangleright$] Evaluate the correlators and evaluate the noise average.
     \item [$\triangleright$] Iterate the procedure and calculate the sea average.
 \end{itemize}
+
+\section{Computational Basis}
+\noindent
+One might wonder the reason behind the choice of operators exchange $\Gamma_B \leftrightarrow \Gamma_D$ between the terms $G_d$ and $G_c$ of the previous method (look at equations \ref{eq:GdGc-strategy}).
+It could seem an unreasonable choice because it has the form of a flavour exchange $(1\leftrightarrow 3)$ instead of $(2\leftrightarrow 4)$, that one might expect.
+Behind this choice lies a subtlety developed for computational convenience.
+\newline
+I can rewrite the set of operators $\{O_{i,[+]}^\text{tw}\}$ in equations \ref{eq:O_i-operators-twisted-final} in the following compact forms:
+\begin{equation}
+    \begin{split}
+        & O_{1[+]}^\text{tw} = \mp 2i \left( V^{12}A^{34} + A^{12}V^{34} + V^{14}A^{32} + A^{14}V^{32} \right) \\
+        & O_{2[+]}^\text{tw} = \mp 2i \left( V^{12}A^{34} - A^{12}V^{34} - V^{14}A^{32} + A^{14}V^{32} \right) \\
+        & O_{3[+]}^\text{tw} = \pm 2i \left( P^{12}S^{34} - S^{12}P^{34} - P^{14}S^{32} + S^{14}P^{32} \right) \\
+        & O_{4[+]}^\text{tw} = \pm 2i \left( P^{12}S^{34} + S^{12}P^{34} + P^{14}S^{32} + S^{14}P^{32} \right) \\
+        & O_{5[+]}^\text{tw} = \pm 2i \left( \tilde{T}^{12}T^{34} + T^{14}\tilde{T}^{32} \right) \\
+    \end{split}
+\end{equation}
+Clarifications about the notation can be found in Appendix \ref{app:notations}.
+I want to group togheter the minimal elements to compute in a simulation.
+This strategy bring me to redefine again - and for the last time - the operators.
+They are:
+\begin{equation*}
+    \begin{split}
+        & \Psi_{1} =  V^{12}A^{34} + A^{14}V^{32} \hspace*{40pt} O_{1[+]}^\text{tw} = \mp 2i \left( \Psi_{1} + \Psi_{2} \right) \\
+        & \Psi_{2} =  A^{12}V^{34} + V^{14}A^{32} \hspace*{40pt} O_{2[+]}^\text{tw} = \mp 2i \left( \Psi_{1} - \Psi_{2} \right) \\
+        & \Psi_{3} =  P^{12}S^{34} + S^{14}P^{32} \hspace*{40pt} O_{3[+]}^\text{tw} = \pm 2i \left( \Psi_{3} - \Psi_{4} \right) \\
+        & \Psi_{4} =  S^{12}P^{34} + P^{14}S^{32} \hspace*{40pt} O_{4[+]}^\text{tw} = \pm 2i \left( \Psi_{3} + \Psi_{4} \right) \\
+        & \Psi_{5} =  \tilde{T}^{12}T^{34} + T^{14}\tilde{T}^{32} \hspace*{40pt} O_{5[+]}^\text{tw} = \pm 2i \cdot \Psi_{5} \\
+    \end{split}
+\end{equation*}
+As usual, through them I recover the operators $O_{i,[+]}^\text{tw}$.
+Each of the new operators has the form:
+$$\Psi_i = \bar\psi_1 \Gamma_D \psi_2 \cdot \bar\psi_3 \Gamma_B \psi_4 + \bar\psi_1 \Gamma_B \psi_4 \cdot \bar\psi_3 \Gamma_D \psi_2$$
+that {\it is} a flavour exchange $1 \leftrightarrow 3$ and {\it not} $2 \leftrightarrow 4$.
+Thus I directly evaluate this correlators:
+$$\bigg\langle \bar K'^0(x) \Psi_i (y) K^0(z) \bigg\rangle \sim \bigg\langle \left(\bar\psi_4 \Gamma_A \psi_3 \right) (x) \Psi_i (y) \left(\bar\psi_2 \Gamma_C \psi_1 \right) (z) \bigg\rangle$$
+and it can be verified that it gives exactly the contractions $G_c + G_d$ of Figure \ref{fig:contractions-stochastic-method}.
+With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. are {\it similar} from a computational point of view.
 
 
 
@@ -1918,9 +1958,7 @@ Making the indices explicit:
 \begin{equation*}
     \frac{1}{4} \left(\Gamma^\alpha\right)_{ij} \left(\Gamma_\alpha\right)_{kl} = \delta_{il} \delta_{jk}
 \end{equation*}
-\begin{equation*}
-    \hspace*{13cm}\square
-\end{equation*}
+\hspace*{.97\textwidth} $\square$ \newline
 Now let's go back to the specific $\mathcal{E}$ case.
 I rewrite it with explicit indices and I emphasize that $\left[\psi^2 \bar\psi^3\right]$ is a matrix:
 \begin{equation*}
