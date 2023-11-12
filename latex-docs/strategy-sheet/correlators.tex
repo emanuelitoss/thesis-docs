@@ -40,7 +40,7 @@ We want to calculate three points correlators of this two types:
         \bigg\rangle^{\text{sea}}\\
         G_c(x_0,y_0,z_0) = \sum_{\vec x, \vec y, \vec z} \bigg\langle
         \bar\psi_4(x) \Gamma_A \psi_1 (x)\hspace*{.3mm}
-        \bar\psi_3(y) \Gamma_D \psi_4 (y) \bar\psi_1(y) \Gamma_B \psi_2 (y)\hspace*{.3mm}
+        \bar\psi_3(y) \Gamma_B \psi_4 (y) \bar\psi_1(y) \Gamma_D \psi_2 (y)\hspace*{.3mm}
         \bar\psi_2(z) \Gamma_C \psi_3 (z)\hspace*{.3mm}
         \bigg\rangle^{\text{sea}}\\
     \end{gathered}
@@ -51,7 +51,7 @@ The Wick contractions acting on the correlators are:
 \begin{equation}\label{eq:contractions}
     \begin{gathered}
         G_d(x_0,y_0,z_0) = \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_1(x,y)\Gamma_B S_4(y,x)\right]\cdot\text{Tr}\left[\Gamma_C S_3(z,y)\Gamma_D S_2(y,z)\right] \bigg\rangle^{\text{sea}} \\
-        G_c(x_0,y_0,z_0) = - \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_1(x,y)\Gamma_B S_2(y,z)\Gamma_C S_3(z,y)\Gamma_D S_4(y,x)\right] \bigg\rangle^{\text{sea}}
+        G_c(x_0,y_0,z_0) = - \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_1(x,y)\Gamma_D S_2(y,z)\Gamma_C S_3(z,y)\Gamma_B S_4(y,x)\right] \bigg\rangle^{\text{sea}}
     \end{gathered}
 \end{equation}
 \begin{figure}[h!]
@@ -66,7 +66,7 @@ The Wick contractions acting on the correlators are:
 I generate $N_{\text{noise}}$ stochastic spinors in the timeslice $x_0$ and $N_{\text{noise}}$ stochastic spinors in the timeslice $z_0$.
 I refer to the formers with $\eta^{1}$ and the latters with $\eta^{2}$.
 These stochastic spinors have again a Dirac index ($\alpha,\beta,\cdots$) and a colour index ($a,b,\cdots$).
-The properties \ref{eq:eta-properties} are generalized:
+The properties of the previous work by Tomasz Korzec are generalized:
 \begin{equation}
     \begin{gathered}
         \langle \eta^{1}_{a\alpha} (u) \rangle^{\text{noise}} = \langle \eta^{2}_{b\beta} (u) \rangle^{\text{noise}} = 0 \\
@@ -96,7 +96,7 @@ It could be easily checked that the contractions in (\ref{eq:contractions}) can 
 \begin{equation*}
     \begin{gathered}
         G_d(x_0,y_0,z_0) =   \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(1,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \cdot \left(\gamma_5\xi^{(3,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}} \\
-        G_c(x_0,y_0,z_0) = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(1,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(3,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
+        G_c(x_0,y_0,z_0) = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(1,-)}_{1,A} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(3,-)}_{C,2} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
     \end{gathered}
 \end{equation*}
 Then, to evaluate the previous couple of Wick contraction {\bf I need only four quantites} for each couple of stochastic spinors:
