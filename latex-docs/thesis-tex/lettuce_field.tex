@@ -375,7 +375,8 @@ The first section will provide a general overview of lattice regularization.
 In the second and third sections I will discuss respectively about Gauge and fermion fields regularizations on the lattice;
 I will start from the simplest regularizations and I will progressively extend them to the improved ones, which are used.
 In the fourth section, a specific set of bosonic ghost fields will be described.
-Finally, the fifth section will delineate the lattice regularization employed in the present simulation.
+The fifth section will delineate the lattice regularization employed in the present simulation.
+Finally, the sixth section provides an overview about the \obc, which represent one of the two peculiarities of this work compared to those previously carried out.
 
 \section{Lattice regularization of QFT}\label{sec:lattice-discretization}
 \noindent
@@ -511,10 +512,9 @@ Several $O(a)-$improvements are available and some of them are expressed in the 
 \begin{equation}\label{eq:gaugeaction-LuscherWeisz}
     S_G[U] = \frac{1}{g_0^2} \left\{ c_0 \sum_{\{p\}} \tr \left[ \mathbb{I} - U(p)\right] + c_1 \sum_{\{r\}} \tr \left[ \mathbb{I} - U(r)\right] \right\}
 \end{equation}
-where $\{r\}$ is a set of rectangles on the lattice, analogous to $\{p\}$ \colr{non so cosa significhi rettangoli, lo andrò a leggere}.
+where $\{r\}$ is a set of rectangles on the lattice, analogous to $\{p\}$.
 Depending on the choice of the coefficients $c_{0}$ and $c_{1}$, it is possible to get different improvements.
 The choosen one uses $c_0 = 5/3$ and $c_1 = -1/12$ and takes the name of \textit{Luscher-Weisz action} \cite{tmLQCD}.
-\colr{perché proprio questa? Sempre che ci sia un motivo di preferenza rispetto alle altre.}
 
 \section{Fermion actions}\label{sec:fermion-discretization}
 \noindent
@@ -530,7 +530,7 @@ A shortlist of the regularizations described could be useful to clarify the gene
     \item [$\triangleright$] The subsection \ref{subsec:zero-modes} will describe the problem of zero modes related to the Wilson Dirac action.
     \item [$\triangleright$] The \textit{twisted mass QCD} (tmQCD) and \textit{Maximally twisted mass QCD} (MtmQCD) described respectively in \ref{sec:tmLQCD} and \ref{sec:max-twist} are introduced to solve the previous problem.
         MtmQCD is a special case of tmQCD. Moreover MtmQCD has the property to be an \oaid\space action.
-    \item [$\triangleright$] Despite the powerful propetries of tmQCD, it is not used in this work but it is replaced by the \textit{Ostervalder-Seiler action}, very similar to it.
+    \item [$\triangleright$] Despite the powerful properties of tmQCD, it is not used in this work but it is replaced by the \textit{Osterwalder-Seiler action}, very similar to it.
         In some particular cases OS action \textit{coincides} with tmQCD, and it will happen in this work.
     \item [$\triangleright$] In section \ref{sec:ghosts} I introduce some ghost fields needed to well simulate both sea and valence quarks.
 \end{itemize}
@@ -822,11 +822,10 @@ As in tmQCD, the change of basis $\{f,\bar f\} \leftrightarrow \{q,\bar q\}$ lea
 To be completely coherent in the basis change, one must (OS) twist also the observable $\mathcal{X} \mapsto \mathcal{X}^\text{tw}_{OS}$.
 The basis change and the operators change are described in Appendix \ref{app:physical-basis}.
 Notice the pedices $(M_q,0)$ and $(m_q,\mu_q)$.
-This implicitly means that the mass parameters transformation \ref{eq:new-masses} is still valid in Ostervalder-Seiler regularization.
+This implicitly means that the mass parameters transformation \ref{eq:new-masses} is still valid in Osterwalder-Seiler regularization.
 \newline
 Clearly the proof in section \ref{sec:tmLQCD} about the positivity of fermion determinant, in general, is no more valid.
-But I will explain in the \colr{next sections} how \oait\space is preserved, thanks to the strategy worked out by R. Frezzotti and G. C. Rossi \cite{FR2}.
-\colr{descrivere \oait, determinante, etc... che devo ancora capire.}
+I will explain in Section \ref{sec:operators-properties} how \oait\space is recovered with OS fermions, thanks to the strategy worked out by R. Frezzotti and G. C. Rossi \cite{FR2}.
 
 \section{Sea and valence: bosonic ghosts}\label{sec:ghosts}
 \noindent
@@ -853,7 +852,7 @@ These fermion ghosts are nothing but Dirac spinors, color equipped and satisfyin
         & \big[\bar\phi_\alpha (\vec x,t), \bar\phi_\beta (\vec y,t)\big] = \big[\phi_\alpha (\vec x,t), \phi_\beta (\vec y,t)\big] = 0
     \end{aligned}    
 \end{equation*}
-Let $\mathcal{X}$ be any observable which depends only on valence quarks and Guage fields.
+Let $\mathcal{X}$ be any observable which depends only on valence quarks and Gauge fields.
 Then the integral over both a valence quark\footnote{the extension to many flavours is trivial.} $\{\psi_\text{v},\bar\psi_\text{v}\}$ and its respective bosonic ghosts $\{\phi_\text{v}, \bar\phi_\text{v} \}$ reads:
 \begin{equation*}
     \begin{aligned}
@@ -864,7 +863,7 @@ Then the integral over both a valence quark\footnote{the extension to many flavo
     \end{aligned}
 \end{equation*}
 The meaning of the above calculation is very simple. The integral gives only the Wick contractions which depend on fixed Gauge field $U$.
-The vacuum expectation value $\la\mathcal{X}\ra$ is obtained by integrating $\mathcal{X}$ over {\it all} the fields, i.e., by integrating $W[U]$ over the Guage fields and the sea quarks $\{\psi_\text{s},\bar\psi_\text{s}\}$:
+The vacuum expectation value $\la\mathcal{X}\ra$ is obtained by integrating $\mathcal{X}$ over {\it all} the fields, i.e., by integrating $W[U]$ over the Gauge fields and the sea quarks $\{\psi_\text{s},\bar\psi_\text{s}\}$:
 \begin{equation*}
     \begin{aligned}
         \la \mathcal{X} \ra
@@ -910,7 +909,7 @@ with $b_g$ constant to be determined.
 The generated ensembles differ form each other by the value of the bare quark masses, but the trace $\tr (M_q\bare)$ is kept constant in order to preserve the \oait\space of $g_0$.
 I want to stress that the constant trace of bare masses does not imply that the trace of renormalized masses is constant.
 \newline\newline
-{\bf Valence quarks action}: Ostervalder-Seiler fermions with the Sheikholeslami-Wohlert term.
+{\bf Valence quarks action}: Osterwalder-Seiler fermions with the Sheikholeslami-Wohlert term.
 In this case the fermions are denoted by $\{\psi_q, \bar\psi_q\}$ and the action is expressed in the (OS) twisted basis.
 \begin{equation}\label{eq:valence-action}
     S^{\text{val}}[\psi, \bar\psi, U] = a^4 \sum_{q,x} \bar \psi_q (x) \left[ D^{WD} + \frac{ia}{4}c_{SW}\sigma_{\mu\nu}\hat F_{\mu\nu} + \boldsymbol{m}^\text{cr}_{qq} + i\gamma_5\boldsymbol{\mu}\bare \right] \psi_q (x)
@@ -983,10 +982,93 @@ It enforces the sea and valence sectors to share the same renormalization consta
 \newline
 \newline
 (3) The use of \obc\space in time direction is an artefact that allows to low autocorrelation times of the simulation.
-It is the principal feature of this work and it will described in [\colr{X}].
+It is the principal feature of this work and it will described below.
+
+\section{\obc}
+\noindent
+To conclude this chapter I give an overview of the \obc, one of the two principal features of this work.
+They were introduced by S. Luscher \cite{OBC_top} to solve the problem of long autocorrelation times of the sea configurations.
+This paragraph doesn't contain formal or overly technical developments but simply provides an overview of what \obc\space are and where they emerge in the context of Lattice QCD.
+A quick reformulation of Lattice QFT will be necessary.
+\newline
+As previously mentioned, Gauge configurations are generated through algorithms that transition from a configuration to another with a certain probability.
+Examples of these algorithms include HMC (Hybrid Monte Carlo) or SMD (Stochastic Molecular Dynamics, a.k.a. Generalized HMC).
+The ideal goal of a simulation is the generation of totally uncorrelated Gauge configurations, which is evidently impossible but a reasonable objective.
+This is because uncorrelated configurations better simulate the path integral.
+To quantify the correlation between different configurations, certain observables are introduced and their autocorrelation functions are studied.
+The most commonly used observable is the {\it topological charge}:
+\begin{equation*}
+    Q_\text{top} = -\frac{1}{32\pi^2}\int_M d^4x \hspace*{.5mm} \epsilon_{\mu\nu\rho\sigma} \tr \left[F_{\mu\nu}(x) F_{\rho\sigma}(x)\right]
+\end{equation*}
+In the above formula $Q_\text{top}$ is defined in the continuum limit.
+A similar definition can be easily worked out in lattice environment.
+Sometimes other observables are choosen, for example the square of the topological charge.
+In fact, the VEV of topological charge in pure Yang Mills $SU(3)$ theory is expected to vanish for parity reasons,\footnote{Reminder: strong interactions preserve parity.}, then $Q_\text{top}^2$ seems to be a better choice.
+For each observable, a specific time $\tau$ is defined, known as the {\it autocorrelation time} of the observable.\footnote{The word 'time' in this case refers to simulation time, i.e. the time of evolution of a specific Markov chain.}
+The $\tau$ quantifies the autocorrelation of the given observable at two different times.
+It has been observed that the autocorrelation time of the topological charge, $\tau_Q$, grows as $a^{-5}$ as the continuum limit is approached \cite{Topology-WilsonFlow-HMC}.
+This leads to extremely large autocorrelation times.
+\newline
+This catastrophic behaviour was confirmed both by direct computations that from a theoretical point of view.
+The birth of \obc\space resides in the computational observation of such long autocorrelation times, both for $Q_\text{top}$ \cite{investigatin-critical-slowing-down} that $Q_\text{top}^2$ \cite{critical-slowing-down-error-analysis}. 
+In the theoretical framework, there exists a theorem \cite{Topology-WilsonFlow-HMC} which states that the space of all lattice gauge fields satisfying a certain smoothness condition decomposes into topological charge sectors very much like the space of continuous fields in the classical continuum theory.
+In other words, in the continuum limit the fields space tends to be disconnected.
+This implies that the simulation algorithms cannot evolve a Gauge configuration in a given subspace to a configuration defined in an other - disconnected - subspace.
+Then the entire fields space cannot be explored. 
+The very long autocorrelation times are just a consequence of that.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imgs-MSc-thesis/torus-obc.png}
+    \caption{Sketchy representation of the Periodic Boundary Conditions vs \obc\space in time direction}
+    \label{fig:torus}
+\end{figure}
+\newline
+The innovative work of Luscher and Schaefer addressed this topological issue.
+Until this point, the boundary conditions imposed on Gauge and fermionic fields are Periodic Boundary Conditions (PBC) in both the temporal and spatial directions.
+This choice was made in order to achieve temporal and spatial translation invariance.
+The modification introduced by Luscher involved \obc\space in time direction with the natural consequence of the breaking of time translation symmetry.
+A sketchy representation of the topological differences is shown in Figure \ref{fig:torus}.
+The conditions to impose on fields are \cite{OBC_top}:
+\begin{equation*}
+    \begin{gathered}
+        F_{0i}(\vec x, x_4=0) = F_{0i}(\vec x, x_4=T) = 0 \qquad \forall i = 1,2,3 \\
+        \begin{aligned}
+            & P_+ \psi (\vec x, 0) = P_- \psi (\vec x, T) = 0 \\
+            & \bar\psi (\vec x, 0) P_- = \bar\psi (\vec x, T) P_+ = 0 
+        \end{aligned}
+        \quad\quad P_{\pm} = \frac{1}{2}\left(\mathbb{I} \pm \gamma_5 \right)
+    \end{gathered}
+\end{equation*}
+The particular conditions on fermion field are choosen in order to achieve parity and time reflection.
+In Appendix \ref{app:connection} I report a proof of the connection of the space of Gauge fields defined with the new boundary conditions.
+This connection of the space solves - not at all\footnote{There are other sources of autocorrelation. For example the fact that a random number generator is not ``random'' at all.} - the problem of large scaling of autocorrelation times.
+With this improvement the scaling behaviour of some observables comes out to scale $\propto a^{-2}$, instead of $\propto a^{-5}$.
+There is a variety of papers confirming that \obc\space decrease autocorrelation times.
+For example, look at the following table:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{imgs-MSc-thesis/autocorrelation.png}
+    \caption{Comparison of autocorrelation times measured on lattices with periodic and open boundary conditions in time direction.
+    The table on the left refers to a latiice with $a=0.1$ fm. The one on the right to a lattice with $a=0.07$ fm. The difference between OBC and PBC encreases as the lattice spacing tends to zero. \cite{Topology-WilsonFlow-HMC}}
+    \label{tab:autocorrelation-times}
+\end{figure}
+\newline
+Another aspect to keep in mind is the following.
+The formulation of lattice quantum physics with OBC in this case remains the same in the bulk\footnote{the sub-lattice from which the boundaries with $x_4 = 0, x_4 = T$ are removed}.
+However, the vacuum state at the boundary $|\Omega\ra$ differs from the vacuum state $|0\ra$ in the bulk, which represents the physical vacuum.
+It is proved \cite{OBC_top} that both vacuum states possess the physical vacuum quantum numbers.
+Thus a formulation of Lattice QFT similar to the case of periodic boundary conditions is allowed.
+Given a local operator of the fields $\mathcal{X}(x_1,\dots,x_n)$, its vacuum expectation value is defined in the following way:
+\begin{equation*}
+    \la \mathcal{X}(x_1,\dots,x_n) \ra = \la \Omega | T \left\{ \mathcal{X}(x_1,\dots,x_n) \right\} | \Omega \ra
+\end{equation*}
+The formalism of transfer matrix $\mathbb{T} = e^{-a\hat H}$ is still valid.
+A good reference that explains how to treat vacuum expectation values of observables is \cite{ExtractionSpectralQuantities}.
+The same topic - along with some generalizations to three point correlators - is presented at the end of the Chapter \ref{ch:operators}.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIRD CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Operators $\Theta_i^{[+]}$s on the lattice and amplitudes extraction}\label{ch:operators}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter outlined the general framework of lattice QCD, paying particular attention to the regularizations employed in the present work.
@@ -1194,7 +1276,7 @@ Such contractions are labeled by $G_{d1}^\text{FR}, G_{d2}^\text{FR}, G_{c1}^\te
 \section{From physical basis to twisted basis}
 \noindent
 Thanks to the previous proof, the parity even operators $Q_{i}^{[+]}$ (equation \ref{eq:Q_i-continuum}) can be built on the lattice in the FR framework by introducing four different flavours.
-The flavours used are the lattice regularized Ostervalder-Seiler quarks, as described in previous Chapter.
+The flavours used are the lattice regularized Osterwalder-Seiler quarks, as described in previous Chapter.
 The following notation for valence flavours is adopted:
 \begin{equation*}
     \begin{aligned}
@@ -1390,13 +1472,14 @@ Explicit chiral symmetry breaking introduced by the Wilson term plays a fundamen
 However, the matrix elements are \oaid, so even the effects of mixing with wrong chirality have an effect of order $O(a^2)$ or higher.
 \newline
 To conclude this section, I want to revisit a brilliant reasoning made in \cite{KMBSM}.
-For vanishing twisted masses $\mu_i$, the action of Wilson and Ostervalder-Seiler fermions in the twisted basis is indistinguishable.
+For vanishing twisted masses $\mu_i$, the action of Wilson and Osterwalder-Seiler fermions in the twisted basis is indistinguishable.
 Therefore, using a massless renormalization scheme, the renormalization properties of the parity odd operators $O_{i[+]}^\text{tw}$ are reflected in those of the parity even operators before the base twist $O_{i[+]}^\text{phys}$.
 This result has been formally developed in \cite{FR2}.
 
 \section{Asymptotic behaviours}\label{sec:asympt-behav}
 \noindent
 The last pending issue of this chapter is the method to extract the bare amplitudes $\la \bar K^0 | Q_i | K^0 \ra$ in the continuum limit from correlators \ref{eq:lattice-correlators}.
+The method of asymptotic behaviours is a standard extraction method \cite{montvay-munster}, adapted to the case of \obc\space \cite{ExtractionSpectralQuantities}.
 In this section I will consider a general form three point correlator:
 \begin{equation}\label{eq:correlator-prototype}
     C(x_4,y_4,z_4) = a^6\sum_{\vec x, \vec y, \vec z} \left\la M_A (x) \Xi (y) M_B (z) \right\ra
@@ -1475,7 +1558,7 @@ Then their asymptotic behaviours are:
     \end{split}
 \end{equation*}
 Fortunately the two matrix elements $\la \Omega | \bar K^0 | \bar K^0 \ra$ and $\la K^0 | \bar K^0 | \Omega \ra$ are equal and real because of the PCAC relation.
-I leave the very simple proof of that in Appendix \ref{sec:reality}.
+I leave the very simple proof of that in Appendix \ref{app:proof-reality}.
 In particular I use the following chain of equalities:
 $$\la \Omega | \bar K^0 (0) | \bar K^0 \ra = \la K^0 | \bar K^0 (0) | \Omega \ra = \la \Omega | K^0 (0) | K^0 \ra = \la \bar K^0 | K^0 (0) | \Omega \ra $$
 Then the matrix elements of Kaons oscillations with insertion of mixing operators can be asymptotically extracted in the following way for $x_4 \gg y_4 \gg z_4$:
@@ -1495,18 +1578,18 @@ Because of the reality of this propagator, I can also use its complex conjugate,
 \chapter{Computational Strategies}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{L}{}\colv{a prima lettera è maiuscola e cicciotta.}
 
-\section{\colv{Noise spinors}}
+\section{Noise spinors method}
 \noindent
-In order to extract matrix elements with the method of asymptotic behaviours of formula \ref{eq:matrix-elements-extraction} I need two and three points correlators integrated over spatial coordinates.
+In order to extract matrix elements with the method of asymptotic behaviours of formula \ref{eq:matrix-elements-extraction}, I need two and three points correlators integrated over spatial coordinates.
 In this section I choose a prototype for these two and three point correlation functions and I work out applicative methods to evaluate them.
 \newline
-First of all, the computation of these quantities requires the knoweldge of dreessed quark propagators $S_{(i,\pm)}[U](x,y)$ for each given Gauge configuration\footnote{$i$ is the flavour index while $\pm$ refers to twisted mass sign in twisted basis (i.e. the sign of the Wilson parameter $r_i$ in physical basis)}.
+First of all, the computation of these quantities requires the knoweldge of dreessed quark propagators $S_{(i,\pm)}[U](x,y)$ for each given Gauge configuration\footnote{$i$ is the flavour index. The sign $\pm$ refers to twisted mass sign in twisted basis (i.e. the sign of the Wilson parameter $r_i$ in physical basis)}.
 These propagators are defined on the lattice by the equation:
 \begin{equation*}
     \sum_{z} \left(D^W\pm i\mu_i \gamma_5\right)(x,z) S_{(i,\pm)}(z,y) = \delta_{x,y}^{(4)}
 \end{equation*}
 The inversion of the Dirac operator\footnote{To be rigorous, I must call it ``Osterwalder-Seiler operator'' because of the presence of twisted mass term. I will call it simply Dirac operator because it should be clear that the OS tm QCD is the choosen regularization.}
-in a simulation program requires, in principle, the inversion of a matrix in $(N\x N,\mathbb{R})$, where
+in a simulation program requires, in principle, the inversion of a matrix in $\text{Mat}(N\x N,\mathbb{R})$, where
 $$N = N_T \x N_{L_x} \x N_{L_y} \x N_{L_z} \x N_\text{colour} \x 4 \x 2 $$
 The multiplicative factor $4$ is the number of components in a Dirac spinor while the factor $2$ is given because the matrix elements are complex numbers.
 The inversion of this matrix gives the propagator of a single flavour for a given Gauge configuration.
@@ -1641,7 +1724,13 @@ To summarize, the path to evaluate the correlators is:
     \item [$\triangleright$] For each noise spinor evaluate the quantites $\zeta^{(i,\pm)}_j$ and $\xi^{(i,\pm)}_{j,X}$ needed.
     \item [$\triangleright$] Evaluate the correlators and evaluate the noise average.
     \item [$\triangleright$] Iterate the procedure and calculate the sea average.
+    \item [$\triangleright$] At the end, the simulation program gives back the correlator $G_d+G_c$.
 \end{itemize}
+Let's look at the {\bf computational advantage}.
+Each time I compute the quantities $\xi^{(i,\pm)}_{j,X}$ of $\zeta^{(i,\pm)}_j$ I'm {\it not} evaluating the inverse of a matrix in $\text{Mat}(N\x N, \mathbb{R})$, but the inverse of a spinor for each lattice position $x\in \Lambda$.
+Then the needed computational resources are decreased and the simulation algorithms results improved.
+Furthermore, I need only $4\cdot N_\text{noise} \cdot N_\text{noise}$ inversion of this kind for each three points correlator.
+Then, for a reasonable choise of $N_\text{noise}$ and number of correlators\footnote{in practice, almost always.}, the advantage is succesfully achieved.
 
 \section{Computational Basis}
 \noindent
@@ -1676,10 +1765,10 @@ As usual, through them I recover the operators $O_{i,[+]}^\text{tw}$.
 Each of the new operators has the form:
 $$\Psi_i = \bar\psi_1 \Gamma_D \psi_2 \cdot \bar\psi_3 \Gamma_B \psi_4 + \bar\psi_1 \Gamma_B \psi_4 \cdot \bar\psi_3 \Gamma_D \psi_2$$
 that {\it is} a flavour exchange $1 \leftrightarrow 3$ and {\it not} $2 \leftrightarrow 4$.
-Thus I directly evaluate this correlators:
+Thus I directly evaluate this kind of correlator $\forall i$:
 $$\bigg\langle \bar K'^0(x) \Psi_i (y) K^0(z) \bigg\rangle \sim \bigg\langle \left(\bar\psi_4 \Gamma_A \psi_3 \right) (x) \Psi_i (y) \left(\bar\psi_2 \Gamma_C \psi_1 \right) (z) \bigg\rangle$$
 and it can be verified that it gives exactly the contractions $G_c + G_d$ of Figure \ref{fig:contractions-stochastic-method}.
-With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. are {\it similar} from a computational point of view.
+With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 
 
 
@@ -1772,7 +1861,8 @@ The variable change:
     \mathcal{D}\chi \hspace*{0.5mm} \mathcal{D}\overline{\chi} \mapsto \mathcal{D}\psi \hspace*{0.5mm} \mathcal{D}\overline{\psi}
 \end{equation*}
 it is not anomalous\footnote{i.e. it does not introduce measure anomalies}.
-Moreover, the Jacobian is the identity.
+Moreover, the Jacobian is a constant $\mathbf{T}^2(\alpha)$.
+Since a constant doesn't affect the observables expectation values, I state - with abuse of this term - that the Jacobian is the identity.
 Next, I present the main result of this section: for a field-dependent observable $\mathcal{X}$, its expected value in both formulations coincides:
 \begin{equation*}
     \la \mathcal{X} [\chi, \overline{\chi}, U] \ra_{(M_q,0)} = \la \mathcal{X}' [\psi, \overline{\psi}, U] \ra_{(m,\mu_q)}
@@ -2015,16 +2105,31 @@ The parity even and parity odd parts are respectively:
         & \Theta_5^{[+]} = \frac{1}{2}\bigl(AA-VV\bigr) &  \Theta_5^{[-]} = \frac{1}{2}\bigl(AV-VA\bigr) \hspace*{1.25cm}  \\
     \end{aligned}
 \end{equation*}
-It is usual to \colr{redefine (sarà vero?)} the parity odd parts with a minus sign:
-\begin{equation*}
-    \Theta_3^{[-]} = \frac{1}{2}\bigl(PS+SP-\tilde{T}T\bigr) \qquad \Theta_5^{[-]} = \frac{1}{2}\bigl(VA-AV\bigr)
-\end{equation*}
+%It is usual to \colr{redefine (sarà vero?)} the parity odd parts with a minus sign:
+%\begin{equation*}
+%    \Theta_3^{[-]} = \frac{1}{2}\bigl(PS+SP-\tilde{T}T\bigr) \qquad \Theta_5^{[-]} = \frac{1}{2}\bigl(VA-AV\bigr)
+%\end{equation*}
 
 \chapter{Some proofs}\label{app:proofs}
 \noindent
 In this supplementary chapter, I aim to provide proofs for certain aspects that were not covered in the main thesis chapters.
 
-\section{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real:}\label{sec:reality}
+%\section{Proof of the measure invariance under twist}
+%\noindent
+%I want to prove that a twist transformation à la Osterwalder-Seiler or à la Twisted Mass has Jacobian equal to identity.
+%In the following proof I choose an OS twist because it automatically implies the Twisted Mass case.
+%\newline
+%The twist transformation $\mathbf{J}(\alpha,r)$ has no dependence on the spacetime point $x$ or on the fields.
+%Then:
+%\begin{equation*}
+%    \mathcal{D} \psi_i \mathcal{D} \bar\psi_i = \mathbf{J}^2(\alpha,r) \mathcal{D} \chi_i \mathcal{D} \bar\chi_i
+%\end{equation*}
+%So the Jacobian is $\mathbf{J}^2(\alpha,r) = \mathbf{J}(2\alpha,r)$, but it is a constant.
+%Then, in the average of some observable $\mathcal{X}$ it simplifies with the term arising form $\mathcal{Z}$.
+%Therefore I can state that the Jacobian {\it is} the identity, in the sense that it is a constant.
+%Since this relation holds separately for each single flavour $i$, it holds also for two flavours in tmQCD.
+
+\section{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real:}\label{app:proof-reality}
 \noindent
 Based on the Goldstone theorem \cite{Goldstone-Theorem} there exist pseudoscalar single particle states $| \phi^a (\vec p) \ra$ (Nambu Goldstone bosons) and corresponding local operators $\phi^a(x)$ that interpolate these states in a simple manner, expressed as $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
 In this case I will use $|\phi^a(\vec p)\ra = | K^0 (\vec 0)\ra \equiv | K^0 \ra$.
@@ -2055,7 +2160,7 @@ The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
 \section{Proof of $\gamma_5 S_{(i,\pm)} (u,v) \gamma_5 = S_{(i,\mp)}^\dag (v,u)$}\label{app:proof-G5-DW}
 \noindent
 The starting point is a well known property of the Dirac-Wilson operator $D_W$: $\gamma_5 D_W(x,y) \gamma_5 = D_W^\dag(y,z)$.
-The bilinear operator of the Ostervalder-Seiler theory is $D_W \pm i\gamma_5 \mu$, and the quark propagator is just its inverse:
+The bilinear operator of the Osterwalder-Seiler theory is $D_W \pm i\gamma_5 \mu$, and the quark propagator is just its inverse:
 \begin{equation*}
     \sum_z \left(D_W \pm i\gamma_5 \mu\right) (x,z) S_{(\pm)} (z,y) = \delta^{(4)}_{xy}
 \end{equation*}
@@ -2072,7 +2177,47 @@ As a consequence:
 \end{equation*}
 The term $\gamma_5 S_{(\pm)} (z,y) \gamma_5$ it is clearly $S_{(\mp)}^\dag (y,z)$ for definition.
 \proved
-
+\section{Proof of connection of Gauge fields space}\label{app:connection}
+\noindent
+The proof of the connection of the $SU(3)$ Gauge field space is reported below and taken from \cite{OBC_top}.
+The proof is based on the continuum theory.
+Because of the mentioned theorem in \cite{Topology-WilsonFlow-HMC}, for $a \rightarrow 0$ the lattice space of Gauge fields tends to have the same topological connection properties of the one described below.
+\newline\newline
+\textit{$(*)$ proof:}
+\newline
+It is well known that Gauge potentials $A_\mu (x)$ can be described as $\text{End}(E)-$valued 1-forms, where $E$ is the $G-$bundle over a smooth manifold $M$ \cite{Baez}.
+In this case $M$ is the manifold obtained from the following product of spaces: $M = [0,T]\times \mathbb{T}^3$ and $\mathbb{T}^3$ is the three dimensional torus, topologically equivalent to the space $[0,L]\x[0,L]\x[0,L]$ with periodic boundary conditions.
+\newline
+In the paper by Luscher \cite{OBC_top} there is an interesting statement: ``since $M$ is contractible to a three dimensional torus, all $SU(3)$ principal bundles oer $M$ are trivializable''.
+And a dircet consequence of this {\it global} trivialization is that Gauge fields are globally defined over all the manifold $M$.
+\newline
+At this point, the proof is essetially complete.
+I need to check that, given two Gauge fields $A_\mu^{(1)}$ and $A_\mu^{(2)}$, there exists always a smooth path in the fields space which connects them.
+The proof is divided in three pieces:
+\newline
+\newline
+$(i)$ \textit{Each $A_\mu$ can be constinously deformed to an other ${A}_\mu'$ in temporal Gauge.}
+\newline
+It is defined a family of Gauge transformations $\Lambda_s (x), s\in [0,1]$ satisfying the following conditions:
+$$\left(\partial_4 + sA_4 (x)\right) \Lambda_s^{-1} (x) = 0$$
+$$\Lambda_0 (x) \big|_{x_4 = 0} = \mathbb{I}_3$$
+I apply the Gauge transformation to a generic $A_\mu (x)$ that satisfies \obc.
+I need to prove that the transformed field $A_\mu^s (x)$ satisfies the temporal gauge and the \obc\space again.
+\begin{equation*}
+    A_\mu^s (x) = \Lambda_s (x) A_\mu (x) \Lambda_s^{-1} (x) + \Lambda_s (x) \partial_\mu \Lambda_s^{-1} (x) 
+\end{equation*}
+\begin{itemize}
+    \item Temporal Gauge in $s=1$: $$A_4^0 (x) = \Lambda_1 (x) A_4 (x) \Lambda_1^{-1} (x) - \Lambda_1 (x) A_4 (x) \Lambda_1^{-1} (x) = 0$$
+    \item \obc\space $\forall s \in [0,1]$: I must re-evaluate the strength tensor and use the property of $\Lambda_s (\vec x, x_4 = 0)$.
+        There are a lot of calculations not reported here, but it is checked.
+\end{itemize}
+$(ii)$ \textit{Each $A_\mu$ in temporal Gauge can be contracted to the null Gauge field $A_\mu = 0$.}
+\newline
+This part of the proof is trivia: $A_\mu^s = s\cdot A_\mu$
+\newline\newline
+At this point it is proved that each $A_\mu$ satisfying \obc\space can be smoothly contracted to the null potential.
+Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ are connected.
+\proved
 
 
 \backmatter
