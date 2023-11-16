@@ -2208,15 +2208,17 @@ I need to prove that the transformed field $A_\mu^s (x)$ satisfies the temporal 
 \end{equation*}
 \begin{itemize}
     \item Temporal Gauge in $s=1$: $$A_4^0 (x) = \Lambda_1 (x) A_4 (x) \Lambda_1^{-1} (x) - \Lambda_1 (x) A_4 (x) \Lambda_1^{-1} (x) = 0$$
-    \item \obc\space $\forall s \in [0,1]$: I must re-evaluate the strength tensor and use the property of $\Lambda_s (\vec x, x_4 = 0)$.
-        There are a lot of calculations not reported here, but it is checked.
+    \item \obc\space $\forall s \in [0,1]$: I perfectly know how the strength tensor transforms under Gauge transformations:
+        $$F_{\mu\nu} (x) \mapsto F_{\mu\nu}^s (x) = \Lambda_s (x) F_{\mu\nu} (x) \Lambda_s^{-1} (x) $$
+        Then it is trivial to assert that $F_{0i}^s (\vec x, 0) = F_{0i}^s (\vec x, T) = 0$.
+        The transformed fields satify \obc.
 \end{itemize}
 $(ii)$ \textit{Each $A_\mu$ in temporal Gauge can be contracted to the null Gauge field $A_\mu = 0$.}
 \newline
-This part of the proof is trivia: $A_\mu^s = s\cdot A_\mu$
+This part of the proof is trivial: I choose te path $A_\mu^s = s\cdot A_\mu$
 \newline\newline
 At this point it is proved that each $A_\mu$ satisfying \obc\space can be smoothly contracted to the null potential.
-Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ are connected.
+Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ satisfying \obc\space are connected in the fields space.
 \proved
 
 
