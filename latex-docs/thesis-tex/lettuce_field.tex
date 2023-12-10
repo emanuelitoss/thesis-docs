@@ -554,10 +554,12 @@ A shortlist of the regularizations described could be useful to clarify the gene
         It is a term to be addded to Wilson-Dirac fermion action to get the \oait\space of the theory.
         It will also be useful for other reasons explained at the end of the chapter.
     \item [$\triangleright$] The subsection \ref{subsec:zero-modes} will describe the problem of zero modes related to the Wilson Dirac action.
-    \item [$\triangleright$] The \textit{twisted mass QCD} (tmQCD) and \textit{Maximally twisted mass QCD} (MtmQCD) described respectively in \ref{sec:tmLQCD} and \ref{sec:max-twist} are introduced to solve the problem of zero-modes.
+        Moreover it introduces the issue of explicit chiral symmetry breaking on the lattice.
+    \item [$\triangleright$] The \textit{twisted mass QCD} (tmQCD) and \textit{Maximally twisted mass QCD} (MtmQCD), described in \ref{sec:tmLQCD}, are introduced to solve the problem of zero-modes.
         MtmQCD is a special case of tmQCD. Moreover MtmQCD has the property to be an \oaid\space action.
     \item [$\triangleright$] Despite the powerful properties of tmQCD, it is not used in this work\footnote{In section \ref{sec:obc} it will be clear how the tmQCD is not necessary: its properties are achieved in other ways.} but it is replaced by the \textit{Osterwalder-Seiler action}, very similar to it.
         In some particular cases OS action \textit{coincides} with tmQCD.
+        This regularization is described in \ref{sec:OS-regularization}.
     \item [$\triangleright$] In section \ref{sec:ghosts} I introduce some bosonic ghost fields needed to well simulate valence quarks.
 \end{itemize}
 
@@ -704,26 +706,8 @@ Then it is defined a lattice action of the form:
     S_\text{tm}[\psi,\bar \psi, U] = a^4 \sum_{x,y} \bar \psi(x) \left( D_{xy} + m \delta_{xy} + i \mu_q \gamma_5 \sigma^3 \delta_{xy} \right) \psi (y)
 \end{equation}
 with $D$ the massless Wilson-Dirac operator and $\mu_q$ the {\it twisted mass} term.
-By applying a transformation (\ref{eq:twist}) the differential operator $D$ is changed (see Appendix \ref{app:physical-basis}), while the mass terms preserve their form up to a redefinition of terms:
-\begin{equation}\label{eq:new-masses}
-    \begin{aligned}
-        & m' = m \cos (\alpha) + \mu_q \sin (\alpha) \\
-        & \mu_q' = - m \sin (\alpha) + \mu_q \cos (\alpha)
-    \end{aligned}
-\end{equation}
-It is straightforward to guess that particular choices for $\alpha$ there exist. 
-For example, $\alpha = \arctan (\mu_q/m)$ makes the twisted mass $\mu_q'$ vanish, while $\alpha = \pm \pi/2$ gives the so called {\it Maximal Twist} described below in \ref{sec:max-twist}. 
-The latter choice is particularly relevant because it implies an automatic \oait, as we will see below.
-In presence of a twisted mass term in the action, the PCAC and PCVC relations are modified by additive terms \cite{tmLQCD}:
-\begin{equation*}
-    \begin{aligned}
-        & \partial_\mu A_\mu^a = 2mP^a + i \mu_q \delta^{3a} S^0 \\
-        & \partial_\mu V_\mu^a = - 2\mu_q \epsilon^{3ab}P^b
-    \end{aligned}
-\end{equation*}
-with $S^0 = \bar \psi \psi$ and $P^a = \bar \psi \gamma_5 \frac{\sigma^a}{2} \psi$.
-\newline
-It is important to underline that in principle the twisted mass term $\mu_q$ has no direct physical meaning.\footnote{I will explain later how to relate $\mu_q$ to a physical parameter.}
+It is important to underline that in this form, the action \ref{eq:tmQCD-action} it is not yet a good regularization because its continuum limit does not coincide with usual QCD.
+In fact, in principle the twisted mass term $\mu_q$ has no direct physical meaning.\footnote{I will explain later how to relate $\mu_q$ to a physical parameter.}
 Its presence is just a mathematical trick to modify the fermion determinant in such a way that fermion modes exhibit a positive lower bound:
 \begin{equation*}
     \begin{aligned}
@@ -740,13 +724,24 @@ Since the matrix $(D+m)(D+m)^\dagger$ is hermitian and positive definite, it has
 One remarkable argument is the need of two degenerate flavours with different twisted mass signs.
 Then the implementation of a single flavour - e.g. the {\it strange} quark - is not possible.\footnote{In fact, the current sea configurations with $u,d,s$ quarks do not use tmQCD but solve the null determinant problem through the \obc.}
 \newline
+By applying a transformation (\ref{eq:twist}) the differential operator $D$ is changed (see Appendix \ref{app:physical-basis}), while the mass terms preserve their form up to a redefinition of terms:
+\begin{equation}\label{eq:new-masses}
+    \begin{aligned}
+        & m' = m \cos (\alpha) + \mu_q \sin (\alpha) \\
+        & \mu_q' = - m \sin (\alpha) + \mu_q \cos (\alpha)
+    \end{aligned}
+\end{equation}
+It is straightforward to guess that particular choices for $\alpha$ there exist. 
+For example, $\alpha = \arctan (\mu_q/m)$ makes the twisted mass $\mu_q'$ vanish, while $\alpha = \pm \pi/2$ gives the so called {\it Maximal Twist} described below. 
+The latter choice is particularly relevant because it implies an automatic \oait, as we will see below.
+\newline
 In principle there are no reasons to introduce a finite non physical term $\mu_q$ in the action.
 In fact the tmQCD action (\ref{eq:tmQCD-action}) has not the right continuum limit to be a ``well defined'' action, but there exists an excamotage to make it useful.
 Through a transformation (\ref{eq:twist}) it is possible to define an other fermion basis, named \textit{physical basis} $\{\chi, \bar\chi\}$, rotated with respect to the \textit{twisted basis} $\{\psi, \bar\psi\}$ that gives the tmQCD.
 In Appendix \ref{app:physical-basis} it is shown how this change of variables affects the action and how this tends - in the continuum limit $a\rightarrow 0$ - to the standard QCD action.
 Because of the variables change $\{\chi, \bar\chi\} \leftrightarrow \{\psi, \bar\psi\}$ the new action mass parameters $(m,\mu_q)$ are subjected to (\ref{eq:new-masses}).
 The new \textit{physical} mass term is defined by $M_q = \sqrt{m^2 + \mu_q ^2}$ while the new twisted mass term vanishes: the twist transformation (\ref{eq:twist}) ``brings'' a fraction of $M_q$ into the twisted mass according to $\alpha$ and viceversa.
-Then the term $M_q$ is the ``true'' mass term of the continuum theory, while $m$ and $\mu_q$ are just its \textit{polar components}.
+Then the term $M_q$ is the ``true'' mass term of lattice theory, while $m$ and $\mu_q$ are just its \textit{polar components}.
 Then a good definition of twisted mass lattice QCD is achieved by following this path:
 \begin{equation*}
     \begin{gathered}
@@ -754,7 +749,8 @@ Then a good definition of twisted mass lattice QCD is achieved by following this
         \downarrow \\
         \text{Discretize the action in the } physical \text{ basis } \{\chi,\overline{\chi}\} \text{ described in Appendix \ref{app:physical-basis}} \\
         \downarrow  \\
-        \text{Rotate the } physical \text{ basis in the } twisted \text{ basis } \{\psi,\overline{\psi}\} \text{ defined in (\ref{eq:tmQCD-action})} \\
+        \text{Rotate the } physical \text{ basis in the } twisted \text{ basis } \{\psi,\overline{\psi}\} \text{.} \\
+        \text{You will obtain the action defined in (\ref{eq:tmQCD-action})} \\
         \downarrow \\
         \text{Modify observables definition according to the twist}\\
         \text{rotation } \mathbf{T}(\alpha)  \text{ applied in the basis change}\\
@@ -764,14 +760,15 @@ Then a good definition of twisted mass lattice QCD is achieved by following this
 \end{equation*}
 \noindent
 The fourth step is an essential point in the evaluation of correlators in tmQCD.
-Details about it are reported in Appendix \ref{app:physical-basis}.
+Details about it are reported in Appendix \ref{app:physical-basis} and a wide use of it is into the next Chapter.
 Let's consider an example in the case of maximal twist ($\alpha = \pm\pi/2$):
 \begin{equation*}
     A_\mu^{1,\text{phys}} \quad \xrightarrow{\mathbf{T}(\alpha = \pm\pi/2)} \quad \left( \cos (\alpha) A_\mu^{1,\text{tw}} + \sin (\alpha) V_\mu^{2,\text{tw}}\right)\bigg|_{\alpha = \pm\pi/2} = \pm V_\mu^{2,\text{tm}}
 \end{equation*}
 where the superscript ``phys'' means that the physical basis $\{\chi,\bar \chi\}$ it is used. Similarly for the superscript ``tm'' and the basis $\{\psi,\bar\psi\}$.
+The integer superscripts $1,2$ refers to the generators of $SU(2)_F$.
 
-\subsection{Maximal Twist (MtmQCD) and \oait}\label{sec:max-twist}
+\subsubsection*{Maximal Twist (MtmQCD) and \oait}
 \noindent
 Twisted mass QCD was first introduced to solve the problem of exceptional configurations and the zero modes of Wilson-Dirac operator $D$.
 Nevertheless its feature to be \oaid\space at maximal twist is equally - or more - relevant.
@@ -837,24 +834,25 @@ The actions in the two basis - at maximal twist $\alpha = \pi/2$ - are:
     \end{aligned}
 \end{equation*}
 Now I want to give an interpretation of these actions with respect to the tmQCD case.
-Consider an isospin degenerate doublet $\chi = (q_1, q_2)$.
-In the case of tmQCD the flavours $q_1$ and $q_2$ are subject to rotation (\ref{eq:twist}), then the first flavour rotate of an angle $\alpha$ while the latter of $-\alpha$.
+Consider an isospin degenerate doublet $\chi = (f_1, f_2)$.
+In the case of tmQCD the flavours $f_1$ and $f_2$ are subject to rotation (\ref{eq:twist}), then the first flavour rotate of an angle $\alpha$ while the latter of $-\alpha$ because of the presence of $\sigma_3$.
 In the case of OS twist (\ref{eq:twistOS}) each flavour rotates independently.
-Obviously by taking the two falvours $q_1$ and $q_2$ with equal masses and rotations respectively $\pm \alpha$, the tmQCD is recovered.
+Obviously by taking the two falvours $f_1$ and $f_2$ with equal masses and rotations respectively $\pm \alpha$, the tmQCD is recovered.
 An other way to recover tmQCD is to choose the same rotation angle $\alpha = \pi/2$ and $r_1 = - r_2$.
 \newline
 As in tmQCD, the change of basis $\{f,\bar f\} \leftrightarrow \{q,\bar q\}$ leaves the expectation value of an observable $\mathcal{X}$ unchanged.
 \begin{equation*}
     \la \mathcal{X}[f,\bar f]\ra_{(M_q,0)} = \la \mathcal{X}[\mathbf{J}(\alpha, r) q,\bar q\mathbf{J}(\alpha, r)]\ra_{(m_q,\mu_q)} = \la \mathcal{X}^\text{tw}_{OS}[q,\bar q]\ra_{(m_q,\mu_q)}
 \end{equation*}
-To be completely coherent in the basis change, one must (OS) twist also the observable $\mathcal{X} \mapsto \mathcal{X}^\text{tw}_{OS}$.
-The basis change and the operators change are described in Appendix \ref{app:physical-basis}.
-Notice the subscripts $(M_q,0)$ and $(m_q,\mu_q)$.
-This implicitly means that the mass parameters transformation (\ref{eq:new-masses}) is still valid in Osterwalder-Seiler regularization.
+To be coherent in the basis change, one must (OS) twist also the observable $\mathcal{X} \mapsto \mathcal{X}^\text{tw}_{OS}$.
+The basis change and the operators change ($P,S,A_\mu,V_\mu,T_{\mu\nu},\tilde{T}_{\mu\nu}$) are described in Appendix \ref{app:physical-basis}.
+Notice the subscripts $(M_q,0)$ and $(m_q,\mu_q)$: they explicitly define action parameters.
+Such parameters transforms according to equations (\ref{eq:new-masses}), formulae used in the tmQCD case.
 \newline
 Clearly the proof in section \ref{sec:tmLQCD} about the positivity of fermion determinant, in general, is no more valid.
-Regarding the positivity of $\text{det}(D)$, \obc\space solve this problem.
+\obc\space will solve this problem.
 Moreover I will explain in Section \ref{sec:operators-properties} how \oait\space is recovered with OS fermions, thanks to the strategy worked out by R. Frezzotti and G. C. Rossi \cite{FR2}.
+In such a way tmQCD is no longer necessary.
 
 \section{Sea and valence: bosonic ghosts}\label{sec:ghosts}
 \noindent
@@ -1120,7 +1118,7 @@ At this stage, it should be clear why sea quark action (\ref{eq:sea-action}) doe
 Hence the same attributes of tmQCD are achieved, albeit through different ways.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIRD CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Operators $\Theta_i^{[+]}$s on the lattice and amplitudes extraction}\label{ch:operators}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter outlined the general framework of lattice QCD, paying particular attention to the regularizations employed in the present work.
@@ -1629,7 +1627,7 @@ I can use either $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$ or $G_{K^0 \bar K^0}^\tex
 For simplicity, in this work I will use $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIFTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Computational Strategies}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{L}{}\colv{'introduzione al capitolo deve essere ancora scritta. Lo farò quando il capitolo sarà completo.}
@@ -1827,21 +1825,24 @@ and it can be verified that it gives exactly the contractions $G_c + G_d$ of Fig
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 
 \newpage
-\section{\colv{Qui posso inserire i check fatti e il metodo di analisi dati implementato}}
+\section{\colv{Metodo di analisi dati implementato}}
 \noindent
 \colg{
     Metodo di analisi dati che ho in mente:
     \begin{enumerate}
         \item Calcolo i correlatori a 2 punti.
             Avrò $z_4 = 1$ e tutte le $x_4$ possibili fino a $N_T-1$.
-            Dovrebbe andare come un seno iperbolico $\sim \sinh\left(m_K (T-x_4)\right)$.
-        \item Per i correlatori a due punti cerco di capire quali sono le regioni in cui ho solamente il contributo asintotico dello stato più leggero.
-            Questo mi darà un senso della distanza sorgente-interazione $|x_4-z_4|$ necessaria per eliminare gli altri contributi.
-        \item Faccio lo stesso per i correlatori a 3 punti. Stavolta però fisso $z_4 = 1$ e faccio una marea di run per ogni $x_4$ maggiore del {\bf doppio} di tale distanza minima (punto precedente) fino ad arrivare a $x_4 = N_T -1$.
-        \item Poi prendo un set delle tre punti con $x_4$ fissato e cerco il plateau per $x_4 - y_4$ e $y_4-z_4$ maggiori del limite di contributi non nulli.
-        \item Calcolo tale plateau e lo divido per la due punti fino con $x_4 - z_4$. Ho ottenuto il valore dell'elemento di matrice.
-        \item Calcolo tale elemento di matrice al variare delle $x_4$ e dovrebbe venire sempre costante (a meno di contributi superiori da stati più pesanti).
+            Dovrebbe comportarsi come un seno iperbolico $\propto \sinh\left(m_K (T-x_4)\right)$.
+        \item Riguardo i correlatori a due punti: cerco di capire quali sono le regioni in cui ho solamente il contributo asintotico dello stato più leggero.
+            Questo mi darà un senso della distanza sorgente-interazione $\delta_4 = |x_4-z_4|$ necessaria per eliminare gli altri contributi (come farlo? ancora non lo so).
+        \item Faccio lo stesso per i correlatori a 3 punti.
+            Mi ricordo che devo prima passare dalla base $\Psi_i$ alla base $O_i$.
+            Stavolta però fisso $z_4 = 1$ e faccio tutti i run per ogni $x_4$ maggiore del {\bf doppio} di tale distanza minima, cioè $2\delta_4$, fino ad arrivare a $x_4 = N_T -1$.
+        \item Poi prendo un set delle tre punti con $x_4$ fissato e cerco il plateau utilizzando solo la regione in cui $x_4 - y_4 > \delta_4$ e $y_4-z_4 > \delta_4$. Questo mi darà un unico valore del correlatore una volta fissate $x_4$ e $z_4$.
+        \item Prendo il numero precedente e lo divido per la due punti con $x_4$ e $z_4$. Ho ottenuto il valore dell'elemento di matrice con $x_4$ e $z_4$ fissati.
+        \item Calcolo tale elemento di matrice al variare delle $x_4$ (visto che ho sempre $z_4=a$) e dovrebbe venire sempre costante (a meno di contributi superiori da stati più pesanti).
         \item Ricalcolo il plateau di questo nuovo grafico e questo rappresenta {\bf la miglior stima che ho dell'elemento di matrice} dell'operatore.
+        \item Faccio questa cosa per tutti gli operatori. Poi ci sarebbe la rinormalizzaione, che è off-topic.
     \end{enumerate}
 }
 
@@ -1923,14 +1924,14 @@ The key steps to establish this are:
 \end{enumerate}
 The new set of variables $\{\chi,\bar\chi\}$ is referred to as the {\it physical} basis because it doesn't involve the (unphysical) term $\mu_q$.
 In other words, the mass is entirely transformed and encapsulated in $M_q = \sqrt{m^2+\mu_q^2}$.
-The twist rotation only impacts the Wilson term, which undergoes modification. 
-Despite this, it's understood that the Wilson term vanishes in the continuum limit.
+The twist rotation modifies the Wilson term, which undergoes modification. 
+Despite this, it is known \cite{montvay-munster} that the Wilson term vanishes in the continuum limit.
 Consequently, the action (\ref{eq:physical-action}) tends towards the physical continuum action.
 Thus, it represents the ``true'' discretization of the continuum theory, while the twisted action defined in (\ref{eq:tmQCD-action}) is the modified action.
 \newline
 The link between the two actions lies in the twist rotation of fermion fields.
 I will demonstrate that an expectation value can be computed in both theories.
-It's important to bear in mind that the framework in which the theory is applied is the functional integral formalism, so we must pay attention to the integration measure.
+It's important to keep in mind that the framework in which the theory is applied is the functional integral formalism, so we must pay attention to the integration measure.
 The variable change:
 \begin{equation*}
     \mathcal{D}\chi \hspace*{0.5mm} \mathcal{D}\overline{\chi} \mapsto \mathcal{D}\psi \hspace*{0.5mm} \mathcal{D}\overline{\psi}
@@ -2026,8 +2027,8 @@ In this scenario as well, masses are rotated, and formula (\ref{eq:new-masses}) 
 I can then use (\ref{eq:OSbasischange}) to express some observables in the twisted basis at maximal twist $\alpha = \pi/2$.
 I will consider two different cases:
 \begin{enumerate}
-    \item Observables of the form $\bar f_1 \Gamma f_2$ in which the Wilson parameters are equal $r_1 = r_2 = \pm 1$.
-    \item Observables of the same form, but Wilson parameters are of opposite sign and modulo 1: $r_1 = -r_2 = \pm 1$.
+    \item Observables of the form $\bar f_1 \Gamma f_2$ in which the Wilson parameters are equal and absolute value 1 $r_1 = r_2 = \pm 1$.
+    \item Observables of the same form, but Wilson parameters are of opposite sign and absolute value 1: $r_1 = -r_2 = \pm 1$.
 \end{enumerate}
 Let's introduce with some definitions, applicable in both cases:
 \begin{itemize}
