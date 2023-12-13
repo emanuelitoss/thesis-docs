@@ -25,8 +25,8 @@ caricati su GitHub ma sotto una nuova repo, che stavolta è pubblica.
 Per maggiori info leggere il readme di questa cartella.
 
 #### latex-docs:
-Contiene tutto ciò che è scritto in LaTex. L'unica sotto-cartella che è caricata online
-è quella della tesi magistrale.
+Contiene tutto ciò che è scritto in LaTex e le immagini allegate.
+È caricato su GitHub anche più del necessario.
 
 #### tm_heavy_physics:
 Cartella fornita all'inizio del lavoro di testi dal Prof. M. L. Papinutto.
