@@ -1,15 +1,40 @@
-ESAME FINALE:
+#########################################################################################
+
+	Burocrazia per laurearsi senza imprevisti molto rognosi
+
+#########################################################################################
+
+Sul sito del Dipartimento di Fisica - esame finale:
 https://www.phys.uniroma1.it/fisica/didattica/laurea-magistrale-esame_finale
-Marco Dante: Segreteria Didattica - stanza n. 005.
 
-MODULO_MAGISTRALE_ASSEGNAZ_AGGIORNATO.docx >> da consegnare a marco.dante@uniroma1.it
+Boss delle lauree: Segreteria Didattica, Marco Dante - stanza n. 005 - marco.dante@uniroma1.it
 
-tirocinio_dichiarazione_01.pdf >> da dare 3 mesi dopo l'assegnazione della Tesi a marco.dante@uniroma1.it
+### Lista delle cose da fare e consegnare:
 
-Almeno 60 giorni prima della data di inizio dell'appello di laurea lo studente dovrà inoltrare domanda, esclusivamente tramite apposita procedura on-line, alla Segreteria Amministrativa Studenti della Facoltà di Scienze Matematiche Fisiche e Naturali. >> vedi promemoria_laureandi_scmmffnn.pdf
+(V) MODULO_MAGISTRALE_ASSEGNAZ_AGGIORNATO.docx >> da consegnare a marco.dante@uniroma1.it
 
-Almeno 20 giorni prima > vedi cartella > a marco dante
+(V) tirocinio_dichiarazione_01.pdf >> da dare 3 mesi dopo l'assegnazione della Tesi a marco.dante@uniroma1.it
 
+(V) Domanda di Laurea Online, almeno 60gg prima dell'appello, vedi 'promemoria_laureandi_scmmffnn.pdf'
+
+Almeno 20 giorni prima, a:
+
+marco.dante@uniroma1.it >
+(X) Trattamento dei dati personali
+(X) Modulo per la designazione del controrelatore
+(X) Riassunto dell'elaborato
+(X) Una copia pdf della Tesi (possibile solo online)
+
+antonella.cotugno@uniroma1.it >
+(X) NUllaosta/modulo di prenotazione
+
+Entro le 23:59 del 2/01
+(X) Upload della Tesi su infostud
+
+Entro il 5/01/24 h 14:00
+(X) Copia cartacea della tesi in stanza 005 firmata da studente e relatore
+
+NOTA: i giorni 8,15 Gennaio l'ufficio è chiuso.
 __________________________________________________________________________________________
 
 Regole votazione: (11/3) x [media-esami*(75/120) + (V_relatore+V_controrel)/2*(45/120)] + v_presentazione + bonus 
