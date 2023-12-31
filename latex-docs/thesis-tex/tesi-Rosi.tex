@@ -1095,13 +1095,13 @@ The best compromise between computational advantage and physical content seems t
 Therefore, the key question arises: \textit{How can we simulate $N_f = 2+1$ sea flavours while avoiding the Dirac-Wilson zero modes?}
 It is precisely at this point that \obc\space emerge as a powerful alternative to twisted mass QCD. 
 In fact the use of OBC in the quark fields
-\begin{equation*}
+\begin{equation}\label{eq:obc-on-fermions}
     \begin{aligned}
         & P_+ \psi (\vec x, 0) = P_- \psi (\vec x, T) = 0 \\
         & \bar\psi (\vec x, 0) P_- = \bar\psi (\vec x, T) P_+ = 0 
     \end{aligned}
     \quad\quad P_{\pm} = \frac{1}{2}\left(\mathbb{I} \pm \gamma_5 \right)
-\end{equation*}
+\end{equation}
 protects the theory from zero modes of th Wislon-Dirac operator.
 The proof is reported in a paper by S. Luscher \cite{SF-luscher}, one of the creators of the \obc.
 \newline
@@ -1822,13 +1822,14 @@ With the symbol $\sim$ I refer to the fact that the two correlators have the sam
 \newpage
 \section{Analysis strategy}
 \noindent
-This section gives an overview about the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$.
-Once recovered them for different lattice spacings $a$, a fit in the continuum limit $a\rightarrow 0$ will give the best estimate of $\mathcal{A}_i^\text{QCD}$.
+This section gives an overview about the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method of asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
+Once recovered them at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical amplitudes $\mathcal{A}_i^\text{QCD}$.
 The analysis is divided in some steps, that I briefly report below.
+This analysis strategy holds for all the data generated from Gauge configurations with open boundary conditions, involving CLS ensembles.
 
-\subsubsection*{First step: determination of asymptotic distance $\delta_4$}
+\subsubsection*{First step: determination of minimal asymptotic distance $\delta_4$}
 \noindent
-In order to perform the calculation:
+In order to perform the calculation in \ref{eq:matrix-elements-extraction}:
 \begin{equation*}
     \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
 \end{equation*}
@@ -1836,28 +1837,30 @@ I need the values of such two points and three points correlators in the tempora
 In other words, I need to quantify the minimum value of $\delta_4 = |x_4-y_4|$ such that the exponentials $e^{-\delta_4 m_i}$ - for $m_i > m_K$ - are {\it sufficiently} suppressed with respect to the first level contribution $e^{-\delta_4 m_K}$.
 To estimate it, I make use of two points correaltors.
 From \cite{OBC-tm} I know that, in the asymptotic regime\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last sinh dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
-$$ G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \approx \frac{\sinh \left( m_K (T - x_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - x_4) \right)$$
-In the last equality I fixed $z_4 = a$, option valid in the entire simulation.
+\begin{equation}\label{eq:sinh}
+    G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \approx \frac{\sinh \left( m_K (T - x_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - x_4) \right)
+\end{equation}
+In the last equality I fixed $z_4 = a$, choice valid in the entire simulation.
 I fix $z_4 = 1$ and run the simulation for all the $x_4 \in (z_4+a,T-a)$.
-The option $x_4 = T$ will not produce physical results because of open boundary conditions.
+The case $x_4 = T$ will not produce physical results because of open boundary conditions on fermion fields.
 The strategy consists in performing a fit of the hyperbolic sine in different regions of the space.
-I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the the fit is satisfactory - i.e. a good value of $\chi^2$.
+I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the the fit is satisfactory - i.e. a good value of $\chi^2$ \footnote{\colr{Devo ancora capire se possa andar bene questo metodo o se è troppo approssimativo}}.
 The first satisfactory region gives the value of $\delta_4$: $[\delta_4, T-\delta_4]$.
-At this point I have both determined $m_K$ as a parameter and the {\it minimal asymptotic distance} $\delta_4$.
+At this point I have both determined $m_K$ as a parameter and the ``minimal asymptotic distance'' $\delta_4$.
 In this region I also have the values of $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4=a) = \hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)$ subject to a well defined asymptotic expansion.
-I denote them with the $hat$ identifier to underline that thes data are the only I can use to recover the wanted amplitudes.
+I denote them with the {\it hat} identifier to stress that these data are the ones to be used to recover the wanted amplitudes.
 
 \subsubsection*{Second step: plateau region of three points correaltors}
 \noindent
 At this point I am ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
-I take a set of correaltors with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $[z_4,x_4]$.
+I take a set of correaltors with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $(z_4,x_4)$.
 I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{\bar K^0 K^0}$ that the higher mass states are already suppressed.
 Thus the only relevant contribution comes from Kaons.
-A fit in this region is nothing but an average value:
+A plateau fit in this region is nothing but an average value:
 \begin{equation*}
     \hat C_i^\text{FR}(x_4,z_4=a) = \frac{1}{N_\text{region}} \sum_\text{region} C_i^\text{FR}(x_4,y_4,a)
 \end{equation*}
-By repeating these steps and varying the value of $x_4$, I obtain a set of $\hat C_i^\text{FR}$.
+By repeating these steps and varying the value of $x_4$, I obtain a set of $\hat C_i^\text{FR}$ useful for the amplitudes calculation.
 
 \subsubsection*{Third step: recovering amplitudes $\mathcal{A}_i(a)$}
 \noindent
@@ -1868,16 +1871,19 @@ The results of previous steps are used to recover values of the amplitudes for a
 Again, I have different values corresponding to different choices of $x_4$.
 It is possible that some {\it residues} of higher mass states contribution are still present.
 A fit of a plateau region of the graph $\mathcal{A}_i (a) (x_4)$ vs $x_4$ will help to remove them.
+I expect to see that plateau region for large values of the eucledian time $x_4$.
 At this point, I will have extracted the best estimate for the amplitude $\mathcal{A}_i (a)$.
 
 \subsubsection*{Fourth step: continuum limit $\mathcal{A}_i^\text{QCD}$}
 \noindent
 A set of configurations it is always generated by setting some parameters, for example the inverse of coupling constant $g$.
-By analyzing some observables of the gauge fields it is possible to recover the value of the lattice spacing $a$ associated to a set of configurations.
+By analyzing some observables of the gauge fields it is possible to recover the value of the lattice spacing $a$ associated to an ensemble of configurations.
 \newline
-Repeating first, second and third step for different sets of Gauge fields configurations brings to a set of amplitudes for different values of the lattice spacing.
+Repeating first, second and third step for different sets of Gauge ensembles brings to a set of amplitudes for different values of the lattice spacing $\mathcal{A}_i (a_1), \mathcal{A}_i (a_2), \dots$.
 The essential step to get the {\it physical} value of the amplitudes $\mathcal{A}_i^\text{QCD}$ is the continuum limit extrapolation.
-It consists in $(i)$ a fit of the values of the amplitudes versus their associated lattice spacing and $(ii)$
+It consists in:
+$(i)$ a fit of amplitude values versus their associated lattice spacing $\mathcal{A}_i^\text{fit} (a) $ and
+$(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal{A}_i^\text{QCD} = \mathcal{A}_i^\text{fit} (0) + O(a^2)$.
 
 
 \newpage
@@ -2345,15 +2351,76 @@ This part of the proof is trivial: I choose te path $A_\mu^s = s\cdot A_\mu$
 At this point it is proved that each $A_\mu$ satisfying \obc\space can be smoothly contracted to the null potential.
 Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ satisfying \obc\space are connected in the fields space.
 \proved
-%\section{OBC protect sea configurations against zero modes}\label{app:obc-zero-modes}
-%\noindent
-%I want to prove that \obc\space generate lower bound for the value of eigenvalues of Dirac-Wilson operator $\Lambda_i[U]$.
-%The proof is developed in continuum field theory in a finite spacetime volume \cite{SF-luscher}.
-%It is still valid in the case of lattice discretization.
 
-
-
-
+\section{Pseudoscalar propagator with OBC}\label{app:sinh-proof}
+\noindent
+I want to derive the form of the propagator \ref{eq:sinh} in presence of \obc\space on fermion fields.
+For simplicity, I work the calculation in continuum QCD.
+First of all, I must derive the boundary conditions on pseudoscalar mesons.
+I do it by looking at appendix \ref{app:proof-reality}: the generic pseudoscalar meson operator is proportional to the pseudoscalar density $P^{ab}(x)=\bar \psi^a (x) \gamma_5 \psi^b (x)$
+Then I can infere its boundary conditions from the conditions in the fermion fields \ref{eq:obc-on-fermions}.
+\newline
+I can write the identity in the following way $\mathbb{I}_4 = P_+ + P_-$.
+Then I can insert it in a pseudoscalar density evaluated in $x_4 = 0$:
+\begin{equation*}
+    \bar\psi^a \gamma_5 \psi^b \Big|_0 = \bar\psi^a \gamma_5 (P_+ + P_-) \psi^b \Big|_0 = \bar\psi^a \gamma_5 P_- \psi^b \Big|_0 =
+\end{equation*}
+now I make use of time reflection symmetry:
+\begin{equation*}
+    \mathbb{T}: 
+    \begin{cases}
+        \psi (\vec x, x_4) \mapsto - \gamma_1 \gamma_3 \psi (\vec x,T-x_4) \\
+        \bar \psi (\vec x, x_4) \mapsto - \bar\psi (\vec x,T-x_4) \gamma_3 \gamma_1 \\
+    \end{cases}
+\end{equation*}
+thus:
+\begin{equation*}
+    = (-)^2 \bar\psi^a \gamma_3 \gamma_1 \gamma_5 P_- \gamma_1 \gamma_3 \psi^b \Big|_T = \bar\psi^a \gamma_5 \gamma_3 \gamma_1 \gamma_1 P_+ \gamma_3 \psi^b \Big|_T = \bar\psi^a \gamma_5 \gamma_3 \gamma_3 P_- \psi^b \Big|_T = 0
+\end{equation*}
+the same holds for the case $x_4 = T$. Then the boundary conditions on the pseudoscalar densities are:
+\begin{equation}\label{obc-on-pions}
+    P^{ab} (\vec x , 0) = P^{ab} (\vec x , T) = 0 \hspace*{1cm} \forall a,b = 1,2,3
+\end{equation}
+To simplify the notation, I will use $\pi$ to refer to the generic $P^{ab}$.
+\newline
+In first order of Chiral Perturbation Theory, the generic pion satisfies the Klein Gordon equation, that in eucledian notation reads\footnote{here the variables $t,t'$ are the eucledian times $x_4, y_4$.}:
+\begin{equation*}
+    \left(-\frac{\partial^2}{\partial t^2} - \nabla_3^2 + m^2 \right) \pi(\vec x,t) = 0
+\end{equation*}
+where $\nabla_3^2$ is the Laplace operator in $\mathbb{E}^3$.
+A generic non homogeneous equation can be solved by using the associated Green function that must satisy the same boundary conditions of the field \cite{zaffaroni-pradisi}.
+The spatial part of the equation is solved through the Fourier transform method (as in every course of quantum field theory) and helps to reduce the equation for the Green function in this way:
+\begin{equation*}
+    \left(-\frac{\partial^2}{\partial t^2} - \vec p^2 + m^2 \right) G_\omega(t,t') = \left(-\frac{\partial^2}{\partial t^2} - \omega^2 \right) G_\omega(t,t') = L_\omega G_\omega(t,t') = 0
+\end{equation*}
+Notice that, in this case, we do not have $G_\omega(t-t')$ but $G_\omega(t,t')$ because these boundary conditions, unlike the periodic ones, break the time translation invariance.
+The generic solution is:
+\begin{equation*}
+    G_\omega(t,t') = \theta (t-t')\phi^\text{sup}(t)\alpha (t') + \theta (t'-t) \phi^\text{inf}(t)\beta (t')
+\end{equation*}
+where:
+\begin{equation*}
+    \begin{cases}
+        L_\omega \phi^\text{sup} (t) = 0 \\
+        \phi^\text{sup} (T) = 0
+    \end{cases}
+    \quad \text{ and } \quad
+    \begin{cases}
+        L_\omega \phi^\text{inf} (t) = 0 \\
+        \phi^\text{inf} (0) = 0
+    \end{cases}
+\end{equation*}
+with this choice the boundary conditions are automatically satisfied.
+The coefficients $\alpha (t')$ and $\beta (t')$ must be choosen in order to make $G_\omega(t,t')$ continous and its first derivative must be an Heaviside $\theta(t-t')$.
+By imposing these conditions I found:
+\begin{equation*}
+    \begin{aligned}
+        G_\omega (t,t') = & \theta (t-t') \frac{\sinh \left( \omega (T - t) \right) \cdot \sinh \left( \omega t' \right)}{2 \omega \sinh \left( \omega T \right)} + \\
+                          & + \theta (t'-t) \frac{\sinh \left( \omega (T - t') \right) \cdot \sinh \left( \omega t \right)}{2 \omega \sinh \left( \omega T \right)}
+    \end{aligned}
+\end{equation*}
+Then I remember that $G_\omega(t,t') = \tilde G(\vec p,t,t')$, the propagator in three-momentum space and eucledian time. The summation over spatial coordinates will set $\vec p=0$ as outlined in section \ref{sec:asympt-behav}.
+\proved
 
 \backmatter
 \phantomsection
