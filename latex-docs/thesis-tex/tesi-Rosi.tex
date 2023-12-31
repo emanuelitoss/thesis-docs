@@ -1625,7 +1625,14 @@ For simplicity, in this work I will use $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Computational Strategies}
-\lettrine[lines=2, findent=3pt, nindent=0pt]{L}{}\colv{'introduzione al capitolo deve essere ancora scritta. Lo farò quando il capitolo sarà completo.}
+\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he present chapter describes the computational side of this work.
+First of all, I will introduce the noise spinors method implemented to evaluate two points Green functions.
+It allows to achieve a great computational advantage on resources efficiency of the simulation program.
+Then the noise spinors method is extended to the case of three points correaltors: this is the most important part of the code that I wrote.
+In both sections a short proof of the equivalence with the Wick contractions is given.
+The second section will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
+In fact it can be adapted to evaluate {\it every} three point correlator with a given quark content.
+In the third section I will give an outline of the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
 
 \section{Noise spinors method}
 \noindent
@@ -1776,7 +1783,7 @@ To summarize, the path to evaluate the correlators is:
     \item [$\triangleright$] At the end, the simulation program gives back the correlator $G_d+G_c$.
 \end{itemize}
 Let's look at the {\bf computational advantage}.
-Each time I compute the quantities $\xi^{(i,\pm)}_{j,X}$ of $\zeta^{(i,\pm)}_j$ I'm {\it not} evaluating the inverse of a matrix in $\text{Mat}(N\x N, \mathbb{R})$, but the inverse of a vector of length $N$.
+Each time I compute the quantities $\xi^{(i,\pm)}_{j,X}$ of $\zeta^{(i,\pm)}_j$ I'm {\it not} evaluating the inverse of a matrix in $\text{Mat}(N\x N, \mathbb{R})$, but its inverse on a vector of length $N$.
 Then the needed computational resources are decreased and the simulation algorithms results improved.
 Furthermore, I need ``only'' $4\cdot N_\text{noise} \cdot N_\text{noise}$ inversion of this kind for each three points correlator.
 Then, for a reasonable choise of $N_\text{noise}$ and number of correlators\footnote{in practice, almost always.}, the advantage is succesfully achieved.
@@ -1885,21 +1892,6 @@ It consists in:
 $(i)$ a fit of amplitude values versus their associated lattice spacing $\mathcal{A}_i^\text{fit} (a) $ and
 $(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal{A}_i^\text{QCD} = \mathcal{A}_i^\text{fit} (0) + O(a^2)$.
 
-
-\newpage
-\colg{
-    Metodo di analisi dati che ho in mente:
-    \begin{enumerate}
-        \item Faccio lo stesso per i correlatori a 3 punti.
-            Mi ricordo che devo prima passare dalla base $\Psi_i$ alla base $O_i$.
-            Stavolta però fisso $z_4 = 1$ e faccio tutti i run per ogni $x_4$ maggiore del {\bf doppio} di tale distanza minima, cioè $2\delta_4$, fino ad arrivare a $x_4 = N_T -1$.
-        \item Poi prendo un set delle tre punti con $x_4$ fissato e cerco il plateau utilizzando solo la regione in cui $x_4 - y_4 > \delta_4$ e $y_4-z_4 > \delta_4$. Questo mi darà un unico valore del correlatore una volta fissate $x_4$ e $z_4$.
-        \item Prendo il numero precedente e lo divido per la due punti con $x_4$ e $z_4$. Ho ottenuto il valore dell'elemento di matrice con $x_4$ e $z_4$ fissati.
-        \item Calcolo tale elemento di matrice al variare delle $x_4$ (visto che ho sempre $z_4=a$) e dovrebbe venire sempre costante (a meno di contributi superiori da stati più pesanti).
-        \item Ricalcolo il plateau di questo nuovo grafico e questo rappresenta {\bf la miglior stima che ho dell'elemento di matrice} dell'operatore.
-        \item Faccio questa cosa per tutti gli operatori. Poi ci sarebbe la rinormalizzaione, che è off-topic.
-    \end{enumerate}
-}
 
 
 %%%APPENDICE%%%
@@ -2236,10 +2228,6 @@ The parity even and parity odd parts are respectively:
         & \Theta_5^{[+]} = \frac{1}{2}\bigl(AA-VV\bigr) &  \Theta_5^{[-]} = \frac{1}{2}\bigl(AV-VA\bigr) \hspace*{1.25cm}  \\
     \end{aligned}
 \end{equation*}
-%It is usual to \colr{redefine (sarà vero?)} the parity odd parts with a minus sign:
-%\begin{equation*}
-%    \Theta_3^{[-]} = \frac{1}{2}\bigl(PS+SP-\tilde{T}T\bigr) \qquad \Theta_5^{[-]} = \frac{1}{2}\bigl(VA-AV\bigr)
-%\end{equation*}
 
 \chapter{Some proofs}\label{app:proofs}
 \noindent
@@ -2427,8 +2415,8 @@ Then I remember that $G_\omega(t,t') = \tilde G(\vec p,t,t')$, the propagator in
 \printbibliography
 
 %Ringraziamenti
-\begin{acknowledgments}
-    Ringraziamenti
-\end{acknowledgments}
+%\begin{acknowledgments}
+%    Ringraziamenti
+%\end{acknowledgments}
 
 \end{document}
