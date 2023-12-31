@@ -78,34 +78,29 @@
 \maketitle
 
 \dedication{
-    dedication - da scegliere
-    \textcolor{white}
-    {   
-        \newline
-        Idee varie:
-        \newline\newline
-        (1) Lord Byron: 'There is a pleasure in the pathless woods,\newline
-        There is a rapture on the lonely shore,\newline
-        There is society, where none intrudes,\newline
-        By the deep Sea, and music in its roar'\newline
-        \newline\newline
-        (2) Trainspotting:
-        Scegliete la vita; scegliete un lavoro; scegliete una carriera;\newline
-        scegliete la famiglia; scegliete un maxitelevisore del cazzo;\newline
-        scegliete lavatrici, macchine, lettori CD e apriscatole elettrici.\newline
-        Ma scegliete
-        \newline\newline
-        (3) Shujaat / shajaeatan / scritta in arabo
-        \newline\newline
-        Dedico questa tesi a tutti quelli che:\newline
-         ``Fisica, che coraggio! E dopo che vuoi fare? Ma questa cosa a che serve?\newline
-         Il prof al liceo alla fine ha tre mesi di vacanza no? Il ricercatore.. spero tu voglia farlo all'estero, mica qui in Italia!\newline
-         Io di questa roba non capisco nulla, per fortuna che ci state voi.''
-    }
+    \hspace*{.76\textwidth}A mamma, a papà.
+    \newline
+    \newline
+    \newline
+    \newline
+    A tutte quelle giornate in cui non mi stavo sacrificando per lo studio, stavo facendo ciò che amo.
 }
 
 \begin{abstract}
-    abstract
+
+    \newpage
+    Le oscillazioni dei Kaoni sono un fenomeno ben conosciuto nel modello standard delle particelle \colr{ref}.
+    Cosa vorrei inserire:
+    \begin{itemize}
+        \item intro storica alle oscillazioni dei kaoni: quando sono state scoperte/formulate, perché sono tanto utili (CP violation).
+        \item QCD non perturbativa, confinamento e assenza di teorie esatte se non il path integral.
+            Fattori non perturbativi, $B_K, f_K$.
+        \item Studio del path integral tramite lattice, motivazioni. Regolarizzazioni. Problemi di improvement e autocorrelazioni.
+            Regolarizzazione usata. Motivi.
+        \item Utilizzzo della base di operatori. Oscillazioni BSM. Tutti i ghirigori che si fanno su questa base per arrivare alla nuova.
+        \item Metodo dei noise spinors
+        \item Check fatti, risultati, etc.
+    \end{itemize}
 \end{abstract}
 
 \tableofcontents
@@ -1650,7 +1645,7 @@ The inversion of this matrix gives the propagator of a single flavour for a give
 It is not difficult to guess that the number of computational resources needed to directly compute the inversion is very large.
 For this reason smarter solutions have been developed.
 \newline
-One solution consists in a kind of ``stochastical inverison'', worked out by Tomasz Korzec for two points meson correlators (2013) \colr{citarlo in qualche modo}.
+One solution consists in a kind of ``stochastical inverison'', worked out by Tomasz Korzec for two points meson correlators (2013) \cite{korzec}.
 It makes use of some random Dirac spinors equipped with colour quantum numbers, called \textit{stochastic sources} for reasons that will become obvious soon.
 For each inversion I generate $N_\text{noise}$ sources $\eta$ that will be used to evaluate \textit{noise averages} of some quantities.
 I refer to a noise average with the angle-brackets $\langle\hspace{1mm}\cdot\hspace{1mm}\rangle^\text{noise}$. 
@@ -1681,7 +1676,7 @@ I can recognize $G_{\bar K^0 K^0}$ in a more general form:
 \end{equation}
 This correlator generates the meson propagator diagram shown in Figure \ref{fig:confinement}.
 Again, I suppose $x_4 > y_4$.
-The strategy to evaluate meson correlator of this type has been developed in a guide-paper by Tomasz Korzec \colr{citarlo in qualche modo}.
+The strategy to evaluate meson correlator of this type has been developed in a guide-paper by Tomasz Korzec \cite{korzec}.
 It consist into generating a single set of stochastic spinors $\eta (u)$ centered in timeslice $x_4$.
 For each $\eta (u)$, two daughter stochastic quantites are defined:
 \begin{equation*}
@@ -1825,16 +1820,70 @@ and it can be verified that it gives exactly the contractions $G_c + G_d$ of Fig
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 
 \newpage
-\section{\colv{Metodo di analisi dati implementato}}
+\section{Analysis strategy}
 \noindent
+This section gives an overview about the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$.
+Once recovered them for different lattice spacings $a$, a fit in the continuum limit $a\rightarrow 0$ will give the best estimate of $\mathcal{A}_i^\text{QCD}$.
+The analysis is divided in some steps, that I briefly report below.
+
+\subsubsection*{First step: determination of asymptotic distance $\delta_4$}
+\noindent
+In order to perform the calculation:
+\begin{equation*}
+    \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
+\end{equation*}
+I need the values of such two points and three points correlators in the temporal regions in which the asymptotic behaviour of Section \ref{sec:asympt-behav} is allowed.
+In other words, I need to quantify the minimum value of $\delta_4 = |x_4-y_4|$ such that the exponentials $e^{-\delta_4 m_i}$ - for $m_i > m_K$ - are {\it sufficiently} suppressed with respect to the first level contribution $e^{-\delta_4 m_K}$.
+To estimate it, I make use of two points correaltors.
+From \cite{OBC-tm} I know that, in the asymptotic regime\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last sinh dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
+$$ G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \approx \frac{\sinh \left( m_K (T - x_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - x_4) \right)$$
+In the last equality I fixed $z_4 = a$, option valid in the entire simulation.
+I fix $z_4 = 1$ and run the simulation for all the $x_4 \in (z_4+a,T-a)$.
+The option $x_4 = T$ will not produce physical results because of open boundary conditions.
+The strategy consists in performing a fit of the hyperbolic sine in different regions of the space.
+I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the the fit is satisfactory - i.e. a good value of $\chi^2$.
+The first satisfactory region gives the value of $\delta_4$: $[\delta_4, T-\delta_4]$.
+At this point I have both determined $m_K$ as a parameter and the {\it minimal asymptotic distance} $\delta_4$.
+In this region I also have the values of $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4=a) = \hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)$ subject to a well defined asymptotic expansion.
+I denote them with the $hat$ identifier to underline that thes data are the only I can use to recover the wanted amplitudes.
+
+\subsubsection*{Second step: plateau region of three points correaltors}
+\noindent
+At this point I am ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
+I take a set of correaltors with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $[z_4,x_4]$.
+I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{\bar K^0 K^0}$ that the higher mass states are already suppressed.
+Thus the only relevant contribution comes from Kaons.
+A fit in this region is nothing but an average value:
+\begin{equation*}
+    \hat C_i^\text{FR}(x_4,z_4=a) = \frac{1}{N_\text{region}} \sum_\text{region} C_i^\text{FR}(x_4,y_4,a)
+\end{equation*}
+By repeating these steps and varying the value of $x_4$, I obtain a set of $\hat C_i^\text{FR}$.
+
+\subsubsection*{Third step: recovering amplitudes $\mathcal{A}_i(a)$}
+\noindent
+The results of previous steps are used to recover values of the amplitudes for a given set of Gauge configuration, i.e. for a given value of lattice spacing $a$:
+\begin{equation*}
+    \mathcal{A}_i (a) (x_4) = \frac{\hat C_i^\text{FR}(x_4,a)}{\hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)}
+\end{equation*}
+Again, I have different values corresponding to different choices of $x_4$.
+It is possible that some {\it residues} of higher mass states contribution are still present.
+A fit of a plateau region of the graph $\mathcal{A}_i (a) (x_4)$ vs $x_4$ will help to remove them.
+At this point, I will have extracted the best estimate for the amplitude $\mathcal{A}_i (a)$.
+
+\subsubsection*{Fourth step: continuum limit $\mathcal{A}_i^\text{QCD}$}
+\noindent
+A set of configurations it is always generated by setting some parameters, for example the inverse of coupling constant $g$.
+By analyzing some observables of the gauge fields it is possible to recover the value of the lattice spacing $a$ associated to a set of configurations.
+\newline
+Repeating first, second and third step for different sets of Gauge fields configurations brings to a set of amplitudes for different values of the lattice spacing.
+The essential step to get the {\it physical} value of the amplitudes $\mathcal{A}_i^\text{QCD}$ is the continuum limit extrapolation.
+It consists in $(i)$ a fit of the values of the amplitudes versus their associated lattice spacing and $(ii)$
+
+
+\newpage
 \colg{
     Metodo di analisi dati che ho in mente:
     \begin{enumerate}
-        \item Calcolo i correlatori a 2 punti.
-            Avrò $z_4 = 1$ e tutte le $x_4$ possibili fino a $N_T-1$.
-            Dovrebbe comportarsi come un seno iperbolico $\propto \sinh\left(m_K (T-x_4)\right)$.
-        \item Riguardo i correlatori a due punti: cerco di capire quali sono le regioni in cui ho solamente il contributo asintotico dello stato più leggero.
-            Questo mi darà un senso della distanza sorgente-interazione $\delta_4 = |x_4-z_4|$ necessaria per eliminare gli altri contributi (come farlo? ancora non lo so).
         \item Faccio lo stesso per i correlatori a 3 punti.
             Mi ricordo che devo prima passare dalla base $\Psi_i$ alla base $O_i$.
             Stavolta però fisso $z_4 = 1$ e faccio tutti i run per ogni $x_4$ maggiore del {\bf doppio} di tale distanza minima, cioè $2\delta_4$, fino ad arrivare a $x_4 = N_T -1$.
