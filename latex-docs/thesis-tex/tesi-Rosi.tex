@@ -87,7 +87,52 @@
 }
 
 \begin{abstract}
-    abstract
+    Oscillations of neutral Kaons are a well known phenomenon within the framework of the Standard Model (SM) of particle physics.
+    These oscillations arise from quark flavor mixing governed by the Cabibbo-Kobayashi-Maskawa matrix in weak interactions.
+    Such two states system manifests the flavour changing neutral currents (FCNC) in the context of confined Quantum Chromodynamics (QCD).
+    Furthermore, decay rates of the Kaons are studied to get an indirect measure of $CP$ violation in the Standard Model, quantified through the parameter $\epsilon_K$.
+    Precise theoretical predictions are essential.
+    As I have implicitly mentioned, the Kaons oscillation phenomenon takes place at low energies, where the quarks are confined in mesons and baryons - typically energies below $\Lambda_\text{QCD} ~ 250$\mev \cite{WeinbergII}.
+    Perturbation theory (PT) represents the most powerful tool of theoretical physicists to understand the world of particle physics.
+    However it imposes the requirement of energies much higher than $\Lambda_\text{QCD}$, requirement not satisfied in the energetic region concerning confinement.
+    The PT approach becomes inefficient and the only other valid approach to QFT is the path integral formalism.
+    Usually, direct calculation in path integral are performed through lattice QFT simulations.
+    \newline
+    The main character of this work is a set of dimension 6 four-quarks operators responsible for the oscillations of neutral Kaons.
+    They constitute an effective Hamiltonian for the oscillating system
+    $$ \mathcal{H}^{\Delta S=2}_\text{eff,BSM} = \sum_i \hat C_i (\mu) \hat\Theta_i (\mu) $$
+    The first operator $\hat\Theta_1$ is the effective operator associated to the SM contribution to the oscillations.
+    The others take place in beyond the standard model (BSM) theories, such as supersymmetry, left right symmetric models or multi Higgs models \cite{Bparameters}.
+    The objective is to compute the bare Kaon oscillation amplitudes caused by each $\Theta_i$ operator:
+    $$ \mathcal{A}_i^\text{QCD} = \la \bar K^0 | \Theta_i | K^0 \ra $$
+    needed to extract some non perturbative parameters called ``bag parameters'' \cite{Bparameters} \cite{KMBSM}.
+    The renormalization of such operators is not involved in this work and it is developed in some papers, such as \cite{renrun}.
+    $B$-parameters are widely studied in the context of lattice QCD (LQCD) and the most recent works can be found in \cite{FLAG}.
+    \newline
+    Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, contributions from the boundaries, lattice spacing effects, efficiency of the propagators inversion, \dots
+    The lattice setup chosen for this work aims to minimize some of these effects. 
+    Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated each other, but their autocorrelation times grows as the lattice spacing is reduced.
+    It is proved that this problem is partially solved by choosing open boundary conditions in temporal direction.
+    Secondly, these boundary conditions protects the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator.
+    Open boundary conditions give an efficient alternative to twisted mass QCD - used in \cite{KMBSM} - and allow the simulation program to simulate a third flavour of sea quark: $\{u,d,s\}$.
+    The entire simulation is developed to yield \oaid\space results, i.e. values that differs from the continuum limit ones by terms of order $O(a^2)$ or higher.
+    This is possible thanks to the strategy worked out by Frezzotti and Rossi in \cite{FR2}.
+    Such strategy involves maximally twisted Osterwalder-Seiler quarks in the valence sector.
+    Further properties of the lattice mixing operators are well explained in \cite{DoniniMartinelliOperators}, such as their mixing pattern under renormalization procedure.
+    \newline
+    The thesis is structured as follow.
+    The first chapter covers basic concepts of Standard Model QCD, confinement, pseudoscalar mesons, and Kaon oscillations.
+    Moreover I introduce the bag parameters and the complete set of mixing operators $\{\Theta_i\}$.
+    The second chapter provides an overview of lattice regularizations and improvements;
+    I begin from the basics - Wilson-Dirac action and Wilson Gauge action - and I describe some of their related problems (zero modes, long autocorrelation times, exceptional configurations, $O(a)$ efficiency).
+    Then it follows a description of more advanced regularizations.
+    At the end of the chapter I outline the adopted lattice setup as a solution of almost all the presented problems.
+    The chapter 3 is completely dedicated to the construction of the lattice amplitudes.
+    The operators $\Theta_i$ are described in continuum theory, then they are regularized on the lattice by following the strategy in \cite{FR2}.
+    All the properties are described in detail and most of them are proved. At the end of the chapter I describe the asymptotic behaviour extrapolation method, widely used in quantum mechanics and QFT.
+    In the fourth chapter I present the computational strategies developed to calculate the needed Wick contractions of the two and three points correlators.
+    Particular relevance is given to the calculation of three points correlators through the method of noise spinors, that represents most of the ``behind the scenes'' thesis work.
+    A conclusive section provides the reader information about the status of the simulation and report the achievements of this work.
 \end{abstract}
 
 \tableofcontents
@@ -359,6 +404,29 @@ A relevant work has been done by the ETM collaboration in \cite{KMBSM} bringing 
 I want to highlight that the $B_1(\mu_0)$ value has a small difference with respect to the one in formula \ref{B_K-value} - because it comes from a different simulation - but fortunately there is an overlap due to statistical errors.
 The simulation setup developed in this thesis is very similar to the one used in \cite{KMBSM}, but some improvements have been done.
 These improvements are discussed in the next chapters.
+Some simulation results at the scale of $\mu=3$ \gev\space are reported in the second graph in Figure \ref{fig:bag-parameters}.
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/flag-Bk.png}
+        \caption{$\hat B_K$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/flag-Bi.png}
+        \caption{$B_i^{\overline{MS}} (\mu = 3 \text{ Gev})$}
+    \end{subfigure}
+    \caption{Current lattice results until 2016, July 1st, date of pubblication of the report by FLAG Working Group \cite{FLAG}.
+        Figure (a): lattice results of the renormalization group invariant $\hat B_K$ from distinct simulations.
+        Figure (b): lattice results of the renormalized bag parameters with index $i = 2,3,4,5$ in the $\overline{MS}$ scheme at energy scale of 3\gev.}
+    \label{fig:bag-parameters}
+\end{figure}
+\newline
+The first graph refers to $\hat B_K$, a renormalization group invariant for the $B_K$ parameter defined by \cite{FLAG}:
+\begin{equation*}
+    \hat B_K = \left(\frac{\overline{g}(\mu)^2}{4 \pi}\right)^{-\gamma_0/(2\beta_0)} \text{exp}\left\{ \int_0^{\overline{g}(\mu)} dg \hspace*{.5mm} \left( \frac{\gamma (g)}{\beta (g)} + \frac{\gamma_0}{\beta_0 g}\right) \right\}
+\end{equation*}
 \newline
 The results (\ref{eq:b_i-in-kmbsm}) should be compared with the new values evaluated using the amplitudes of the present work.
 This comparison needs a renormalization of mixing operators (\ref{eq:Thetai-operators}) not involved is this thesis program.
@@ -2364,7 +2432,7 @@ In first order of Chiral Perturbation Theory, the generic pion satisfies the Kle
 \end{equation*}
 where $\nabla_3^2$ is the Laplace operator in $\mathbb{E}^3$.
 A generic non homogeneous equation can be solved by using the associated Green function that must satisy the same boundary conditions of the field \cite{zaffaroni-pradisi}.
-The spatial part of the equation is solved through the Fourier transform method (as in every course of quantum field theory) and helps to reduce the equation for the Green function in this way:
+The spatial part of the equation is solved through the Fourier transform method (as done in every course of quantum field theory) and helps to reduce the equation for the Green function in this way:
 \begin{equation*}
     \left(-\frac{\partial^2}{\partial t^2} - \vec p^2 + m^2 \right) G_\omega(t,t') = \left(-\frac{\partial^2}{\partial t^2} - \omega^2 \right) G_\omega(t,t') = L_\omega G_\omega(t,t') = 0
 \end{equation*}
