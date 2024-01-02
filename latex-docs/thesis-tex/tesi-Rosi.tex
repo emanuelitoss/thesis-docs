@@ -61,7 +61,7 @@
 \newcommand{\spc}{\hspace*{1mm}}
 \newcommand{\proved}{\newline \hspace*{.97\textwidth} $\square$}
 
-\title{Non-perturbative evaluation of Kaons oscillation amplitudes in Lattice Quantum Chromodynamics with $N_f = 2+1$ sea quarks and Open Boundary Conditions}
+\title{Non-perturbative computation of Kaons oscillation amplitudes in Lattice Quantum Chromodynamics with $N_f = 2+1$ sea quarks and Open Boundary Conditions}
 \author{Emanuele Rosi}
 \IDnumber{1812180}
 \course[]{Fisica Teorica}
@@ -188,7 +188,7 @@ To give an example of confinement effects, let's consider a (non singlet flavour
 for example, by choosing $\psi^1 = u$ and $\psi^2 = d$, the propagator of the $\pi^-$ si obtained.
 In principle the two constituent quarks $\psi^1, \psi^2$ - named \textit{valence} quarks - are subject to a very large number of interactions with the gluons.
 In first approximation of perturbation theory (PT) one simply neglects these contributions, while at higher orders only a few number of diagrams is involved.
-However the running coupling phenomenon makes the constant $g(\mu)_\text{color}$ grow at energies below $\Lambda_\text{QCD}$. 
+However the running coupling phenomenon makes the constant $g(\mu)_\text{colour}$ grow at energies below $\Lambda_\text{QCD}$. 
 As consequence the use of PT is no more allowed and all the possible contributing diagrams must be considered.
 The Figure \ref{fig:confinement} gives an idea of the subleading processes to involve.
 \begin{figure}[h!]
@@ -565,7 +565,7 @@ It is represented as a line connecting a lattice point $x$ with the adjacent poi
 To provide a regularized Gauge action, a Gauge invariant quantity must be built.
 One simple way is to multiply four link variables in a way such that they link the initial point $x$ to itself.
 \begin{equation*}
-    U_P^{\mu\nu}(x) = U_\mu (x) U_\nu (x+\hat\mu) U_{-\mu} (x+\hat\mu+\hat\nu) U_{-\nu} (x+\hat\nu)  \equiv U(p)
+    U_P^{\mu\nu}(x) \equiv U_\mu (x) U_\nu (x+\hat\mu) U_{-\mu} (x+\hat\mu+\hat\nu) U_{-\nu} (x+\hat\nu)
 \end{equation*}
 This is called {\it plaquette} of link variables in the $\mu-\nu$ plane and it is shown in Figure \ref{fig:plaquette}.
 \begin{figure}[h!]
@@ -922,7 +922,7 @@ Moreover I know that a Gaussian-like integral over bosonic complex variables has
     \int \prod_{k = 1}^{N} d \xi_k  d\xi_k^\dag \hspace*{.5mm} e^{-\sum_{ij} \xi_i^\dag M_{ij} \xi_j} = \frac{(2\pi)^N}{\text{det}(M)}
 \end{equation*}
 The strategy involves the introduction of a set of {\it fermion ghosts} $\{\phi, \bar\phi \}$ in order to cancel the un-wanted fermion determinant.
-These fermion ghosts are nothing but Dirac spinors, color equipped and satisfying a bosonic commutation relation:
+These fermion ghosts are nothing but Dirac spinors, colour equipped and satisfying a bosonic commutation relation:
 \begin{equation*}
     \begin{aligned}
         & \big[\phi_\alpha (\vec x,t), \bar\phi_\beta (\vec y,t)\big] = \delta_{\alpha\beta}\delta^{(3)}(\vec x-\vec y) \\
@@ -1004,7 +1004,7 @@ I know from \cite{FR2} that, chosen certain observables involving only two physi
     \end{gathered}
 \end{equation*}
 Since in this work I use only pions and neutral Kaons, the possible flavour couples are $(u,d)$ and $(d,s)$.
-A simple way to satisfy previous realtions is the following:
+A simple way to satisfy previous relations is the following:
 \begin{equation*}
     \boldsymbol{\mu}\bare = \text{diag}\left(\mu_l,\mu_l,\mu_l,-\mu_l,\mu_s,\mu_s\right)
 \end{equation*}
@@ -1684,9 +1684,9 @@ For simplicity, in this work I will use $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$.
 First of all, I will introduce the noise spinors method implemented to evaluate two points Green functions.
 It allows to achieve a great computational advantage on resources efficiency of the simulation program.
 Then the noise spinors method is extended to the case of three points correlators: this is the most important part of the code that I wrote.
-In both sections a short proof of the equivalence with the Wick contractions is given.
+In both cases a short proof of the equivalence with the Wick contractions is given.
 The second section will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
-In fact it can be adapted to evaluate {\it every} three point correlator with a given quark content.
+In fact it can be adapted to evaluate {\it every} three point correlator with a given quark structure.
 Section \ref{sec:program} describes the input parameters and output data of the simulation program.
 In the fourth section I will give an outline of the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
 I conclude with a short description of the status of this work and expectations regard its developement.
@@ -1886,22 +1886,23 @@ Then the output data of simulation program has no physical meaning until I perfo
 
 \section{Simulation program description}\label{sec:program}
 \noindent
-The program is developed to generate three points correlation functions and it is based on a previous version that calculates the meson propagators.
+The program is structured to generate three points correlation functions and it is based on a previous version that calculates meson propagators.
 It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
-The program takes as input an ensemble of sea configurations and produces the correlators of the form \ref{eq:lattice-correlators} with $x_4$ and $z_4$ fixed and $y_4$ running in the region $[z_4,x_4]$.
-Instead of read some external configurations, it is also possible to set the Gauge fields to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions) or to randomly generate them.
+The program takes as input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
+Instead of read some external configurations, it is also possible to set the link variables to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions, because $A_\mu^{i} \hspace*{.1mm}_j = 0$) or to randomly generate them.
 These two options were very useful to test the right behaviour of the simulation.
-The program requires some input parameters:
+The program requires the following input parameters:
 \begin{itemize}
     \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, an other coefficient for the boundary counterterms of the fermionic action.
                 The latter is tipically set to $c_F = 1$.
-    \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ to generate in a set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
-    \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare (twisted) mass parameter $\mu^i$ for each quark.
-    \item [-] Dirac matrices to insert: $\Gamma_\omega$, $\Gamma_\xi$ for the sources and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator. The program allows to insert different operators within the same sources.
+    \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ per set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
+    \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare twisted mass parameter $\mu_i$ for each quark.
+    \item [-] Dirac matrices: $\Gamma_\omega$, $\Gamma_\xi$ for the source bilinears and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator.
+        The program allows to insert different operators within the same sources and calculate their Wick contractions.
         There is also freedom in choice of the quark flavours for each correlator.
 \end{itemize}
 At the end the program stores output data in a file wrote in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
-The data are summed over all the spatial components.
+The output data are already summed over all the spatial components.
 
 
 \section{Analysis strategy}
@@ -1936,7 +1937,7 @@ I denote them with the {\it hat} identifier to stress that these data are the on
 
 \subsubsection*{Second step: plateau region of three points correlators}
 \noindent
-At this point I am ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
+At this point I will be ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
 I take a set of correlators with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $(z_4,x_4)$.
 I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{\bar K^0 K^0}$ that the higher mass states are already suppressed.
 Thus the only relevant contribution comes from Kaons.
@@ -1971,34 +1972,47 @@ $(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal
 
 \section{Status and further developements}
 \noindent
-The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ and using unphysical random configurations.
+The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ $\forall \mu,x$ and using unphysical random configurations.
 Two gauge invariance tests were made.
 \newline
-The first is a test on the propagator calculation.
-It is set a random stochastic spinor as a pointlike spinor $\eta(x)_\alpha^a = \delta^{a,\bar a}\delta_{\alpha \bar \alpha} \delta_{x,\bar x}$ with $\bar a, \bar \alpha, \bar x$ fixed lattice, Dirac and colour indices.
+The first is a test of Gauge invariance on the propagator computation.
+It is generated a set of pointlike spinors $\eta(x)_\alpha^a = \delta^{a,\bar a}\delta_{\alpha \bar \alpha} \delta_{x,\bar x}$ with $\bar a, \bar \alpha, \bar x$ fixed lattice, Dirac and colour indices.
+This has been done for all the 12 combinations of Dirac and colour fixed indices, meanwhile $\bar x$ is fixed.
 By inverting the propagator on it, I got the following:
 \begin{equation*}
-    S(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
+    S^{(f)}(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
 \end{equation*}
-I evaluated the Wick contractions of the previous chapter simply by contracting the propagators with the matrices by hand, index by index.
-This is done for random sea fields and their gauge transformed fields.
-The check of Gauge invariance was succesfully achieved by comparing these data, as shown in Figure \ref{fig:check1}:
-\begin{figure}[!h]
+here $f$ is the flavour index.
+\begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/check1.pdf}
     \caption{Check of Gauge invariance on the 3 points correlators. Since they are real, only the real part is plotted.
-        I stress that in these data there is no physical meaning.
-        The gauge fields are randomly generated, the sources are a $\gamma_5$ and an identity. The intermediate operator is a $\Psi_3$.}
+        Their reality is proved in \ref{app:proof-reality-3pts}.
+        I stress that in these data are not physically meaningful.
+        The gauge fields are randomly generated, the sources are a $\gamma_5$ and an $\mathbb{I}_4$ to emulate Kaon sources in OS twist.
+        The intermediate operator is a $\Psi_3$.}
     \label{fig:check1}
 \end{figure}
 \newline
-The other test consists in the generation of a random set of gauge fields, a calculation of the correlators through the noise spinors method, a gauge transformation on the Gauge fields and a check that the two set of data coincides.
+I computed the Wick contractions of the previous chapter simply by contracting the propagators with the matrices by hand, index by index, fixing $\bar x=(\vec 0, x_4)$ and  $\bar z=(\vec 0, z_4)$ and choosing a mixing operator $O_{i,[+]}$.
+This is done for random sea fields and their gauge transformed fields.
+As expected, the propagators must be gauge invariant:
+\begin{equation*}
+    S^{(f)}(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} = S^{(f)}(y, \bar x)[\Omega U \Omega^\dagger]^{b,\bar a}_{\beta, \bar \alpha} 
+\end{equation*}
+The check of Gauge invariance was succesfully achieved by comparing these data, as shown in Figure \ref{fig:check1}, where the intermediate operator is $\Psi_3$.
+\newline
+The other gauge invariance test consists in these steps:
+$(i)$ the generation of a random set of gauge fields
+$(ii)$ a calculation of the correlators through the noise spinors method the fields of point $(i)$
+$(iii)$ a gauge transformation on the Gauge fields and re-computation of the correlators
+$(iv)$ a check that the two set of data coincides.
 The test had a positive response and the plot is similar to the one in figure above.
 In both the tests the finite precision of the solver generates discrepancies in the data, but they are visible only at very small scales.
 Moreover all the physical parameters are not well tuned, since they are not useful to the scope of the checks. 
 \newline
 An other test was made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
-The gauge configurations were generated with and inverse lattice coupling $\beta = 6.0$ and in absence of quarks on the sea sector (quenched approximation).
+The gauge configurations were generated with and inverse lattice coupling $\beta = 6/g_0^2 = 6.0$ and in absence of quarks on the sea sector (quenched approximation).
 The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
 In this case all the correlators are calculated through $N_\text{nosie} = 20$ noise spinors and the below Figure \ref{fig:pureYM} show the result:
 \begin{figure}[!h]
@@ -2010,12 +2024,15 @@ In this case all the correlators are calculated through $N_\text{nosie} = 20$ no
 \end{figure}
 \newline
 Clearly the plot is not at all satisfactory because there are no plateaus regions.
-Moreover the first correlator has values extremely small - by one order or more - compared to values from the others operators.
-On the other side, all the used parameters have no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
+Despite this, the graph gives results that seem to go in the right direction.
+In fact keep in mind that almost all the used physical parameters have no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
 For this reason usually the parameters are given along with the configuration, when available.
+Moreover the first correlator has values extremely small - by one order or more - compared to values from the others operators.
+The third operator is negative because of the conventions, in fact in \cite{KMBSM} it is positive.
 \newline
-Further developements involve the calculation of these three points correlator by using faithful sea configurations and to set the right parameters on the input files.
-The objective is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks.
+Further developements involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
+The objective is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks;
+then the data analysis described in the previous section should give the best estimates for the continuum amplitudes $\mathcal{A}^\text{QCD}_i$.
 
 
 
@@ -2063,12 +2080,12 @@ For example $V^{12}A^{34} = \bar \psi^1 \gamma_\mu \psi^2 \bar \psi^3 \gamma_\mu
 \newline
 \newline
 A very useful property \cite{Itzykson-Zuber} follows:
-\begin{equation*}
+\begin{equation}\label{eq:complconj-bilinear}
     \begin{aligned}
         & \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^* = \left( \bar\psi^1 \Gamma^\alpha \psi^2 \right)^\dag = -\bar\psi^2 \bar \Gamma^\alpha \psi^1 \\
         & \text{with } \bar \Gamma^\alpha = \gamma_0 \Gamma^{\alpha,\dag} \gamma_0.
     \end{aligned}
-\end{equation*}
+\end{equation}
 for example in the case of Kaons $\left(K^0\right)^* = \bar K^0$.
 
 \chapter{Twisted basis vs physical basis}\label{app:physical-basis}
@@ -2169,7 +2186,7 @@ The very special case of maximal twist ($\alpha = \pm \pi/2$) reads:
 
 \section{Twisted and physical basis in OS regularization}
 \noindent
-In the case of OS regularization, the physical and twisted basis are realted as follows:
+In the case of OS regularization, the physical and twisted basis are related as follows:
 \begin{equation*}\label{eq:OSbasischange}
     \begin{cases}
         f =  \mathbf{J}(\alpha, r)\hspace*{.5mm} q \\
@@ -2384,6 +2401,38 @@ Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ an
 \end{equation*}
 As these are real values, they are also equal to their conjugates  $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
 The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
+\proved
+
+\section{Reality of three point correlators}\label{app:proof-reality-3pts}
+\noindent
+I want to prove that the continuum three point correlators in formula (\ref{eq:3pts-correlators})
+$$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra $$
+are real. To make it, I make use of formula (\ref{eq:complconj-bilinear}).
+First of all, let's calculate the complex conjugate of the sources: 
+\begin{equation*}
+    (\bar K^{0})^* = (\bar d \gamma_5 s)^* = - \bar s \gamma_0 \gamma_5^\dagger \gamma_0 d = \bar s  \gamma_5 d = K^0
+\end{equation*}
+Then I need to calculate the complex conjugate of the operators.
+I simplify the operation by permoring such calculation on the ``components'' of $Q_i$s:
+\begin{equation*}
+    \begin{aligned}
+        & Q_{VV}^* = \left(\bar s \gamma_\mu d \cdot \bar s \gamma_\mu d\right)^* = \left(\bar s \gamma_\mu d\right)^* \left(\bar s \gamma_\mu d\right)^* = \bar d \gamma_\mu s \cdot \bar d \gamma_\mu s \equiv \tilde{Q}_{VV} \\
+        & Q_{AA}^* = \left(\bar s \gamma_\mu \gamma_5 d \cdot \bar s \gamma_\mu \gamma_5 d\right)^* = \bar d \gamma_\mu\gamma_5 s \cdot \bar d \gamma_\mu\gamma_5 s \equiv \tilde{Q}_{AA} \\
+        & Q_{SS}^* = \left(\bar s  d \cdot \bar s d\right)^* = \bar d  s \cdot \bar d s \equiv \tilde{Q}_{SS} \\
+        & Q_{PP}^* = \left(\bar s \gamma_5 d \cdot \bar s \gamma_5 d\right)^* = \bar d \gamma_5 s \cdot \bar d \gamma_5 s \equiv \tilde{Q}_{PP} \\
+        & Q_{TT}^* = \left(\bar s \sigma_{\mu\nu} d \cdot \bar s \sigma_{\mu\nu} d\right)^* = \bar d \sigma_{\mu\nu} s \cdot \bar d \sigma_{\mu\nu} s \equiv \tilde{Q}_{TT}
+    \end{aligned}
+\end{equation*}
+where it is clear that $\tilde Q_{\Gamma\Gamma}$ is the operator $Q_{\Gamma\Gamma}$ in which there is an exchange $s \leftrightarrow d$.
+Then I have proved that:
+$$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra^* = \left\la  K^0 (x) \tilde{Q}_i (y) K^0 (z) \right\ra $$
+Moreover I know that:
+$$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra = \left\la  K^0 (x) \tilde{Q}_i (y) K^0 (z) \right\ra $$
+because $B-$parameters are real.
+This is straightforward: I can express the above correlators through the asymptotic expansion (\ref{eq:asymptotic-behav-3pts}) and substitute $\la \bar K^0 | O_{i,[+]} | K^0 \ra$ with the definition of bag parameters (\ref{eq:bag-definition}).
+I'm doing the calculation with the $Q_i$ and not the $\Theta_i$, thus I need to insert a {\it linear combination} of the bag parameters, but the essence is unchanged.
+Since the $B_i$ are real, their complex conjugates coincide with them.
+From a poetic point of view, it could be interpreted as a consequence of matter-antimatter symmetry. 
 \proved
 
 \section{Proof of $\gamma_5 S_{(i,\pm)} (u,v) \gamma_5 = S_{(i,\mp)}^\dag (v,u)$}\label{app:proof-G5-DW}
