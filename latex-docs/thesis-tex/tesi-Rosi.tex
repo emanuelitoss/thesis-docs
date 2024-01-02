@@ -425,7 +425,7 @@ Some simulation results at the scale of $\mu=3$ \gev\space are reported in the s
 \newline
 The first graph refers to $\hat B_K$, a renormalization group invariant for the $B_K$ parameter defined by \cite{FLAG}:
 \begin{equation*}
-    \hat B_K = \left(\frac{\overline{g}(\mu)^2}{4 \pi}\right)^{-\gamma_0/(2\beta_0)} \text{exp}\left\{ \int_0^{\overline{g}(\mu)} dg \hspace*{.5mm} \left( \frac{\gamma (g)}{\beta (g)} + \frac{\gamma_0}{\beta_0 g}\right) \right\}
+    \hat B_K = \left(\frac{\overline{g}(\mu)^2}{4 \pi}\right)^{-\gamma_0/(2\beta_0)} \text{exp}\left\{ \int_0^{\overline{g}(\mu)} dg \hspace*{.5mm} \left( \frac{\gamma (g)}{\beta (g)} + \frac{\gamma_0}{\beta_0 g}\right) \right\} B_K (\mu)
 \end{equation*}
 \newline
 The results (\ref{eq:b_i-in-kmbsm}) should be compared with the new values evaluated using the amplitudes of the present work.
@@ -490,7 +490,7 @@ As usual in continuum path integral, given an observable $\mathcal{X}$ functiona
     \la \mathcal{X} (x_1,\dots,x_K) \ra = \frac{1}{\mathcal Z} \int \mathcal{D} \phi \hspace*{0.5mm} e^{-S_E[\phi_i]} \mathcal{X}\left[\phi_1,\dots,\phi_{N_\text{fields}}\right] (x_1,\dots,x_K)
 \end{equation*}
 where $\mathcal Z$ is the usual partition function $\mathcal Z = \la 1 \ra$.
-The path integral provides theoretical tools to handle a non perturbative theory then all the quantites in lattice simulations must be evaluated through vacuum expectation values of some choosen observables \cite{Itzykson-Zuber}.
+The path integral provides theoretical tools to handle a non perturbative theory then all the quantites in lattice simulations must be evaluated through vacuum expectation values of some chosen observables \cite{Itzykson-Zuber}.
 This fact has consequences, for example the asymptotic extractions described in section \ref{sec:asympt-behav}.
 \newline
 In the case of QCD described in the previous chapter, the integration can be split in two parts: the {\it fermionic integration} $\la \hspace*{0.7mm} \cdot \hspace*{0.7mm} \ra_F$ with measure $\mathcal{D}\psi\mathcal{D}\bar\psi$ and the {\it Gauge integration} $\la \hspace*{0.7mm} \cdot \hspace*{0.7mm} \ra_G$ with measure $\mathcal{D}U$ \footnote{About the meaning of the variables $U_\mu$, wait until the next section.}.
@@ -590,7 +590,7 @@ Several $O(a)-$improvements are available and some of them are expressed in the 
 \end{equation}
 where $\{r\}$ is a set of rectangles on the lattice, analogous to $\{p\}$.
 Depending on the choice of the coefficients $c_{0}$ and $c_{1}$, it is possible to get different improvements.
-The choosen one uses $c_0 = 5/3$ and $c_1 = -1/12$ and takes the name of \textit{Luscher-Weisz action} \cite{tmLQCD}.
+The chosen one uses $c_0 = 5/3$ and $c_1 = -1/12$ and takes the name of \textit{Luscher-Weisz action} \cite{tmLQCD}.
 
 \section{Fermion actions}\label{sec:fermion-discretization}
 \noindent
@@ -756,7 +756,7 @@ Then it is defined a lattice action of the form:
     S_\text{tm}[\psi,\bar \psi, U] = a^4 \sum_{x,y} \bar \psi(x) \left( D_{xy} + m \delta_{xy} + i \mu_q \gamma_5 \sigma^3 \delta_{xy} \right) \psi (y)
 \end{equation}
 with $D$ the massless Wilson-Dirac operator and $\mu_q$ the {\it twisted mass} term.
-It is important to underline that in this form, the action \ref{eq:tmQCD-action} it is not yet a good regularization because its continuum limit does not coincide with usual QCD.
+It is important to underline that in this form, the action (\ref{eq:tmQCD-action}) it is not yet a good regularization because its continuum limit does not coincide with usual QCD.
 In fact, in principle the twisted mass term $\mu_q$ has no direct physical meaning.\footnote{I will explain later how to relate $\mu_q$ to a physical parameter.}
 Its presence is just a mathematical trick to modify the fermion determinant in such a way that fermion modes exhibit a positive lower bound:
 \begin{equation*}
@@ -996,7 +996,7 @@ The value of the flavour index $q$ is a not trivial argument.
 By following the work of Frezzotti and Rossi \cite{FR2}, each valence quark must have a partner of the same flavour.
 In this sense, the the index $q$ runs over this set $\{u,u',d,d',s,s'\}$.
 Particular attention must be given to the difference between two replicas of the same falvour - for example $d,d'$.
-I know from \cite{FR2} that, choosen certain observables involving only two physical QCD flavours, twisted masses of lattice flavours $q_1,q_1',q_2,q_2'$ must satisfy these relations:
+I know from \cite{FR2} that, chosen certain observables involving only two physical QCD flavours, twisted masses of lattice flavours $q_1,q_1',q_2,q_2'$ must satisfy these relations:
 \begin{equation*}
     \begin{gathered}
         |\mu_1| = |\mu_1 '| \qquad |\mu_2| = |\mu_2 '| \\
@@ -1067,7 +1067,7 @@ The most commonly used observable is the {\it topological charge}:
 \end{equation*}
 In the above formula $Q_\text{top}$ is defined in the continuum limit.
 A similar definition can be easily worked out in lattice environment.
-Sometimes other observables are choosen, for example the square of the topological charge.
+Sometimes other observables are chosen, for example the square of the topological charge.
 In fact, the VEV of topological charge in pure Yang Mills $SU(3)$ theory is expected to vanish for parity reasons\footnote{Reminder: strong interactions preserve parity; $Q_\text{top} is parity even.$}, then $Q_\text{top}^2$ seems to be a better choice.
 For each observable, a specific time $\tau$ is defined, known as the {\it autocorrelation time} of the observable.\footnote{The word 'time' in this case refers to simulation time, i.e. the time of evolution of a specific Markov chain.}
 The $\tau$ quantifies the autocorrelation of the given observable at two different times.
@@ -1104,7 +1104,7 @@ The conditions to impose on fields are \cite{OBC_top}:
         \quad\quad P_{\pm} = \frac{1}{2}\left(\mathbb{I} \pm \gamma_5 \right)
     \end{gathered}
 \end{equation*}
-The peculiar conditions on fermion fields are choosen in order to achieve parity and time reflection.
+The peculiar conditions on fermion fields are chosen in order to achieve parity and time reflection.
 In Appendix \ref{app:connection} I report a proof of the connection of the space of Gauge fields defined with the new boundary conditions.
 This connection of the space solves - not at all - the problem of large scaling of autocorrelation times.
 With this choice, the scaling behaviour of some observables comes out to scale $\propto a^{-2}$, instead of $\propto a^{-5}$.
@@ -1475,7 +1475,7 @@ The same proof can be applied to a simple meson propagator of the type\footnote{
     G(x,y)=a^3\sum_{\vec x, \vec y} \Big\la \bar \psi^1 (x) \Gamma^\alpha \psi^2 (x) \bar\psi^2 (y) \bar\Gamma^\alpha \psi^1 (y) \Big\ra 
 \end{equation*}
 and then to two points correlators.
-It is important to notice that this proof holds not only for $r_1=r_2=r_3=-r_4$ but for all the possible values of each $r_i$ choosen independently.
+It is important to notice that this proof holds not only for $r_1=r_2=r_3=-r_4$ but for all the possible values of each $r_i$ chosen independently.
 
 
 \subsection{Renormalization and mixing of operators $O_{i[\pm]}$}\label{sec:renormalization-properties}
@@ -1648,7 +1648,7 @@ For $x_4 \gg y_4$ it can be proved that the asymptotic behaviours of such correl
 \end{equation}
 Let's focus on the particular case of this work.
 To evaluate matrix elements I will use $M_A = M_B = \bar K^0$ and $\Xi = O_{i[+]}$.
-Such choices give the three points correaltors $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}) and the two points $G_{\bar K^0 K^0}^\text{FR}, G_{K^0 \bar  K^0}^\text{FR}$ in formula (\ref{eq:lattice-propagators}).
+Such choices give the three points correlators $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}) and the two points $G_{\bar K^0 K^0}^\text{FR}, G_{K^0 \bar  K^0}^\text{FR}$ in formula (\ref{eq:lattice-propagators}).
 Moreover I suppose the neutral Kaons to have the same mass $m_K = m_{\bar K}$.
 Thus their asymptotic behaviours are:
 \begin{equation*}
@@ -1683,11 +1683,13 @@ For simplicity, in this work I will use $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$.
 \lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he present chapter describes the computational side of this work.
 First of all, I will introduce the noise spinors method implemented to evaluate two points Green functions.
 It allows to achieve a great computational advantage on resources efficiency of the simulation program.
-Then the noise spinors method is extended to the case of three points correaltors: this is the most important part of the code that I wrote.
+Then the noise spinors method is extended to the case of three points correlators: this is the most important part of the code that I wrote.
 In both sections a short proof of the equivalence with the Wick contractions is given.
 The second section will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
 In fact it can be adapted to evaluate {\it every} three point correlator with a given quark content.
-In the third section I will give an outline of the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
+Section \ref{sec:program} describes the input parameters and output data of the simulation program.
+In the fourth section I will give an outline of the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
+I conclude with a short description of the status of this work and expectations regard its developement.
 
 \section{Noise spinors method}
 \noindent
@@ -1699,7 +1701,7 @@ These propagators are defined on the lattice by the equation:
 \begin{equation*}
     \sum_{z} \left(D^W\pm i\mu_i \gamma_5\right)(x,z) S_{(i,\pm)}(z,y) = \delta_{x,y}^{(4)}
 \end{equation*}
-The inversion of the Dirac operator\footnote{To be rigorous, I must call it ``Osterwalder-Seiler operator'' because of the presence of twisted mass term. I will call it simply Dirac operator because it should be clear that the OS-QCD is the choosen regularization.}
+The inversion of the Dirac operator\footnote{To be rigorous, I must call it ``Osterwalder-Seiler operator'' because of the presence of twisted mass term. I will call it simply Dirac operator because it should be clear that the OS-QCD is the chosen regularization.}
 in a simulation program requires, in principle, the inversion of a matrix in $\text{Mat}(N\x N,\mathbb{R})$, where
 $$N = N_T \x N_{L_x} \x N_{L_y} \x N_{L_z} \x N_\text{colour} \x 4 \x 2 $$
 The multiplicative factor $4$ is the number of components in a Dirac spinor while the factor $2$ is given because the matrix elements are complex numbers.
@@ -1785,7 +1787,7 @@ The subscripts $c$ and $d$ refer to {\it connected} and {\it disconnected} corre
 The flavour exchange between the two correlators is not $(2\leftrightarrow 4)$ but $(1\leftrightarrow 3)$.
 The reason behind that will be clear soon.
 Picture \ref{fig:contractions-stochastic-method} shows the correlators in a simple representative way for $x_4>y_4>z_4$.
-\begin{figure}[h!]
+\begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{imgs-MSc-thesis/Wick_stochastic_disc.png}
     \includegraphics[width=0.75\textwidth]{imgs-MSc-thesis/Wick_stochastic_conn.png}
@@ -1880,24 +1882,44 @@ Thus I directly evaluate this kind of correlator $\forall i$:
 $$\bigg\langle \bar K'^0(x) \Psi_i (y) K^0(z) \bigg\rangle \sim \bigg\langle \left(\bar\psi_4 \Gamma_A \psi_3 \right) (x) \Psi_i (y) \left(\bar\psi_2 \Gamma_C \psi_1 \right) (z) \bigg\rangle$$
 and it can be verified that it gives exactly the contractions $G_c + G_d$ of Figure \ref{fig:contractions-stochastic-method}.
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
+Then the output data of simulation program has no physical meaning until I perform the basis change in data analysis time.\footnote{To be precise, the physical meaning is achieved only in the continuum limit $a \rightarrow 0$.}
 
-\newpage
+\section{Simulation program description}\label{sec:program}
+\noindent
+The program is developed to generate three points correlation functions and it is based on a previous version that calculates the meson propagators.
+It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
+The program takes as input an ensemble of sea configurations and produces the correlators of the form \ref{eq:lattice-correlators} with $x_4$ and $z_4$ fixed and $y_4$ running in the region $[z_4,x_4]$.
+Instead of read some external configurations, it is also possible to set the Gauge fields to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions) or to randomly generate them.
+These two options were very useful to test the right behaviour of the simulation.
+The program requires some input parameters:
+\begin{itemize}
+    \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, an other coefficient for the boundary counterterms of the fermionic action.
+                The latter is tipically set to $c_F = 1$.
+    \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ to generate in a set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
+    \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare (twisted) mass parameter $\mu^i$ for each quark.
+    \item [-] Dirac matrices to insert: $\Gamma_\omega$, $\Gamma_\xi$ for the sources and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator. The program allows to insert different operators within the same sources.
+        There is also freedom in choice of the quark flavours for each correlator.
+\end{itemize}
+At the end the program stores output data in a file wrote in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
+The data are summed over all the spatial components.
+
+
 \section{Analysis strategy}
 \noindent
-This section gives an overview about the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method of asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
+This section provides an overview of the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method of asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
 Once recovered them at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical amplitudes $\mathcal{A}_i^\text{QCD}$.
-The analysis is divided in some steps, that I briefly report below.
+The analysis is divided in some steps, that I report below.
 This analysis strategy holds for all the data generated from Gauge configurations with open boundary conditions, involving CLS ensembles.
 
 \subsubsection*{First step: determination of minimal asymptotic distance $\delta_4$}
 \noindent
-In order to perform the calculation in \ref{eq:matrix-elements-extraction}:
+In order to perform the calculation in (\ref{eq:matrix-elements-extraction}):
 \begin{equation*}
     \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
 \end{equation*}
 I need the values of such two points and three points correlators in the temporal regions in which the asymptotic behaviour of Section \ref{sec:asympt-behav} is allowed.
 In other words, I need to quantify the minimum value of $\delta_4 = |x_4-y_4|$ such that the exponentials $e^{-\delta_4 m_i}$ - for $m_i > m_K$ - are {\it sufficiently} suppressed with respect to the first level contribution $e^{-\delta_4 m_K}$.
-To estimate it, I make use of two points correaltors.
+To estimate it, I make use of two points correlators.
 From \cite{OBC-tm} I know that, in the asymptotic regime\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last sinh dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
 \begin{equation}\label{eq:sinh}
     G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \approx \frac{\sinh \left( m_K (T - x_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - x_4) \right)
@@ -1906,16 +1928,16 @@ In the last equality I fixed $z_4 = a$, choice valid in the entire simulation.
 I fix $z_4 = 1$ and run the simulation for all the $x_4 \in (z_4+a,T-a)$.
 The case $x_4 = T$ will not produce physical results because of open boundary conditions on fermion fields.
 The strategy consists in performing a fit of the hyperbolic sine in different regions of the space.
-I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the the fit is satisfactory - i.e. a good value of $\chi^2$ \footnote{\colr{Devo ancora capire se possa andar bene questo metodo o se è troppo approssimativo}}.
+I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the goodness of the fit reaches a satisfactory previously chosen value.
 The first satisfactory region gives the value of $\delta_4$: $[\delta_4, T-\delta_4]$.
 At this point I have both determined $m_K$ as a parameter and the ``minimal asymptotic distance'' $\delta_4$.
 In this region I also have the values of $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4=a) = \hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)$ subject to a well defined asymptotic expansion.
 I denote them with the {\it hat} identifier to stress that these data are the ones to be used to recover the wanted amplitudes.
 
-\subsubsection*{Second step: plateau region of three points correaltors}
+\subsubsection*{Second step: plateau region of three points correlators}
 \noindent
 At this point I am ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
-I take a set of correaltors with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $(z_4,x_4)$.
+I take a set of correlators with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $(z_4,x_4)$.
 I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{\bar K^0 K^0}$ that the higher mass states are already suppressed.
 Thus the only relevant contribution comes from Kaons.
 A plateau fit in this region is nothing but an average value:
@@ -1946,6 +1968,54 @@ The essential step to get the {\it physical} value of the amplitudes $\mathcal{A
 It consists in:
 $(i)$ a fit of amplitude values versus their associated lattice spacing $\mathcal{A}_i^\text{fit} (a) $ and
 $(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal{A}_i^\text{QCD} = \mathcal{A}_i^\text{fit} (0) + O(a^2)$.
+
+\section{Status and further developements}
+\noindent
+The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ and using unphysical random configurations.
+Two gauge invariance tests were made.
+\newline
+The first is a test on the propagator calculation.
+It is set a random stochastic spinor as a pointlike spinor $\eta(x)_\alpha^a = \delta^{a,\bar a}\delta_{\alpha \bar \alpha} \delta_{x,\bar x}$ with $\bar a, \bar \alpha, \bar x$ fixed lattice, Dirac and colour indices.
+By inverting the propagator on it, I got the following:
+\begin{equation*}
+    S(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
+\end{equation*}
+I evaluated the Wick contractions of the previous chapter simply by contracting the propagators with the matrices by hand, index by index.
+This is done for random sea fields and their gauge transformed fields.
+The check of Gauge invariance was succesfully achieved by comparing these data, as shown in Figure \ref{fig:check1}:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/check1.pdf}
+    \caption{Check of Gauge invariance on the 3 points correlators. Since they are real, only the real part is plotted.
+        I stress that in these data there is no physical meaning.
+        The gauge fields are randomly generated, the sources are a $\gamma_5$ and an identity. The intermediate operator is a $\Psi_3$.}
+    \label{fig:check1}
+\end{figure}
+\newline
+The other test consists in the generation of a random set of gauge fields, a calculation of the correlators through the noise spinors method, a gauge transformation on the Gauge fields and a check that the two set of data coincides.
+The test had a positive response and the plot is similar to the one in figure above.
+In both the tests the finite precision of the solver generates discrepancies in the data, but they are visible only at very small scales.
+Moreover all the physical parameters are not well tuned, since they are not useful to the scope of the checks. 
+\newline
+An other test was made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
+The gauge configurations were generated with and inverse lattice coupling $\beta = 6.0$ and in absence of quarks on the sea sector (quenched approximation).
+The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
+In this case all the correlators are calculated through $N_\text{nosie} = 20$ noise spinors and the below Figure \ref{fig:pureYM} show the result:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM.pdf}
+    \caption{Test of the simulation program on 54 quenched configurations on a \texttt{16x16x16x32} lattice.
+        Error bars are too large to be plotted.}
+    \label{fig:pureYM}
+\end{figure}
+\newline
+Clearly the plot is not at all satisfactory because there are no plateaus regions.
+Moreover the first correlator has values extremely small - by one order or more - compared to values from the others operators.
+On the other side, all the used parameters have no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
+For this reason usually the parameters are given along with the configuration, when available.
+\newline
+Further developements involve the calculation of these three points correlator by using faithful sea configurations and to set the right parameters on the input files.
+The objective is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks.
 
 
 
@@ -2288,21 +2358,6 @@ The parity even and parity odd parts are respectively:
 \noindent
 In this supplementary chapter, I aim to provide proofs for certain aspects that were not covered in the main thesis chapters.
 
-%\section{Proof of the measure invariance under twist}
-%\noindent
-%I want to prove that a twist transformation à la Osterwalder-Seiler or à la Twisted Mass has Jacobian equal to identity.
-%In the following proof I choose an OS twist because it automatically implies the Twisted Mass case.
-%\newline
-%The twist transformation $\mathbf{J}(\alpha,r)$ has no dependence on the spacetime point $x$ or on the fields.
-%Then:
-%\begin{equation*}
-%    \mathcal{D} \psi_i \mathcal{D} \bar\psi_i = \mathbf{J}^2(\alpha,r) \mathcal{D} \chi_i \mathcal{D} \bar\chi_i
-%\end{equation*}
-%So the Jacobian is $\mathbf{J}^2(\alpha,r) = \mathbf{J}(2\alpha,r)$, but it is a constant.
-%Then, in the average of some observable $\mathcal{X}$ it simplifies with the term arising form $\mathcal{Z}$.
-%Therefore I can state that the Jacobian {\it is} the identity, in the sense that it is a constant.
-%Since this relation holds separately for each single flavour $i$, it holds also for two flavours in tmQCD.
-
 \section{Proof that $\la \Omega | \bar K^0 (0) | \bar K^0 \ra$ is real}\label{app:proof-reality}
 \noindent
 Based on the Goldstone theorem \cite{Goldstone-Theorem} there exist pseudoscalar single particle states $| \phi^a (\vec p) \ra$ (Nambu Goldstone bosons) and corresponding local operators $\phi^a(x)$ that interpolate these states in a simple manner, expressed as $\la\Omega | \phi^a (x) | \phi^b (\vec p) \ra = \delta^{ab}e^{ipx} $.
@@ -2397,11 +2452,11 @@ Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ satisfying \obc\s
 
 \section{Pseudoscalar propagator with OBC}\label{app:sinh-proof}
 \noindent
-I want to derive the form of the propagator \ref{eq:sinh} in presence of \obc\space on fermion fields.
+I want to derive the form of the propagator (\ref{eq:sinh}) in presence of \obc\space on fermion fields.
 For simplicity, I work the calculation in continuum QCD.
 First of all, I must derive the boundary conditions on pseudoscalar mesons.
 I do it by looking at appendix \ref{app:proof-reality}: the generic pseudoscalar meson operator is proportional to the pseudoscalar density $P^{ab}(x)=\bar \psi^a (x) \gamma_5 \psi^b (x)$
-Then I can infere its boundary conditions from the conditions in the fermion fields \ref{eq:obc-on-fermions}.
+Then I can infere its boundary conditions from the conditions in the fermion fields (\ref{eq:obc-on-fermions}).
 \newline
 I can write the identity in the following way $\mathbb{I}_4 = P_+ + P_-$.
 Then I can insert it in a pseudoscalar density evaluated in $x_4 = 0$:
@@ -2454,7 +2509,7 @@ where:
     \end{cases}
 \end{equation*}
 with this choice the boundary conditions are automatically satisfied.
-The coefficients $\alpha (t')$ and $\beta (t')$ must be choosen in order to make $G_\omega(t,t')$ continous and its first derivative must be an Heaviside $\theta(t-t')$.
+The coefficients $\alpha (t')$ and $\beta (t')$ must be chosen in order to make $G_\omega(t,t')$ continous and its first derivative must be an Heaviside $\theta(t-t')$.
 By imposing these conditions I found:
 \begin{equation*}
     \begin{aligned}
