@@ -111,10 +111,10 @@
     \newline
     Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, contributions from the boundaries, lattice spacing effects, efficiency of the propagators inversion, \dots
     The lattice setup chosen for this work aims to minimize some of these effects. 
-    Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated each other, but their autocorrelation times grows as the lattice spacing is reduced.
-    It is proved that this problem is partially solved by choosing open boundary conditions in temporal direction.
-    Secondly, these boundary conditions protects the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator.
-    Open boundary conditions give an efficient alternative to twisted mass QCD - used in \cite{KMBSM} - and allow the simulation program to simulate a third flavour of sea quark: $\{u,d,s\}$.
+    Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated each other, but their autocorrelation times grows as the lattice spacing is reduced. \cite{critical-slowing-down-error-analysis}
+    It is proved that this problem is partially solved by choosing open boundary conditions in temporal direction. \cite{OBC_top}
+    Secondly, these boundary conditions protects the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator \cite{SF-luscher}.
+    Open boundary conditions give an efficient alternative to twisted mass QCD (tmQCD) \cite{tmLQCD} - used in \cite{KMBSM} - and allow the simulation program to simulate a three flavours of sea quarks, not allowed in tmQCD.
     The entire simulation is developed to yield \oaid\space results, i.e. values that differs from the continuum limit ones by terms of order $O(a^2)$ or higher.
     This is possible thanks to the strategy worked out by Frezzotti and Rossi in \cite{FR2}.
     Such strategy involves maximally twisted Osterwalder-Seiler quarks in the valence sector.
@@ -164,7 +164,7 @@ This accidental group is broken by several instances:
             In the second instance by the mass term: $$\mathcal{L}_{QCD}^M = - \sum_{q,q' = u,d,s} \bar\psi_q (x) M_{qq'} \psi_{q'} (x)$$ as it causes the mixing of Left and Right Weyl spinors of the same flavour.
     \item [$\triangleright$] $SU(3)_A$: This is broken by the mass term similarly to the $U(1)_A$ case.
             Moreover it is spontaneously broken because the group is not closed.*
-    \item [$\triangleright$] $U(1)_V$: This is always preserved and from it the baryon number $B$ arises.
+    \item [$\triangleright$] $U(1)_V$: This is always preserved and it is responsible for the Baryon quantum number $B$.
     \item [$\triangleright$] $SU(3)_V$: This is the flavour symmetry group of QCD, preserved also in the massive case, but only if the masses are all equal: $m_s = m_u = m_d$.
 \end{itemize}
 * The particular breaking mechanism of $SU(3)_A$ is such that the charges $Q^a_A$ don't annihilate the vacuum $Q^a_A \Psi_0 \ne 0$ even in the chiral limit ($m_q = 0 \spc \forall \spc q$).
@@ -187,7 +187,7 @@ To give an example of confinement effects, let's consider a (non singlet flavour
 \end{equation*}
 for example, by choosing $\psi^1 = u$ and $\psi^2 = d$, the propagator of the $\pi^-$ si obtained.
 In principle the two constituent quarks $\psi^1, \psi^2$ - named \textit{valence} quarks - are subject to a very large number of interactions with the gluons.
-In first approximation of perturbation theory (PT) one simply neglects these contributions, while at higher orders only a few number of diagrams is involved.
+In first approximation of perturbation theory (PT) one simply neglects these contributions, while at higher orders only few diagrams are involved.
 However the running coupling phenomenon makes the constant $g(\mu)_\text{colour}$ grow at energies below $\Lambda_\text{QCD}$. 
 As consequence the use of PT is no more allowed and all the possible contributing diagrams must be considered.
 The Figure \ref{fig:confinement} gives an idea of the subleading processes to involve.
@@ -1195,7 +1195,7 @@ The SUSY operator basis for \kkb oscillations was introduced in (\ref{eq:Thetai-
 Despite its historical significance, the basis $\{\Theta_i\}$ will be replaced by an other basis $\{Q_i\}$ because of its particular renormalization properties.
 However, before introducing this new basis, I need to present some modifications to the ``old'' SUSY basis.
 \newline
-I aim to reformulate operators $\Theta_3$ and $\Theta_5$ by rearranging the spin and colour indices constractions within the same couple of quarks. 
+I aim to reformulate operators $\Theta_3$ and $\Theta_5$ by rearranging the spin and colour indices contractions within the same couple of quarks. 
 This can be done by applying the Fierz relations \cite{Itzykson-Zuber} along with calculation of $\Theta_{3,5}$, as outlined in Appendix \ref{app:fierz}.
 The new set of operators comes out to be:
 \begin{equation*}
@@ -1685,11 +1685,11 @@ First of all, I will introduce the noise spinors method implemented to evaluate 
 It allows to achieve a great computational advantage on resources efficiency of the simulation program.
 Then the noise spinors method is extended to the case of three points correlators: this is the most important part of the code that I wrote.
 In both cases a short proof of the equivalence with the Wick contractions is given.
-The second section will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
-In fact it can be adapted to evaluate {\it every} three point correlator with a given quark structure.
 Section \ref{sec:program} describes the input parameters and output data of the simulation program.
-In the fourth section I will give an outline of the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
-I conclude with a short description of the status of this work and expectations regard its development.
+A subsection will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
+In fact it can be adapted to evaluate {\it every} three point correlator with a given fermion structure.
+In the third section I will outline the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
+I conclude with a description of the status of this work and expectations regard its development.
 
 \section{Noise spinors method}
 \noindent
@@ -1821,12 +1821,12 @@ I define the following derived stochastic spinors:
     \end{aligned}
 \end{equation}
 It could be easily checked that the contractions in (\ref{eq:contractions-stochastic-method}) are obtained by the following formulae:
-\begin{equation*}
+\begin{equation}\label{eq:noise-method}
     \begin{gathered}
         G_d =   \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}} \\
         G_c = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
     \end{gathered}
-\end{equation*}
+\end{equation}
 Then, to evaluate the previous couple of Wick contraction I need only four quantites for each couple of stochastic spinors:
 \begin{equation*}
     \xi^{(3,-)}_{1,A} (y) \qquad  \zeta^{(4,+)}_1 (y) \qquad \xi^{(1,-)}_{C,2} (y) \qquad  \zeta^{(2,+)}_2 (y)
@@ -1845,7 +1845,27 @@ Then the needed computational resources are decreased and the simulation algorit
 Furthermore, I need ``only'' $4\cdot N_\text{noise} \cdot N_\text{noise}$ inversion of this kind for each three points correlator.
 Then, for a reasonable choise of $N_\text{noise}$ and number of correlators\footnote{in practice, almost always.}, the advantage is succesfully achieved.
 
-\section{Computational Basis}
+\section{Simulation program description}\label{sec:program}
+\noindent
+The program is structured to generate three points correlation functions and it is based on a previous version that calculates meson propagators.
+It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
+The program takes as input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
+Instead of read some external configurations, it is also possible to set the link variables to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions, because $A_\mu^{i} \hspace*{.1mm}_j = 0$) or to randomly generate them.
+These two options were very useful to test the right behaviour of the simulation.
+The program requires the following input parameters:
+\begin{itemize}
+    \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, an other coefficient for the boundary counterterms of the fermionic action.
+                The latter is tipically set to $c_F = 1$.
+    \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ per set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
+    \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare twisted mass parameter $\mu_i$ for each quark.
+    \item [-] Dirac matrices: $\Gamma_\omega$, $\Gamma_\xi$ for the source bilinears and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator.
+        The program allows to insert different operators within the same sources and calculate their Wick contractions.
+        There is also freedom in choice of the quark flavours for each correlator.
+\end{itemize}
+At the end the program stores output data in a file wrote in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
+The output data are already summed over all the spatial components.
+
+\subsection{Computational Basis}
 \noindent
 One might wonder the reason behind the choice of operators exchange $\Gamma_B \leftrightarrow \Gamma_D$ between the terms $G_d$ and $G_c$ of the previous method (look at equations (\ref{eq:GdGc-strategy})).
 It could seem an unreasonable choice because it has the form of a flavour exchange $(1\leftrightarrow 3)$ instead of $(2\leftrightarrow 4)$, that one might expect.
@@ -1883,26 +1903,6 @@ $$\bigg\langle \bar K'^0(x) \Psi_i (y) K^0(z) \bigg\rangle \sim \bigg\langle \le
 and it can be verified that it gives exactly the contractions $G_c + G_d$ of Figure \ref{fig:contractions-stochastic-method}.
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 Then the output data of simulation program has no physical meaning until I perform the basis change in data analysis time.\footnote{To be precise, the physical meaning is achieved only in the continuum limit $a \rightarrow 0$.}
-
-\section{Simulation program description}\label{sec:program}
-\noindent
-The program is structured to generate three points correlation functions and it is based on a previous version that calculates meson propagators.
-It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
-The program takes as input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
-Instead of read some external configurations, it is also possible to set the link variables to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions, because $A_\mu^{i} \hspace*{.1mm}_j = 0$) or to randomly generate them.
-These two options were very useful to test the right behaviour of the simulation.
-The program requires the following input parameters:
-\begin{itemize}
-    \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, an other coefficient for the boundary counterterms of the fermionic action.
-                The latter is tipically set to $c_F = 1$.
-    \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ per set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
-    \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare twisted mass parameter $\mu_i$ for each quark.
-    \item [-] Dirac matrices: $\Gamma_\omega$, $\Gamma_\xi$ for the source bilinears and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator.
-        The program allows to insert different operators within the same sources and calculate their Wick contractions.
-        There is also freedom in choice of the quark flavours for each correlator.
-\end{itemize}
-At the end the program stores output data in a file wrote in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
-The output data are already summed over all the spatial components.
 
 
 \section{Analysis strategy}
@@ -1972,65 +1972,101 @@ $(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal
 
 \section{Status and further developments}
 \noindent
-The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ $\forall \mu,x$ and using unphysical random configurations.
-Two gauge invariance tests were made.
+In this section I outline the status of this work and future developments.
+The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ $\forall \mu,x$ and through unphysical random configurations.
+The relevant tests reported consist into two checks of gauge invariance of two and three points correlators.
+Gauge invariance is an essential property of QFTs; for this reason it is one of the most checked in lattice QCD simualtions.
+Then the program has been tested on an ensemble of quenched\footnote{it means ``in absence of sea quarks'', neglecting the fermion determinant in (\ref{eq:fermion-determinant}).} gauge fields with OBC.
 \newline
-The first is a test of Gauge invariance on the propagator computation.
-It is generated a set of pointlike spinors $\eta(x)_\alpha^a = \delta^{a,\bar a}\delta_{\alpha \bar \alpha} \delta_{x,\bar x}$ with $\bar a, \bar \alpha, \bar x$ fixed lattice, Dirac and colour indices.
-This has been done for all the 12 combinations of Dirac and colour fixed indices, meanwhile $\bar x$ is fixed.
-By inverting the propagator on it, I got the following:
+The first test furnishes a direct proof that the Dirac inverter preserves gauge invariance property.
+Unwanted errors could be find from a lack in this test.
+A set of pointlike spinors has been generated.
+I define {\it pointlike} spinor an $\eta$ equipped with property:
+$$\eta_\alpha^a (x) = \delta^{a,\bar a}\delta_{\alpha, \bar \alpha} \delta_{x,\bar x}$$
+with $\bar a, \bar \alpha, \bar x$ fixed colour, Dirac and lattice indices.
+This has been done for all the $3\times 4 = 12$ combinations of fixed Dirac and colour indices, meanwhile $\bar x$ was unchanged.
+By inverting the Osterwalder-Seiler operator on them, the propagators was expected to have this structure:
 \begin{equation*}
-    S^{(f)}(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
+    \left(S^{(f)}(y, \bar x)[U]\right)^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
 \end{equation*}
-here $f$ is the flavour index.
+with $f$ the flavour index.
+I have explicitly contracted propagators and Dirac matrices to reconstruct Wick contractions of previous chapter.
+This has been made by fixing two pointlike sources $\bar x=(\vec 0, x_4)$ and  $\bar z=(\vec 0, z_4)$, by choosing a mixing operator $\Psi_i (y)$ and summing over the fixed colour and Dirac indices.
+In other words, the {\it noise average} in formula (\ref{eq:noise-method}) is replaced by two sets of 12 pointlike sources.
+In both tests the values of $z_4$ and $x_4$ were fixed respectively to the first and last allowed timeslice.
+This has been done for random sea fields and their gauge transformed fields.
+The propagators are expected to transform, in the continuum limit, in the following way:
+\begin{equation*}
+    \left(S^{(f)}(y, \bar x)[\Omega U \Omega^\dagger]\right)^{b,\bar a}_{\beta, \bar \alpha} = \Omega (y)^{b,c} \left(S^{(f)}(y, \bar x)[U]\right)^{c,d}_{\beta, \bar \alpha} \Omega^\dagger (\bar x)^{d,\bar a}
+\end{equation*}
+thus the traces appearing in the Wick contractions (\ref{eq:wick-contractions-general}) are gauge invariant.
+The check of gauge invariance has been succesfully achieved by comparing two set of data of three points correlators obtained using a (random) configuration and its gauge transformed duplicate.
+The gauge transformations $\Omega (x)$ were randomly generated.
+Figure \ref{fig:check1} shows the output of the described test, in which the intermediate operator is $\Psi_3 (y)$.
+Since the three points correlators are real, only the real part is plotted.
+Such reality property is proved in \ref{app:proof-reality-3pts}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/check1.pdf}
-    \caption{Check of Gauge invariance on the 3 points correlators. Since they are real, only the real part is plotted.
-        Their reality is proved in \ref{app:proof-reality-3pts}.
-        I stress that in these data are not physically meaningful.
+    \caption{Check of Gauge invariance on the 3 points correlators.
+        The plot shows the three point correlator $\sum_{\vec y} \la \bar K^0 (14a,\vec 0) \Psi_3 (y_4, \vec y) \bar K^0 (a,\vec 0) \ra$ versus the timeslice $y_4$.
         The gauge fields are randomly generated, the sources are a $\gamma_5$ and an $\mathbb{I}_4$ to emulate Kaon sources in OS twist.
-        The intermediate operator is a $\Psi_3$.}
+        The point in $y_4=1$ is out of range, but exhibits the same gauge invariance property.
+        I stress that these data are not physically meaningful.}
     \label{fig:check1}
 \end{figure}
 \newline
-I computed the Wick contractions of the previous chapter simply by contracting the propagators with the matrices by hand, index by index, fixing $\bar x=(\vec 0, x_4)$ and  $\bar z=(\vec 0, z_4)$ and choosing a mixing operator $O_{i,[+]}$.
-This is done for random sea fields and their gauge transformed fields.
-As expected, the propagators must be gauge invariant:
-\begin{equation*}
-    S^{(f)}(y, \bar x)[U]^{b,\bar a}_{\beta, \bar \alpha} = S^{(f)}(y, \bar x)[\Omega U \Omega^\dagger]^{b,\bar a}_{\beta, \bar \alpha} 
-\end{equation*}
-The check of Gauge invariance was succesfully achieved by comparing these data, as shown in Figure \ref{fig:check1}, where the intermediate operator is $\Psi_3$.
+The other test aims to verify gauge invariance of the three points correlators calculated through the noise spinors method, equation (\ref{eq:noise-method}).
+It consists in the following steps.
+First of all, it has been generated a set of random unphysical link variables $U_\mu (x)$ and they were used to compute correlators through formula (\ref{eq:noise-method}).
+Then data were stored and analyzed.
+The second part consisted in the generation of random gauge transformations $\Omega (x)$.
+The previous gauge configuration has been transformed and it followed a re-computation of the correlators.
+The two data sets must coincide up to errors.
+The test had a positive response and the plot is similar to the one of the first test.
+In both the tests the finite precision of the solver generates discrepancies between the two data sets, but they are visible only at scales much smaller than the correlators scale.
+It has been verified that these errors decrease requiring more and more precision in the inversion of the propagators.
+Moreover all the physical parameters were not well tuned, since they were not useful to the scope of the checks. 
 \newline
-The other gauge invariance test consists in these steps:
-$(i)$ the generation of a random set of gauge fields
-$(ii)$ a calculation of the correlators through the noise spinors method the fields of point $(i)$
-$(iii)$ a gauge transformation on the Gauge fields and re-computation of the correlators
-$(iv)$ a check that the two set of data coincides.
-The test had a positive response and the plot is similar to the one in figure above.
-In both the tests the finite precision of the solver generates discrepancies in the data, but they are visible only at very small scales.
-Moreover all the physical parameters are not well tuned, since they are not useful to the scope of the checks. 
-\newline
-An other test was made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
-The gauge configurations were generated with and inverse lattice coupling $\beta = 6/g_0^2 = 6.0$ and in absence of quarks on the sea sector (quenched approximation).
+An other test has been made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
+The gauge configurations have been generated with and inverse lattice coupling $\beta = 6/g_0^2 = 6.0$ - corresponding to an inverse lattice spacing $a^{-1} \sim 2.0$ \gev \cite{exploring-tmQCD-clover-term} - in the quenched approximation.
 The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
-In this case all the correlators are calculated through $N_\text{nosie} = 20$ noise spinors and the below Figure \ref{fig:pureYM} show the result:
+First of all the configurations have been tested on the program that calculates two points correlators.
+The simulation has $N_\text{noise} = 30$ noise spinors and the hopping parameters used were not at their critical value, thus the maximal twist is not achieved.
+Despite this, the simulation furnishes a test on the two point functions behaviour.
+The correspondig graph, in logarithmic scale, is presented in Figure \ref{fig:plot-2pts}.
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM.pdf}
-    \caption{Test of the simulation program on 54 quenched configurations on a \texttt{16x16x16x32} lattice.
-        Error bars are too large to be plotted.}
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-2pts.pdf}
+    \caption{Two points correlators $\sum_{\vec x, \vec y} \la \bar K^0 (y) K^0 (x) \ra$ and $\sum_{\vec x, \vec y} \la S^{12} (y) S^{21} (x) \ra$.
+        Test executed with hopping parameters different from the critical value and twisted mass terms different from zero.}
+    \label{fig:plot-2pts}
+\end{figure}
+\newline
+The behaviour of the two point correlators is, as expected, similar to the one in Figure 6 in \cite{OBC-tm}.
+Such behaviour is proportional to:
+\begin{equation*}
+    \propto C + \log\big[\sinh \left(M_i (T-y_4)\right)\cdot \sinh \left(M_i x_4\right)\big] = C' + M_i \left(T+x_4-y_4\right) + \log \left[f(x_4,y_4)\right]
+\end{equation*}
+that's a line plus a logarithm of a function $f$ of the time coordinates.
+\newline
+Then the case of three points correlators is inspected.
+the correlators were calculated through $N_\text{nosie} = 20$ noise spinors and the below Figure \ref{fig:pureYM} show the result:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-3pts.pdf}
+    \caption{Test of the simulation program on 54 quenched configurations on a \texttt{16x16x16x32} lattice.}
     \label{fig:pureYM}
 \end{figure}
 \newline
 Clearly the plot is not at all satisfactory because there are no plateaus regions.
-Despite this, the graph gives results that seem to go in the right direction.
-In fact keep in mind that almost all the used physical parameters have no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
-For this reason usually the parameters are given along with the configuration, when available.
+On the other hand, the used configurations lives in a small lattice then the number of temporal points could be too small to fall in asymptotic behaviours.
+Furthermore the fermion physical parameters had no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
+Usually the parameters are given along with the configuration, when available.
 Moreover the first correlator has values extremely small - by one order or more - compared to values from the others operators.
-The third operator is negative because of the conventions, in fact in \cite{KMBSM} it is positive.
+The third operator is negative because of the conventions of this work, in fact in \cite{KMBSM} it is positive.
 \newline
-Further developments involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
+Future developments involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
 The objective is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks;
 then the data analysis described in the previous section should give the best estimates for the continuum amplitudes $\mathcal{A}^\text{QCD}_i$.
 
