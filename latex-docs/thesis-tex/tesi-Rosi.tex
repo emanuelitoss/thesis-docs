@@ -89,27 +89,26 @@
 \begin{abstract}
     Oscillations of neutral Kaons are a well known phenomenon within the framework of the Standard Model (SM) of particle physics.
     These oscillations arise from quark flavor mixing governed by the Cabibbo-Kobayashi-Maskawa matrix in weak interactions.
-    Such two states system manifests the flavour changing neutral currents (FCNC) in the context of confined Quantum Chromodynamics (QCD).
     Furthermore, decay rates of the Kaons are studied to get an indirect measure of $CP$ violation in the Standard Model, quantified through the parameter $\epsilon_K$.
     Precise theoretical predictions are essential.
-    As I have implicitly mentioned, the Kaons oscillation phenomenon takes place at low energies, where the quarks are confined in mesons and baryons - typically energies below $\Lambda_\text{QCD} ~ 250$\mev \cite{WeinbergII}.
+    As I have implicitly mentioned, the Kaons oscillation phenomenon takes place at low energies, where the quarks are confined in mesons and baryons - energies of order of $\Lambda_\text{QCD} ~ 250$\mev \cite{WeinbergII}.
     Perturbation theory (PT) represents the most powerful tool of theoretical physicists to understand the world of particle physics.
     However it imposes the requirement of energies much higher than $\Lambda_\text{QCD}$, requirement not satisfied in the energetic region concerning confinement.
     The PT approach becomes inefficient and the only other valid approach to QFT is the path integral formalism.
     Usually, direct calculation in path integral are performed through lattice QFT simulations.
     \newline
-    The main character of this work is a set of dimension 6 four-quarks operators responsible for the oscillations of neutral Kaons.
+    In this work I treat a set of dimension 6 four-quarks operators responsible for the oscillations of neutral Kaons.
     They constitute an effective Hamiltonian for the oscillating system
     $$ \mathcal{H}^{\Delta S=2}_\text{eff,BSM} = \sum_i \hat C_i (\mu) \hat\Theta_i (\mu) $$
     The first operator $\hat\Theta_1$ is the effective operator associated to the SM contribution to the oscillations.
     The others take place in beyond the standard model (BSM) theories, such as supersymmetry, left right symmetric models or multi Higgs models \cite{Bparameters}.
-    The objective is to compute the bare Kaon oscillation amplitudes caused by each $\Theta_i$ operator:
+    The purpose is to compute the bare Kaon oscillation amplitudes caused by each $\Theta_i$ operator:
     $$ \mathcal{A}_i^\text{QCD} = \la \bar K^0 | \Theta_i | K^0 \ra $$
     needed to extract some non perturbative parameters called ``bag parameters'' \cite{Bparameters} \cite{KMBSM}.
     The renormalization of such operators is not involved in this work and it is developed in some papers, such as \cite{renrun}.
     $B$-parameters are widely studied in the context of lattice QCD (LQCD) and the most recent works can be found in \cite{FLAG}.
     \newline
-    Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, contributions from the boundaries, lattice spacing effects, efficiency of the propagators inversion, \dots
+    Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, lattice spacing effects, \dots
     The lattice setup chosen for this work aims to minimize some of these effects. 
     Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated each other, but their autocorrelation times grows as the lattice spacing is reduced. \cite{critical-slowing-down-error-analysis}
     It is proved that this problem is partially solved by choosing open boundary conditions in temporal direction. \cite{OBC_top}
@@ -129,7 +128,7 @@
     At the end of the chapter I outline the adopted lattice setup as a solution of almost all the presented problems.
     The chapter 3 is completely dedicated to the construction of the lattice amplitudes.
     The operators $\Theta_i$ are described in continuum theory, then they are regularized on the lattice by following the strategy in \cite{FR2}.
-    All the properties are described in detail and most of them are proved. At the end of the chapter I describe the asymptotic behaviour extrapolation method, widely used in quantum mechanics and QFT.
+    All the properties are described in detail and most of them are proved. At the end of the chapter I describe the analysis of the asymptotic behaviour of the correlation functions at large Euclidean time, widely used in QFT.
     In the fourth chapter I present the computational strategies developed to calculate the needed Wick contractions of the two and three points correlators.
     Particular relevance is given to the calculation of three points correlators through the method of noise spinors, that represents most of the ``behind the scenes'' thesis work.
     A conclusive section provides the reader information about the status of the simulation and report the achievements of this work.
@@ -404,7 +403,7 @@ A relevant work has been done by the ETM collaboration in \cite{KMBSM} bringing 
 I want to highlight that the $B_1(\mu_0)$ value has a small difference with respect to the one in formula \ref{B_K-value} - because it comes from a different simulation - but fortunately there is an overlap due to statistical errors.
 The simulation setup developed in this thesis is very similar to the one used in \cite{KMBSM}, but some improvements have been done.
 These improvements are discussed in the next chapters.
-Some simulation results at the scale of $\mu=3$ \gev\space are reported in the second graph in Figure \ref{fig:bag-parameters}.
+Some simulation results at the scale of $\mu=3$\gev\space are reported in the second graph in Figure \ref{fig:bag-parameters}.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -1136,7 +1135,7 @@ The same topic - along with some generalizations to three point correlators - is
 In this subsection I want to justify the use of \obc\space to simulate sea configurations and explain how they protect the sea fields against Wilson-Dirac zero modes.
 In fact, from this perspective, OBC could represent a smart alternative to tmQCD.
 \newline 
-One of the primary objectives of lattice QFT simulations is the evaluation of low-energy QCD quantities.
+One of the primary purposes of lattice QFT simulations is the evaluation of low-energy QCD quantities.
 To accurately describe the sea sector in low-energy QCD, the minimal quark content required is the doublet $(u, d)$.
 In this case tmQCD represents a very good regularization choice for the sea sector for the reasons described in \ref{subsec:zero-modes}, in particular because it provides a non null fermion determinant.
 \newline
@@ -1436,13 +1435,16 @@ This additive sum over $\vec x$ is a (sort of) statistical average and it is use
 Similarly, the two points correlation functions are:
 \begin{equation}\label{eq:lattice-propagators}
     \begin{split}
-        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) = a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) \left(\bar\psi^3 \gamma_5 \psi^4 \right) (x) \right\ra \\
-        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) = - a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^2 \psi^1 \right) (x) \left(\bar\psi^1 \psi^2 \right) (y) \right\ra \\
+        & G_{34}^\text{FR}(x_4,y_4) = a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) \left(\bar\psi^3 \gamma_5 \psi^4 \right) (x) \right\ra \\
+        & G_{12}^\text{FR}(x_4,y_4) = - a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^2 \psi^1 \right) (x) \left(\bar\psi^1 \psi^2 \right) (y) \right\ra \\
     \end{split}
 \end{equation}
-the use of the first or the second correlator is equivalent, since one consists in the ``flavour replica'' of the other and vice versa.
-Similar definitions hold for $C_{K^0 \bar K^0 }^\text{FR}(x_4,y_4)$; they differ by an exchange of flavours $(1\leftrightarrow 2)$ or $(3\leftrightarrow 4)$.
-
+the use of the first or the second correlator is - in principle - equivalent, since one consists in the ``flavour replica'' of the other and vice versa.
+Both describe a neutral anti-Kaon $\bar K^0$ propagator.
+Nevertheless there are lattice artefacts due to the different regularizations of $d,d'$ that make the pseudoscalar densities $\bar K^0$ and $\bar K^{'0}$ generate slightly different Kaons.
+\newline 
+Similar definitions hold for $G_{21}^\text{FR}$ and $G_{43}^\text{FR}$.
+They differ from (\ref{eq:lattice-propagators}) by an exchange of flavours $(1\leftrightarrow 2)$ or $(3\leftrightarrow 4)$ and correspond to the propagator of the Kaon $K^0$.
 
 \section{Properties of correlators and $O_{i[+]}$ operators}\label{sec:operators-properties}
 \subsection{Automatic \oait}
@@ -1580,8 +1582,8 @@ This result has been formally developed in \cite{FR2}.
 \section{Asymptotic behaviours}\label{sec:asympt-behav}
 \noindent
 The last pending issue of this chapter is the method to extract the bare amplitudes $\la \bar K^0 | Q_i | K^0 \ra$ in the continuum limit from correlators (\ref{eq:lattice-correlators}).
-The method of asymptotic behaviours is a standard extraction method \cite{montvay-munster}, adapted to the case of \obc\space \cite{ExtractionSpectralQuantities}.
-In this section I will consider a general form three point correlator:
+Such method is based on asymptotic behaviours of correlators at large eucledian times and it is a standard extraction method \cite{montvay-munster}, adapted to the case of \obc\space \cite{ExtractionSpectralQuantities}.
+In this section I will consider a generic three point correlator equipped with this form:
 \begin{equation}\label{eq:correlator-prototype}
     C(x_4,y_4,z_4) = a^6\sum_{\vec x, \vec y, \vec z} \left\la M_A (x) \Xi (y) M_B (z) \right\ra
 \end{equation}
@@ -1647,34 +1649,54 @@ For $x_4 \gg y_4$ it can be proved that the asymptotic behaviours of such correl
     G_{C\bar C}(x_4,y_4) \approx a^3 \sum_{\vec x} \la \Omega | M_C (0) | \Psi_C \ra \la \Psi_C | \bar M_C (0) | \Omega \ra \hspace*{0.5mm} e^{-m_C(x_4-y_4)}
 \end{equation}
 Let's focus on the particular case of this work.
-To evaluate matrix elements I will use $M_A = M_B = \bar K^0$ and $\Xi = O_{i[+]}$.
-Such choices give the three points correlators $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}) and the two points $G_{\bar K^0 K^0}^\text{FR}, G_{K^0 \bar  K^0}^\text{FR}$ in formula (\ref{eq:lattice-propagators}).
-Moreover I suppose the neutral Kaons to have the same mass $m_K = m_{\bar K}$.
+To evaluate matrix elements I will use $M_A = \bar K^{'0}$, $M_B = \bar K^0$ and $\Xi = O_{i[+]}$.
+Such choices give the three points correlators $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}) and the two points $G_{34}^\text{FR}, G_{12}^\text{FR}$ in formula (\ref{eq:lattice-propagators}).
+Because of their different regularizations, I suppose that Kaons generated by $\bar K^{'0}$ and $\bar K^{0}$ to have different masses $m_{K'} \neq m_K$ for a lattice spacing different from zero.
 Thus their asymptotic behaviours are:
 \begin{equation*}
     \begin{split}
-        & C_i^\text{FR}(x_4,y_4,z_4) \approx a^6\sum_{\vec x} \la \bar K^0 | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^0 | \bar K^0 \ra  \la K^0 | \bar K^0 | \Omega \ra  \hspace*{.5mm} e^{-m_K(x_4-z_4)}  \\
-        & G_{\bar K^0 K^0}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega | \bar K^0 | \bar K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
-        & G_{K^0\bar K^0}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
+        & C_i^\text{FR}(x_4,y_4,z_4)\approx \\
+        & \hspace*{5mm} \approx a^6\sum_{\vec x} \la \bar K^{'0} | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra  \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)-m_K(y_4-z_4)}  \\
+        & G_{34}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega | \bar K^{'0} | \bar K^{'0} \ra \Big|^2 \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)} \\
+        & G_{12}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
     \end{split}
 \end{equation*}
 Fortunately the two matrix elements $\la \Omega | \bar K^0 | \bar K^0 \ra$ and $\la K^0 | \bar K^0 | \Omega \ra$ are equal and real because of the PCAC relation.
+The same using $\bar K^{'0}$.
 I leave the very simple proof of that in Appendix \ref{app:proof-reality}.
-In particular I use the following chain of equalities:
-$$\la \Omega | \bar K^0 (0) | \bar K^0 \ra = \la K^0 | \bar K^0 (0) | \Omega \ra = \la \Omega | K^0 (0) | K^0 \ra = \la \bar K^0 | K^0 (0) | \Omega \ra $$
-Then the matrix elements of Kaons oscillations with insertion of mixing operators can be asymptotically extracted in the following way for $x_4 \gg y_4 \gg z_4$:
+In particular I use the following chain:
+$$\la \Omega | \bar K^0 | \bar K^0 \ra = \la K^0 | \bar K^0 | \Omega \ra \neq \la \Omega | \bar K^{'0} | \bar K^{'0} \ra = \la K^{'0} | \bar K^{'0} | \Omega \ra$$
+Then the matrix elements of Kaons oscillations with insertion of mixing operators can be asymptotically extracted in the following way for $x_4 \gg y_4 \gg z_4$.
+First of all I explicitly substitute $\sum_{\vec{x}} \la \hspace*{.5mm} \cdot \hspace*{.5mm} \ra$ with $N_\text{vol} \big\la \hspace*{.5mm} \cdot \hspace*{.5mm} \big\ra_\text{space} = N_1 N_2 N_3 \big\la \hspace*{.5mm} \cdot \hspace*{.5mm} \big\ra_\text{sp.}$ to stress that it is an average over space lattice points.
+Then I can use the above asymptotic behaviours to prove that:
+\begin{equation*}
+    \begin{split}
+        & \mathcal{R}_i (x_4,y_4,z_4) \equiv \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} \approx \\
+        & \hspace*{1cm \approx a^3 \left\la \la \bar K^{'0} | O_{i[+]} | K^0 \ra \right\ra_\text{sp.}\cdot \text{exp}\left\{ -m_{K'}\frac{x_4-y_4}{2} - m_{K}\frac{y_4-z_4}{2}}\right\}
+    \end{split}
+\end{equation*}
+By extracting the masses $m_{K'}$ and $m_K$ through the method outlined in Section \ref{sec:analysis}, it is possible to recover the Kaon oscillation amplitudes on the lattice and continuum limit:
 \begin{equation}\label{eq:matrix-elements-extraction}
     \begin{split}
-        & \text{On the lattice:} \quad \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
+        & \text{On the lattice:} \quad \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx a^{-3} \mathcal{R}_i (x_4,y_4,z_4) e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}} \\[5pt]
         & \text{Continuum limit:} \quad \mathcal{A}_i (a) \xrightarrow{a \rightarrow 0} \mathcal{A}_i^\text{QCD} + O(a^2)
     \end{split}
 \end{equation}
-I underline again that the first or second definition of the correlator $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$ in formula (\ref{eq:lattice-propagators}) are equivalent choices because of the reality of this propagator.
-I can use either $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$ or $G_{K^0 \bar K^0}^\text{FR}(x_4,z_4)$ or a combination of them, as:
+There exists an other way that does not require a fit of the two points functions to get the masses $m_{K'}$ and $m_K$.
+Because of the time ordering product in the definition of vacuum expectation values, for $x_4 \ll y_4 \ll z_4$:
 \begin{equation*}
-    \sqrt{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \cdot G_{K^0 \bar K^0}^\text{FR}(x_4,z_4)}
+    \begin{split}
+        & C_i^\text{FR}(z_4,y_4,x_4)\approx \\
+        & \hspace*{5mm} \approx a^6\sum_{\vec x} \la \bar K^0 | O_{i[+]} | K^{'0} \ra  \la \Omega | \bar K^0 | \bar K^0 \ra  \la K^{'0} | \bar K^{'0} | \Omega \ra  \hspace*{.5mm} e^{-m_{K}(x_4-y_4)-m_{K'}(y_4-z_4)}  \\
+    \end{split}
 \end{equation*}
-For simplicity, in this work I will use $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)$.
+Then I define:
+\begin{equation*}
+    \mathcal{R}_i' (x_4,y_4,z_4) \equiv \sqrt{\frac{C_i^\text{FR}(x_4,y_4,z_4) C_i^\text{FR}(z_4,y_4,x_4)}{G_{34}^\text{FR}(x_4,z_4) \cdot G_{12}^\text{FR}(x_4,z_4)}} \approx a^3 \left\la \la \bar K^{'0} | O_{i[+]} | K^0 \ra \right\ra_\text{sp.}
+\end{equation*}
+that gives the directly the mean value of the lattice amplitudes.
+On the other hand, this method requires an additional set of simulations to compute $C_i^\text{FR}(z_4,y_4,x_4)$.
+This is much more unefficient than the fit to get $m_{K'}$ and $m_K$, then this second method has been discarded.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1809,6 +1831,7 @@ The properties (\ref{eq:eta-properties}) must be generalized to:
 \begin{equation}
     \begin{gathered}
         \langle \eta^{1}_{a\alpha} (u) \rangle^{\text{noise}} = \langle \eta^{2}_{b\beta} (u) \rangle^{\text{noise}} = 0 \\
+        \langle \eta^{1*}_{a\alpha} (u) \eta^{2}_{b\beta} (v) \rangle^{\text{noise}} = \langle \eta^{2*}_{a\alpha} (u) \eta^{1}_{b\beta} (v) \rangle^{\text{noise}} = 0 \\
         \langle \eta^{1*}_{a\alpha} (u) \eta^{1}_{b\beta} (v) \rangle^{\text{noise}} = \delta_{a,b} \delta_{\alpha,\beta} \delta_{\vec u, \vec v} \delta_{u_0,x_0} \delta_{v_0,x_0} \\
         \langle \eta^{2*}_{a\alpha} (u) \eta^{2}_{b\beta} (v) \rangle^{\text{noise}} = \delta_{a,b} \delta_{\alpha,\beta} \delta_{\vec u, \vec v} \delta_{u_0,z_0} \delta_{v_0,z_0} \\
     \end{gathered}
@@ -1904,59 +1927,73 @@ and it can be verified that it gives exactly the contractions $G_c + G_d$ of Fig
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 Then the output data of simulation program has no physical meaning until I perform the basis change in data analysis time.\footnote{To be precise, the physical meaning is achieved only in the continuum limit $a \rightarrow 0$.}
 
-
-\section{Analysis strategy}
+\section{Analysis strategy}\label{sec:analysis}
 \noindent
-This section provides an overview of the analysis strategy used to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method of asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
-Once recovered them at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical amplitudes $\mathcal{A}_i^\text{QCD}$.
+This section provides an overview of the analysis strategy needed to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method based on asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
+This analysis concerns the first of the two prposed methods.
+Once recovered the $\mathcal{A}_i (a)$s at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical amplitudes $\mathcal{A}_i^\text{QCD}$.
 The analysis is divided in some steps, that I report below.
 This analysis strategy holds for all the data generated from Gauge configurations with open boundary conditions, involving CLS ensembles.
 
-\subsubsection*{First step: determination of minimal asymptotic distance $\delta_4$}
+\subsubsection*{First step: determination of minimal ``asymptotic distance'' $\delta_4$ and extrapolation of Kaon masses $m_K, m_K'$}
 \noindent
 In order to perform the calculation in (\ref{eq:matrix-elements-extraction}):
 \begin{equation*}
-    \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx \frac{C_i^\text{FR} (x_4,y_4,z_4)}{G_{\bar K^0 K^0}^\text{FR}(x_4,z_4)} \\
+    \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx a^{-3} \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}}
 \end{equation*}
 I need the values of such two points and three points correlators in the temporal regions in which the asymptotic behaviour of Section \ref{sec:asympt-behav} is allowed.
 In other words, I need to quantify the minimum value of $\delta_4 = |x_4-y_4|$ such that the exponentials $e^{-\delta_4 m_i}$ - for $m_i > m_K$ - are {\it sufficiently} suppressed with respect to the first level contribution $e^{-\delta_4 m_K}$.
-To estimate it, I make use of two points correlators.
+To estimate it, I make use of two points correlators $G_{12}^\text{FR}(y_4,z_4)$ and $G_{34}^\text{FR}(x_4, y_4)$.
+Let's start with the first.
 From \cite{OBC-tm} I know that, in the asymptotic regime\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last sinh dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
 \begin{equation}\label{eq:sinh}
-    G_{\bar K^0 K^0}^\text{FR}(x_4,z_4) \approx \frac{\sinh \left( m_K (T - x_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - x_4) \right)
+    G_{12}^\text{FR}(y_4,z_4) \approx \frac{\sinh \left( m_K (T - y_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - y_4) \right)
 \end{equation}
 In the last equality I fixed $z_4 = a$, choice valid in the entire simulation.
-I fix $z_4 = 1$ and run the simulation for all the $x_4 \in (z_4+a,T-a)$.
-The case $x_4 = T$ will not produce physical results because of open boundary conditions on fermion fields.
+I fix $z_4 = a$ and run the simulation for all the $y_4 \in (z_4+a,T-a)$.
+The case $y_4 = T$ will not produce physical results because of open boundary conditions on fermion fields.
 The strategy consists in performing a fit of the hyperbolic sine in different regions of the space.
 I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the goodness of the fit reaches a satisfactory previously chosen value.
+Up to now, no such goodness parameters has been chosen.
 The first satisfactory region gives the value of $\delta_4$: $[\delta_4, T-\delta_4]$.
 At this point I have both determined $m_K$ as a parameter and the ``minimal asymptotic distance'' $\delta_4$.
-In this region I also have the values of $G_{\bar K^0 K^0}^\text{FR}(x_4,z_4=a) = \hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)$ subject to a well defined asymptotic expansion.
+In this region I also have the values of $G_{12}^\text{FR}(y_4,z_4=a) = \hat G_{12}^\text{FR}(y_4,a)$ subject to a well defined asymptotic expansion.
 I denote them with the {\it hat} identifier to stress that these data are the ones to be used to recover the wanted amplitudes.
+\newline
+Then the same procedure must be done for the other two points correlator, $G_{34}^\text{FR}(x_4, y_4)$.
+In this case $x_4$ must be intended as fixed to $T-a$, while $y_4 < x_4$ varies.
+In this case the complete formula if the correlator is the same, but the fit must be:
+\begin{equation*}
+    G_{34}^\text{FR}(x_4, y_4) \propto \sinh \left( m_{K'} y_4 \right)
+\end{equation*}
+By repeating the previous analysis, one should get a value of $m_{K'}$ and a data set of correlators $G^\text{FR}_{34}(x_4=T-a,y_4) = \hat G^\text{FR}_{34}(T-a,y_4)$ useful for the next setps.
+Moreover there comes an other value of minimal asymptotic distance $\delta_4'$.
+I simply choose to use the larger of the two, that I recall $\delta_4$.
 
-\subsubsection*{Second step: plateau region of three points correlators}
+\subsubsection*{Second step: recovering amplitudes $\mathcal{A}_i(a)$}
 \noindent
 At this point I will be ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
-I take a set of correlators with $z_4 = a$, $x_4$ fixed with $x_4 > 2\delta_4 + a$, while $y_4$ varies in $(z_4,x_4)$.
-I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{\bar K^0 K^0}$ that the higher mass states are already suppressed.
-Thus the only relevant contribution comes from Kaons.
+I take a set of correlators with $z_4 = a$, $x_4 = T-a$ while $y_4$ varies in $(z_4,x_4)$.
+I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{12,34}$ that the higher mass states are already suppressed.
+Thus the only relevant contribution comes from lattice Kaons.
 A plateau fit in this region is nothing but an average value:
 \begin{equation*}
-    \hat C_i^\text{FR}(x_4,z_4=a) = \frac{1}{N_\text{region}} \sum_\text{region} C_i^\text{FR}(x_4,y_4,a)
+    \hat C_i^\text{FR}(x_4,z_4) = \frac{1}{N_\text{region}} \sum_\text{region} C_i^\text{FR}(x_4,y_4,a)
 \end{equation*}
-By repeating these steps and varying the value of $x_4$, I obtain a set of $\hat C_i^\text{FR}$ useful for the amplitudes calculation.
+This step is not necessary but it can be used as a test to check that the value of $\delta_4$ is well computed.
+The goodness of such fit must be less or equal to the chosen limit value.
+Otherwise, the condition on $\delta_4$ must be more stringent.
 
 \subsubsection*{Third step: recovering amplitudes $\mathcal{A}_i(a)$}
 \noindent
 The results of previous steps are used to recover values of the amplitudes for a given set of Gauge configuration, i.e. for a given value of lattice spacing $a$:
 \begin{equation*}
-    \mathcal{A}_i (a) (x_4) = \frac{\hat C_i^\text{FR}(x_4,a)}{\hat G_{\bar K^0 K^0}^\text{FR}(x_4,a)}
+    \mathcal{A}_i (a) (y_4) = \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}}
 \end{equation*}
-Again, I have different values corresponding to different choices of $x_4$.
+Again, I have different values corresponding to different choices of $y_4$.
 It is possible that some {\it residues} of higher mass states contribution are still present.
-A fit of a plateau region of the graph $\mathcal{A}_i (a) (x_4)$ vs $x_4$ will help to remove them.
-I expect to see that plateau region for large values of the eucledian time $x_4$.
+A fit of a plateau region of the graph $\mathcal{A}_i (a) (y_4)$ vs $y_4$ will help to remove them.
+I expect to see that plateau region for large values of the eucledian time $y_4$.
 At this point, I will have extracted the best estimate for the amplitude $\mathcal{A}_i (a)$.
 
 \subsubsection*{Fourth step: continuum limit $\mathcal{A}_i^\text{QCD}$}
@@ -2067,7 +2104,7 @@ Moreover the first correlator has values extremely small - by one order or more 
 The third operator is negative because of the conventions of this work, in fact in \cite{KMBSM} it is positive.
 \newline
 Future developments involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
-The objective is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks;
+The purpose is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks;
 then the data analysis described in the previous section should give the best estimates for the continuum amplitudes $\mathcal{A}^\text{QCD}_i$.
 
 
@@ -2467,7 +2504,7 @@ $$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra = \left\la  K^0 (x) \til
 because $B-$parameters are real.
 This is straightforward: I can express the above correlators through the asymptotic expansion (\ref{eq:asymptotic-behav-3pts}) and substitute $\la \bar K^0 | O_{i,[+]} | K^0 \ra$ with the definition of bag parameters (\ref{eq:bag-definition}).
 I'm doing the calculation with the $Q_i$ and not the $\Theta_i$, thus I need to insert a {\it linear combination} of the bag parameters, but the essence is unchanged.
-Since the $B_i$ are real, their complex conjugates coincide with them.
+Since the $B_i$ are real\footnote{this is not proved here.}, their complex conjugates coincide with them.
 From a poetic point of view, it could be interpreted as a consequence of matter-antimatter symmetry. 
 \proved
 
