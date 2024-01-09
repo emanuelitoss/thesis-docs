@@ -110,25 +110,25 @@
     \newline
     Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, lattice spacing effects, \dots
     The lattice setup chosen for this work aims to minimize some of these effects. 
-    Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated each other, but their autocorrelation times grows as the lattice spacing is reduced. \cite{critical-slowing-down-error-analysis}
-    It is proved that this problem is partially solved by choosing open boundary conditions in temporal direction. \cite{OBC_top}
-    Secondly, these boundary conditions protects the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator \cite{SF-luscher}.
-    Open boundary conditions give an efficient alternative to twisted mass QCD (tmQCD) \cite{tmLQCD} - used in \cite{KMBSM} - and allow the simulation program to simulate a three flavours of sea quarks, not allowed in tmQCD.
-    The entire simulation is developed to yield \oaid\space results, i.e. values that differs from the continuum limit ones by terms of order $O(a^2)$ or higher.
+    Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated from each other, but their autocorrelation times grow as the lattice spacing is reduced. \cite{critical-slowing-down-error-analysis}
+    It is proven that this problem is partially solved by choosing open boundary conditions in temporal direction. \cite{OBC_top}
+    Secondly, these boundary conditions protect the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator \cite{SF-luscher}.
+    Open boundary conditions give an efficient alternative to twisted mass QCD (tmQCD) \cite{tmLQCD} - used in \cite{KMBSM} - and allow the simulation program to simulate three flavours of sea quarks, not allowed in tmQCD.
+    The entire simulation is developed to yield \oaid\space results, i.e. values that differ from the continuum limit ones by terms of order $O(a^2)$ or higher.
     This is possible thanks to the strategy worked out by Frezzotti and Rossi in \cite{FR2}.
     Such strategy involves maximally twisted Osterwalder-Seiler quarks in the valence sector.
     Further properties of the lattice mixing operators are well explained in \cite{DoniniMartinelliOperators}, such as their mixing pattern under renormalization procedure.
     \newline
-    The thesis is structured as follow.
+    The thesis is structured as follows.
     The first chapter covers basic concepts of Standard Model QCD, confinement, pseudoscalar mesons, and Kaon oscillations.
     Moreover I introduce the bag parameters and the complete set of mixing operators $\{\Theta_i\}$.
     The second chapter provides an overview of lattice regularizations and improvements;
     I begin from the basics - Wilson-Dirac action and Wilson Gauge action - and I describe some of their related problems (zero modes, long autocorrelation times, exceptional configurations, $O(a)$ efficiency).
-    Then it follows a description of more advanced regularizations.
+    Then a description of more advanced regularizations follows.
     At the end of the chapter I outline the adopted lattice setup as a solution of almost all the presented problems.
     The chapter 3 is completely dedicated to the construction of the lattice amplitudes.
     The operators $\Theta_i$ are described in continuum theory, then they are regularized on the lattice by following the strategy in \cite{FR2}.
-    All the properties are described in detail and most of them are proved. At the end of the chapter I describe the analysis of the asymptotic behaviour of the correlation functions at large Euclidean time, widely used in QFT.
+    All the properties are described in detail and most of them are proven. At the end of the chapter I describe the analysis of the asymptotic behaviour of the correlation functions at large Euclidean time, widely used in QFT.
     In the fourth chapter I present the computational strategies developed to calculate the needed Wick contractions of the two and three points correlators.
     Particular relevance is given to the calculation of three points correlators through the method of noise spinors, that represents most of the ``behind the scenes'' thesis work.
     A conclusive section provides the reader information about the status of the simulation and report the achievements of this work.
@@ -273,7 +273,7 @@ From the previous term it follows this mixing 1-loop diagram:
         \end{feynman}
     \end{tikzpicture}
 \end{center}
-Weak interactions also generate an other 1-loop channel and diagrams in higher orders of perturbation theory.
+Weak interactions also generate another 1-loop channel and diagrams in higher orders of perturbation theory.
 Because of the mixing process, the effective Hamiltonian of the \kkb system needs non-diagonal terms parametrized in $H^{\Delta S = 2}$.
 A formal development can be found in \cite{Donoghue} and a new diagonal basis is built: the new Kaon states that diagonalize $H_0 + H^{\Delta S = 2}$ are $K_{L}$ and $K_{S}$ - named $K$ long and $K$ short.
 Through CP symmetry arguments it comes out that, by considering only SM interactions, the allowed decays are $K_L \rightarrow 3\pi$ and $K_S \rightarrow 2\pi$.
@@ -550,7 +550,7 @@ A Wilson line is defined by:
     W(x,y) = P \left\{\text{exp}\left(i\int_y^x A_\mu(\omega)d\omega^\mu\right)\right\}
 \end{equation*}
 with $P$ denoting the path ordering product.
-It is proved that a Wilson line transforms in this way under Gauge transformations $\mathcal{U}\in SU(N)$:
+It is proven that a Wilson line transforms in this way under Gauge transformations $\mathcal{U}\in SU(N)$:
 \begin{equation}\label{eq:wline-transformation}
     W(x,y) \longmapsto \mathcal{U}(x) W(x,y) \mathcal{U}(y)^\dagger
 \end{equation}
@@ -786,7 +786,7 @@ The latter choice is particularly relevant because it implies an automatic \oait
 \newline
 In principle there are no reasons to introduce a finite non physical term $\mu_q$ in the action.
 In fact the tmQCD action (\ref{eq:tmQCD-action}) has not the right continuum limit to be a ``well defined'' action, but there exists an excamotage to make it useful.
-Through a transformation (\ref{eq:twist}) it is possible to define an other fermion basis, named \textit{physical basis} $\{\chi, \bar\chi\}$, rotated with respect to the \textit{twisted basis} $\{\psi, \bar\psi\}$ that gives the tmQCD.
+Through a transformation (\ref{eq:twist}) it is possible to define another fermion basis, named \textit{physical basis} $\{\chi, \bar\chi\}$, rotated with respect to the \textit{twisted basis} $\{\psi, \bar\psi\}$ that gives the tmQCD.
 In Appendix \ref{app:physical-basis} it is shown how this change of variables affects the action and how this tends - in the continuum limit $a\rightarrow 0$ - to the standard QCD action.
 Because of the variables change $\{\chi, \bar\chi\} \leftrightarrow \{\psi, \bar\psi\}$ the new action mass parameters $(m,\mu_q)$ are subjected to (\ref{eq:new-masses}).
 The new \textit{physical} mass term is defined by $M_q = \sqrt{m^2 + \mu_q ^2}$ while the new twisted mass term vanishes: the twist transformation (\ref{eq:twist}) ``brings'' a fraction of $M_q$ into the twisted mass according to $\alpha$ and viceversa.
@@ -854,7 +854,7 @@ In this case the Wilson parameter is $r=1$ for each flavour.
 A discretization very similar to tmQCD can be developed and the corresponding fermions take the name of {\it Osterwalder-Seiler} (OS) fermions.
 The conceptual framework follows.
 The abovementioned work about tmQCD and twist rotations is replicated with just one difference: there is no flavour space and each flavour is treated alone.
-Thus I define an other set of transformations similar to eq. (\ref{eq:twist}), without the generator $\sigma^3/2$ and acting of a single flavour $\{\psi,\bar \psi\}$:
+Thus I define another set of transformations similar to eq. (\ref{eq:twist}), without the generator $\sigma^3/2$ and acting of a single flavour $\{\psi,\bar \psi\}$:
 \begin{equation}\label{eq:twistOS}
     \begin{cases}
         \psi \mapsto \psi' = \mathbf{J}(\alpha,r) \hspace*{0.5mm} \psi \\
@@ -887,7 +887,7 @@ Consider an isospin degenerate doublet $\chi = (f_1, f_2)$.
 In the case of tmQCD the flavours $f_1$ and $f_2$ are subject to rotation (\ref{eq:twist}), then the first flavour rotate of an angle $\alpha$ while the latter of $-\alpha$ because of the presence of $\sigma_3$.
 In the case of OS twist (\ref{eq:twistOS}) each flavour rotates independently.
 Obviously by taking the two falvours $f_1$ and $f_2$ with equal masses and rotations respectively $\pm \alpha$, the tmQCD is recovered.
-An other way to recover tmQCD is to choose the same rotation angle $\alpha = \pi/2$ and $r_1 = - r_2$.
+Another way to recover tmQCD is to choose the same rotation angle $\alpha = \pi/2$ and $r_1 = - r_2$.
 \newline
 As in tmQCD, the change of basis $\{f,\bar f\} \leftrightarrow \{q,\bar q\}$ leaves the expectation value of an observable $\mathcal{X}$ unchanged.
 \begin{equation*}
@@ -1037,11 +1037,11 @@ The second method is simpler and consists in the match of pseudoscalar mesons ma
     \end{cases}
     \Longrightarrow \quad  \mu_q^\ren \big|_\text{valence} = m_q^\ren \big|_\text{sea} + o(a)
 \end{equation*}
-It is proved that the second method ensures a natural \oait, without the requirement of additive counterterms a la Symazink.
+It is proven that the second method ensures a natural \oait, without the requirement of additive counterterms a la Symazink.
 In this case $m_\pi$ represents the mass of charged pions $\pi^\pm$ and $m_K$ is the mass of the Kaons.
 \newline
 \newline
-(2) An other relevant feature is the presence of SW term in both sea and valence fermion actions. 
+(2) Another relevant feature is the presence of SW term in both sea and valence fermion actions. 
 It enforces the sea and valence sectors to share the same renormalization constants, that's a great simplification. 
 \newline
 \newline
@@ -1077,7 +1077,7 @@ This catastrophic behaviour was confirmed both by direct computations that from 
 The birth of \obc\space resides in the computational observation of such long autocorrelation times, both for $Q_\text{top}$ \cite{investigatin-critical-slowing-down} and $Q_\text{top}^2$ \cite{critical-slowing-down-error-analysis}. 
 In the theoretical framework, there exists a theorem \cite{Topology-WilsonFlow-HMC} which states that ``the space of all lattice gauge fields satisfying a certain smoothness condition decomposes into topological charge sectors very much like the space of continuous fields in the classical continuum theory''.
 In other words, in the continuum limit the Gauge fields space tends to be disconnected.
-This implies that the simulation algorithms cannot evolve a Gauge configuration in a given subspace to a configuration defined in an other - disconnected - subspace.
+This implies that the simulation algorithms cannot evolve a Gauge configuration in a given subspace to a configuration defined in another - disconnected - subspace.
 Then the entire fields space cannot be explored. 
 The very long autocorrelation times are just a consequence of that.
 \begin{figure}[h!]
@@ -1120,7 +1120,7 @@ For example, look at the following table from \cite{Topology-WilsonFlow-HMC}:
 Another aspect to keep in mind follows.
 The formulation of lattice quantum physics with OBC in this case remains the same in the bulk\footnote{``bluk'': the sub-lattice from which the boundaries with $x_4 = 0, x_4 = T$ are removed}.
 However, the vacuum state $|\Omega\ra$ at the time boundaries differs from the vacuum state $|0\ra$ in the bulk, which represents the physical vacuum.
-It is proved \cite{OBC_top} that both vacuum states possess the physical vacuum quantum numbers.
+It is proven \cite{OBC_top} that both vacuum states possess the physical vacuum quantum numbers.
 Thus a formulation of Lattice QFT similar to the case of periodic boundary conditions is allowed.
 Given a local operator of the fields $\mathcal{X}(x_1,\dots,x_n)$, its vacuum expectation value is defined in the following way:
 \begin{equation*}
@@ -1191,7 +1191,7 @@ The second part of the chapter is reserved to a detailed description of the stra
 \section{Continuum $\Theta_i^{[\pm]}$s and the new operators $Q_i^{[\pm]}$s}
 \noindent
 The SUSY operator basis for \kkb oscillations was introduced in (\ref{eq:Thetai-operators}).
-Despite its historical significance, the basis $\{\Theta_i\}$ will be replaced by an other basis $\{Q_i\}$ because of its particular renormalization properties.
+Despite its historical significance, the basis $\{\Theta_i\}$ will be replaced by another basis $\{Q_i\}$ because of its particular renormalization properties.
 However, before introducing this new basis, I need to present some modifications to the ``old'' SUSY basis.
 \newline
 I aim to reformulate operators $\Theta_3$ and $\Theta_5$ by rearranging the spin and colour indices contractions within the same couple of quarks. 
@@ -1331,7 +1331,7 @@ then the total contribution to $G^\text{QCD}(x,y,z)$ is given by:
 I want to replicate this contributions using the new flavours $d,d',s,s'$ built on the lattice.
 The strength of this method lies in the fact that primed and unprimed flavours cannot contract with each other.
 Therefore I can build an appropriate operator for each contraction.
-I define an antikaon source in $x$ with primed flavours $\bar d' (x) \Gamma_\xi s'(x)$ and an other in $z$ with unprimed flavours $\bar d (z) \Gamma_\omega s(z)$.
+I define an antikaon source in $x$ with primed flavours $\bar d' (x) \Gamma_\xi s'(x)$ and another in $z$ with unprimed flavours $\bar d (z) \Gamma_\omega s(z)$.
 The intermediate operator is replaced by: 
 \begin{equation*}
     \begin{aligned}
@@ -1682,7 +1682,7 @@ By extracting the masses $m_{K'}$ and $m_K$ through the method outlined in Secti
         & \text{Continuum limit:} \quad \mathcal{A}_i (a) \xrightarrow{a \rightarrow 0} \mathcal{A}_i^\text{QCD} + O(a^2)
     \end{split}
 \end{equation}
-There exists an other way that does not require a fit of the two points functions to get the masses $m_{K'}$ and $m_K$.
+There exists another way that does not require a fit of the two points functions to get the masses $m_{K'}$ and $m_K$.
 Because of the time ordering product in the definition of vacuum expectation values, for $x_4 \ll y_4 \ll z_4$:
 \begin{equation*}
     \begin{split}
@@ -1874,23 +1874,23 @@ The program is structured to generate three points correlation functions and it 
 It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
 The program takes as input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
 Instead of read some external configurations, it is also possible to set the link variables to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions, because $A_\mu^{i} \hspace*{.1mm}_j = 0$) or to randomly generate them.
-These two options were very useful to test the right behaviour of the simulation.
+These two options were very useful to test the correct behaviour of the simulation.
 The program requires the following input parameters:
 \begin{itemize}
-    \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, an other coefficient for the boundary counterterms of the fermionic action.
+    \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, another coefficient for the boundary counterterms of the fermionic action.
                 The latter is tipically set to $c_F = 1$.
     \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ per set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
     \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare twisted mass parameter $\mu_i$ for each quark.
     \item [-] Dirac matrices: $\Gamma_\omega$, $\Gamma_\xi$ for the source bilinears and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator.
         The program allows to insert different operators within the same sources and calculate their Wick contractions.
-        There is also freedom in choice of the quark flavours for each correlator.
+        It is also possible to choose which quark to insert in each propagator.
 \end{itemize}
-At the end the program stores output data in a file wrote in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
+At the end the program stores output data in a file written in \texttt{LITTLE\_ENDIAN} or \texttt{BIG\_ENDIAN} depending on the machine used.
 The output data are already summed over all the spatial components.
 
 \subsection{Computational Basis}
 \noindent
-One might wonder the reason behind the choice of operators exchange $\Gamma_B \leftrightarrow \Gamma_D$ between the terms $G_d$ and $G_c$ of the previous method (look at equations (\ref{eq:GdGc-strategy})).
+One might wonder the reason behind the choice of exchange operators $\Gamma_B \leftrightarrow \Gamma_D$ between the terms $G_d$ and $G_c$ of the previous method (look at equations (\ref{eq:GdGc-strategy})).
 It could seem an unreasonable choice because it has the form of a flavour exchange $(1\leftrightarrow 3)$ instead of $(2\leftrightarrow 4)$, that one might expect.
 Behind this choice lies a subtlety developed for computational convenience.
 \newline
@@ -1967,8 +1967,8 @@ In this case the complete formula if the correlator is the same, but the fit mus
     G_{34}^\text{FR}(x_4, y_4) \propto \sinh \left( m_{K'} y_4 \right)
 \end{equation*}
 By repeating the previous analysis, one should get a value of $m_{K'}$ and a data set of correlators $G^\text{FR}_{34}(x_4=T-a,y_4) = \hat G^\text{FR}_{34}(T-a,y_4)$ useful for the next setps.
-Moreover there comes an other value of minimal asymptotic distance $\delta_4'$.
-I simply choose to use the larger of the two, that I recall $\delta_4$.
+Moreover there comes another value of minimal asymptotic distance $\delta_4'$.
+I simply chose to use the larger of the two, that I call again $\delta_4$.
 
 \subsubsection*{Second step: recovering amplitudes $\mathcal{A}_i(a)$}
 \noindent
@@ -2016,7 +2016,7 @@ Gauge invariance is an essential property of QFTs; for this reason it is one of 
 Then the program has been tested on an ensemble of quenched\footnote{it means ``in absence of sea quarks'', neglecting the fermion determinant in (\ref{eq:fermion-determinant}).} gauge fields with OBC.
 \newline
 The first test furnishes a direct proof that the Dirac inverter preserves gauge invariance property.
-Unwanted errors could be find from a lack in this test.
+Unwanted errors could be found from a lack in this test.
 A set of pointlike spinors has been generated.
 I define {\it pointlike} spinor an $\eta$ equipped with property:
 $$\eta_\alpha^a (x) = \delta^{a,\bar a}\delta_{\alpha, \bar \alpha} \delta_{x,\bar x}$$
@@ -2041,7 +2041,7 @@ The check of gauge invariance has been succesfully achieved by comparing two set
 The gauge transformations $\Omega (x)$ were randomly generated.
 Figure \ref{fig:check1} shows the output of the described test, in which the intermediate operator is $\Psi_3 (y)$.
 Since the three points correlators are real, only the real part is plotted.
-Such reality property is proved in \ref{app:proof-reality-3pts}.
+Such reality property is proven in \ref{app:proof-reality-3pts}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/check1.pdf}
@@ -2065,7 +2065,7 @@ In both the tests the finite precision of the solver generates discrepancies bet
 It has been verified that these errors decrease requiring more and more precision in the inversion of the propagators.
 Moreover all the physical parameters were not well tuned, since they were not useful to the scope of the checks. 
 \newline
-An other test has been made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
+Another test has been made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
 The gauge configurations have been generated with and inverse lattice coupling $\beta = 6/g_0^2 = 6.0$ - corresponding to an inverse lattice spacing $a^{-1} \sim 2.0$ \gev \cite{exploring-tmQCD-clover-term} - in the quenched approximation.
 The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
 First of all the configurations have been tested on the program that calculates two points correlators.
@@ -2100,7 +2100,7 @@ Clearly the plot is not at all satisfactory because there are no plateaus region
 On the other hand, the used configurations lives in a small lattice then the number of temporal points could be too small to fall in asymptotic behaviours.
 Furthermore the fermion physical parameters had no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
 Usually the parameters are given along with the configuration, when available.
-Moreover the first correlator has values extremely small - by one order or more - compared to values from the others operators.
+Moreover the first correlator has values extremely small - by one order or more - compared to values from the other operators.
 The third operator is negative because of the conventions of this work, in fact in \cite{KMBSM} it is positive.
 \newline
 Future developments involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
@@ -2497,14 +2497,14 @@ I simplify the operation by permoring such calculation on the ``components'' of 
     \end{aligned}
 \end{equation*}
 where it is clear that $\tilde Q_{\Gamma\Gamma}$ is the operator $Q_{\Gamma\Gamma}$ in which there is an exchange $s \leftrightarrow d$.
-Then I have proved that:
+Then I have proven that:
 $$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra^* = \left\la  K^0 (x) \tilde{Q}_i (y) K^0 (z) \right\ra $$
 Moreover I know that:
 $$ \left\la \bar K^0 (x) Q_i (y) \bar K^0 (z) \right\ra = \left\la  K^0 (x) \tilde{Q}_i (y) K^0 (z) \right\ra $$
 because $B-$parameters are real.
 This is straightforward: I can express the above correlators through the asymptotic expansion (\ref{eq:asymptotic-behav-3pts}) and substitute $\la \bar K^0 | O_{i,[+]} | K^0 \ra$ with the definition of bag parameters (\ref{eq:bag-definition}).
 I'm doing the calculation with the $Q_i$ and not the $\Theta_i$, thus I need to insert a {\it linear combination} of the bag parameters, but the essence is unchanged.
-Since the $B_i$ are real\footnote{this is not proved here.}, their complex conjugates coincide with them.
+Since the $B_i$ are real\footnote{this is not proven here.}, their complex conjugates coincide with them.
 From a poetic point of view, it could be interpreted as a consequence of matter-antimatter symmetry. 
 \proved
 
@@ -2547,7 +2547,7 @@ I must check that, given two Gauge fields $A_\mu^{(1)}$ and $A_\mu^{(2)}$, there
 The proof is divided in three parts:
 \newline
 \newline
-$(i)$ \textit{Each $A_\mu$ can be constinously deformed to an other ${A}_\mu'$ in temporal Gauge.}
+$(i)$ \textit{Each $A_\mu$ can be constinously deformed to another ${A}_\mu'$ in temporal Gauge.}
 \newline
 It is defined a family of Gauge transformations $\Lambda_s (x), s\in [0,1]$ satisfying the following conditions:
 $$\left(\partial_4 + sA_4 (x)\right) \Lambda_s^{-1} (x) = 0$$
@@ -2568,7 +2568,7 @@ $(ii)$ \textit{Each $A_\mu$ in temporal Gauge can be contracted to the null Gaug
 \newline
 This part of the proof is trivial: I choose te path $A_\mu^s = s\cdot A_\mu$
 \newline\newline
-At this point it is proved that each $A_\mu$ satisfying \obc\space can be smoothly contracted to the null potential.
+At this point it is proven that each $A_\mu$ satisfying \obc\space can be smoothly contracted to the null potential.
 Then each couple of potentials $A_\mu^{(1)}$ and $A_\mu^{(2)}$ satisfying \obc\space are connected in the fields space.
 \proved
 
