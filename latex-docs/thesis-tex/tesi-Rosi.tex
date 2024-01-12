@@ -1726,17 +1726,26 @@ At this point I can use the correlators $X_{12}^\text{FR}(x,y)$ and $X_{34}^\tex
     \begin{split}
         \mathcal{F}_1 (a;y_4) & =  \frac{C_i^\text{FR}(x_4,y_4,z_4)}{X_{34}^\text{FR}(x_4,y_4) \cdot X_{12}^\text{FR}(y_4,z_4)} \approx \\
         & \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{1[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra}{\left[ \sum_{\vec{y}} \la \Omega | A_{0,43} | \bar K^{'0} \ra \la \bar K^{'0} | K^{'0} | \Omega \ra  \right] \left[ \sum_{\vec y} \la \Omega | A_{0,21} | \bar K^{0} \ra \la \bar K^{0} | K^{0} | \Omega \ra \right]} \approx \\
-        & \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{1[+]} | K^0 \ra }{\left[ \sum_{\vec{y}} \la \Omega | A_{0,43} | \bar K^{'0} \ra \right] \left[ \sum_{\vec y} \la \Omega | A_{0,21} | \bar K^{0} \ra \right]} \approx \xi_1 B_K
+        & \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{1[+]} | K^0 \ra }{\left[ \sum_{\vec{y}} \la \Omega | A_{0,43} | \bar K^{'0} \ra \right] \left[ \sum_{\vec y} \la \Omega | A_{0,21} | \bar K^{0} \ra \right]} \sim \xi_1 B_K
     \end{split}
 \end{equation*}
 To conclude this section I mention again the continuum limit extrapolation that gives the physical bare bag parameters:
 \begin{equation}\label{eq:bag-parameters-extraction}
     \begin{split}
         & \text{On the lattice:} \quad \mathcal{B}_i (a;y_4) \approx \frac{1}{\xi_i}\sum_{j=1}^5 \Lambda_{ij} \mathcal{F}_j (a; y_4) \hspace*{5mm} \forall i \\[5pt]
-        & \text{Continuum limit:} \quad \mathcal{B}_i (a;y_4) \xrightarrow{a \rightarrow 0} \mathcal{B}_i\bare + O(a^2)
+        & \text{Continuum limit:} \quad \mathcal{B}_i (a;y_4) \xrightarrow{a \rightarrow 0} B_i\bare + O(a^2)
     \end{split}
 \end{equation}
 In Section \ref{sec:analysis} I will explain the analysis strategy to extract them from lattice data.
+\newline
+There exist also an other set of relevant ratios that may be calculated:
+\begin{equation*}
+    \mathcal{R}_i (a,y_4) = \sum_{j=2}^5 \Lambda_{ij} \frac{ C_j^\text{FR}(x_4,y_4,z_4) }{C_1^\text{FR}(x_4,y_4,z_4)} \approx \sum_{j=2}^5 \frac{\sum_{\vec{y}} \la \bar K^{'0} | \Lambda_{ij} O_{j[+]} | K^0 \ra}{\sum_{\vec{y}} \la \bar K^{'0} | O_{1[+]} | K^0 \ra}
+\end{equation*}
+that, in continuum limit, are proportional to the ratios of amplitudes of the bag parameters for $i=2,\dots,5$ on the first $B_K$.
+\begin{equation*}
+    \text{Continuum limit:} \quad \mathcal{R}_i (a;y_4) \xrightarrow{a \rightarrow 0} R_i\bare + O(a^2)
+\end{equation*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2137,7 +2146,7 @@ In order to quantify the error due to different number of stochastic sources, I 
 \end{equation*}
 The values of such estimator for different choices of number of stochastic sources are listed in Table \ref{tab:estimator}.
 The values seems to be rapidly decreasing for $N_\text{noise} \lesssim 35$ while stabilizing for $N_\text{noise} \gtrsim 35$.
-To complete the study of the estimator, a set of $\varepsilon$s for a large amount of configurations should be derived.
+To complete the study of the numebr of noise spinors through this estimator, a set of $\varepsilon$s for a large amount of configurations should be tested.
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c||c|c|c|c|c|c|}
@@ -2157,7 +2166,7 @@ The gauge configurations have been generated with and inverse lattice coupling $
 The value of the coefficient $c_0$ in equation (\ref{eq:gaugeaction-LuscherWeisz}) is set to $5/3$, then the simulated action is the {\it tree level Symanzik improved}.
 The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
 First of all the configurations have been tested on the program that calculates two points correlators.
-The simulation has $N_\text{noise} = 30$ noise spinors and the hopping parameters used were not at their critical value, thus the maximal twist is not achieved.
+The simulation involved $N_\text{noise} = 30$ noise spinors and the hopping parameters used were not at their critical value, thus the maximal twist is not achieved.
 Despite this, the simulation furnishes a test on the two point functions behaviour.
 The correspondig graph, in logarithmic scale, is presented in Figure \ref{fig:plot-2pts}.
 \begin{figure}[!h]
@@ -2177,7 +2186,7 @@ that's a line plus a logarithm of a function $f$ of the time coordinates.
 The two points correlators considered are the scalar and pseudoscalar propagators, i.e. $G_{12}^\text{FR}(y_4,x_4)$ and $G_{34}^\text{FR}(y_4,x_4)$.
 \newline
 Then the case of three points correlators is inspected.
-The correlators were calculated through $N_\text{nosie} = 20$ noise spinors and the Figure \ref{fig:pureYM} show the results.
+The correlators were calculated through $N_\text{nosie} = 20$ noise spinors and the Figure \ref{fig:pureYM} shows the results.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-3pts.pdf}
@@ -2186,11 +2195,11 @@ The correlators were calculated through $N_\text{nosie} = 20$ noise spinors and 
 \end{figure}
 \newline
 Clearly the plot is not at all satisfactory because there are no plateaux regions.
-On the other hand, the used configurations lives in a small lattice then the number of temporal points could be too small to fall in asymptotic regime.
-Furthermore the fermion physical parameters had no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
-Usually the parameters are given along with the configuration, when available and already been studied.
+On the other hand, the fermion physical parameters had no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
+Then the maximal twist is not achieved and such correlators are meaningless.
+Usually the physical parameters, such as $K_\text{crit}$ and $\mu_i$s, are given along with the configuration, when available and already been studied.
 Moreover the first correlator has values extremely small - by one order or more - compared to values from the other operators.
-The immaginary part of these correlators have been plotted and prove that these correlators are real.
+The immaginary part of these correlators have been plotted and the plot confirms that these correlators are real.
 The plot is reported in Appendix \ref{app:proof-reality-3pts}.
 \newline
 The last test of the simulation program was made on 37 gauge configurations in quenched approximation.
@@ -2201,7 +2210,7 @@ In such paper the critical hopping parameter of twisted fermions has been studie
 This results has been used to simulate three points correlators, along with other parameters:
 \begin{itemize}
     \item [-] down quark twisted mass: $a|\mu_d| = 0.0038$.
-    \item [-] strange quark twisted mass is chosen to be $a\mu_s = 0.1482$.
+    \item [-] strange quark twisted mass used is: $a\mu_s = 0.1482$.
     \item [-] the coefficient of Sheikholeslami-Wohlert term is set to $c_{SW}=1.769$, from \cite{Luscher-cSW}.
 \end{itemize}
 Due to the use of $K_\text{crit}$, the maximal twist is achieved.
@@ -2216,6 +2225,18 @@ The plot of the integrated correlators $C_i^\text{FR}$ are shown in Figure \ref{
 As can be seen, the good choice of fermion parameters associated to the configurations generated more evident plateaux regions.
 Large error bars are due to the small number of noise sources and the small number of configurations analyzed.
 Moreover the first operator does not exhibit a null plateaux, unlike what is shown in Figure \ref{fig:pureYM}.
+\newline
+The results of $C_i^\text{FR}$ are used to recover the lattice ratios:
+\begin{equation*}
+    \mathcal{R}_i (a;y_4) = \sum_{j=2}^5 \Lambda_{ij} \frac{C_j^\text{FR}(T-a,y_4,a)}{C_1^\text{FR}(T-a,y_4,a)}
+\end{equation*}
+Because of lack of large number of data, statistics results too low to determine a plateaux region with satisfactory precision.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/ratios.pdf}
+    \caption{Ratios $\mathcal{R}_i (a;y_4)$ with lattice spacing $a\sim (2 \text{Gev}^{-1})$ on the last set of gauge configurations.}
+    \label{fig:ratios}
+\end{figure}
 
 \subsubsection*{Future developments}
 \noindent
