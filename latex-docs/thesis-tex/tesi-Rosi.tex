@@ -24,6 +24,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{slashed}
+\usepackage{amssymb}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -78,7 +79,7 @@
 \maketitle
 
 \dedication{
-    \hspace*{.76\textwidth}A mamma, a papà.
+    \hspace*{.76\textwidth}Ai miei genitori.
     \newline
     \newline
     \newline
@@ -89,31 +90,31 @@
 \begin{abstract}
     Oscillations of neutral Kaons are a well known phenomenon within the framework of the Standard Model (SM) of particle physics.
     These oscillations arise from quark flavor mixing governed by the Cabibbo-Kobayashi-Maskawa matrix in weak interactions.
-    Furthermore, decay rates of the Kaons are studied to get an indirect measure of $CP$ violation in the Standard Model, quantified through the parameter $\epsilon_K$.
+    Furthermore, decay rates of the Kaons are studied to get an indirect measure of $CP$ violation in the Standard Model, quantified through the parameter $\epsilon_K$ \cite{Branco-CPviolation}.
     Precise theoretical predictions are essential.
-    As I have implicitly mentioned, the Kaons oscillation phenomenon takes place at low energies, where the quarks are confined in mesons and baryons - energies of order of $\Lambda_\text{QCD} ~ 250$\mev \cite{WeinbergII}.
+    As I have implicitly mentioned, the Kaons oscillation phenomenon takes place at low energies, where the quarks are confined in mesons and baryons - energies of order of $\Lambda_\text{QCD} \sim 250$\mev\space \cite{WeinbergII}.
     Perturbation theory (PT) represents the most powerful tool of theoretical physicists to understand the world of particle physics.
     However it imposes the requirement of energies much higher than $\Lambda_\text{QCD}$, requirement not satisfied in the energetic region concerning confinement.
     The PT approach becomes inefficient and the only other valid approach to QFT is the path integral formalism.
-    Usually, direct calculation in path integral are performed through lattice QFT simulations.
+    Usually, direct calculations in path integral are performed through lattice QFT simulations.
     \newline
     In this work I treat a set of dimension 6 four-quarks operators responsible for the oscillations of neutral Kaons.
     They constitute an effective Hamiltonian for the oscillating system
     $$ \mathcal{H}^{\Delta S=2}_\text{eff,BSM} = \sum_i \hat C_i (\mu) \hat\Theta_i (\mu) $$
     The first operator $\hat\Theta_1$ is the effective operator associated to the SM contribution to the oscillations.
-    The others take place in beyond the standard model (BSM) theories, such as supersymmetry, left right symmetric models or multi Higgs models \cite{Bparameters}.
-    The purpose is to compute the bare Kaon oscillation amplitudes caused by each $\Theta_i$ operator:
-    $$ \mathcal{A}_i^\text{QCD} = \la \bar K^0 | \Theta_i | K^0 \ra $$
-    needed to extract some non perturbative parameters called ``bag parameters'' \cite{Bparameters} \cite{KMBSM}.
-    The renormalization of such operators is not involved in this work and it is developed in some papers, such as \cite{renrun}.
-    $B$-parameters are widely studied in the context of lattice QCD (LQCD) and the most recent works can be found in \cite{FLAG}.
+    The others take place in beyond the standard model (BSM) theories, such as supersymmetry or multi Higgs models \cite{Bparameters}.
+    The purpose is to compute parameters associated to the bare Kaon oscillation amplitudes caused by each $\Theta_i$ operator:
+    $$ \mathcal{A}_i^\text{QCD} = \la \bar K^0 | \Theta_i\bare | K^0 \ra $$
+    Such quantities are called {\it bag parameters} \cite{Bparameters} \cite{KMBSM}.
+    The renormalization of such operators and parameters is not involved in this work and it is developed in some papers, such as \cite{renrun}.
+    $B$-parameters are widely studied in the context of lattice QCD (LQCD) and results of the most recent works can be found in \cite{FLAG}.
     \newline
-    Lattice simulations suffer from a discrete amount of computational issues: finite spacetime volume effects, lattice spacing effects, \dots
+    Lattice simulations suffer from an amount of computational issues such as finite spacetime volume effects or lattice spacing effects.
     The lattice setup chosen for this work aims to minimize some of these effects. 
     Firstly, there is a computational problem in the generation of gauge configurations; ideally, they should be totally uncorrelated from each other, but their autocorrelation times grow as the lattice spacing is reduced. \cite{critical-slowing-down-error-analysis}
     It is proven that this problem is partially solved by choosing open boundary conditions in temporal direction. \cite{OBC_top}
     Secondly, these boundary conditions protect the fermion determinant from the occurrence of zero eigenvalues of the Wilson-Dirac operator \cite{SF-luscher}.
-    Open boundary conditions give an efficient alternative to twisted mass QCD (tmQCD) \cite{tmLQCD} - used in \cite{KMBSM} - and allow the simulation program to simulate three flavours of sea quarks, not allowed in tmQCD.
+    In this sense open boundary conditions give an efficient alternative to twisted mass QCD (tmQCD) \cite{tmLQCD} - used in \cite{KMBSM} - and allow the simulation program to simulate three flavours of sea quarks, not allowed in tmQCD.
     The entire simulation is developed to yield \oaid\space results, i.e. values that differ from the continuum limit ones by terms of order $O(a^2)$ or higher.
     This is possible thanks to the strategy worked out by Frezzotti and Rossi in \cite{FR2}.
     Such strategy involves maximally twisted Osterwalder-Seiler quarks in the valence sector.
@@ -126,12 +127,12 @@
     I begin from the basics - Wilson-Dirac action and Wilson Gauge action - and I describe some of their related problems (zero modes, long autocorrelation times, exceptional configurations, $O(a)$ efficiency).
     Then a description of more advanced regularizations follows.
     At the end of the chapter I outline the adopted lattice setup as a solution of almost all the presented problems.
-    The chapter 3 is completely dedicated to the construction of the lattice amplitudes.
+    The chapter \ref{ch:operators} is completely dedicated to the construction of three points correlators on the lattice.
     The operators $\Theta_i$ are described in continuum theory, then they are regularized on the lattice by following the strategy in \cite{FR2}.
     All the properties are described in detail and most of them are proven. At the end of the chapter I describe the analysis of the asymptotic behaviour of the correlation functions at large Euclidean time, widely used in QFT.
     In the fourth chapter I present the computational strategies developed to calculate the needed Wick contractions of the two and three points correlators.
     Particular relevance is given to the calculation of three points correlators through the method of noise spinors, that represents most of the ``behind the scenes'' thesis work.
-    A conclusive section provides the reader information about the status of the simulation and report the achievements of this work.
+    A conclusive section provides the reader information about the status of the simulation and reports the achievements of this work.
 \end{abstract}
 
 \tableofcontents
@@ -143,15 +144,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Kaons oscillations beyond the Standard Model and $B_i$ parameters}\label{chap:kaons}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{I}{}n order to present and justify my work, I begin the thesis with an introductive chapter about theory of \kkb system within the Standard Model (SM) of particle physics and beyond. 
-First, I will present the Standard Model \kkb oscillations.
-Then I will discuss about oscillations beyond the SM by introducing a complete basis of dimension 6 four quarks operators.
-At the end of the chapter, I will stress which quantities can be extracted from these operators matrix elements and how they could be useful to quantify effects of new physics to the \kkb oscillations.
+Firstly, I present the Standard Model \kkb oscillations.
+Then I discuss oscillations beyond the SM by introducing a complete basis of dimension 6 four quarks operators.
+At the end of the chapter, I stress which quantities can be extracted from these operators matrix elements and how they could be useful to quantify effects of new physics to the \kkb oscillations.
 
 \section{QCD Symmetries review - the birth of Kaons}
 \noindent
 As well known, in Quantum Chromodynamics (QCD) the phenomenon of \textit{confinement} arises at low energies, below the scale of $\Lambda_{QCD} \sim 250 \mev$ \cite{WeinbergII}.
-This happens because of the running coupling in the Gauge group of QCD, i.e. the colour group $SU(3)_C$, that's a non-abelian one.
-The QCD Lagrangian with massless fermions\footnote{I use the Eucledian notation of QFT because it guarantees the convergence of the path integral, useful on the Lattice.}
+This happens because of the running coupling in the Gauge group of QCD, i.e. the colour group $SU(3)_C$, that's a non-abelian Lie group.
+The QCD Lagrangian with massless fermions\footnote{I use the Euclidean notation of QFT because it guarantees the convergence of the path integral, useful on the Lattice.}
 \begin{equation}\label{eq:masslessQCD}
     \mathcal{L}_{QCD}^0 = -\frac{1}{4g^2} F_{\mu\nu}^a(x)F_{\mu\nu}^a(x) - \sum_{q = u,d,s} \bar\psi_q (x) \gamma_\mu \left( \partial_\mu + i T^a_{\square} A_\mu^a (x) \right) \psi_q (x)
 \end{equation}
@@ -188,7 +189,7 @@ for example, by choosing $\psi^1 = u$ and $\psi^2 = d$, the propagator of the $\
 In principle the two constituent quarks $\psi^1, \psi^2$ - named \textit{valence} quarks - are subject to a very large number of interactions with the gluons.
 In first approximation of perturbation theory (PT) one simply neglects these contributions, while at higher orders only few diagrams are involved.
 However the running coupling phenomenon makes the constant $g(\mu)_\text{colour}$ grow at energies below $\Lambda_\text{QCD}$. 
-As consequence the use of PT is no more allowed and all the possible contributing diagrams must be considered.
+As a consequence the use of PT is no longer allowed and all the possible contributing diagrams must be considered.
 The Figure \ref{fig:confinement} gives an idea of the subleading processes to involve.
 \begin{figure}[h!]
     \centering
@@ -241,8 +242,8 @@ It is known that weak interactions add the following term to the Lagrangian dens
 \begin{equation}
     \mathcal{L}_{\text{weak}} = \frac{g_2}{\sqrt{2}} \left[ \overline \psi^L_f \gamma_\mu W^{+}_\mu (V_{\text{CKM}})_{ff'} \psi^L_{f'} + \text{h.c.} \right]
 \end{equation}
-where $L$ stands for left component of the Dirac spinor, $V_{\text{CKM}}$ is responsible of flavour mixing, $f,f'$ are flavour family indices and $g_2$ is the weak coupling constant.
-From the previous term it follows this mixing 1-loop diagram:
+where $L$ stands for left component of the Dirac spinor, $V_{\text{CKM}}$ is responsible for flavour mixing, $f,f'$ are flavour family indices and $g_2$ is the weak coupling constant.
+From the previous term this mixing 1-loop diagram follows:
 \begin{center}
     \begin{tikzpicture}
         \centering
@@ -278,18 +279,18 @@ Because of the mixing process, the effective Hamiltonian of the \kkb system need
 A formal development can be found in \cite{Donoghue} and a new diagonal basis is built: the new Kaon states that diagonalize $H_0 + H^{\Delta S = 2}$ are $K_{L}$ and $K_{S}$ - named $K$ long and $K$ short.
 Through CP symmetry arguments it comes out that, by considering only SM interactions, the allowed decays are $K_L \rightarrow 3\pi$ and $K_S \rightarrow 2\pi$.
 Through measures of these decays one can extract some pseudo-observables and parametrize the amout of CP violation in the Standard Model.
-In particular, the phenomenologists uses the so called $\epsilon$ parameter \cite{Donoghue}.
-In order to quantify the mixing and extract the abovementioned quantities, the mixing amplitude is needed.
-Below I will give some arguments needed to define {\it bag parameters}, strictly related to mixing amplitude.
+In particular, phenomenologists uses the so called $\epsilon$ parameter \cite{Donoghue}.
+In order to quantify the mixing and extract the abovementioned quantities, the mixing amplitudes are needed.
+Below I will give some arguments needed to define {\it bag parameters}, strictly related to mixing amplitudes.
 \newline
 At low energies ($E \ll M_W \simeq 80 \gev$) the $W$ propagator can be replaced by $1/M_W^2$ and the effective Fermi interaction can be ruled out.
 It consists in a pointlike interaction of four fermions, the coupling constant is the Fermi constant $G_F/\sqrt{2}$ and it links togheter two quarks in the up sector of $SU(2)_L$ with two quarks in the down sector:
 \begin{equation}\label{eq:Fermi-interaction}
-    \mathcal{L}_F = \frac{G_F}{\sqrt{2}} V_{u_1 d_1} V_{u_2 d_2}^* \left[\bar u_1 \gamma_\mu (1-\gamma_5)d_1\right] \left[\bar d_2 \gamma_\mu (1-\gamma_5)u_2\right] + \text{ similars}
+    \mathcal{L}_F = \frac{G_F}{\sqrt{2}} V_{u_1 d_1} V_{u_2 d_2}^* \Big[\bar u_1 \gamma_\mu (1-\gamma_5)d_1\Big] \Big[\bar d_2 \gamma_\mu (1-\gamma_5)u_2\Big] + \text{ similars}
 \end{equation}
 that's a product of currents + flavour mixing.\footnote{In the notation adopted, the left and right Dirac projectors have these definitions: $P_L = (1-\gamma_5)/2$, $P_R = (1+\gamma_5)/2$. Infos about the notation are in Appendix \ref{app:notations}.} 
 The original Fermi interaction involves only two families of quarks and the $V_{\text{CKM}}$ matrix is replaced by the Cabibbo angle rotation matrix.
-Through this Lagrangian one can build up two \textit{candy} diagrams for Kaons oscillations.
+Through this Lagrangian one can build two \textit{candy} diagrams for Kaons oscillations.
 By a direct calculation of these diagrams:
 \begin{itemize}
     \item [$\triangleright$] a loop factor $1/(16\pi^2)$ appears;
@@ -302,11 +303,11 @@ The sum of the two diagrams gives:
 \end{equation*}
 In this evaluation, only 1-loop is considered.
 \newline
-I will now proceed to highlight a problem that is the one responsible for the lattice calculation done in this thesis work.
+I will now proceed to highlight a problem that is responsible for the lattice calculation done in this thesis work.
 The oscillation effect is well understood in perturbation theory by the previous argument, but at low energies it is not sufficient to well describe the complete amplitude.
 Confinement and running coupling generate bound states of quarks and an infinte number of gluon-quark and gluon-gluon interactions take place.
 These interactions must be involved in a non perturbative calculation of the amplitude.
-It is used to parametrize them by introducing a form factor named $B_K$ parameter.
+To parametrize them, we introduce a form factor named $B_K$ parameter.
 For the same reason some form factors (or decay constants) $f_{\pi,K,\dots}$ appear in the PCAC relations.
 \newline
 Then the $B_K$ parameter clearly depends on the renormalization scale $\mu$ and parametrizes the deviation from the Vacuum Insertion Approximation (VIA) \cite{BKetmcollaboration}:
@@ -340,33 +341,34 @@ The value of $B_K$ is assessed non perturbatively by the ETM (Europen Twisted Ma
 \begin{equation}\label{B_K-value}
     B_K^{\overline{MS}}(2 \gev) = 0.524(13)(12)    
 \end{equation}
-Renormalization constants are evaluated too.
+Renormalization constants have been evaluated too.
 
 \section{BSM effects: new operators and $B_i$ parameters}
 \noindent
-There exists a set of theories beyond the Standard Model (BSM) in which flavour changing neutral currents (FCNC) give contributions to the \kkb oscillations - supersymmetry, left-right symmetric models, multi-Higgs models etc \dots
+There exists a set of theories beyond the Standard Model (BSM) that give contributions to the \kkb oscillations - supersymmetry, multi-Higgs models, etc.
 For this reason it is useful to study other operators $\{\Theta_i,\tilde\Theta_j\}$ - similar to $\Theta_1$ - that cause the mixing BSM.
 They are used to define an effective Hamiltonian for the mixing process:
 \begin{equation*}
     \mathcal{H}_\text{eff} = \frac{1}{4} \sum_{i = 1}^5 C_i \Theta_i + \frac{1}{4} \sum_{i = 1}^3 \tilde C_i \tilde \Theta_i
 \end{equation*}
 The operators $\{\Theta_i,\tilde\Theta_j\}$ have dimension 6 and are composed by four quark fields, while $\{C_i,\tilde C_j\}$ are their Wilson coefficient.
-One common choice for the basis of these operators is the so called \textit{SUSY basis} \cite{Bparameters}, widely used in BSM phenomenology:
+They arise at low energies in a way similar to $\Theta_1$, presented in the previous section.
+One common choice for the basis of these operators is the so called \textit{SUSY basis} \cite{Bparameters}, used in BSM phenomenology:
 \begin{equation}\label{eq:Thetai-operators}
     \begin{aligned}
-       & \Theta_1 = [\bar s^a \gamma_\mu (1+\gamma_5) d^a] \cdot [ \bar s^b \gamma_\mu (1+\gamma_5) d^b ] \\
-       & \Theta_2 = [\bar s^a  (1+\gamma_5) d^a ] \cdot [ \bar s^b (1+\gamma_5) d^b ] \\
-       & \Theta_3 = [\bar s^a  (1+\gamma_5) d^b ] \cdot [ \bar s^b (1+\gamma_5) d^a ] \\
-       & \Theta_4 = [\bar s^a  (1+\gamma_5) d^a ] \cdot [ \bar s^b (1-\gamma_5) d^b ] \\
-       & \Theta_5 = [\bar s^a  (1+\gamma_5) d^b ] \cdot [ \bar s^b (1-\gamma_5) d^a ] \\
-       & \tilde\Theta_1 = [\bar s^a \gamma_\mu (1-\gamma_5) d^a] \cdot [ \bar s^b \gamma_\mu (1-\gamma_5) d^b ] \\
-       & \tilde\Theta_2 = [\bar s^a  (1-\gamma_5) d^a] \cdot [ \bar s^b (1-\gamma_5) d^b ] \\
-       & \tilde\Theta_3 = [\bar s^a  (1-\gamma_5) d^b] \cdot [ \bar s^b (1-\gamma_5) d^a ]
+       & \Theta_1 = [\bar s^a \gamma_\mu (1-\gamma_5) d^a] \cdot [ \bar s^b \gamma_\mu (1-\gamma_5) d^b ] \\
+       & \Theta_2 = [\bar s^a  (1-\gamma_5) d^a ] \cdot [ \bar s^b (1-\gamma_5) d^b ] \\
+       & \Theta_3 = [\bar s^a  (1-\gamma_5) d^b ] \cdot [ \bar s^b (1-\gamma_5) d^a ] \\
+       & \Theta_4 = [\bar s^a  (1-\gamma_5) d^a ] \cdot [ \bar s^b (1+\gamma_5) d^b ] \\
+       & \Theta_5 = [\bar s^a  (1-\gamma_5) d^b ] \cdot [ \bar s^b (1+\gamma_5) d^a ] \\
+       & \tilde\Theta_1 = [\bar s^a \gamma_\mu (1+\gamma_5) d^a] \cdot [ \bar s^b \gamma_\mu (1+\gamma_5) d^b ] \\
+       & \tilde\Theta_2 = [\bar s^a  (1+\gamma_5) d^a] \cdot [ \bar s^b (1+\gamma_5) d^b ] \\
+       & \tilde\Theta_3 = [\bar s^a  (1+\gamma_5) d^b] \cdot [ \bar s^b (1+\gamma_5) d^a ]
     \end{aligned}
 \end{equation}
-where $a,b$ are colour indices \footnote{Einstein summation convention is used.} and within the square brackets $[\hspace*{0.5mm}\cdot\hspace*{0.5mm}]$ a sum over spin is implied.
+where $a,b$ are colour indices\footnote{Einstein summation convention is used.} and within the square brackets $[\hspace*{0.5mm}\cdot\hspace*{0.5mm}]$ a sum over spin is implied.
 The first operator is the one of the Standard Model cited in the previous section.
-I will study the bare matrix elements $\la \bar K^0 | \Theta_j | K^0 \ra$ in a lattice environment in which only strong interactions take place; as known, strong interactions preserve both $\mathbb{C}$ and $\mathbb{P}$ symmetries, thus there will be considered only the parity preserving part of these operators, denoted by $\Theta_i^{[+]}$ \cite{KMBSM}.
+I will study the bare matrix elements $\la \bar K^0 | \Theta_j | K^0 \ra$ in a lattice environment in which only strong interactions take place; it is known that strong interactions preserve both $\mathbb{C}$ and $\mathbb{P}$ symmetries, thus only the parity preserving part of these operators, denoted by $\Theta_i^{[+]}$ will be considered \cite{KMBSM}.
 In the case of $\Theta_j$ and $\tilde\Theta_j$ the parity even parts are the same, then only 5 even operators are needed.
 A more detailed discussion about these operators and their lattice counterparts is presented in Chapter \ref{ch:operators}.
 
@@ -392,6 +394,7 @@ The previous equations can be rewritten in a more compact way, as in \cite{KMBSM
     \end{aligned}
 \end{equation}
 with $\xi_i = \left(8/3, -5/3, 1/3, 2, 2/3\right)$ numerical factors.
+The definitions of bare Bag parameters are analogous to the above mentioned but involve only bare quantities.
 The numerical value of $B_i$-parameters is extracted in \cite{Bparameters} and a large amount of other papers.
 A relevant work has been done by the ETM collaboration in \cite{KMBSM} bringing these results at $\mu_0 = 2\gev$ in the $\overline{MS}$ scheme:
 \begin{equation}\label{eq:b_i-in-kmbsm}
@@ -402,7 +405,7 @@ A relevant work has been done by the ETM collaboration in \cite{KMBSM} bringing 
 \end{equation}
 I want to highlight that the $B_1(\mu_0)$ value has a small difference with respect to the one in formula \ref{B_K-value} - because it comes from a different simulation - but fortunately there is an overlap due to statistical errors.
 The simulation setup developed in this thesis is very similar to the one used in \cite{KMBSM}, but some improvements have been done.
-These improvements are discussed in the next chapters.
+Such improvements are discussed in the next chapters.
 Some simulation results at the scale of $\mu=3$\gev\space are reported in the second graph in Figure \ref{fig:bag-parameters}.
 \begin{figure}[h!]
     \centering
@@ -424,10 +427,10 @@ Some simulation results at the scale of $\mu=3$\gev\space are reported in the se
 \newline
 The first graph refers to $\hat B_K$, a renormalization group invariant for the $B_K$ parameter defined by \cite{FLAG}:
 \begin{equation*}
-    \hat B_K = \left(\frac{\overline{g}(\mu)^2}{4 \pi}\right)^{-\gamma_0/(2\beta_0)} \text{exp}\left\{ \int_0^{\overline{g}(\mu)} dg \hspace*{.5mm} \left( \frac{\gamma (g)}{\beta (g)} + \frac{\gamma_0}{\beta_0 g}\right) \right\} B_K (\mu)
+    \hat B_K = \left(\frac{\overline{g}(\mu)^2}{4 \pi}\right)^{-\gamma_0/(2\beta_0)}\times \text{exp}\left\{ \int_0^{\overline{g}(\mu)} dg \hspace*{.5mm} \left( \frac{\gamma (g)}{\beta (g)} + \frac{\gamma_0}{\beta_0 g}\right) \right\} B_K (\mu)
 \end{equation*}
 \newline
-The results (\ref{eq:b_i-in-kmbsm}) should be compared with the new values evaluated using the amplitudes of the present work.
+The results (\ref{eq:b_i-in-kmbsm}) should be compared with the new values estimated through the program of this work.
 This comparison needs a renormalization of mixing operators (\ref{eq:Thetai-operators}) not involved is this thesis program.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -438,15 +441,15 @@ This comparison needs a renormalization of mixing operators (\ref{eq:Thetai-oper
 \newline
 In order to calculate Kaon matrix elements, a non perturbative approach is required and the path integral formulation provides for this \cite{Itzykson-Zuber}.
 As known, a path integral involves an \textit{infinite} sum of field configurations defined on an \textit{infinite} volume and time extension.
-Despite this, vacuum expectation values of physical observables yield \textit{finite} quantites.
+Despite this, vacuum expectation values of physical observables yield to \textit{finite} quantities.
 A well defined simualtion needs a regularization that faces the problem of these infinites.
 For this reason lattice QFT is a very useful regularization.
 It involves discretizing spacetime, referred to as the lattice, along with a finiteness of the volume.
 The two most relevant sources of errors are the discretization of the space and the finite volume effects.
-To deal with these errors, a large number of improvements has been developed in the years and some of them find application in this work.
+To deal with these errors, a large number of improvements has been developed through the years and some of them find application in this work.
 \newline
 The first section will provide a general overview of lattice regularization of a quantum field theory.
-In the second and third sections I will discuss respectively about Gauge and fermion fields regularizations on the lattice;
+In the second and third sections I will discuss respectively gauge and fermion fields regularizations on the lattice;
 I will start from the simplest regularizations and I will progressively extend them to the improved ones, which are used.
 In the fourth section, a specific set of bosonic ghost fields will be described.
 The fifth section will delineate the lattice regularization employed in the present simulation.
@@ -489,7 +492,7 @@ As usual in continuum path integral, given an observable $\mathcal{X}$ functiona
     \la \mathcal{X} (x_1,\dots,x_K) \ra = \frac{1}{\mathcal Z} \int \mathcal{D} \phi \hspace*{0.5mm} e^{-S_E[\phi_i]} \mathcal{X}\left[\phi_1,\dots,\phi_{N_\text{fields}}\right] (x_1,\dots,x_K)
 \end{equation*}
 where $\mathcal Z$ is the usual partition function $\mathcal Z = \la 1 \ra$.
-The path integral provides theoretical tools to handle a non perturbative theory then all the quantites in lattice simulations must be evaluated through vacuum expectation values of some chosen observables \cite{Itzykson-Zuber}.
+The path integral provides theoretical tools to handle a non perturbative theory then all the quantities in lattice simulations must be evaluated through vacuum expectation values of some chosen observables \cite{Itzykson-Zuber}.
 This fact has consequences, for example the asymptotic extractions described in section \ref{sec:asympt-behav}.
 \newline
 In the case of QCD described in the previous chapter, the integration can be split in two parts: the {\it fermionic integration} $\la \hspace*{0.7mm} \cdot \hspace*{0.7mm} \ra_F$ with measure $\mathcal{D}\psi\mathcal{D}\bar\psi$ and the {\it Gauge integration} $\la \hspace*{0.7mm} \cdot \hspace*{0.7mm} \ra_G$ with measure $\mathcal{D}U$ \footnote{About the meaning of the variables $U_\mu$, wait until the next section.}.
@@ -544,7 +547,7 @@ for example a symmetry conservation could cause an \oait\space on some observabl
 The first proposal to regularize Gauge and fermion action on the lattice was advanced by Wilson in 1974 \cite{Wilson-Confinement-of-Quarks}.
 Usually Gauge fields are denoted by $A_\mu (x) \equiv A_\mu^a(x)T^a_{\square}$ and the continuum action is defined in formula (\ref{eq:masslessQCD}).
 An alternative way to introduce Gauge fields is to treat them as connections, by defining a Wilson line $W(x,y)$ \cite{Schwartz}.
-This formulation it is useful in this case because the steps towards lattice theory are very simple and natural.
+This formulation is useful in this case because the steps towards lattice theory are very simple and natural.
 A Wilson line is defined by:
 \begin{equation*}
     W(x,y) = P \left\{\text{exp}\left(i\int_y^x A_\mu(\omega)d\omega^\mu\right)\right\}
@@ -594,11 +597,11 @@ The chosen one uses $c_0 = 5/3$ and $c_1 = -1/12$ and takes the name of \textit{
 \section{Fermion actions}\label{sec:fermion-discretization}
 \noindent
 A large number of different regularizations of fermions are available at current times.
-In this wide section I will describe some of them that differ each other by improvements and other features.
+In this wide section I will describe some of them that differ from each other by improvements and other features.
 A shortlist of the regularizations described could be useful to clarify the general purpose, that's to give to the reader all the needed tools to understand the adopted regularization of the work (see section \ref{sec:setup}):
 \begin{itemize}
     \item [$\triangleright$] In \ref{subsec:naive-wd-action} I will introduce the basic actions of lattice QCD: the \textit{Naive action} and the \textit{Wilson-Dirac action}.
-        They serve as background to build other cutting edge actions.
+        They serve as a background to build other cutting edge actions.
     \item [$\triangleright$] In \ref{subsec:SWterm} I will describe the Sheikholeslami-Wohlert term.
         It is a term to be addded to Wilson-Dirac fermion action to get the \oait\space of the theory.
         It will also be useful for other reasons explained at the end of the chapter.
@@ -615,7 +618,7 @@ A shortlist of the regularizations described could be useful to clarify the gene
 
 \subsection{Wilson-Dirac action}\label{subsec:naive-wd-action}
 \noindent
-The continuum fermion eucledian lagrangian density $\mathcal{L}_0^E = \bar \psi_q (x) \left( \gamma_\mu D_\mu + m \right) \psi_q (x)$ can be discretized by following the steps in section \ref{sec:lattice-discretization}.
+The continuum fermion euclidean lagrangian density $\mathcal{L}_0^E = \bar \psi_q (x) \left( \gamma_\mu D_\mu + m \right) \psi_q (x)$ can be discretized by following the steps in section \ref{sec:lattice-discretization}.
 In order to achieve Gauge invariance, a covariant derivative on the lattice is introduced.
 The auxiliary Gauge fields take the form of link variables, i.e. Wilson lines.
 The resulting action is called \textit{naive action} of fermions on the lattice \cite{montvay-munster}\cite{gattringer-lang}:
@@ -661,7 +664,7 @@ These non physical momenta are named \textit{doublers} and are suppressed throug
 \end{equation}
 where $\gamma_{-\mu} \equiv -\gamma_\mu$ and the Wilson parameters $r_q$ must satisfy $|r_q|\in(0,1]$ for each $q$.
 Whenever the sum over $\mu$ is omitted, it is to be understood as a sum over $\mu = 1, \dots, 4$.
-Usual choice for the parameter $r_q$ is 1, while the value $r_q = 0$ gives the naive action.
+The usual choice for the parameter $r_q$ is 1, while the value $r_q = 0$ gives the naive action.
 Action (\ref{eq:wilson-fermions}) is called \textit{Wilson-Dirac action} of fermions on the lattice and it is the most used fermion discretization on the lattice.
 Because of the additive piece, the doublers gets an infinite mass for $a \rightarrow 0$, thus they tend to inexcitable modes of the theory.
 In this simple way the doublers problem is solved.
@@ -671,13 +674,13 @@ At the current point, there are no $O(a)-$improvements.
 \subsection{\oait: Sheikholeslami-Wohlert term}\label{subsec:SWterm}
 \noindent
 The theory is \oaid\space through the insertion of the Sheikholeslami-Wohlert (SW) term in the action \cite{SWterm-Sommer}.
-It consists into the following replacement of the Dirac-Wilson operator:
+It consists of the following replacement of the Dirac-Wilson operator:
 \begin{equation}\label{eq:sw-term}
     D^W_{xy} \longmapsto D^W_{xy} + c_{SW} \frac{ia}{4}\sigma_{\mu\nu}\hat F_{\mu\nu} (x) \delta_{xy}
 \end{equation}
 where $\hat F_{\mu\nu}$ is the discretized version of the strength tensor $F_{\mu\nu}$.
 The constant $c_{SW}$ depends on the bare Gauge coupling $g_0$ and it has to be chosen to get the $O(a)-$improvement.
-To achieve the improvement, also current densities need counterterms, except for the pseudoscalar densities $P^a = \bar \psi \gamma_5 \mathcal{T}^a \psi$ - where $\mathcal{T}^a$ are generators of $SU(N_f)$.
+To achieve the improvement, current densities need counterterms as well, except for the pseudoscalar densities $P^a = \bar \psi \gamma_5 \mathcal{T}^a \psi$ - where $\mathcal{T}^a$ are generators of $SU(N_f)$.
 Currents and densities are modified in the following way:
 \begin{equation*}
     \begin{aligned}
@@ -688,7 +691,7 @@ Currents and densities are modified in the following way:
 \end{equation*}
 where the partial derivatives are defined as the direction-symmetrized ones $\tilde{\partial}_\mu = \frac{1}{2}(\partial_\mu^\text{forw.} + \partial_\mu^\text{backw.})=\frac{1}{2}(\partial_\mu + \partial_\mu^*)$.
 The above expressions involve also renormalization constants.
-The coefficients $\{ b_A, b_V, b_P, c_A, c_V \}$ could be both determined non-perturbatively and by perturbation theory expansion \cite{SWterm-Sommer}.
+The coefficients $\{ b_A, b_V, b_P, c_A, c_V \}$ could be determined both non-perturbatively and by perturbation theory expansion \cite{SWterm-Sommer}.
 Because of the present purpose, non-perturbative values are chosen.
 Some results of $c_{SW}$ for different values of $g_0$ with 3 flavours sea quarks are reported in \cite{cSW-non-perturbative}.
 
@@ -696,12 +699,12 @@ Some results of $c_{SW}$ for different values of $g_0$ with 3 flavours sea quark
 \noindent
 The Wilson-Dirac action (\ref{eq:wilson-fermions}) preserves the hypercubic lattice symmetry, parity and charge conjugation.
 However it does not preserve chiral symmetry $SU(N)_A \times U(1)_A$ discussed in Chapter \ref{chap:kaons}.
-The Wilson term $r_q \bar \psi_q(x) \psi_q (x + \hat \mu)$ breaks explicitly both $SU(N)_A$ and $U(1)_A$, thus these groups are broken also in the massless case, unlike the continuum theory, in which the breakdown occurs for other reasons (not explicitly).
+The Wilson term $r_q \bar \psi_q(x) \psi_q (x + \hat \mu)$ explicitly breaks both $SU(N)_A$ and $U(1)_A$, thus these groups are broken also in the massless case, unlike the continuum theory, in which the breakdown occurs for other reasons (not explicitly).
 In principle this breaking represents a problem because some features of the QCD are strictly related to the spontaneous breaking mechanism of the axial currents, as already discussed in Chapter \ref{chap:kaons}.
 In fact, this symmetry breaking could cause un unwanted mixing of operators in the renormalization procedure (for example see Chapter \ref{ch:operators}).
 One may think about a new regularization that both preserves chiral symmetry and solves the doublers problem, but this is impossible because of a theorem by Nielsen and Ninomiya \cite{montvay-munster}.
 One common way to treat chiral symmetry on the lattice is to add some counterterms to observables that restore the symmetry up to $O(a^n)$ effects, namely to treat an approximate chiral symmetry with the right continuum limit.
-There exists also a fermion regularization that posses a continuum chiral symmetry without introducing doublers, the {\it Wilson-Ginsparg} fermions, but they are not used in this work.
+There exists also a fermion regularization that posseses a continuum chiral symmetry without introducing doublers, the {\it Wilson-Ginsparg} fermions, but they are not used in this work.
 \newline
 Moreover, the Wilson Dirac operator could experience zero modes, i.e. null eigenvalues.
 If we consider the Wislon-Dirac operator introduced above with mass different from zero, eigenvalues can always be written as:
@@ -711,13 +714,13 @@ If we consider the Wislon-Dirac operator introduced above with mass different fr
 where $\lambda_j [U]$ is the eigenvalue of massless Wilson-Dirac operator.
 There could exist some gauge configurations called {\it exceptional configurations} such that $\lambda_i [U] \approx -m$ for some $i$. 
 Very small eigenvalues $\Lambda [U]$ modify the fermion determinant $\text{det}(D[U])$ in equation (\ref{eq:fermion-determinant}).
-From a practical point of view, these small eigenvalues and the consequent decrease of fermion determinant could be problematic \cite{tmLQCD}.
+From a practical point of view, these small eigenvalues and the consequent decrease of the fermion determinant could be problematic \cite{tmLQCD}.
 They could cause long autocorrelation times in simulation algorithm HMC (Hybrid Monte Carlo) due to the difficulties in inverting the determinant.
 Then HMC would require a larger number of resources to suppress autocorrelation effects.
 In this case the word {\it autocorrelation} refers to the correlation between different Gauge configurations generated by the HMC algorithm.
-In principle, they must be uncorrelated to each other to guarantee the randomness of the Monte Carlo method.
+In principle, they must be uncorrelated from each other to guarantee the randomness of the Monte Carlo method.
 \newline
-In the next sections I will introduce some setup features that help to decrease autocorrelation times.
+In the next sections I will introduce some setup features that help decrease autocorrelation times.
 The first is the introduction of a {\it twisted mass term} in the fermion action that plays the role of an infrared cutoff.
 The other and new feature is the implementation of \obc, widely described and developed in section \ref{sec:obc}.
 At the end of this Chapter I will explain how \obc\space replace (partially) the role of tmQCD.
@@ -725,7 +728,7 @@ At the end of this Chapter I will explain how \obc\space replace (partially) the
 \subsection{Twisted Mass QCD (tmQCD)}\label{sec:tmLQCD}
 \noindent
 In order to solve the problem of zero modes of Wilson-Dirac operator and the consequent broadening of autocorrelation times, a twisted mass term has been added to the action.
-It works as infrared cutoff for the spectrum of the Dirac-Wilson operator $D^W \equiv D$, i.e. absolute value of eigenvalues in formula (\ref{eq:eigenvalues}) will be greater than a given value:
+It works as an infrared cutoff for the spectrum of the Dirac-Wilson operator $D^W \equiv D$, i.e. absolute value of eigenvalues in formula (\ref{eq:eigenvalues}) will be greater than a given value:
 $$\Big| \Lambda_j [U] \Big| = \Big| \lambda_j[U]+m \Big| \ge \Lambda_\text{IR} > 0 $$
 Moreover, twisted mass QCD (tmQCD) can be used as $O(a)-$improvement in some particular cases.
 A short explanation follows.
@@ -755,7 +758,7 @@ Then it is defined a lattice action of the form:
     S_\text{tm}[\psi,\bar \psi, U] = a^4 \sum_{x,y} \bar \psi(x) \left( D_{xy} + m \delta_{xy} + i \mu_q \gamma_5 \sigma^3 \delta_{xy} \right) \psi (y)
 \end{equation}
 with $D$ the massless Wilson-Dirac operator and $\mu_q$ the {\it twisted mass} term.
-It is important to underline that in this form, the action (\ref{eq:tmQCD-action}) it is not yet a good regularization because its continuum limit does not coincide with usual QCD.
+It is important to underline that in this form, the action (\ref{eq:tmQCD-action}) is not a good regularization yet because its continuum limit does not coincide with usual QCD.
 In fact, in principle the twisted mass term $\mu_q$ has no direct physical meaning.\footnote{I will explain later how to relate $\mu_q$ to a physical parameter.}
 Its presence is just a mathematical trick to modify the fermion determinant in such a way that fermion modes exhibit a positive lower bound:
 \begin{equation*}
@@ -780,12 +783,12 @@ By applying a transformation (\ref{eq:twist}) the differential operator $D$ is c
         & \mu_q' = - m \sin (\alpha) + \mu_q \cos (\alpha)
     \end{aligned}
 \end{equation}
-It is straightforward to guess that particular choices for $\alpha$ there exist. 
+It is straightforward to guess that particular choices for $\alpha$ exist. 
 For example, $\alpha = \arctan (\mu_q/m)$ makes the twisted mass $\mu_q'$ vanish, while $\alpha = \pm \pi/2$ gives the so called {\it Maximal Twist} described below. 
 The latter choice is particularly relevant because it implies an automatic \oait, as we will see below.
 \newline
 In principle there are no reasons to introduce a finite non physical term $\mu_q$ in the action.
-In fact the tmQCD action (\ref{eq:tmQCD-action}) has not the right continuum limit to be a ``well defined'' action, but there exists an excamotage to make it useful.
+In fact the tmQCD action (\ref{eq:tmQCD-action}) does not have the right continuum limit to be a ``well defined'' action, but there exists an excamotage to make it useful.
 Through a transformation (\ref{eq:twist}) it is possible to define another fermion basis, named \textit{physical basis} $\{\chi, \bar\chi\}$, rotated with respect to the \textit{twisted basis} $\{\psi, \bar\psi\}$ that gives the tmQCD.
 In Appendix \ref{app:physical-basis} it is shown how this change of variables affects the action and how this tends - in the continuum limit $a\rightarrow 0$ - to the standard QCD action.
 Because of the variables change $\{\chi, \bar\chi\} \leftrightarrow \{\psi, \bar\psi\}$ the new action mass parameters $(m,\mu_q)$ are subjected to (\ref{eq:new-masses}).
@@ -872,7 +875,7 @@ As a consequence, the rotation of $\pi/2$ of a flavour with $r=-1$ and the rotat
 It will be useful to treat the \oait\space proposed in \cite{FR2}, described in next chapters.
 \newline
 Also in the OS case it is possible to define a physical basis $\{f,\bar f\}$ and a twisted basis $\{q,\bar q\}$.
-They are related each other through an OS twist $\mathbf{J}(\alpha, r)$ and described in Appendix \ref{app:physical-basis}.
+They are related to each other through an OS twist $\mathbf{J}(\alpha, r)$ and described in Appendix \ref{app:physical-basis}.
 The actions in the two basis - at maximal twist $\alpha = \pi/2$ - are:
 \begin{equation*}
     \begin{aligned}
@@ -896,16 +899,16 @@ As in tmQCD, the change of basis $\{f,\bar f\} \leftrightarrow \{q,\bar q\}$ lea
 To be coherent in the basis change, one must (OS) twist also the observable $\mathcal{X} \mapsto \mathcal{X}^\text{tw}_{OS}$.
 The basis change and the operators change ($P,S,A_\mu,V_\mu,T_{\mu\nu},\tilde{T}_{\mu\nu}$) are described in Appendix \ref{app:physical-basis}.
 Notice the subscripts $(M_q,0)$ and $(m_q,\mu_q)$: they explicitly define action parameters.
-Such parameters transforms according to equations (\ref{eq:new-masses}), formulae used in the tmQCD case.
+Such parameters transform according to equations (\ref{eq:new-masses}), formulae used in the tmQCD case.
 \newline
-Clearly the proof in section \ref{sec:tmLQCD} about the positivity of fermion determinant, in general, is no more valid.
+Clearly the proof in section \ref{sec:tmLQCD} about the positivity of fermion determinant, in general, is no longer valid.
 \obc\space will solve this problem.
 Moreover I will explain in Section \ref{sec:operators-properties} how \oait\space is recovered with OS fermions, thanks to the strategy worked out by R. Frezzotti and G. C. Rossi \cite{FR2}.
 In such a way tmQCD is no longer necessary.
 
 \section{Sea vs Valence: need for bosonic ghosts}\label{sec:ghosts}
 \noindent
-As already mentioned, QCD quarks are splitted in two sets: valence and sea quarks.
+As already mentioned, QCD quarks are split in two sets: valence and sea quarks.
 In particular, sea quarks are responsible of the virtual loops taking part in the interactions.
 This is clarified by Figure \ref{fig:quenched-approximation}.
 These interactions are entirely embedded in the fermion determinant in equation (\ref{eq:fermion-determinant}).
@@ -914,7 +917,7 @@ Now, let's imagine that valence and sea quarks are represented by different ferm
 It should be clear that only sea quarks must give contributions through their determinant.
 So a natural question arises: how can I avoid to treat valence quarks determinant?
 \newline
-The procedure to answer to the question was first introduced by Morel \cite{Morel} and it is very similar to the one introduced by de Wit, Faddeev and Popov to quantize non abelian Gauge fields \cite{WeinbergII}.
+The procedure to answer the question was first introduced by Morel \cite{Morel} and it is very similar to the one introduced by de Wit, Faddeev and Popov to quantize non abelian Gauge fields \cite{WeinbergII}.
 Integrating over valence fields $\{\psi,\bar\psi\}$, one automatically gets a $\text{det}(D^\text{val}[U])$. 
 Moreover I know that a Gaussian-like integral over bosonic complex variables has the following result:
 \begin{equation*}
@@ -929,7 +932,7 @@ These fermion ghosts are nothing but Dirac spinors, colour equipped and satisfyi
     \end{aligned}    
 \end{equation*}
 Let $\mathcal{X}$ be any observable which depends only on valence quarks and Gauge fields.
-Then the integral over both a valence quark\footnote{the extension to many flavours is trivial.} $\{\psi_\text{v},\bar\psi_\text{v}\}$ and its respective bosonic ghosts $\{\phi_\text{v}, \bar\phi_\text{v} \}$ reads:
+Then the integral over both a valence quark\footnote{the extension to many flavours is trivial.} $\{\psi_\text{v},\bar\psi_\text{v}\}$ and its respective bosonic ghost $\{\phi_\text{v}, \bar\phi_\text{v} \}$ reads:
 \begin{equation*}
     \begin{aligned}
         & W[U] = \\ 
@@ -956,7 +959,7 @@ This is exactly what the functional integral should do in quantum field theory.
 \noindent
 In lattice QCD usually fields of the sea sector (Gauge and sea quarks) are generated through very long and complex simulations.
 These sets of fields - called {\it ensembles} - are used to evaluate expectation values of observables as explained at the beginning of this chapter (Formula (\ref{eq:fermion-determinant})).
-In the present work I use a set of configurations by CLS \cite{Bruno} (Coordinated Lattice Simulations)\footnote{Coordinated Lattice Simulations:  \href{https://wiki-zeuthen.desy.de/CLS/}{https://wiki-zeuthen.desy.de/CLS/}}, generated through the \texttt{open-QCD}\footnote{Open-QCD packages: \href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}} simulation programs for lattice QCD.
+In the present work I use a set of configurations by CLS \cite{Bruno} (Coordinated Lattice Simulations)\footnote{Coordinated Lattice Simulations: \href{https://wiki-zeuthen.desy.de/CLS/}{https://wiki-zeuthen.desy.de/CLS/}}, generated through the \texttt{open-QCD}\footnote{Open-QCD packages: \href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}} simulation programs for lattice QCD.
 The ensembles are generated with $N_f = 2+1$ quarks in the sea sector, clearly referred to the flavour doublet {\it up-down} and the {\it strange}.
 Periodic boundary conditions in space directions are used, while the time direction is subject to \obc\space (OBC).
 To avoid misunderstandings, the notation used in the rest of the work is the one described below.
@@ -1002,13 +1005,13 @@ I know from \cite{FR2} that, chosen certain observables involving only two physi
         \mu_1, \mu_1 ', \mu_2 > 0 \qquad \mu_2 '<0
     \end{gathered}
 \end{equation*}
-Since in this work I use only pions and neutral Kaons, the possible flavour couples are $(u,d)$ and $(d,s)$.
+Since in this work I only use pions and neutral Kaons, the possible flavour couples are $(u,d)$ and $(d,s)$.
 A simple way to satisfy previous relations is the following:
 \begin{equation*}
     \boldsymbol{\mu}\bare = \text{diag}\left(\mu_l,\mu_l,\mu_l,-\mu_l,\mu_s,\mu_s\right)
 \end{equation*}
 To better explain, $\mu_u = \mu_{u'} = \mu_d = -\mu_{d'} := \mu_l$ ($l$ stands for ``light''), while $\mu_s = \mu_{s'}$ ($s$ stands for ``strange'').
-Moreover, because of the relative minus sign between the parameters of $u,u'$ and $d'$, I can state the the regularization is not only an OS one, but also a MtmQCD regularization in which the flavour doublet can be either $(u,d)$ or $(u',d)$.
+Moreover, because of the relative minus sign between the parameters of $u,u'$ and $d'$, I can state that the regularization is not only an OS one, but also a MtmQCD regularization in which the flavour doublet can be either $(u,d)$ or $(u',d)$.
 \newline\newline
 {\bf Valence ghosts action}:
 As explained in the previous section, bosonic Dirac-spinor ghosts need to be involved to cancel the valence fermions determinant.
@@ -1027,7 +1030,7 @@ The first provides a direct matching of renormalized quark masses extracted from
 \begin{equation*}
     \mu_q^\ren \big|_\text{valence} = m_q^\ren \big|_\text{sea} + o(a)
 \end{equation*}
-This method require some counterterms for an \oaid\space determination of $m_i^\ren \big|_\text{sea}$.
+This method requires some counterterms for an \oaid\space determination of $m_i^\ren \big|_\text{sea}$.
 A very precise treatment of the problem can be found in \cite{bussone2019matching}.
 The second method is simpler and consists in the match of pseudoscalar mesons masses evaluated from both sea and valence quarks.
 \begin{equation*}
@@ -1037,7 +1040,7 @@ The second method is simpler and consists in the match of pseudoscalar mesons ma
     \end{cases}
     \Longrightarrow \quad  \mu_q^\ren \big|_\text{valence} = m_q^\ren \big|_\text{sea} + o(a)
 \end{equation*}
-It is proven that the second method ensures a natural \oait, without the requirement of additive counterterms a la Symazink.
+It is proven that the second method ensures a natural \oait, without the requirement of additive counterterms a la Symanzik.
 In this case $m_\pi$ represents the mass of charged pions $\pi^\pm$ and $m_K$ is the mass of the Kaons.
 \newline
 \newline
@@ -1045,7 +1048,7 @@ In this case $m_\pi$ represents the mass of charged pions $\pi^\pm$ and $m_K$ is
 It enforces the sea and valence sectors to share the same renormalization constants, that's a great simplification. 
 \newline
 \newline
-(3) The use of \obc\space in time direction is an artefact that allows to low autocorrelation times of the simulation.
+(3) The use of \obc\space in time direction is an artefact that allows low autocorrelation times of the simulation.
 It is the principal feature of this work and it is described below.
 
 \section{\obc}\label{sec:obc}
@@ -1073,7 +1076,7 @@ The $\tau$ quantifies the autocorrelation of the given observable at two differe
 It has been observed that the autocorrelation time of the topological charge, $\tau_Q$, grows as $a^{-5}$ as the continuum limit is approached \cite{Topology-WilsonFlow-HMC}.
 This leads to extremely large autocorrelation times.
 \newline
-This catastrophic behaviour was confirmed both by direct computations that from a theoretical framework.
+This catastrophic behaviour was confirmed both by direct computations and from a theoretical framework.
 The birth of \obc\space resides in the computational observation of such long autocorrelation times, both for $Q_\text{top}$ \cite{investigatin-critical-slowing-down} and $Q_\text{top}^2$ \cite{critical-slowing-down-error-analysis}. 
 In the theoretical framework, there exists a theorem \cite{Topology-WilsonFlow-HMC} which states that ``the space of all lattice gauge fields satisfying a certain smoothness condition decomposes into topological charge sectors very much like the space of continuous fields in the classical continuum theory''.
 In other words, in the continuum limit the Gauge fields space tends to be disconnected.
@@ -1169,23 +1172,24 @@ Hence the same attributes of tmQCD are achieved, albeit through different ways.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIRD CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Operators $\Theta_i^{[+]}$s on the lattice and amplitudes extraction}\label{ch:operators}
-\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter outlined the general framework of lattice QCD, paying particular attention to the regularizations employed in the present work.
-This chapter describes the formulation of the mixing operators $\{\Theta_i\}$ on the lattice and it focuses on some properties of such lattice operators.
-These properties consist in:
+\chapter{Operators $\Theta_i^{[+]}$s on the lattice and $B_i$ extraction}\label{ch:operators}
+\lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he previous chapter outlined the general framework of lattice QCD, paying particular attention to the regularization employed in the present work.
+In this chapter such peculiar regularization is used to build the mixing operators $\{\Theta_i\}$ on the lattice.
+Some properties of the discretized lattice operators are described.
+Such properties consist in:
 \begin{enumerate}
-    \item An automatic \oait\space of two and three points meson correlators without the need of multiple simulations (Wilson average) or other specific strategies..
-        Such correlators are required to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$.
-    \item The absence of wrong chirality mixing of operators in renormalization procedure.
-        This should be present because Wilson term in action (\ref{eq:valence-action}) explicitly breaks chiral symmetry.
-        Despite the symmetry breaking, this mixing comes out to be absent.
-    \item A specific blocks-like renormalization matrix $Z_{ij}$, which simplify the renormalization procedure.
+    \item An automatic \oait\space of two and three points meson correlators with no need of multiple simulations (Wilson average) or other specific strategies.
+        Such correlators are required to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ or bag parameters.
+    \item The absence of wrong chirality mixing of operators $\{ \Theta_i^{[\pm]} \}$ in renormalization procedure.
+        In principle they should mix because Wilson term in action (\ref{eq:valence-action}) explicitly breaks chiral symmetry.
+        Despite the symmetry breaking, this mixing comes out to be absent for symmetry reasons.
+    \item A specific basis choice for the operators that gives a blocks-like renormalization matrix $Z_{ij}$, which simplify the renormalization procedure.
 \end{enumerate}
 
 \noindent
 In order to achieve these properties, some reformulations of the operators and strategies are required.
 The initial and majority of the chapter is dedicated to describing the four-fermion, dimension-six, mixing operators on the lattice. 
-The second part of the chapter is reserved to a detailed description of the strategy to extract matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from two and three points correlators.
+The second part of the chapter is reserved to a detailed description of the strategy to extract bag parameters and matrix elements $\la \bar K^0 | \Theta_i^{[+]} | K^0 \ra$ from two and three points correlators.
 
 
 \section{Continuum $\Theta_i^{[\pm]}$s and the new operators $Q_i^{[\pm]}$s}
@@ -1274,7 +1278,7 @@ The $\{Q_i^{[\pm]}\}$ operators possess a relevant advantage with respect to the
 once regularized as outlined in this chapter, they have renormalization mixing properties that simplify the evaluation of renormalized operators and renormalization constants.
 This will be better explained in \ref{sec:renormalization-properties}.
 \newline
-I will show in section \ref{sec:asympt-behav} how the matrix elements $\la \bar K^0 | Q_i^{[\pm]} | K^0 \ra$ can be asymptotically extracted from two and three points correlators.
+I will show in section \ref{sec:asympt-behav} how the bag parameters can be extracted from two and three points correlators.
 Firstly, I introduce such correlators\footnote{To be precise, these are not the usual $n-$points correlators but their projections over null momenta.} in continuum QFT:
 \begin{equation}\label{eq:3pts-correlators}
     C_i^\text{QCD}(x_4,y_4,z_4) = \int d^3y \hspace*{.3mm} d^3z \left\la \bar K^0(x) Q_i(y) \bar K^0(z) \right\ra
@@ -1282,8 +1286,12 @@ Firstly, I introduce such correlators\footnote{To be precise, these are not the 
 \begin{equation*}
     G_{K^0 \bar K^0}^\text{QCD}(x_4,y_4) = \int d^3y \left\la \bar K^0(x) K^0(y) \right\ra
 \end{equation*}
+\begin{equation*}
+    X_{\bar K^0}^\text{QCD}(x_4,y_4) = \int d^3y \left\la A_0^{(\bar d s)}(x) \bar K^0(y) \right\ra
+\end{equation*}
 The source operators $\bar K^0$ and $K^0$ are defined in Chapter \ref{chap:kaons} as the pseudoscalar densities of $d$ and $s$ doublet of quarks, while the superscript QCD stresses that these are the correlation functions in continuum quantum chromodynamics.
-The amplitudes $$\mathcal{A}_i^\text{QCD} = \la \bar K^0 | Q_i^{[+]} | K^0 \ra$$ are recovered by taking asymptotic behaviour of correlators for $0 \ll z_4 \ll y_4 \ll x_4 \ll T$.
+The current $A_\mu^{(\bar d s)} = \bar d \gamma_\mu \gamma_5 s $ is the axial current associated to Kaons. 
+The amplitudes $$\mathcal{A}_i^\text{QCD} = \la \bar K^0 | Q_i^{[+]} | K^0 \ra$$ needed for the bag parameters are isolated from higher mass states contributions by considering asymptotic behaviour of correlators for $0 \ll z_4 \ll y_4 \ll x_4 \ll T$.
 So the condition $x_4 > y_4 > z_4$ is supposed to be always satisfied.
 The full discussion about the extraction is left to section \ref{sec:asympt-behav}.
 
@@ -1344,7 +1352,7 @@ In this case the correlator:
 \begin{equation*}
     G^\text{FR}(x,y,z) = \left\la \bar d' (x) \Gamma_\xi s'(x) \Phi_{\rho,\sigma}(y) \bar d (z) \Gamma_\omega s(z) \right\ra
 \end{equation*}
-gives a Wick contraction for each term of $\Phi_{\rho,\sigma}(y)$, thus four contractions identical to equations (\ref{eq:wick-contractions-general}) up to primed flavours.
+gives only one contraction for each term of $\Phi_{\rho,\sigma}(y)$, thus four contractions identical to equations (\ref{eq:wick-contractions-general}) up to primed flavours.
 Such contractions are labeled by $G_{d1}^\text{FR}, G_{d2}^\text{FR}, G_{c1}^\text{FR}, G_{c2}^\text{FR}$ and are shown in Figure \ref{fig:contractions-general}.
 \begin{figure}[h!]
     \centering
@@ -1389,7 +1397,7 @@ The following notation for valence flavours is adopted:
     \qquad
     \text{with } \chi^i = \mathbf{J}(\pi/2,r_i)\psi^i
 \end{equation*}
-The operators $Q_{i}^{[+]}$ is continuum QCD are replaced by the new operators $O_{i,[+]}^\text{phys}$ in the lattice QCD fermion physical basis:
+The operators $Q_{i}^{[+]}$ in continuum QCD are replaced by the new operators $O_{i,[+]}^\text{phys}$ in the lattice QCD fermion physical basis:
 \begin{equation*}
     \begin{split}
         & O_{1[+]}^\text{phys} = 2 \left\{\big[\bar\chi^1 \gamma_\mu \chi^2 \big] \big[\bar\chi^3 \gamma_\mu \chi^4 \big] + \big[ \bar\chi^1 \gamma_\mu \gamma_5 \chi^2 \big] \big[ \bar\chi^3 \gamma_\mu \gamma_5 \chi^4 \big] + \left(2\leftrightarrow 4\right)\right\} \\
@@ -1416,26 +1424,26 @@ The resulting operators are the following:
     \end{split}
 \end{equation}
 where the signs $\pm,\mp$ depend on the choice of $r_1=\pm1$.
-The other quantites that need to be twisted are the Kaon sources:
-\begin{equation*}
+The other quantities that need to be twisted are the Kaon sources:
+\begin{equation}\label{eq:kaon-sources}
     \begin{gathered}
         \bar K^{0} = P^\text{phys}_{21} = \bar\chi^2 \gamma_5 \chi^1 = \pm i \bar\psi^2 \psi^1 = \pm i S^\text{tw}_{21} \\
         \bar K^{'0} = P^\text{phys}_{43} = \bar\chi^4 \gamma_5 \chi^3 = \bar\psi^4 \gamma_5 \psi^3 = P^\text{tw}_{43} \\
     \end{gathered}
-\end{equation*}
+\end{equation}
 It is notable that the OS twist maps the parity even operators into parity odd ones.
 However also the source $K^{0}$ changes parity, then the overall sign of the correlator under $\mathbb{P}$ is preserved and equal to $+1$, as strong interactions should do.
 Now the work in Maximally twisted OS valence QCD is well defined and, by construction, the correlation functions:
 \begin{equation}\label{eq:lattice-correlators}
     C_i^\text{FR}(x_4,y_4,z_4) = \pm i a^6 \sum_{\vec x, \vec y, \vec z}\left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) O_{i[+]}^\text{tw} (y) \left(\bar\psi^2 \psi^1 \right) (z)\right\ra
 \end{equation}
-gives the same Wick contractions of the correlators in equation (\ref{eq:3pts-correlators}), showed in Figure \ref{fig:contractions-general}.
+give the same Wick contractions of the correlators in equation (\ref{eq:3pts-correlators}), showed in Figure \ref{fig:contractions-general}.
 To be rigorous, in this definition there is one more sum with respect to equation (\ref{eq:3pts-correlators}).
 This additive sum over $\vec x$ is a (sort of) statistical average and it is used to give more precise results in the simulation.
-Similarly, the two points correlation functions are:
+Similarly, the integrated two points correlation functions are:
 \begin{equation}\label{eq:lattice-propagators}
     \begin{split}
-        & G_{34}^\text{FR}(x_4,y_4) = a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) \left(\bar\psi^3 \gamma_5 \psi^4 \right) (x) \right\ra \\
+        & G_{34}^\text{FR}(x_4,y_4) = a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^4 \gamma_5 \psi^3 \right) (x) \left(\bar\psi^3 \gamma_5 \psi^4 \right) (y) \right\ra \\
         & G_{12}^\text{FR}(x_4,y_4) = - a^3 \sum_{\vec x, \vec y} \left\la \left(\bar\psi^2 \psi^1 \right) (x) \left(\bar\psi^1 \psi^2 \right) (y) \right\ra \\
     \end{split}
 \end{equation}
@@ -1444,13 +1452,25 @@ Both describe a neutral anti-Kaon $\bar K^0$ propagator.
 Nevertheless there are lattice artefacts due to the different regularizations of $d,d'$ that make the pseudoscalar densities $\bar K^0$ and $\bar K^{'0}$ generate slightly different Kaons.
 \newline 
 Similar definitions hold for $G_{21}^\text{FR}$ and $G_{43}^\text{FR}$.
-They differ from (\ref{eq:lattice-propagators}) by an exchange of flavours $(1\leftrightarrow 2)$ or $(3\leftrightarrow 4)$ and correspond to the propagator of the Kaon $K^0$.
+They differ from (\ref{eq:lattice-propagators}) by an exchange of flavours $(1\leftrightarrow 2)$ or $(3\leftrightarrow 4)$ and correspond to the propagator of the kaon $K^0$ instead of an antikaon $\bar K^0$.
+\newline
+At the end of the chapter I will use two other correlators to extract the parameter $B_K$, following the method explained in \cite{B_k-extrapolation}:
+\begin{equation}\label{eq:axial-correlators}
+    \begin{split}
+        X_{34}^\text{FR}(x_4,y_4) & = a^3 \sum_{\vec x, \vec y} \left\la A_{0,43}^\text{phys} (x) P_{34}^\text{phys} (y) \right\ra = \pm i a^3 \sum_{\vec x, \vec y} \left\la V_{0,43}^\text{tw} (x) P_{34}^\text{tw} (y) \right\ra \\
+                                  & = \pm i a^3 \sum_{\vec x, \vec y} \left\la \left( \bar \psi^4 \gamma_0 \psi^3 \right) (x) \left( \bar \psi^3 \gamma_5 \psi^4 \right) (y) \right\ra \\
+        X_{12}^\text{FR}(x_4,y_4) & = a^3 \sum_{\vec x, \vec y} \left\la A_{0,21}^\text{phys} (x) P_{12}^\text{phys} (y) \right\ra = \pm i a^3 \sum_{\vec x, \vec y} \left\la A_{0,21}^\text{tw} (x) S_{12}^\text{phys} (y) \right\ra \\
+                                  & = \pm i a^3 \sum_{\vec x, \vec y} \left\la \left( \bar \psi^2 \gamma_0 \gamma_5 \psi^1 \right) (x) \left( \bar \psi^1 \psi^2 \right) (y) \right\ra \\
+    \end{split}
+\end{equation}
+where I have used agiain the results in Appendix \ref{app:OSreg}.
+These two correlators give, in the continuum limit and in regime of asymptotic behaviour (Section \ref{sec:asympt-behav}), the matrix element $\la 0 | A_0^{(\bar d s)} (x) | \bar K^0 (\vec p) \ra$.
 
 \section{Properties of correlators and $O_{i[+]}$ operators}\label{sec:operators-properties}
 \subsection{Automatic \oait}
 \noindent
-In the first paper by Frezzotti and Rossi \cite{FR1} it was introduced a strategy to $O(a)-$improve observables based on of Wilson Dirac fermions or twisted fermions.
-The operation needed to improve the observables is called \textit{Wilson Average} (WA) and it consists in averaging observables evaluated with different signs of Wislon parameters $r_i$.
+In the first paper by Frezzotti and Rossi \cite{FR1} a strategy to $O(a)-$improve observables based on of Wilson Dirac fermions or twisted fermions has been introduced.
+The operation needed to improve the observables is called \textit{Wilson Average} (WA) and it consists of averaging observables evaluated with different signs of Wislon parameters $r_i$.
 In a shorthand notation I refer to the set of Wilson parameters of the theory with $R = \{r_1,\dots,r_N\}$.
 \newline
 Given an observable $\mathcal{X}$ functional of the valence fields and Gauge fields, the WA of its vacuum expectation value is:
@@ -1465,19 +1485,19 @@ The WA method implies that multiple simulations must be done.
 However there are particular cases in which this is not necessary because each $\left\la \mathcal{X} \right\ra\big|_{\pm R}^a$ is automatically improved and the WA is not necessary.
 This is exactly the case of correlators of the type (\ref{eq:lattice-correlators}) and (\ref{eq:lattice-propagators}).
 In fact the valence and sea actions (\ref{eq:valence-action}) and (\ref{eq:sea-action}) admit the spurionic symmetry $\mathbb{P}\x (R\mapsto -R)$.
-In particular $\mathbb{P}$ is the parity operation ($\mathbb{P}x = x_p$) and $(R\mapsto -R)$ is the cahnge of signs of the Wilson parameters.
-Under this discrete symmetry the a correlator of the type (\ref{eq:lattice-correlators}) is mapped into itself because of the symmetry property and it is mapped also into the one with $(R\mapsto -R)$ because of the identity:
+In particular $\mathbb{P}$ is the parity operation ($\mathbb{P}x = x_p$) and $(R\mapsto -R)$ is the change of signs of the Wilson parameters.
+Under this discrete symmetry a correlator of the type (\ref{eq:lattice-correlators}) is mapped into itself because of the symmetry property and it is also mapped into the one with $(R\mapsto -R)$ because of the identity:
 \begin{equation*}
     \sum_{\vec x, \vec y, \vec z} f(x,y,z) =  \sum_{\vec x_p, \vec y_p, \vec z_p} f(x_p,y_p,z_p)
 \end{equation*}
 for any function $f$ of the lattice coordinates.
 Then, in simple words, the statement asserts that in this case $\left\la \mathcal{X} \right\ra\big|_{+R}^a = \left\la \mathcal{X} \right\ra\big|_{-R}^a$ and then the WA is not necessary for the \oait.
-The same proof can be applied to a simple meson propagator of the type\footnote{regard the symbol $\bar\Gamma^\alpha$ see Appendix \ref{app:notations}}:
+The same proof can be applied to a simple meson propagator of the type\footnote{about the symbol $\bar\Gamma^\alpha$ see Appendix \ref{app:notations}}:
 \begin{equation*}
     G(x,y)=a^3\sum_{\vec x, \vec y} \Big\la \bar \psi^1 (x) \Gamma^\alpha \psi^2 (x) \bar\psi^2 (y) \bar\Gamma^\alpha \psi^1 (y) \Big\ra 
 \end{equation*}
 and then to two points correlators.
-It is important to notice that this proof holds not only for $r_1=r_2=r_3=-r_4$ but for all the possible values of each $r_i$ chosen independently.
+It is important to notice that this proof holds not only for $r_1=r_2=r_3=-r_4$ but for all the possible values of each $r_i$ independently chosen.
 
 
 \subsection{Renormalization and mixing of operators $O_{i[\pm]}$}\label{sec:renormalization-properties}
@@ -1570,7 +1590,7 @@ The renormalization matrix is a block diagonal matrix:
     \end{pmatrix}
 \end{equation*}
 This greatly simplifies the renormalization process.
-Regarding the PE operators, the situation is more complicated, and the reader must refer to the paper \cite{DoniniMartinelliOperators}.
+About the PE operators, the situation is more complicated, and the reader must refer to the paper \cite{DoniniMartinelliOperators}.
 Explicit chiral symmetry breaking introduced by the Wilson term plays a fundamental role and allows the operators to mix their chirality.
 However, the matrix elements are \oaid, so even the effects of mixing with wrong chirality have an effect of order $O(a^2)$ or higher.
 \newline
@@ -1581,9 +1601,9 @@ This result has been formally developed in \cite{FR2}.
 
 \section{Asymptotic behaviours}\label{sec:asympt-behav}
 \noindent
-The last pending issue of this chapter is the method to extract the bare amplitudes $\la \bar K^0 | Q_i | K^0 \ra$ in the continuum limit from correlators (\ref{eq:lattice-correlators}).
-Such method is based on asymptotic behaviours of correlators at large eucledian times and it is a standard extraction method \cite{montvay-munster}, adapted to the case of \obc\space \cite{ExtractionSpectralQuantities}.
-In this section I will consider a generic three point correlator equipped with this form:
+The last pending issue of this chapter is the method to isolate the bare amplitudes $\la \bar K^0 | Q_i | K^0 \ra$ in the continuum limit from correlators (\ref{eq:lattice-correlators}) and to extract bag parameters from them.
+Such method is based on asymptotic behaviours of correlators at large euclidean times and it is a standard extraction method \cite{montvay-munster}, adapted to the case of \obc\space \cite{ExtractionSpectralQuantities}.
+In this section I will consider a generic (integrated) three points correlator of this form:
 \begin{equation}\label{eq:correlator-prototype}
     C(x_4,y_4,z_4) = a^6\sum_{\vec x, \vec y, \vec z} \left\la M_A (x) \Xi (y) M_B (z) \right\ra
 \end{equation}
@@ -1593,18 +1613,20 @@ Notice that the sum over spatial components is a projection over zero momenta of
 To prove it, let's consider a lattice function $f(\vec x,\vec y,\vec z)$ and its discrete Fourier transform $\tilde{f}(\vec p_x,\vec p_y,\vec p_z)$.
 Due to periodic boundary conditions in space directions, the above correlator is space translation invariant.
 Thus I suppose $f(\vec x, \vec y, \vec z) = f(0, \vec y - \vec x, \vec z - \vec x)$.
-At this point the sum over spatial components is:
+At this point the sum over spatial components is nothing but the discrete Fourier transform calculated in null momenta:
 \begin{equation*}
     \begin{gathered}
-        \sum_{\vec x, \vec y, \vec z} f(\vec 0,\vec y',\vec z') = \sum_{\vec x', \vec y', \vec z'} f(\vec 0,\vec y',\vec z') \hspace*{.5mm} \text{exp}\left(i\vec{p_y}\cdot\vec{y}'+i\vec{p_z}\cdot\vec{z}' \right)\bigg|_{\vec p_y = \vec p_z = 0} = \\
-        = \sum_{\vec x'} \tilde{f}(\vec x = \vec 0, \vec p_y = 0, \vec p_z = 0)
+        \sum_{\vec x, \vec y, \vec z} f(\vec x,\vec y',\vec z') = \mathcal{F}\left[f\right](\vec p_x,\vec p_y,\vec p_z)\bigg|_{\vec p_i = 0} = \sum_{\vec x, \vec y, \vec z} f(0, \vec y - \vec x, \vec z - \vec x) = \\
+        = \sum_{\vec x, \vec y', \vec z'} f(\vec 0,\vec y',\vec z') \hspace*{.5mm} \text{exp}\left(i(\vec{p_x}+\vec{p_y}+\vec{p_z})\vec{x}+i\vec{p_y}\cdot\vec{y}'+i\vec{p_z}\cdot\vec{z}' \right)\bigg|_{\vec p_i = 0} = \\
+        = \sum_{\vec x} \bar{f}(x'=0, \vec p_y = 0, \vec p_z = 0)
     \end{gathered}
 \end{equation*}
-The sum over $\vec y', \vec z'$ is simply a discrete Fourier transform evaluated in zero momenta. The third sum over $\vec x'$ is a statistical sum that allows the simulation to give more precise results.
+where $\bar{f}$ is an intermediate function in which only two of three variables are Fourier transformed.
+It is worth noting that a sort of statistical sum over $\vec x$ appears. This will be helpful to reduce noise in data analysis procedure.
 The projection over zero momenta is a clever trick because all the involved physical states will have an energy equal to the mass of such state $E=m$ and then a non perturbative extraction of the masses can be done\footnote{In this work there are no mass extractions, but previous papers do it in a very precise way. For example see \cite{LightMesons}\cite{OBC-tm} for $0^{-}$ mesons masses with CLS ensembles.}.
 \newline
-Now I want to show how the amplitudes can be asymptotically extracted \cite{montvay-munster} from correlator (\ref{eq:correlator-prototype}).
-First of all, a theoretical background in introduced:
+Now I want to show how the amplitudes can be asymptotically isolated \cite{montvay-munster} from correlator (\ref{eq:correlator-prototype}).
+Before of that, a theoretical background in introduced:
 \begin{equation*}
     \begin{split}
         & \text{Vacuum state: } \Omega \qquad H|\Omega\ra = 0 \\
@@ -1628,16 +1650,16 @@ The resulting correlator is:
 \begin{equation*}
     \begin{split}
         & C(x_4,y_4,z_4) = \\
-        & = a^6\sum_{\vec x}\sum_{n,k} \la \Omega | M_A (0) \big[\Psi_n \Psi_n^\dag \big] \Xi (0) \big[\Psi_k \Psi_k^\dag \big] M_B (0) | \Omega \ra \hspace*{0.5mm} e^{-m_n(x_4-y_4)-m_k(y_4-z_4)}
+        & = a^6\sum_{\vec y}\sum_{n,k} \la \Omega | M_A (0) \big[\Psi_n \Psi_n^\dag \big] \Xi (0) \big[\Psi_k \Psi_k^\dag \big] M_B (0) | \Omega \ra \hspace*{0.5mm} e^{-m_n(x_4-y_4)-m_k(y_4-z_4)}
     \end{split}
 \end{equation*}
 Suppose to consider the case $x_4 \gg y_4 \gg z_4$.
 Then, because of the exponentials, only the smallest masses $m_n$ and $m_k$ give a relevant contribution, while all the other states are suppressed.
-Supposing that the meson operators $M_A$ and $M_B$ interpolate some meson states $\Psi_A$ and $\Psi_B$:
+Supposing that the meson operators $M_A$ and $M_B$ interpolate some single meson states $\Psi_A$ and $\Psi_B$:
 \begin{equation}\label{eq:asymptotic-behav-3pts}
     \begin{split}
         & C(x_4,y_4,z_4)\approx \\
-        & \qquad \approx  a^6\sum_{\vec x} \la \Omega | M_A(0) | \Psi_A \ra \la \Psi_A | \Xi (0) | \bar\Psi_B \ra \la \bar\Psi_B | M_B (0) | \Omega \ra \hspace*{.5mm} e^{-m_A(x_4-y_4)-m_B(y_4-z_4)}
+        & \qquad \approx  a^6\sum_{\vec y} \la \Omega | M_A(0) | \Psi_A \ra \la \Psi_A | \Xi (0) | \bar\Psi_B \ra \la \bar\Psi_B | M_B (0) | \Omega \ra \hspace*{.5mm} e^{-m_A(x_4-y_4)-m_B(y_4-z_4)}
     \end{split}
 \end{equation}
 I can follow the same procedure applied to the two points correlation function with meson operators, i.e. the non perturbative meson propagator:
@@ -1646,19 +1668,23 @@ I can follow the same procedure applied to the two points correlation function w
 \end{equation}
 For $x_4 \gg y_4$ it can be proved that the asymptotic behaviours of such correlator is:
 \begin{equation}\label{eq:asymptotic-behav-2pts}
-    G_{C\bar C}(x_4,y_4) \approx a^3 \sum_{\vec x} \la \Omega | M_C (0) | \Psi_C \ra \la \Psi_C | \bar M_C (0) | \Omega \ra \hspace*{0.5mm} e^{-m_C(x_4-y_4)}
+    G_{C\bar C}(x_4,y_4) \approx a^3 \sum_{\vec y} \la \Omega | M_C (0) | \Psi_C \ra \la \Psi_C | \bar M_C (0) | \Omega \ra \hspace*{0.5mm} e^{-m_C(x_4-y_4)}
 \end{equation}
 Let's focus on the particular case of this work.
 To evaluate matrix elements I will use $M_A = \bar K^{'0}$, $M_B = \bar K^0$ and $\Xi = O_{i[+]}$.
-Such choices give the three points correlators $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}) and the two points $G_{34}^\text{FR}, G_{12}^\text{FR}$ in formula (\ref{eq:lattice-propagators}).
-Because of their different regularizations, I suppose that Kaons generated by $\bar K^{'0}$ and $\bar K^{0}$ to have different masses $m_{K'} \neq m_K$ for a lattice spacing different from zero.
+Such choices give the three points correlators $C_i^\text{FR}$ in formula (\ref{eq:lattice-correlators}).
+By choosing $M_C$ as $\bar K^{0'}$ or $\bar K^{0}$ the two points functions $G_{34}^\text{FR}, G_{12}^\text{FR}$ in formula (\ref{eq:lattice-propagators}) are obtained.
+By choosing $M_C$ as the $0-$th component of the kaon axial current and replacing $\bar M_C$ with $K^0$ or $K^{0'}$, I get the correlators $X_{34}^\text{FR}, X_{12}^\text{FR}$ in formula (\ref{eq:axial-correlators}).
+Because of their different regularizations (\ref{eq:kaon-sources}), I suppose that Kaons generated by $\bar K^{'0}$ and $\bar K^{0}$ to have different masses $m_{K'} \neq m_K$ for a lattice spacing different from zero.
 Thus their asymptotic behaviours are:
 \begin{equation*}
     \begin{split}
         & C_i^\text{FR}(x_4,y_4,z_4)\approx \\
-        & \hspace*{5mm} \approx a^6\sum_{\vec x} \la \bar K^{'0} | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra  \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)-m_K(y_4-z_4)}  \\
-        & G_{34}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega | \bar K^{'0} | \bar K^{'0} \ra \Big|^2 \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)} \\
-        & G_{12}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec x} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
+        & \hspace*{5mm} \approx a^6\sum_{\vec y} \la \bar K^{'0} | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)-m_K(y_4-z_4)}  \\
+        & G_{34}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec y} \Big| \la \Omega | \bar K^{'0} | \bar K^{'0} \ra \Big|^2 \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)} \\
+        & G_{12}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec y} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
+        & X_{34}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec y} \la \Omega | A_{0,43}^\text{phys} | \bar K^{'0} \ra \la \bar K^{'0} | K^{'0} | \Omega \ra \hspace*{.5mm} e^{-m_{K'}(x_4-y_4)} \\
+        & X_{12}^\text{FR}(x_4,y_4) \approx a^3\sum_{\vec y} \la \Omega | A_{0,21}^\text{phys} | K^0 \ra \la \bar K^0 | K^0 | \Omega \ra \hspace*{.5mm} e^{-m_K(x_4-y_4)} \\
     \end{split}
 \end{equation*}
 Fortunately the two matrix elements $\la \Omega | \bar K^0 | \bar K^0 \ra$ and $\la K^0 | \bar K^0 | \Omega \ra$ are equal and real because of the PCAC relation.
@@ -1666,37 +1692,51 @@ The same using $\bar K^{'0}$.
 I leave the very simple proof of that in Appendix \ref{app:proof-reality}.
 In particular I use the following chain:
 $$\la \Omega | \bar K^0 | \bar K^0 \ra = \la K^0 | \bar K^0 | \Omega \ra \neq \la \Omega | \bar K^{'0} | \bar K^{'0} \ra = \la K^{'0} | \bar K^{'0} | \Omega \ra$$
-Then the matrix elements of Kaons oscillations with insertion of mixing operators can be asymptotically extracted in the following way for $x_4 \gg y_4 \gg z_4$.
-First of all I explicitly substitute $\sum_{\vec{x}} \la \hspace*{.5mm} \cdot \hspace*{.5mm} \ra$ with $N_\text{vol} \big\la \hspace*{.5mm} \cdot \hspace*{.5mm} \big\ra_\text{space} = N_1 N_2 N_3 \big\la \hspace*{.5mm} \cdot \hspace*{.5mm} \big\ra_\text{sp.}$ to stress that it is an average over space lattice points.
-Then I can use the above asymptotic behaviours to prove that:
+The extraction of bare bag parameters is based on a simplification of mesons amplitudes and decay consants.
+Bare bag parameters definitions are analogous to  with definitions analogous to the renormalized ones, in (\ref{eq:bag-definition}).
+It is straightforward to prove that the following quantities, in asymptotic regime, give the bag parameters with indices $2,\dots,5$ at lattice spacing $a$:
+\begin{equation}\label{eq:bag-2to5-extraction}
+    \begin{gathered}
+        \mathcal{B}_i (a; y_4) \approx \frac{1}{\xi_i}\sum_{j=2}^5 \Lambda_{ij} \mathcal{F}_j (a; y_4) \\
+        \mathcal{F}_j (a) = \frac{C_i^\text{FR}(x_4,y_4,z_4)}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)} \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{i[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra}{\left[ \sum_{\vec{y}} \Big| \la \Omega | \bar K^{'0} | \bar K^{'0} \ra \Big|^2 \right] \left[ \sum_{\vec y} \Big| \la \Omega |  K^0 |  K^0 \ra \Big|^2 \right]}
+    \end{gathered}
+\end{equation}
+Using formula (\ref{app:kaon-annihilation-amplitude}) I can express:
+\begin{equation*}
+    \la \Omega | K^{'0} | K^{'0} \ra = \frac{F_{K'} m_{K'}}{m_3 + m_4} \qquad \qquad \la \Omega | K^{0} | K^{0} \ra = \frac{F_{K} m_{K}}{m_1 + m_2}
+\end{equation*}
+These quantities simplify some terms in the definition of bag parameters (\ref{eq:bag-definition}).
+It should be noted that, although the quantities $\mathcal{F}_j(a,y_4)$ don't explicitly depend on $y_4$, the results show a residual dependence from it beacuse of computational reasons.
+Thus it is possible to recover the parameters $\{B_2\bare,B_3\bare,B_4\bare,B_5\bare\}$ through the continuum limit extrapolation.
+\newline
+About the first parameter $B_K$, the strategy adopted is similar.
+In its definition (\ref{eq:bag-definition}) the terms in front of $B_K$ differ from the others.
+For this reason, the needed ratio to extract $B_K$ is different and it involves the use of axial current \cite{B_k-extrapolation}.
+The property to use is strictly related to the PCAC relation for the neutral Kaons:
+\begin{equation*}
+    \la \Omega | A_\mu^{(ds)} (x) | K^0 (\vec p) \ra = F_K p_\mu e^{ipx}
+\end{equation*}
+In the present case $\vec p = \vec 0$ due to the projection over zero momenta.
+Thus, taking $\mu = 0$, I obtaion $F_K m_K$. This holds for both $\bar K^{0'}$ and $\bar K^{0}$ sources.
+At this point I can use the correlators $X_{12}^\text{FR}(x,y)$ and $X_{34}^\text{FR}(x,y)$ in (\ref{eq:axial-correlators}) to define $\mathcal{F}_1$ and the first bag parameter on the lattice $\mathcal{B}_1$:
+\begin{equation}\label{eq:bag-1-extraction}
+    \mathcal{B}_1 (a;y_4) \approx \frac{1}{\xi_1} \mathcal{F}_1 (a;y_4)
+\end{equation}
 \begin{equation*}
     \begin{split}
-        & \mathcal{R}_i (x_4,y_4,z_4) \equiv \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} \approx \\
-        & \hspace*{1cm \approx a^3 \left\la \la \bar K^{'0} | O_{i[+]} | K^0 \ra \right\ra_\text{sp.}\cdot \text{exp}\left\{ -m_{K'}\frac{x_4-y_4}{2} - m_{K}\frac{y_4-z_4}{2}}\right\}
+        \mathcal{F}_1 (a;y_4) & =  \frac{C_i^\text{FR}(x_4,y_4,z_4)}{X_{34}^\text{FR}(x_4,y_4) \cdot X_{12}^\text{FR}(y_4,z_4)} \approx \\
+        & \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{1[+]} | K^0 \ra  \la \Omega | \bar K^{'0} | \bar K^{'0} \ra  \la K^0 | \bar K^0 | \Omega \ra}{\left[ \sum_{\vec{y}} \la \Omega | A_{0,43} | \bar K^{'0} \ra \la \bar K^{'0} | K^{'0} | \Omega \ra  \right] \left[ \sum_{\vec y} \la \Omega | A_{0,21} | \bar K^{0} \ra \la \bar K^{0} | K^{0} | \Omega \ra \right]} \approx \\
+        & \approx \frac{\sum_{\vec y} \la \bar K^{'0} | O_{1[+]} | K^0 \ra }{\left[ \sum_{\vec{y}} \la \Omega | A_{0,43} | \bar K^{'0} \ra \right] \left[ \sum_{\vec y} \la \Omega | A_{0,21} | \bar K^{0} \ra \right]} \approx \xi_1 B_K
     \end{split}
 \end{equation*}
-By extracting the masses $m_{K'}$ and $m_K$ through the method outlined in Section \ref{sec:analysis}, it is possible to recover the Kaon oscillation amplitudes on the lattice and continuum limit:
-\begin{equation}\label{eq:matrix-elements-extraction}
+To conclude this section I mention again the continuum limit extrapolation that gives the physical bare bag parameters:
+\begin{equation}\label{eq:bag-parameters-extraction}
     \begin{split}
-        & \text{On the lattice:} \quad \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx a^{-3} \mathcal{R}_i (x_4,y_4,z_4) e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}} \\[5pt]
-        & \text{Continuum limit:} \quad \mathcal{A}_i (a) \xrightarrow{a \rightarrow 0} \mathcal{A}_i^\text{QCD} + O(a^2)
+        & \text{On the lattice:} \quad \mathcal{B}_i (a;y_4) \approx \frac{1}{\xi_i}\sum_{j=1}^5 \Lambda_{ij} \mathcal{F}_j (a; y_4) \hspace*{5mm} \forall i \\[5pt]
+        & \text{Continuum limit:} \quad \mathcal{B}_i (a;y_4) \xrightarrow{a \rightarrow 0} \mathcal{B}_i\bare + O(a^2)
     \end{split}
 \end{equation}
-There exists another way that does not require a fit of the two points functions to get the masses $m_{K'}$ and $m_K$.
-Because of the time ordering product in the definition of vacuum expectation values, for $x_4 \ll y_4 \ll z_4$:
-\begin{equation*}
-    \begin{split}
-        & C_i^\text{FR}(z_4,y_4,x_4)\approx \\
-        & \hspace*{5mm} \approx a^6\sum_{\vec x} \la \bar K^0 | O_{i[+]} | K^{'0} \ra  \la \Omega | \bar K^0 | \bar K^0 \ra  \la K^{'0} | \bar K^{'0} | \Omega \ra  \hspace*{.5mm} e^{-m_{K}(x_4-y_4)-m_{K'}(y_4-z_4)}  \\
-    \end{split}
-\end{equation*}
-Then I define:
-\begin{equation*}
-    \mathcal{R}_i' (x_4,y_4,z_4) \equiv \sqrt{\frac{C_i^\text{FR}(x_4,y_4,z_4) C_i^\text{FR}(z_4,y_4,x_4)}{G_{34}^\text{FR}(x_4,z_4) \cdot G_{12}^\text{FR}(x_4,z_4)}} \approx a^3 \left\la \la \bar K^{'0} | O_{i[+]} | K^0 \ra \right\ra_\text{sp.}
-\end{equation*}
-that gives the directly the mean value of the lattice amplitudes.
-On the other hand, this method requires an additional set of simulations to compute $C_i^\text{FR}(z_4,y_4,x_4)$.
-This is much more unefficient than the fit to get $m_{K'}$ and $m_K$, then this second method has been discarded.
+In Section \ref{sec:analysis} I will explain the analysis strategy to extract them from lattice data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FOURTH CHAPTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1704,18 +1744,18 @@ This is much more unefficient than the fit to get $m_{K'}$ and $m_K$, then this 
 \chapter{Computational Strategies}
 \lettrine[lines=2, findent=3pt, nindent=0pt]{T}{}he present chapter describes the computational side of this work.
 First of all, I will introduce the noise spinors method implemented to evaluate two points Green functions.
-It allows to achieve a great computational advantage on resources efficiency of the simulation program.
-Then the noise spinors method is extended to the case of three points correlators: this is the most important part of the code that I wrote.
-In both cases a short proof of the equivalence with the Wick contractions is given.
+It allows to achieve a great computational advantage on resources efficiency in the simulation procedure.
+Then the noise spinors method is extended to the case of three points correlators.
+In both cases a proof of the equivalence with the Wick contractions is given.
 Section \ref{sec:program} describes the input parameters and output data of the simulation program.
 A subsection will introduce the ``computational basis'' for the lattice operators, built for computational convenience and to make the program flexible.
 In fact it can be adapted to evaluate {\it every} three point correlator with a given fermion structure.
-In the third section I will outline the data analysis strategy that must be implemented to extract the continuum limit bare amplitudes $\la \bar K^0 | Q_i^{[+]} | K^0 \ra $ of the standard QCD.
-I conclude with a description of the status of this work and expectations regard its development.
+In the third section I will outline the data analysis strategy that must be implemented to extract bare $B_i$ parameters in the continuum limit.
+I conclude with a section describing what has been done and how the work should proceed to achieve results for $B_i\bare$.
 
 \section{Noise spinors method}
 \noindent
-In order to extract matrix elements with the method of asymptotic behaviours of formula (\ref{eq:matrix-elements-extraction}), I need two and three points correlators integrated over spatial coordinates.
+In order to isolate bag parameters with the method of asymptotic behaviours of formula (\ref{eq:bag-parameters-extraction}), I need two and three points correlators integrated over spatial coordinates.
 In this section I choose a prototype for these two and three point correlation functions and I work out applicative methods to evaluate them.
 \newline
 First of all, the computation of these quantities requires the knoweldge of dreessed quark propagators $S_{(i,\pm)}[U](x,y)$ for each given Gauge configuration\footnote{$i$ is the flavour index. The sign $\pm$ refers to twisted mass sign in twisted basis (i.e. the sign of the Wilson parameter $r_i$ in physical basis)}.
@@ -1725,17 +1765,17 @@ These propagators are defined on the lattice by the equation:
 \end{equation*}
 The inversion of the Dirac operator\footnote{To be rigorous, I must call it ``Osterwalder-Seiler operator'' because of the presence of twisted mass term. I will call it simply Dirac operator because it should be clear that the OS-QCD is the chosen regularization.}
 in a simulation program requires, in principle, the inversion of a matrix in $\text{Mat}(N\x N,\mathbb{R})$, where
-$$N = N_T \x N_{L_x} \x N_{L_y} \x N_{L_z} \x N_\text{colour} \x 4 \x 2 $$
+$$N = N_T \x N_{L_x} \x N_{L_y} \x N_{L_z} \x N_\text{colours} \x 4 \x 2 $$
 The multiplicative factor $4$ is the number of components in a Dirac spinor while the factor $2$ is given because the matrix elements are complex numbers.
 The inversion of this matrix gives the propagator of a single flavour for a given Gauge configuration.
 It is not difficult to guess that the number of computational resources needed to directly compute the inversion is very large.
 For this reason smarter solutions have been developed.
 \newline
-One solution consists in a kind of ``stochastical inverison'', worked out by Tomasz Korzec for two points meson correlators (2013) \cite{korzec}.
+One solution consists in a kind of ``stochastic inverison'', worked out by Tomasz Korzec for two points meson correlators (2013) \cite{korzec}.
 It makes use of some random Dirac spinors equipped with colour quantum numbers, called \textit{stochastic sources} for reasons that will become obvious soon.
 For each inversion I generate $N_\text{noise}$ sources $\eta$ that will be used to evaluate \textit{noise averages} of some quantities.
 I refer to a noise average with the angle-brackets $\langle\hspace{1mm}\cdot\hspace{1mm}\rangle^\text{noise}$. 
-Components of noise spinors can be taken from one of the following randomic distributions: $\mathbb{Z}_2, U(1), \text{Gauss}(0,1)$.
+Components of noise spinors can be taken from one of the following randomic distributions: $\mathbb{Z}_2, U(1), \text{Norm}(0,1)$.
 The required properties of the noise spinors are:
 \begin{equation}\label{eq:eta-properties}
     \begin{split}
@@ -1746,25 +1786,26 @@ The required properties of the noise spinors are:
 for eculedian time $x_4$ fixed.
 Such spinor is said to rely in the timeslice $x_4$, or equivalently centered in $x_4$.
 \newline
-In the two following paragraphs I will explain the strategies to evaluate $G_{\bar K^0 K^0}(x_4,y_4)$ and $C_i(x_4,y_4,z_4)$ respectively defined in formulae (\ref{eq:2pts-correlator-meson}) and (\ref{eq:lattice-correlators}).
-These two and three points correlators are needed to extract Kaons oscillations matrix elements.
+In the two following paragraphs I will explain the strategies to evaluate $G_{12}^\text{FR}(x_4,y_4)$, $G_{34}^\text{FR}(x_4,y_4)$, $X_{12}^\text{FR}(x_4,y_4)$, $X_{34}^\text{FR}(x_4,y_4)$ and $C_i^\text{FR}(x_4,y_4,z_4)$ respectively defined in formulae (\ref{eq:lattice-propagators}), (\ref{eq:axial-correlators}) and (\ref{eq:lattice-correlators}).
+These two and three points correlators are needed to extract $B_i$s.
 Two different - but very similar - computational strategies are used.
 
 \subsection*{Two point meson correlators}
 \noindent
 Let's first analyze the case of two point correlators.
-I can recognize $G_{\bar K^0 K^0}$ in a more general form:
+I can recognize $G^\text{FR}_{12,34}$ and $X^\text{FR}_{12,34}$ in a more general form:
 \begin{equation}\label{eq:2pts-correlator-prototype}
     \begin{gathered}
         G(x_4,y_4) = \sum_{\vec x, \vec y} \left\la \bar\psi^1 (x) \Gamma^\alpha \psi^2 (x) \bar\psi^2 (y) \Gamma^\beta \psi^1 (y) \right\ra^\text{sea} \\
         = -  \sum_{\vec x, \vec y} \left\la \tr \left[ \Gamma^\alpha S_{(2,+)} (x,y) \Gamma^\beta S_{(1,+)} (y,x) \right] \right\ra^\text{sea}
     \end{gathered}
 \end{equation}
+for generic flavours $\psi^1, \psi^2$.
 This correlator generates the meson propagator diagram shown in Figure \ref{fig:confinement}.
 Again, I suppose $x_4 > y_4$.
 The strategy to evaluate meson correlator of this type has been developed in a guide-paper by Tomasz Korzec \cite{korzec}.
 It consist into generating a single set of stochastic spinors $\eta (u)$ centered in timeslice $x_4$.
-For each $\eta (u)$, two daughter stochastic quantites are defined:
+For each $\eta (u)$, two daughter stochastic quantities are defined:
 \begin{equation*}
     \begin{split}
         & \zeta^{(i,\pm)} (u) = \sum_v S_{(i,\pm)}(u,v) \eta (v) \\
@@ -1788,8 +1829,8 @@ The average over sea Gauge configurations gives the usual VEV in path integral f
 
 \subsection*{Three point meson correlators}
 \noindent
-The case of three points correlators is a complexified version of the previous paragraph, but there are no conceptual complications.
-The method is the same and the step followed are similar to the two point correlator case.
+The case of three points correlators is a complexified version of the previous paragraph, but there are no conceptual innovations.
+The method is the same and the followed steps are similar to the two points correlator case.
 I want to calculate correlation functions of the following two types:
 \begin{equation}\label{eq:GdGc-strategy}
     \begin{gathered}
@@ -1816,7 +1857,7 @@ Picture \ref{fig:contractions-stochastic-method} shows the correlators in a simp
     \caption{On the top: graph of disconnected Wick contraction. On the bottom: graph of connected Wick contraction. The variables are such that $x_4 > y_4 > z_4$.}
 \end{figure}\label{fig:contractions-stochastic-method}
 \newline
-The Wick contractions acting on the correlators are:
+After Wick contractions, the correlators read:
 \begin{equation}\label{eq:contractions-stochastic-method}
     \begin{gathered}
         G_d = \sum_{\vec x, \vec y, \vec z} \bigg\langle \text{Tr}\left[\Gamma_A S_{(3,+)}(x,y)\Gamma_B S_{(4,+)}(y,x)\right]\cdot\text{Tr}\left[\Gamma_C S_{(1,+)}(z,y)\Gamma_D S_{(2,+)}(y,z)\right] \bigg\rangle^{\text{sea}} \\
@@ -1850,35 +1891,35 @@ It could be easily checked that the contractions in (\ref{eq:contractions-stocha
         G_c = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
     \end{gathered}
 \end{equation}
-Then, to evaluate the previous couple of Wick contraction I need only four quantites for each couple of stochastic spinors:
+Then, to evaluate the previous couple of Wick contraction I need only four quantities for each couple of stochastic spinors:
 \begin{equation*}
     \xi^{(3,-)}_{1,A} (y) \qquad  \zeta^{(4,+)}_1 (y) \qquad \xi^{(1,-)}_{C,2} (y) \qquad  \zeta^{(2,+)}_2 (y)
 \end{equation*}
 To summarize, the path to evaluate the correlators is:
 \begin{itemize}
     \item [$\triangleright$] For each Gauge-sea configuration evaluate 2$N_{\text{noise}}$ spinors - $N_{\text{noise}}$ for $\eta^1$ and $N_{\text{noise}}$ for $\eta^2$. 
-    \item [$\triangleright$] For each noise spinor evaluate the quantites $\zeta^{(i,\pm)}_j$ and $\xi^{(i,\pm)}_{j,X}$ needed.
+    \item [$\triangleright$] For each noise spinor evaluate the quantities $\zeta^{(i,\pm)}_j$ and $\xi^{(i,\pm)}_{j,X}$ needed.
     \item [$\triangleright$] Evaluate the correlators and evaluate the noise average.
     \item [$\triangleright$] Iterate the procedure and calculate the sea average.
     \item [$\triangleright$] At the end, the simulation program gives back the correlator $G_d+G_c$.
 \end{itemize}
 Let's look at the {\bf computational advantage}.
 Each time I compute the quantities $\xi^{(i,\pm)}_{j,X}$ of $\zeta^{(i,\pm)}_j$ I'm {\it not} evaluating the inverse of a matrix in $\text{Mat}(N\x N, \mathbb{R})$, but its inverse on a vector of length $N$.
-Then the needed computational resources are decreased and the simulation algorithms results improved.
-Furthermore, I need ``only'' $4\cdot N_\text{noise} \cdot N_\text{noise}$ inversion of this kind for each three points correlator.
-Then, for a reasonable choise of $N_\text{noise}$ and number of correlators\footnote{in practice, almost always.}, the advantage is succesfully achieved.
+Then the needed computational resources are decreased and the simulation algorithms result improved.
+Furthermore, I need ``only'' $4\cdot N_\text{noise} \cdot N_\text{noise} \cdot N_\text{configurations} $ inversion of this kind for each three points correlator.
+Then, for a reasonable choise of $N_\text{noise}$, the advantage is succesfully achieved\footnote{in practice, almost always.}.
 
 \section{Simulation program description}\label{sec:program}
 \noindent
 The program is structured to generate three points correlation functions and it is based on a previous version that calculates meson propagators.
 It makes use of modules from \texttt{OpenQCD-1.2}\footnote{\href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}}, allowing calculations with open boundary conditions.
-The program takes as input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
+The program takes in input an ensemble of sea configurations and produces the correlators of the form (\ref{eq:lattice-correlators}) with $x_4, z_4$ fixed and $y_4$ running in the time region $[z_4,x_4]$.
 Instead of read some external configurations, it is also possible to set the link variables to identity $U_\mu(x) = \mathbb{I}_3$ (absence of interactions, because $A_\mu^{i} \hspace*{.1mm}_j = 0$) or to randomly generate them.
 These two options were very useful to test the correct behaviour of the simulation.
 The program requires the following input parameters:
 \begin{itemize}
     \item [-] The coefficient of the Sheikholeslami-Wohlert term $c_{SW}$ and $c_F$, another coefficient for the boundary counterterms of the fermionic action.
-                The latter is tipically set to $c_F = 1$.
+                The latter is set to $c_F = 1$.
     \item [-] Informations about the noise spinor method: the number of noise vectors $N_\text{noise}$ per set and the generating distibution chosen from one of the following $U(1)$, \texttt{Gauss}, $\mathbb{Z}_2$.
     \item [-] Quark flavours informations: the critical mass $M^i_\text{cr}$ and the bare twisted mass parameter $\mu_i$ for each quark.
     \item [-] Dirac matrices: $\Gamma_\omega$, $\Gamma_\xi$ for the source bilinears and $\Gamma_\sigma$, $\Gamma_\rho$ for the intermediate operator.
@@ -1905,7 +1946,7 @@ I can rewrite the set of operators $\{O_{i,[+]}^\text{tw}\}$ in equations (\ref{
     \end{split}
 \end{equation}
 Clarifications about the notation can be found in Appendix \ref{app:notations}.
-I want to group togheter the minimal elements to compute in a simulation.
+I want to group togheter the minimal elements to compute the $C_i^\text{FR}$s in a simulation.
 This strategy brought me to redefine again - and for the last time - the operators.
 They read:
 \begin{equation*}
@@ -1922,30 +1963,32 @@ Each of the new operators has the form:
 $$\Psi_i = \bar\psi_1 \Gamma_D \psi_2 \cdot \bar\psi_3 \Gamma_B \psi_4 + \bar\psi_1 \Gamma_B \psi_4 \cdot \bar\psi_3 \Gamma_D \psi_2$$
 that {\it is} a flavour exchange $1 \leftrightarrow 3$ and {\it not} $2 \leftrightarrow 4$.
 Thus I directly evaluate this kind of correlator $\forall i$:
-$$\bigg\langle \bar K'^0(x) \Psi_i (y) K^0(z) \bigg\rangle \sim \bigg\langle \left(\bar\psi_4 \Gamma_A \psi_3 \right) (x) \Psi_i (y) \left(\bar\psi_2 \Gamma_C \psi_1 \right) (z) \bigg\rangle$$
+$$\bigg\langle \bar K'^0(x) \Psi_i (y) \bar K^0(z) \bigg\rangle \sim \bigg\langle \left(\bar\psi_4 \Gamma_A \psi_3 \right) (x) \Psi_i (y) \left(\bar\psi_2 \Gamma_C \psi_1 \right) (z) \bigg\rangle$$
 and it can be verified that it gives exactly the contractions $G_c + G_d$ of Figure \ref{fig:contractions-stochastic-method}.
 With the symbol $\sim$ I refer to the fact that the two correlators have the same structure, i.e. they are {\it similar} from a computational point of view.
 Then the output data of simulation program has no physical meaning until I perform the basis change in data analysis time.\footnote{To be precise, the physical meaning is achieved only in the continuum limit $a \rightarrow 0$.}
 
 \section{Analysis strategy}\label{sec:analysis}
 \noindent
-This section provides an overview of the analysis strategy needed to recover the lattice amplitudes $\mathcal{A}_i (a)$ through the method based on asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
-This analysis concerns the first of the two prposed methods.
-Once recovered the $\mathcal{A}_i (a)$s at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical amplitudes $\mathcal{A}_i^\text{QCD}$.
+This section provides an overview of the analysis strategy needed to recover the lattice bag parameters $\mathcal{B}_i (a)$ through the method based on asymptotic behaviours outlined in section \ref{sec:asympt-behav}.
+Once recovered the $\mathcal{B}_i (a)$s at different values of lattice spacing $a$, the continuum limit $a\rightarrow 0$ will give the best estimate of the physical parameters $B_i$.
 The analysis is divided in some steps, that I report below.
-This analysis strategy holds for all the data generated from Gauge configurations with open boundary conditions, involving CLS ensembles.
+This analysis strategy holds for all the data generated from gauge configurations with open boundary conditions, involving CLS ensembles.
 
-\subsubsection*{First step: determination of minimal ``asymptotic distance'' $\delta_4$ and extrapolation of Kaon masses $m_K, m_K'$}
+\subsubsection*{First step: determination of minimal ``asymptotic distance'' $\delta_4$}
 \noindent
-In order to perform the calculation in (\ref{eq:matrix-elements-extraction}):
+In order to perform the calculation in (\ref{eq:bag-parameters-extraction}):
 \begin{equation*}
-    \mathcal{A}_i (a) = \la \bar K^0 | O_{i[+]} | K^0 \ra \approx a^{-3} \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}}
+    \begin{gathered}
+        \mathcal{B}_1 (a;y_4) = \frac{1}{\xi_1} \cdot \frac{C_1^\text{FR}(x_4,y_4,z_4)}{X^\text{FR}_{34}(x_4,y_4)\cdot X^\text{FR}_{12}(y_4,z_4)} \\
+        \mathcal{B}_i (a;y_4) = \frac{1}{\xi_i} \sum_{j} \Lambda_{ij} \frac{C_i^\text{FR}(x_4,y_4,z_4)}{G^\text{FR}_{34}(x_4,y_4)\cdot G^\text{FR}_{12}(y_4,z_4)}
+    \end{gathered}
 \end{equation*}
 I need the values of such two points and three points correlators in the temporal regions in which the asymptotic behaviour of Section \ref{sec:asympt-behav} is allowed.
 In other words, I need to quantify the minimum value of $\delta_4 = |x_4-y_4|$ such that the exponentials $e^{-\delta_4 m_i}$ - for $m_i > m_K$ - are {\it sufficiently} suppressed with respect to the first level contribution $e^{-\delta_4 m_K}$.
-To estimate it, I make use of two points correlators $G_{12}^\text{FR}(y_4,z_4)$ and $G_{34}^\text{FR}(x_4, y_4)$.
+To estimate it, I make use of two points correlators $G_{12}^\text{FR}(y_4,z_4)$ and $G_{34}^\text{FR}(x_4, y_4)$, namely the mesons propagators.
 Let's start with the first.
-From \cite{OBC-tm} I know that, in the asymptotic regime\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last sinh dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
+From the proof \ref{app:sinh-proof} I know that, in the asymptotic regime $y_4 \gg z_4$\footnote{In the paper \cite{OBC-tm} by Luscher it is not given the complete result, but only the last $y_4$ dependence. A proof of the complete result is a personal achievement reported in the Appendix \ref{app:proofs}.}:
 \begin{equation}\label{eq:sinh}
     G_{12}^\text{FR}(y_4,z_4) \approx \frac{\sinh \left( m_K (T - y_4) \right) \cdot \sinh \left( m_K z_4 \right)}{2 m_K \sinh \left( m_K T \right)} \propto \sinh \left( m_K (T - y_4) \right)
 \end{equation}
@@ -1953,75 +1996,70 @@ In the last equality I fixed $z_4 = a$, choice valid in the entire simulation.
 I fix $z_4 = a$ and run the simulation for all the $y_4 \in (z_4+a,T-a)$.
 The case $y_4 = T$ will not produce physical results because of open boundary conditions on fermion fields.
 The strategy consists in performing a fit of the hyperbolic sine in different regions of the space.
-I start with the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the goodness of the fit reaches a satisfactory previously chosen value.
+I start to fit in the maximal region $[a, T-a]$ and decrease it step by step $[2a,T-2a], [3a,T-3a], \dots $ until the goodness of the fit reaches a satisfactory previously chosen value.
 Up to now, no such goodness parameters has been chosen.
 The first satisfactory region gives the value of $\delta_4$: $[\delta_4, T-\delta_4]$.
-At this point I have both determined $m_K$ as a parameter and the ``minimal asymptotic distance'' $\delta_4$.
+At this point I will have determined both $m_K$ as a parameter and the ``minimal asymptotic distance'' $\delta_4$.
 In this region I also have the values of $G_{12}^\text{FR}(y_4,z_4=a) = \hat G_{12}^\text{FR}(y_4,a)$ subject to a well defined asymptotic expansion.
-I denote them with the {\it hat} identifier to stress that these data are the ones to be used to recover the wanted amplitudes.
+I denote them with the {\it hat} identifier to stress that these data are the ones to be used to recover the wanted quantities.
 \newline
 Then the same procedure must be done for the other two points correlator, $G_{34}^\text{FR}(x_4, y_4)$.
 In this case $x_4$ must be intended as fixed to $T-a$, while $y_4 < x_4$ varies.
-In this case the complete formula if the correlator is the same, but the fit must be:
+In this case the complete formula of the correlator is again (\ref{eq:sinh}), but the fit must be on the second variable:
 \begin{equation*}
     G_{34}^\text{FR}(x_4, y_4) \propto \sinh \left( m_{K'} y_4 \right)
 \end{equation*}
 By repeating the previous analysis, one should get a value of $m_{K'}$ and a data set of correlators $G^\text{FR}_{34}(x_4=T-a,y_4) = \hat G^\text{FR}_{34}(T-a,y_4)$ useful for the next setps.
 Moreover there comes another value of minimal asymptotic distance $\delta_4'$.
 I simply chose to use the larger of the two, that I call again $\delta_4$.
+\newline
+With $x_4$ and $z_4$ fixed I will take, by varying $y_4$, the data to be used in (\ref{eq:bag-parameters-extraction}),
+namely $\hat X_{12}^\text{FR}(y_4,a)$ with $y_4 - a > \delta_4$ and $\hat X_{34}^\text{FR}(T-1,y_4)$ with $ T-a - y_4 > \delta_4$.
 
-\subsubsection*{Second step: recovering amplitudes $\mathcal{A}_i(a)$}
+\subsubsection*{Second step: recovering lattice bag parameters $\mathcal{B}_i$}
 \noindent
 At this point I will be ready to analyze three points correlators $C_i^\text{FR}(x_4,y_4,z_4)$.
 I take a set of correlators with $z_4 = a$, $x_4 = T-a$ while $y_4$ varies in $(z_4,x_4)$.
-I expect to see a plateau region for $C_i^\text{FR}$ in $[z_4 + \delta_4 , x_4 - \delta_4]$ because I know from the analysis of $G^\text{FR}_{12,34}$ that the higher mass states are already suppressed.
+I expect to see a plateaux region for $C_i^\text{FR}$ in $y_4 \in (z_4 + \delta_4 , x_4 - \delta_4)$ because I know from the analysis of $G^\text{FR}_{12,34}$ that the higher mass states are already suppressed.
 Thus the only relevant contribution comes from lattice Kaons.
-A plateau fit in this region is nothing but an average value:
+In such region I rename them $\hat C_i^\text{FR}(x_4,y_4,z_4)$.
+\newline
+The results of previous steps are used to recover values of the $\mathcal{B}_i (a)$ for a given set of Gauge configuration, i.e. for a given value of lattice spacing $a$:
 \begin{equation*}
-    \hat C_i^\text{FR}(x_4,z_4) = \frac{1}{N_\text{region}} \sum_\text{region} C_i^\text{FR}(x_4,y_4,a)
+    \mathcal{B}_i (a;y_4) = \frac{1}{\xi_i} \sum_{j=1}^5 \Lambda_{ij} \mathcal{F}_j (a;y_4)
 \end{equation*}
-This step is not necessary but it can be used as a test to check that the value of $\delta_4$ is well computed.
-The goodness of such fit must be less or equal to the chosen limit value.
-Otherwise, the condition on $\delta_4$ must be more stringent.
-
-\subsubsection*{Third step: recovering amplitudes $\mathcal{A}_i(a)$}
-\noindent
-The results of previous steps are used to recover values of the amplitudes for a given set of Gauge configuration, i.e. for a given value of lattice spacing $a$:
-\begin{equation*}
-    \mathcal{A}_i (a) (y_4) = \sqrt{\frac{\left[C_i^\text{FR}(x_4,y_4,z_4)\right]^2}{G_{34}^\text{FR}(x_4,y_4) \cdot G_{12}^\text{FR}(y_4,z_4)}} e^{m_{K'}\frac{x_4-y_4}{2} + m_{K}\frac{y_4-z_4}{2}}
-\end{equation*}
-Again, I have different values corresponding to different choices of $y_4$.
+I have different values of $\mathcal{B}_i$ corresponding to different choices of $y_4$.
 It is possible that some {\it residues} of higher mass states contribution are still present.
-A fit of a plateau region of the graph $\mathcal{A}_i (a) (y_4)$ vs $y_4$ will help to remove them.
-I expect to see that plateau region for large values of the eucledian time $y_4$.
-At this point, I will have extracted the best estimate for the amplitude $\mathcal{A}_i (a)$.
+A fit on a plateaux region of the graph $\mathcal{A}_i (a) (y_4)$ vs $y_4$ will help to remove them.
+I expect to see that plateaux region for values of the euclidean time $y_4$ much larger than $z_4$ and sufficiently smaller than $x_4$.
+At this point, I will have extracted the best estimate for the lattice bag parameters $\mathcal{B}_i (a)$.
 
-\subsubsection*{Fourth step: continuum limit $\mathcal{A}_i^\text{QCD}$}
+\subsubsection*{Third step: continuum limit extrapolation of $B_i\bare$}
 \noindent
 A set of configurations it is always generated by setting some parameters, for example the inverse of coupling constant $g$.
 By analyzing some observables of the gauge fields it is possible to recover the value of the lattice spacing $a$ associated to an ensemble of configurations.
 \newline
-Repeating first, second and third step for different sets of Gauge ensembles brings to a set of amplitudes for different values of the lattice spacing $\mathcal{A}_i (a_1), \mathcal{A}_i (a_2), \dots$.
-The essential step to get the {\it physical} value of the amplitudes $\mathcal{A}_i^\text{QCD}$ is the continuum limit extrapolation.
+Repeating the previous analysis for different sets of gauge ensembles brings to a set of parameters for different values of the lattice spacing $\mathcal{B}_i (a_1), \mathcal{B}_i (a_2), \dots$.
+The essential step to get the {\it physical} values of the bag parameters $B_i$ is the continuum limit extrapolation.
 It consists in:
-$(i)$ a fit of amplitude values versus their associated lattice spacing $\mathcal{A}_i^\text{fit} (a) $ and
-$(ii)$ an \oaid\space extrapolation of the physical amplitude through $ \mathcal{A}_i^\text{QCD} = \mathcal{A}_i^\text{fit} (0) + O(a^2)$.
+$(i)$ a fit of lattice values versus their associated lattice spacing that gives the function $\mathcal{B}_i^\text{fit} (a) $ and
+$(ii)$ an \oaid\space extrapolation of the physical values through $ B_i = \mathcal{B}_i^\text{fit} (0) + O(a^2)$.
 
-\section{Status and further developments}
+\section{Status of the work, results and future developments}\label{sec:status}
 \noindent
-In this section I outline the status of this work and future developments.
-The program behaviour was tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ $\forall \mu,x$ and through unphysical random configurations.
+In this section I outline the status of this work and possible future developments.
+The program behaviour has been tested both in the vacuum $U_\mu (x) = \mathbb{I}_3$ $\forall \mu,x$ and through unphysical random configurations.
 The relevant tests reported consist into two checks of gauge invariance of two and three points correlators.
 Gauge invariance is an essential property of QFTs; for this reason it is one of the most checked in lattice QCD simualtions.
-Then the program has been tested on an ensemble of quenched\footnote{it means ``in absence of sea quarks'', neglecting the fermion determinant in (\ref{eq:fermion-determinant}).} gauge fields with OBC.
+Then the program has been tested on two ensembles of quenched\footnote{i.e. in absence of sea quarks, neglecting the fermion determinant in (\ref{eq:fermion-determinant}).} gauge fields with OBC.
 \newline
 The first test furnishes a direct proof that the Dirac inverter preserves gauge invariance property.
 Unwanted errors could be found from a lack in this test.
 A set of pointlike spinors has been generated.
-I define {\it pointlike} spinor an $\eta$ equipped with property:
+I define {\it pointlike} spinor an $\eta$ defined by:
 $$\eta_\alpha^a (x) = \delta^{a,\bar a}\delta_{\alpha, \bar \alpha} \delta_{x,\bar x}$$
 with $\bar a, \bar \alpha, \bar x$ fixed colour, Dirac and lattice indices.
-This has been done for all the $3\times 4 = 12$ combinations of fixed Dirac and colour indices, meanwhile $\bar x$ was unchanged.
+This has been done for all the $3\times 4 = 12$ combinations of fixed Dirac and colour indices, meanwhile $\bar x$ was kept unchanged.
 By inverting the Osterwalder-Seiler operator on them, the propagators was expected to have this structure:
 \begin{equation*}
     \left(S^{(f)}(y, \bar x)[U]\right)^{b,\bar a}_{\beta, \bar \alpha} \hspace*{1cm} \forall \hspace*{0.3mm} b,\beta,y
@@ -2029,10 +2067,10 @@ By inverting the Osterwalder-Seiler operator on them, the propagators was expect
 with $f$ the flavour index.
 I have explicitly contracted propagators and Dirac matrices to reconstruct Wick contractions of previous chapter.
 This has been made by fixing two pointlike sources $\bar x=(\vec 0, x_4)$ and  $\bar z=(\vec 0, z_4)$, by choosing a mixing operator $\Psi_i (y)$ and summing over the fixed colour and Dirac indices.
-In other words, the {\it noise average} in formula (\ref{eq:noise-method}) is replaced by two sets of 12 pointlike sources.
+In other words, the {\it noise average} in formula (\ref{eq:noise-method}) is replaced by the sum over two sets of 12 pointlike sources.
 In both tests the values of $z_4$ and $x_4$ were fixed respectively to the first and last allowed timeslice.
 This has been done for random sea fields and their gauge transformed fields.
-The propagators are expected to transform, in the continuum limit, in the following way:
+The propagators are expected to transform in the following way:
 \begin{equation*}
     \left(S^{(f)}(y, \bar x)[\Omega U \Omega^\dagger]\right)^{b,\bar a}_{\beta, \bar \alpha} = \Omega (y)^{b,c} \left(S^{(f)}(y, \bar x)[U]\right)^{c,d}_{\beta, \bar \alpha} \Omega^\dagger (\bar x)^{d,\bar a}
 \end{equation*}
@@ -2053,20 +2091,70 @@ Such reality property is proven in \ref{app:proof-reality-3pts}.
     \label{fig:check1}
 \end{figure}
 \newline
-The other test aims to verify gauge invariance of the three points correlators calculated through the noise spinors method, equation (\ref{eq:noise-method}).
+In both the tests the finite precision of the solver generates discrepancies between the two data sets, but they are visible only at scales much smaller than the correlators scale.
+It has been verified that these errors decrease requiring more and more precision in the inversion of the propagators.
+Moreover all the physical parameters were not well tuned, since they were not useful to the scope of the checks. 
+\newline
+The second test aims to verify gauge invariance of the three points correlators calculated through the noise spinors method, equation (\ref{eq:noise-method}).
 It consists in the following steps.
 First of all, it has been generated a set of random unphysical link variables $U_\mu (x)$ and they were used to compute correlators through formula (\ref{eq:noise-method}).
 Then data were stored and analyzed.
 The second part consisted in the generation of random gauge transformations $\Omega (x)$.
 The previous gauge configuration has been transformed and it followed a re-computation of the correlators.
 The two data sets must coincide up to errors.
-The test had a positive response and the plot is similar to the one of the first test.
-In both the tests the finite precision of the solver generates discrepancies between the two data sets, but they are visible only at scales much smaller than the correlators scale.
-It has been verified that these errors decrease requiring more and more precision in the inversion of the propagators.
-Moreover all the physical parameters were not well tuned, since they were not useful to the scope of the checks. 
+This test served to quantify the minimum number of noise spinors $N_\text{noise}$ to make the stochastic method effective.
+To better understand it, a set of graphs in Figure \ref{fig:check2} shows the plots of such test using respectively $N_\text{noise} = 5,20,50,100$ noise spinors.
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/check2-5.pdf}
+        \caption{$N_\text{noise}=5$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/check2-20.pdf}
+        \caption{$N_\text{noise}=20$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/check2-50.pdf}
+        \caption{$N_\text{noise}=50$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs-MSc-thesis/check2-100.pdf}
+        \caption{$N_\text{noise}=100$}
+    \end{subfigure}
+    \caption{Second gauge invariance test executed on random link variables. Such $U_\mu(x)$ are the same for each of the four tests.
+        The plots show the real part of the integrated correlator $\sum_{\vec y} \la \bar K^0 (14a,\vec 0) \Psi_3 (y_4, \vec y) \bar K^0 (a,\vec 0) \ra$ for different values of $N_\text{noise}$.
+        The distibution served to extract the random $\eta^i$ is $U(1)$.}
+    \label{fig:check2}
+\end{figure}
+In order to quantify the error due to different number of stochastic sources, I introduced the following estimator:
+\begin{equation*}
+    \varepsilon(N_\text{noise}) = \frac{1}{N_T-2}\sum_{y_4}\left(\frac{|C(y_4)-\tilde C(y_4)|}{C(y_4)+\tilde C(y_4)}\right)
+\end{equation*}
+The values of such estimator for different choices of number of stochastic sources are listed in Table \ref{tab:estimator}.
+The values seems to be rapidly decreasing for $N_\text{noise} \lesssim 35$ while stabilizing for $N_\text{noise} \gtrsim 35$.
+To complete the study of the estimator, a set of $\varepsilon$s for a large amount of configurations should be derived.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c||c|c|c|c|c|c|}
+        \hline
+        $N_\text{noise}$ & 5 & 20 & 35 & 50 & 70 & 100 \\
+        \hline
+        $\varepsilon$ & 2.140 & 2.598 & 1.350 & 1.342 & 1.243 & 0.533 \\ 
+        \hline
+  \end{tabular}
+  \vspace*{3mm}
+  \caption{Values of the estimator $\varepsilon$ for different values of $N_\text{noise}$ from a single simulation.}
+  \label{tab:estimator}
+\end{table}
 \newline
-Another test has been made on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
+Another test has been done on an ensemble of 54 gauge configurations generated using the \texttt{OpenQCD-1.2} program.
 The gauge configurations have been generated with and inverse lattice coupling $\beta = 6/g_0^2 = 6.0$ - corresponding to an inverse lattice spacing $a^{-1} \sim 2.0$ \gev \cite{exploring-tmQCD-clover-term} - in the quenched approximation.
+The value of the coefficient $c_0$ in equation (\ref{eq:gaugeaction-LuscherWeisz}) is set to $5/3$, then the simulated action is the {\it tree level Symanzik improved}.
 The lattice has dimension \texttt{16x16x16x32}, where 32 is the number of points in time direction.
 First of all the configurations have been tested on the program that calculates two points correlators.
 The simulation has $N_\text{noise} = 30$ noise spinors and the hopping parameters used were not at their critical value, thus the maximal twist is not achieved.
@@ -2075,38 +2163,69 @@ The correspondig graph, in logarithmic scale, is presented in Figure \ref{fig:pl
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-2pts.pdf}
-    \caption{Two points correlators $\sum_{\vec x, \vec y} \la \bar K^0 (y) K^0 (x) \ra$ and $\sum_{\vec x, \vec y} \la S^{12} (y) S^{21} (x) \ra$.
+    \caption{Two points correlators $\sum_{\vec x, \vec y} \la \bar K^0 (y) K^0 (x) \ra$ and $\sum_{\vec x, \vec y} \la \bar K^{0'} (y) K^{0'} (x) \ra$.
         Test executed with hopping parameters different from the critical value and twisted mass terms different from zero.}
     \label{fig:plot-2pts}
 \end{figure}
-\newline
+Here $x_4<y_4$ with fixed $x_4=a$.
 The behaviour of the two point correlators is, as expected, similar to the one in Figure 6 in \cite{OBC-tm}.
 Such behaviour is proportional to:
 \begin{equation*}
     \propto C + \log\big[\sinh \left(M_i (T-y_4)\right)\cdot \sinh \left(M_i x_4\right)\big] = C' + M_i \left(T+x_4-y_4\right) + \log \left[f(x_4,y_4)\right]
 \end{equation*}
 that's a line plus a logarithm of a function $f$ of the time coordinates.
+The two points correlators considered are the scalar and pseudoscalar propagators, i.e. $G_{12}^\text{FR}(y_4,x_4)$ and $G_{34}^\text{FR}(y_4,x_4)$.
 \newline
 Then the case of three points correlators is inspected.
-the correlators were calculated through $N_\text{nosie} = 20$ noise spinors and the below Figure \ref{fig:pureYM} show the result:
+The correlators were calculated through $N_\text{nosie} = 20$ noise spinors and the Figure \ref{fig:pureYM} show the results.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-3pts.pdf}
-    \caption{Test of the simulation program on 54 quenched configurations on a \texttt{16x16x16x32} lattice.}
+    \caption{Test of the simulation program on 54 quenched configurations on a \texttt{16x16x16x32} lattice, $\beta = 6.0$, tree level improved Symanzik gauge action.}
     \label{fig:pureYM}
 \end{figure}
 \newline
-Clearly the plot is not at all satisfactory because there are no plateaus regions.
-On the other hand, the used configurations lives in a small lattice then the number of temporal points could be too small to fall in asymptotic behaviours.
+Clearly the plot is not at all satisfactory because there are no plateaux regions.
+On the other hand, the used configurations lives in a small lattice then the number of temporal points could be too small to fall in asymptotic regime.
 Furthermore the fermion physical parameters had no physical meaning because their determination requires a lot of work, not necessary for a simple test such that.
-Usually the parameters are given along with the configuration, when available.
+Usually the parameters are given along with the configuration, when available and already been studied.
 Moreover the first correlator has values extremely small - by one order or more - compared to values from the other operators.
-The third operator is negative because of the conventions of this work, in fact in \cite{KMBSM} it is positive.
+The immaginary part of these correlators have been plotted and prove that these correlators are real.
+The plot is reported in Appendix \ref{app:proof-reality-3pts}.
 \newline
-Future developments involve the calculation of these three points correlator by using faithful sea configurations and setting the right parameters on the input files.
-The purpose is to do it with the Coordinated Lattice Simulations CLS ensembles with $N_f = 2+1$ sea quarks;
-then the data analysis described in the previous section should give the best estimates for the continuum amplitudes $\mathcal{A}^\text{QCD}_i$.
+The last test of the simulation program was made on 37 gauge configurations in quenched approximation.
+They are generated through \texttt{OpenQCD-1.2} program, with $\beta=6.0$ and $c_0 = 1.0$ and a \texttt{16x16x16x32} lattice.
+These parameters are chosen to simulate the plaquette Guage action.
+The reason behind this choice relies in the results of paper \cite{exploring-tmQCD-clover-term}.
+In such paper the critical hopping parameter of twisted fermions has been studied for such configurations and the most precise result gives $K_\text{crit} = 0.135217$.
+This results has been used to simulate three points correlators, along with other parameters:
+\begin{itemize}
+    \item [-] down quark twisted mass: $a|\mu_d| = 0.0038$.
+    \item [-] strange quark twisted mass is chosen to be $a\mu_s = 0.1482$.
+    \item [-] the coefficient of Sheikholeslami-Wohlert term is set to $c_{SW}=1.769$, from \cite{Luscher-cSW}.
+\end{itemize}
+Due to the use of $K_\text{crit}$, the maximal twist is achieved.
+The plot of the integrated correlators $C_i^\text{FR}$ are shown in Figure \ref{fig:plaq-ym} below:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/plaqAct-3pts.pdf}
+    \caption{Test of the simulation program on 37 quenched configurations on a \texttt{16x16x16x32} lattice, $\beta = 6.0$, plaquette action.}
+    \label{fig:plaq-ym}
+\end{figure}
+\newline
+As can be seen, the good choice of fermion parameters associated to the configurations generated more evident plateaux regions.
+Large error bars are due to the small number of noise sources and the small number of configurations analyzed.
+Moreover the first operator does not exhibit a null plateaux, unlike what is shown in Figure \ref{fig:pureYM}.
 
+\subsubsection*{Future developments}
+\noindent
+Future developments involve the calculation of three points correlators by using faithful sea configurations and tuning the fermion parameters.
+The purpose is to do that using the Coordinated Lattice Simulations\footnote{Coordinated Lattice Simulations: \href{https://wiki-zeuthen.desy.de/CLS/}{https://wiki-zeuthen.desy.de/CLS/}}, generated through the \texttt{open-QCD}\footnote{Open-QCD packages: \href{https://luscher.web.cern.ch/luscher/openQCD/index.html}{https://luscher.web.cern.ch/luscher/openQCD/index.html}} (CLS) ensembles \cite{Bruno} with $N_f = 2+1$ improved sea quarks.
+These configurations have been studied in a wide licterature of works\footnote{For some examples, consult Bibliography at the end of the thesis.} and contains $N_f = 2+1$ quarks in the sea.
+On these ensembles the fermion parameters are well tuned through complex and precise procedures \cite{Bruno} \cite{obc-opt3}.
+The two points meson correlators are studied, for example in \cite{LightMesons}.
+To do that, a match between sea quarks masses and valence masses is required, as done in \cite{matching-masses}.
+The results of bare bag parameters $B_i$ on CLS configurations will be a cutting edge result.
 
 
 %%%APPENDICE%%%
@@ -2209,7 +2328,7 @@ with $\mathcal{X}' [\psi, \overline{\psi}, U] = \mathcal{X} [\mathbf{T}(\alpha)\
 The power of tmQCD theory lies in this substitution of variables.
 \newline
 Now, I provide a list of some straightforward operators - currents and densities - along with their transformation rules.
-First of all I define four quantites:
+First of all I define four quantities:
 \begin{itemize}
     \item [] $\qquad$ Scalar density: \hspace*{5mm} $S^{0,\text{phys}} = \bar\chi \chi$
     \item [] $\qquad$ Pseudoscalarcalar densities: \hspace*{5mm} $P^{a,\text{phys}} = \bar\chi \gamma_5 \frac{\sigma^a}{2} \chi$
@@ -2257,7 +2376,7 @@ The very special case of maximal twist ($\alpha = \pm \pi/2$) reads:
     \end{cases}$
 \end{itemize}
 
-\section{Twisted and physical basis in OS regularization}
+\section{Twisted and physical basis in OS regularization}\label{app:OSreg}
 \noindent
 In the case of OS regularization, the physical and twisted basis are related as follows:
 \begin{equation*}\label{eq:OSbasischange}
@@ -2298,8 +2417,8 @@ Let's introduce with some definitions, applicable in both cases:
     \item [] $\quad$ Pseudoscalarcalar densities: \hspace*{5mm} $P^{\text{phys}}_{12} = \bar f_1 \gamma_5 f_2$
     \item [] $\quad$ Vector currents: \hspace*{5mm} $V_{\mu,12}^{\text{phys}} = \bar f_1 \gamma_\mu f_2$
     \item [] $\quad$ Axial vector currents: \hspace*{5mm} $A_{\mu,12}^{\text{phys}} = \bar f_1 \gamma_\mu \gamma_5 f_2$
-    \item [] $\quad$ Tensor currents: \hspace*{5mm} $T_{\mu\nu,12}^{\text{phys}} = \bar f_1 \sigma_{\mu\nu} \gamma_5 f_2$
-    \item [] $\quad$ Pseudotensor currents: \hspace*{5mm} $\tilde{T}_{\mu\nu,12}^{\text{phys}} = \bar f_1 \gamma_5\sigma_{\mu\nu} \gamma_5 f_2$
+    \item [] $\quad$ Tensor currents: \hspace*{5mm} $T_{\mu\nu,12}^{\text{phys}} = \bar f_1 \sigma_{\mu\nu} f_2$
+    \item [] $\quad$ Pseudotensor currents: \hspace*{5mm} $\tilde{T}_{\mu\nu,12}^{\text{phys}} = \bar f_1 \gamma_5\sigma_{\mu\nu} f_2$
 \end{itemize}
 Identical definitions are used in the twisted basis.
 \newline
@@ -2459,7 +2578,7 @@ The operators $\phi^a$ are related, within QCD, to the vector axial currents by:
     \partial_\mu j_\mu^{\text{A},a} (x) = F_\pi^a m_{\pi^a}^2 \phi^a (x)
 \end{equation*}
 However, the vector axial current is also defined as $j_\mu^a(x) = \bar \psi^i (x) T^a_{ij}\gamma_\mu \gamma_5 \psi^j (x)$ where $T^a$ are SU(3) generators and $i,j$ are flavour indices.
-By applying the four divergence to $j_\mu^a(x)$ and by using the Dirac equation in Eucledian notation (Appendix \ref{app:notations}), I obtain:
+By applying the four divergence to $j_\mu^a(x)$ and by using the Dirac equation in Euclidean notation (Appendix \ref{app:notations}), I obtain:
 \begin{equation*}
     \partial_\mu j_\mu^{\text{A},a} (x) = (m_i + m_j) T^a_{ij}\bar\psi^i (x) \gamma_5 \psi^j (x) := (m_i + m_j) T^a_{ij} P^{ij}(x)
 \end{equation*}
@@ -2469,9 +2588,9 @@ Through a comparison of the four divergences, I obtain the equality:
 \end{equation*}
 in particular $(m_s + m_d) \bar K^0(x) = F_K m_{K}^2 \phi^{\bar K^0} (x)$ according to definition (\ref{eq:kkbar-operators}) of the operator $\bar K^0 = P^{ds}$.
 Now I remember that I use, as sources, the pseudoscalar densities $P^{ij}(x)$ and not the unknown operators $\phi^a (x)$, then our matrix elements are:
-\begin{equation*}
+\begin{equation}\label{app:kaon-annihilation-amplitude}
     \la \Omega | \bar K^0 (0) |  \bar K^0 \ra = \la \Omega | K^0 (0) | K^0 \ra = \frac{F_K m_K^2}{m_s + m_d}
-\end{equation*}
+\end{equation}
 As these are real values, they are also equal to their conjugates  $\la K^0  | \bar K^0 (0) |  \Omega\ra$ and $\la\bar K^0 | K^0 (0) | \Omega\ra$.
 The masses $m_s$ and $m_d$ used here are the renormalized quark masses.
 \proved
@@ -2505,8 +2624,18 @@ because $B-$parameters are real.
 This is straightforward: I can express the above correlators through the asymptotic expansion (\ref{eq:asymptotic-behav-3pts}) and substitute $\la \bar K^0 | O_{i,[+]} | K^0 \ra$ with the definition of bag parameters (\ref{eq:bag-definition}).
 I'm doing the calculation with the $Q_i$ and not the $\Theta_i$, thus I need to insert a {\it linear combination} of the bag parameters, but the essence is unchanged.
 Since the $B_i$ are real\footnote{this is not proven here.}, their complex conjugates coincide with them.
-From a poetic point of view, it could be interpreted as a consequence of matter-antimatter symmetry. 
 \proved
+\newline
+It follows a computational check of reality of three points correlators.
+The plot in Figure \ref{fig:reality3pts} shows how the immaginary part of the correlators, in asymptotic regime, tend to zero.
+For more information about this simulation, see Section \ref{sec:status}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{imgs-MSc-thesis/pureYM-immaginary.pdf}
+    \caption{Test of simulation of three points correlators on a set of 54 quenched configurations, $\beta = 6.0$, tree level improved Symanzik gauge action.
+        It has been used a \texttt{16x16x16x32} lattice.}
+    \label{fig:reality3pts}
+\end{figure}
 
 \section{Proof of $\gamma_5 S_{(i,\pm)} (u,v) \gamma_5 = S_{(i,\mp)}^\dag (v,u)$}\label{app:proof-G5-DW}
 \noindent
@@ -2603,7 +2732,7 @@ the same holds for the case $x_4 = T$. Then the boundary conditions on the pseud
 \end{equation}
 To simplify the notation, I will use $\pi$ to refer to the generic $P^{ab}$.
 \newline
-In first order of Chiral Perturbation Theory, the generic pion satisfies the Klein Gordon equation, that in eucledian notation reads\footnote{here the variables $t,t'$ are the eucledian times $x_4, y_4$.}:
+In first order of Chiral Perturbation Theory, the generic pion satisfies the Klein Gordon equation, that in euclidean notation reads\footnote{here the variables $t,t'$ are the euclidean times $x_4, y_4$.}:
 \begin{equation*}
     \left(-\frac{\partial^2}{\partial t^2} - \nabla_3^2 + m^2 \right) \pi(\vec x,t) = 0
 \end{equation*}
@@ -2639,7 +2768,7 @@ By imposing these conditions I found:
                           & + \theta (t'-t) \frac{\sinh \left( \omega (T - t') \right) \cdot \sinh \left( \omega t \right)}{2 \omega \sinh \left( \omega T \right)}
     \end{aligned}
 \end{equation*}
-Then I remember that $G_\omega(t,t') = \tilde G(\vec p,t,t')$, the propagator in three-momentum space and eucledian time. The summation over spatial coordinates will set $\vec p=0$ as outlined in section \ref{sec:asympt-behav}.
+Then I remember that $G_\omega(t,t') = \tilde G(\vec p,t,t')$, the propagator in three-momentum space and euclidean time. The summation over spatial coordinates will set $\vec p=0$ as outlined in section \ref{sec:asympt-behav}.
 \proved
 
 \backmatter
