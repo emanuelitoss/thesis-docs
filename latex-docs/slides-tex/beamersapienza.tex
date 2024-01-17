@@ -1,337 +1,402 @@
 \documentclass{beamer}
 \usepackage{amsfonts,amsmath,oldgerm}
+\usepackage[export]{adjustbox}
 \usetheme{sintef}
-
 \newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
-
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
 \usefonttheme[onlymath]{serif}
 
+%%%%%% COMMANDS LIST
+%\vspace{\baselineskip}
+
+%%%%%% TITLE
 \titlebackground*{assets/background}
-
 \newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+\title{Non-perturbative computation of Kaons oscillation amplitudes in Lattice QCD with $N_f = 2+1$ sea quarks and OBC}
+%\subtitle{Using \LaTeX\ to prepare slides}
+\course{Master's Degree in Theoretical Physics}
+\author{\href{mailto:emanuele.rosi@roma1.infn.it}{Emanuele Rosi}}
+\IDnumber{1812180}
+\date{Academic Year 2022/2023}
 
-\title{Sapienza Beamer Presentation Theme}
-\subtitle{Using \LaTeX\ to prepare slides}
-\course{Master's Degree in Computer Science}
-\author{\href{mailto:andrea@gasparini.cloud}{Andrea Gasparini}}
-\IDnumber{1234567}
-\date{Academic Year 2021/2022}
-
+%%%%%% DOCUMENT
 \begin{document}
 \maketitle
 
-\begin{frame}
+\section{Introduction to $K^0$-$\bar K^0$ mixing}
 
-This template is a based on \hrefcol{https://www.overleaf.com/latex/templates/sintef-presentation/jhbhdffczpnx}{SINTEF Presentation} from \hrefcol{mailto:federico.zenith@sintef.no}{Federico Zenith} and its derivation \hrefcol{https://github.com/TOB-KNPOB/Beamer-LaTeX-Themes}{Beamer-LaTeX-Themes} from Liu Qilong
-
-\vspace{\baselineskip}
-
-In the following you find a brief introduction on how to use \LaTeX\ and the beamer package to prepare slides, based on the one written by \hrefcol{mailto:federico.zenith@sintef.no}{Federico Zenith} for \hrefcol{https://www.overleaf.com/latex/templates/sintef-presentation/jhbhdffczpnx}{SINTEF Presentation}
-
-% This template is released under \hrefcol{https://creativecommons.org/licenses/by-nc/4.0/legalcode}{Creative Commons CC BY 4.0} license
-
-\end{frame}
-
-\section{Introduction}
-
-\begin{frame}{Beamer for SINTEF slides}
-\begin{itemize}
-\item We assume you can use \LaTeX; if you cannot,
-\hrefcol{http://en.wikibooks.org/wiki/LaTeX/}{you can learn it here}
-\item Beamer is one of the most popular and powerful document
-classes for presentations in \LaTeX
-\item Beamer has also a detailed
-\hrefcol{http://www.ctan.org/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{user
- manual}
-\item Here we will present only the most basic features to get you up to speed
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Beamer vs. PowerPoint}
-Compared to PowerPoint, using \LaTeX\ is better because:
-\begin{itemize}
-\item It is not What-You-See-Is-What-You-Get, but
-What-You-\emph{Mean}-Is-What-You-Get:\\
-you write the content, the computer does the typesetting
-\item Produces a \texttt{pdf}: no problems with fonts, formulas,
-      program versions
-\item Easier to keep consistent style, fonts, highlighting, etc.
-\item Math typesetting in \TeX\ is the best:
-\begin{equation*}
-\mathrm{i}\,\hslash\frac{\partial}{\partial t} \Psi(\mathbf{r},t) =
--\frac{\hslash^2}{2\,m}\nabla^2\Psi(\mathbf{r},t)
-+ V(\mathbf{r})\Psi(\mathbf{r},t)
-\end{equation*}
-
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Getting Started}
-\framesubtitle{Selecting the SINTEF Theme}
-To start working with \texttt{sintefbeamer}, start a \LaTeX\ document with the
-preamble:
-\begin{block}{Minimum SINTEF Beamer Document}
-\verb|\documentclass{beamer}|\\
-\verb|\usetheme{sintef}|\\
-\verb|\begin{document}|\\
-\verb|\begin{frame}{Hello, world!}|\\
-\verb|\end{frame}|\\
-\verb|\end{document}|\\
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]{Title page}
-To set a typical title page, you call some commands in the preamble:
-\begin{block}{The Commands for the Title Page}
-\begin{verbatim}
-\title{Sample Title}
-\subtitle{Sample subtitle}
-\author{First Author, Second Author}
-\date{\today} % Can also be (ab)used for conference name &c.
-\end{verbatim}
-\end{block}
-You can then write out the title page with \verb|\maketitle|.
-
-To set a \textbf{background image} use the \verb|\titlebackground| command 
-before \verb|\maketitle|; its only argument is the name (or path) of a graphic 
-file.
-
-If you use the \textbf{starred version} \verb|\titlebackground*|, the image 
-will be clipped to a split view on the right side of the title slide.
-
-\end{frame}
-
-\begin{frame}[fragile]{Writing a Simple Slide}
-\framesubtitle{It's really easy!}
-\begin{itemize}[<+->]
-\item A typical slide has bulleted lists
-\item These can be uncovered in sequence
-\end{itemize}
-\begin{block}{Code for a Page with an Itemised List}<+->
-\begin{verbatim}
-\begin{frame}{Writing a Simple Slide}
-  \framesubtitle{It's really easy!}
-  \begin{itemize}[<+->]
-    \item A typical slide has bulleted lists
-    \item These can be uncovered in sequence
-  \end{itemize}\end{frame}
-\end{verbatim}
-\end{block}
-\end{frame}
-
-\section{Personalization}
-
-\footlinecolor{sintefyellow}
-\begin{frame}[fragile]{Changing Slide Style}
-\begin{itemize}
-\item You can select the white or \textit{maincolor} \textbf{slide style} \emph{in the 
-preamble} with \verb|\themecolor{white}| (default) or \verb|\themecolor{main}|
+\begin{frame}{Kaons oscillations}
+      \framesubtitle{SM oscillations}
+      Kaons oscillations in Standard Model (SM) are mediated by Weak Interacitons.
       \begin{itemize}
-      \item You should \emph{not} change these within the document: Beamer does 
-      not like it
-      \item If you \emph{really} must, you may have to add 
-      \verb|\usebeamercolor[fg]{normal text}| in the slide
+            \item Two 1-loop order diagrams
       \end{itemize}
-\item You can change the \textbf{footline colour} with 
-\verb|\footlinecolor{color}|
+      \vspace{\baselineskip}
+      \begin{columns}
+            \centering
+            \begin{column}{0.5\textwidth}
+                  \centering
+                  \includegraphics[width=.8\textwidth,right]{assets/kkbar-1.png}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+                  \centering
+                  \includegraphics[width=.8\textwidth,left]{assets/kkbar-2.png}
+            \end{column}
+      \end{columns}
+\end{frame}
+
+\begin{frame}{Kaons oscillations}
+      \framesubtitle{SM oscillations}
+      Kaons oscillations in Standard Model (SM) are mediated by Weak Interacitons.
       \begin{itemize}
-      \item Place the command \emph{before} a new \verb|frame|
-      \item There are four ``official'' colors: 
-      \testcolor{maincolor}, \testcolor{sintefyellow}, 
-      \testcolor{sintefgreen}, \testcolor{sintefdarkgreen}
-      \item Default is no footline; you can restore it with 
-      \verb|\footlinecolor{}|
-      \item Others may work, but no guarantees!
-      \item Should \emph{not} be used with the \verb|maincolor| theme!
+            \item Two 1-loop order diagrams
+            \item An effective operator arises ($E \ll M_W$):
+            \begin{equation*}
+                  \la \bar K^0 | \Theta_1 | K^0 \ra \qquad \Theta_1 = \Big[ \bar s^a \gamma_\mu (1-\gamma_5) d^a \Big] \cdot \Big[ \bar s^b \gamma_\mu (1-\gamma_5) d^b \Big]
+            \end{equation*}
+            \item Perturbative approach (PT) not allowed at energies $\lesssim \Lambda_\text{QCD}$
       \end{itemize}
-\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Blocks}
-\begin{columns}
-\begin{column}{0.3\textwidth}
-\begin{block}{Standard Blocks}
-These have a color coordinated with the footline (and grey in the blue theme)
-\begin{verbatim}
-\begin{block}{title}
-content...
-\end{block}
-\end{verbatim}
-\end{block}
-\end{column}
-\begin{column}{0.7\textwidth}
-\begin{colorblock}[black]{sinteflightgreen}{Colour Blocks}
-Similar to the ones on the left, but you pick the colour. Text will be white by 
-default, but you may set it with an optional argument.
-\small
-\begin{verbatim}
-\begin{colorblock}[black]{sinteflightgreen}{title}
-content...
-\end{colorblock}
-\end{verbatim}
-\end{colorblock}
-The ``official'' colours of colour blocks are: \testcolor{sinteflilla}, 
-\testcolor{maincolor}, \testcolor{sintefdarkgreen}, and 
-\testcolor{sintefyellow}.
-\end{column}
-\end{columns}
+\begin{frame}{Kaons oscillations}
+      \framesubtitle{SM oscillations}
+      Vacuum insertion approximation (VIA):
+      \begin{equation*}
+            \begin{gathered}
+                  \la \bar K^0 | \Big[ \bar s^a \gamma_\mu (1-\gamma_5) d^a \Big] \cdot \Big[ \bar s^b \gamma_\mu (1-\gamma_5) d^b \Big] | K^0 \ra \approx \\
+                  \approx \la \bar K^0 | \Big[ \bar s^a \gamma_\mu (1-\gamma_5) d^a \Big] | 0 \ra \la 0 | \Big[ \bar s^b \gamma_\mu (1-\gamma_5) d^b \Big] | K^0 \ra + \\
+                  \la \bar K^0 | \Big[ \bar s^a \gamma_\mu (1-\gamma_5) d^b \Big] | 0 \ra \la 0 | \Big[ \bar s^b \gamma_\mu (1-\gamma_5) d^a \Big] | K^0 \ra = \frac{8}{3} F_K^2 m_K^2
+            \end{gathered}
+      \end{equation*}
+      $B_1$ parameter (a.k.a. $B_K$) parametrizes deviation from VIA: $\la \bar K^0 | \Theta_1 | K^0 \ra = \frac{8}{3} B_1 F_K^2 m_K^2$
 \end{frame}
 
-\footlinecolor{}
-\begin{frame}[fragile]{Using Colours}
-\begin{itemize}[<alert@2>]
-  \item You can use colours with the
-        \verb|\textcolor{<color name>}{text}| command
-  \item The colours are defined in the \texttt{sintefcolor} package:
-  \begin{itemize}
-  \item Primary colours: \testcolor{maincolor} and its sidekick 
-  \testcolor{sintefgrey}
-  \item Three shades of green: \testcolor{sinteflightgreen}, 
-  \testcolor{sintefgreen}, \testcolor{sintefdarkgreen}
-  \item Additional colours: \testcolor{sintefyellow}, \testcolor{sintefred}, 
-        \testcolor{sinteflilla}
-        \begin{itemize}
-        \item These may be shaded---see the \verb|sintefcolor| documentation or 
-        the \hrefcol{https://sintef.sharepoint.com/sites/stottetjenester/%
-        kommunikasjon/grafisk-profil-new/Sider/default.aspx}{SINTEF profile 
-        manual}
-        \end{itemize}
-  \end{itemize}
-  \item Do \emph{not} abuse colours: \verb|\emph{}| is usually enough
-  \item Use \verb|\alert{}| to bring the \alert<2->{focus} somewhere
-  \item<2- | alert@2> If you highlight too much, you don't highlight at all!
-\end{itemize}
+\begin{frame}[fragile]{Kaons oscillations}
+      \framesubtitle{Oscillations BSM}
+      \begin{itemize}
+            \item $B_1$ parameter (a.k.a. $B_K$) parametrizes deviation from VIA
+            \item Other operators $\{\Theta_i,\tilde\Theta_j\}$ appears in theories beyond the SM (BSM)
+            \item They form a complete set of operators of dimension 6, composed by 4 quarks, closed under renormalization procedure
+            \item New BSM \emph{bag parameters}:
+            \begin{equation*}
+                  \la \bar K^0 | \Theta_j^{[+],\text{ren}} (\mu) | K^0 \ra = \xi_j \left(\frac{m_K^2}{m_s(\mu)+m_d(\mu)}\right)^2 f_K^2 B_j(\mu) \qquad j \ge 2
+            \end{equation*}
+            \item Non perturbative approach $\Longrightarrow$ \emph{path integral}
+      \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Adding images}
-\begin{columns}
-\begin{column}{0.7\textwidth}
-Adding images works like in normal \LaTeX:
-\begin{block}{Code for Adding Images}
-\begin{verbatim}
-\usepackage{graphicx}
-% ...
-\includegraphics[width=\textwidth]
-{assets/logo_RGB}
-\end{verbatim}
-\end{block}
-\end{column}
-\begin{column}{0.3\textwidth}
-\includegraphics[width=\textwidth]
-{assets/logo_RGB}
-\end{column}
-\end{columns}
+\begin{frame}{Purpose of the work}
+      \framesubtitle{Introduction}
+      \centering
+      Non perturbative computation of bare bag parameters $B_i$ on the lattice
+      $$\downarrow$$
+      Coordinated Lattice Simulations (CLS) gauge configurations with $N_f = 2+1 $\\ sea quarks and open boundary conditions (OBC) in time direction
 \end{frame}
 
-\begin{frame}[fragile]{Splitting in Columns}
-Splitting the page is easy and common;
-typically, one side has a picture and the other text:
-\begin{columns}
-\begin{column}{0.6\textwidth}
-This is the first column
-\end{column}
-\begin{column}{0.3\textwidth}
-And this the second
-\end{column}
-\end{columns}
-\begin{block}{Column Code}
-\begin{verbatim}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        This is the first column
-    \end{column}
-    \begin{column}{0.3\textwidth}
-        And this the second
-    \end{column}
-    % There could be more!
-\end{columns}
-\end{verbatim}
-\end{block}
+\section{Lattice regularizations of QFTs}
+
+\begin{frame}{Lattice regularizations of QFTs}
+      Regularizations ingredients:
+      \begin{itemize}
+            \item Lattice space $\Lambda$ of dimension $L \times L \times L \times T$
+            \item Lattice spacing $a$: $L = a\cdot N_L$, $T = a\cdot N_T$
+            \item Action discretization:
+            \begin{equation*}
+                  S^\text{lat}[a;\tilde\phi_1,\dots,\tilde\phi_{N_\text{fields}}] \hspace*{1mm} \xrightarrow{\hspace*{3mm} a \rightarrow 0\hspace*{3mm}} \hspace*{1mm} S^\text{cont}[\phi_1,\dots,\phi_{N_\text{fields}}]
+            \end{equation*}
+            \item Troubles: finite volume effects \& lattice spacing effects
+            \item $O(a^n)$-improvement:  $S^\text{lat}(a) = S^\text{cont} + o(a^{n})$
+      \end{itemize}
 \end{frame}
 
-\begin{chapter}[assets/background_negative]{}{Special Slides}
-\begin{itemize}
-\item Chapter slides
-\item Side-picture slides
-\end{itemize}
+\begin{frame}{Action regularizations}
+      Many regularizations have been developed
+      \vspace{\baselineskip}
+      \begin{columns}
+            \begin{column}{0.45\textwidth}
+                  Gauge actions:
+                  \begin{itemize}
+                        \item Link variables $$U_\mu (x) = \text{exp}\left(i\int_x^{x+a\hat\mu} A_\nu(\omega)d\omega^\nu \right)$$
+                        \item Wilson loops are gauge invariant 
+                        \item Plaquette, tree level improved Symanzik, Luscher Weisz
+                  \end{itemize}
+            \end{column}
+            \begin{column}{0.45\textwidth}
+                  Fermion actions:
+                  \begin{itemize}
+                        \item Wilson-Dirac action\\Wilson term $r \in [-1,1]$
+                        \item Sheikholeslami-Wohlert term: $$ D^W_{xy} \longmapsto D^W_{xy} + c_{SW} \frac{ia}{4}\sigma_{\mu\nu}\hat F_{\mu\nu} (x) \delta_{xy} $$
+                        \item Osterwalder-Seiler action\\(twist transformation)
+                  \end{itemize}
+            \end{column}
+      \end{columns}
+\end{frame}
+
+\begin{frame}{Simulation troubles}
+      \begin{itemize}
+            \item Gauge configuration exhibit long autocorrelation times as $a\rightarrow 0$
+            \item Zero modes of $D^W_{xy}$ make the sea quarks simulation inefficient 
+            \item[]\begin{center}
+                  $\Downarrow$\\
+                  {\bf Open boundary conditions (OBC) in time direction}
+                  \end{center}
+            \begin{equation*}
+                  \begin{gathered}
+                      F_{0i}(\vec x, x_4=0) = F_{0i}(\vec x, x_4=T) = 0 \qquad \forall i = 1,2,3 \\
+                      \begin{aligned}
+                          & P_+ \psi (\vec x, 0) = P_- \psi (\vec x, T) = 0 \\
+                          & \bar\psi (\vec x, 0) P_- = \bar\psi (\vec x, T) P_+ = 0 
+                      \end{aligned}
+                      \quad\quad P_{\pm} = \frac{1}{2}\left(\mathbb{I} \pm \gamma_5 \right)
+                  \end{gathered}
+            \end{equation*}
+            \item Restoration of connection of gauge fields space
+            \item IR protection against zero modes
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Sea actions}
+      \begin{itemize}%[<+->]
+            \item Gauge action: Luscher-Weisz action
+            $$ S_G[U] = \frac{1}{g_0^2}\left(\frac{5}{3}\sum_{\{P\}} \text{Tr}\left(\mathbb{I} - U_P \right) - \frac{1}{12}\sum_{\{R\}}\text{Tr}\left( \mathbb{I}-U_R \right) \right)$$
+            \item Sea quarks: Dirac-Wilson + SW term
+            $$ S^\text{sea}[U,f,\bar f] = \sum_{q=1}^3 \sum_{x} \bar f_q (x) \left[ D^{WD}(r_q) + \frac{ia}{4}c_{SW}\sigma_{\mu\nu}\hat{F}_{\mu\nu} + m^\text{bare}_q \right] f_q (x) $$
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Valence actions}
+      \begin{itemize}
+            \item Valence quarks: Osterwalder-Seiler at Maximal twist + SW term
+            \begin{equation*}
+                  S^\text{val}[U,\psi,\bar\psi] = a^4 \sum_q \sum_x \bar \psi_q (x) \left[ D^{WD}(r_q) + \frac{ia}{4}c_{SW}\sigma_{\mu\nu}\hat{F}_{\mu\nu} + m^\text{cr} + i \gamma_5 \mu_q^\text{bare} \right] \psi_q (x)
+            \end{equation*}
+      \end{itemize}
+      \begin{columns}
+            \begin{column}{0.5\textwidth}
+                  \begin{itemize}
+                        \item Flavours: $d,d',s,s'$ with\\ $\mu_s = \mu_{s'}$, $\mu_d=-\mu_{d'}$\\equiv. $r_d = r_s = r_{s'} = -r_{d'} = \pm 1$
+                        \vspace{\baselineskip}
+                        \item Bosonic ghosts $\{\phi_q, \bar \phi_q\}$ to cancel valence quarks determinant
+                  \end{itemize}
+            \end{column}
+            \begin{column}{0.45\textwidth}
+                  \includegraphics[width=\textwidth]{assets/confinement_bis.png}
+            \end{column}
+      \end{columns}
+\end{frame}
+
+\section{Mixing operators on the lattice}
+
+\begin{frame}{Frezzotti \& Rossi Strategy}
+      Why do we need flavor replicas $d,d',s,s'$ ? Because of R. Frezzotti \& G. Rossi strategy!
+      \vspace{\baselineskip}
+      \newline
+      A rather long chain of transformations:
+      \begin{center}
+            Operators $\{\Theta_i^{[\pm]}\}$ in continuum QCD $\xrightarrow{ \text{basis change} }$ Operators $\{Q_i^{[\pm]}\}$ in continuum QCD\\
+            \vspace{\baselineskip}
+            $\xrightarrow{ \text{flavour replicas} }$ P.E. operators $\{O_{i,[+]}^\text{phys}\}$ $\xrightarrow{ \text{maximal twist} }$ P.E. operators $\{O_{i,[+]}^\text{tw}\}$
+      \end{center}
+\end{frame}
+
+\begin{frame}{Frezzotti \& Rossi Strategy}     
+      Flavour replicas and twist: a simple example\\
+      \begin{equation*}
+            \begin{split}
+                  & \bar{K}^{0'}=\bar s' \gamma_5 d' = \bar \chi^3 \gamma_5 \chi^4 \\
+                  & \bar{K}^{0} =\bar s\gamma_5 d = \bar \chi^1 \gamma_5 \chi^2
+            \end{split}
+            \quad \text{Maximal Twist } \chi^i = e^{i\gamma_5 r_i \frac{\pi}{4}}\psi^i \qquad
+            \begin{split}
+                  & \bar{K}^{0'}=\bar \psi^3 \gamma_5 \psi^4 \\
+                  & \bar{K}^{0} = i \bar \psi^1 \psi^2
+            \end{split}
+      \end{equation*}
+      Similar transformations act on operators $O_{i[+]}$ and map PE operators in PO ones.
+      \vspace{\baselineskip}
+      \newline
+      {\bf Achievements:}\newline
+      Specific regularization of the valence quarks in order to obtain:
+      \begin{itemize}%[<+->]
+            \item $O(a)$-improved mixing amplitudes w/o the need for W.A.
+            \item Absence of wrong chirality mixing between $\{O_i^{[+]}\}$ and $\{O_i^{[-]}\}$
+            \item Blocks like renormalization matrix $[Z_{ij}]$ for parity odd operators
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Asymptotic behaviours}
+      Two and three points correlators:
+      \begin{equation*}
+            \begin{split}
+                  & C_i (x_4,y_4,z_4) = \sum_{\vec x,\vec y,\vec z}     \la \Omega | T \left\{ \bar K^{0'}(x)O_{i[+]}(y)\bar K^{0} (z) \right\} | \Omega \ra \\
+                  & G_{34} (x_4,y_4) = \sum_{\vec x,\vec y}             \la \Omega | T \left\{ \bar K^{0'} (x) K^{0'} (y)              \right\} | \Omega \ra \\
+                  & G_{12} (x_4,y_4) = \sum_{\vec x,\vec y}             \la \Omega | T \left\{ \bar K^{0} (x) K^{0} (y)                \right\} | \Omega \ra \\
+                  & X_{34} (x_4,y_4) = \sum_{\vec x,\vec y}             \la \Omega | T \left\{ \bar A_{4}' (x) K^{0'} (y)              \right\} | \Omega \ra \\
+                  & X_{12} (x_4,y_4) = \sum_{\vec x,\vec y}             \la \Omega | T \left\{ \bar A_{4} (x) K^{0} (y)                \right\} | \Omega \ra \\                  
+            \end{split}
+      \end{equation*}
+\end{frame}
+
+\begin{frame}{Asymptotic behaviours}
+      Asymptotic behaviours for $x_4 \gg y_4 \gg z_4$:
+      \begin{equation*}
+            \begin{split}
+                  & C_i (x_4,y_4,z_4) \approx \sum_{\vec{y}} \la \Omega | \bar K^{0'} | \bar K^{0'} \ra \la \bar K^{0'} | O_{i[+]} | K^{0} \ra \la K^{0} | \bar K^{0} | \Omega \ra e^{-m_{K'} (x_4-y_4)-m_K (y_4-z_4)}\\
+                  & G_{34} (x_4,y_4)  \approx \sum_{\vec{y}} \la \Omega | \bar K^{0'} | \bar K^{0'} \ra \la \bar K^{0'} | K^{0'}                    | \Omega \ra e^{-m_{K'} (x_4-y_4)} \\
+                  & G_{12} (x_4,y_4)  \approx \sum_{\vec{y}} \la \Omega | \bar K^{0}  | \bar K^{0}  \ra \la \bar K^{0}  | K^{0}                     | \Omega \ra e^{-m_K (x_4-y_4)}    \\
+                  & X_{34} (x_4,y_4)  \approx \sum_{\vec{y}} \la \Omega | \bar A_{4}' | \bar K^{0'} \ra \la \bar K^{0'} | K^{0'}                    | \Omega \ra e^{-m_{K'} (x_4-y_4)} \\
+                  & X_{12} (x_4,y_4)  \approx \sum_{\vec{y}} \la \Omega | \bar A_{4}  | \bar K^{0}  \ra \la \bar K^{0}  | K^{0}                     | \Omega \ra e^{-m_K (x_4-y_4)}    \\                  
+            \end{split}
+      \end{equation*}
+\end{frame}
+
+\begin{frame}{Asymptotic behaviours}
+      Bag parameters are recovered in continuum limit $a \rightarrow 0$ for $x_4 \gg y_4 \gg z_4$:
+      \begin{equation*}
+            \begin{split}
+                  & \mathcal{B}_1 (a) \approx \frac{3}{8}\cdot\frac{C_1(x_4,y_4,z_4)}{X_{34}(x_4,y_4)X_{12}(y_4,z_4)} \xrightarrow{ \quad a \rightarrow 0 \quad } B_K \\
+                  & \mathcal{B}_i (a) \approx \frac{1}{\xi_i}\cdot\frac{\Lambda_{ij}C_j(x_4,y_4,z_4)}{A_{34}(x_4,y_4)A_{12}(y_4,z_4)} \xrightarrow{ \quad a \rightarrow 0 \quad } B_i
+            \end{split}
+      \end{equation*}
+      $\Rightarrow$ Need for 2 and 3 points correlation functions computation
+\end{frame}
+
+\section{Simulation Program}
+
+\begin{frame}{Noise spinors method}
+      \begin{columns}
+            \begin{column}{0.65\textwidth}
+                  Mesonic sources in $x_4$ and $z_4$ are simulated through noise spinors $\eta^{(x_4)}$ and $\eta^{(z_4)}$:
+                  \begin{itemize}%[<+->]
+                        \item Two sets of $N_n$ spinors randomly generated
+                        \item The sums $\sum_{\vec{x}}$ and $\sum_{\vec{z}}$ automatically implied when calculating the average over $\eta$s
+                        \item Computational advantage
+                        \item Different Wick contractions are obtained by multiplying propagators from sources with Dirac matrices
+                  \end{itemize}
+            \end{column}
+            \begin{column}{0.35\textwidth}
+                  \includegraphics[width=\textwidth]{assets/eta-spinors.png}
+            \end{column}
+      \end{columns}
+\end{frame}
+
+
+\begin{frame}{Noise spinors method}
+      Two types of diagrams:
+      \begin{center}
+            \begin{figure}
+                  \includegraphics[width=0.45\textwidth]{../thesis-tex/imgs-MSc-thesis/Wick_stochastic_disc.png}
+                  \includegraphics[width=0.4\textwidth]{../thesis-tex/imgs-MSc-thesis/Wick_stochastic_conn.png}
+            \end{figure}
+      \end{center}
+      Two types of noise spinors contractions:
+      \begin{equation*}
+            \begin{gathered}
+                  G_d =   \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}} \\
+                  G_c = - \sum_{\vec y} \left\langle \left\langle \left(\gamma_5\xi^{(3,-)}_{1,A} (y) \right)^\dag \Gamma_D \zeta^{(2,+)}_2 (y) \cdot \left(\gamma_5\xi^{(1,-)}_{C,2} (y) \right)^\dag \Gamma_B \zeta^{(4,+)}_1 (y) \right\rangle^\text{noise} \right\rangle^{\text{sea}}
+            \end{gathered}
+      \end{equation*}
+\end{frame}
+
+\begin{frame}{Simulation program tests}
+      Tests:
+      \begin{itemize}
+            \item Gauge invariance test
+            \item Gauge invariance + investigation about $N_n$
+            \item Test on \emph{Tree level improved Symanzik action}, quenched approximation
+            \item Test on \emph{Plaquette gauge action}, quenched approximation
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Test \#1: Gauge invariance}
+      Gauge transformed propagators:\newline
+      \begin{equation*}
+            \left(S^{(f)}(y, x)[\Omega U \Omega^\dagger]\right)^{b,a}_{\beta,\alpha} = \Omega (y)^{b,c} \left(S^{(f)}(y,x)[U]\right)^{c,d}_{\beta,\alpha} \Omega^\dagger (x)^{d,a}
+      \end{equation*}
+      \begin{itemize}
+            \item Equation tested in three points integrated correlators $C_{i,[+]}$
+            \item Link variables $U_\mu (x)$ are randomly generated and then transformed
+            \item Pointlike sources instead of random spinors $\eta$
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Test \#2: Gauge invariance and investigation about $N_n$}
+      \begin{columns}
+            \begin{column}{0.43\textwidth}
+                  \begin{itemize}
+                        \item Equation tested in three points integrated correlators $C_{i,[+]}$
+                        \item Link variables $U_\mu (x)$ are randomly generated and then transformed
+                        \item Use of random spinors $\eta$
+                        \item Different number of $N_n$ were tested. Estimator:
+                        \begin{equation*}
+                              \varepsilon(N_n) = \frac{1}{N_T-2}\sum_{y_4}\left(\frac{|C(y_4)-\tilde C(y_4)|}{C(y_4)+\tilde C(y_4)}\right)
+                        \end{equation*}
+                  \end{itemize}
+            \end{column}
+            \begin{column}{0.57\textwidth}
+                  \begin{center}
+                        \includegraphics[width=.8\textwidth]{../thesis-tex/imgs-MSc-thesis/check2-20.pdf}\\
+                        \includegraphics[width=.8\textwidth]{../thesis-tex/imgs-MSc-thesis/check2-100.pdf}
+                  \end{center}
+            \end{column}
+      \end{columns}
+\end{frame}
+
+\begin{frame}{Test \#3: tree level improved Symanzik}
+      54 Gauge configurations - tree level improved Symanzik action\newline
+      16x16x16x32 lattice, $\beta = 6.0$, OBCs, unphysical parameters.
+      \begin{columns}
+            \begin{column}{.5\textwidth}
+                  \includegraphics[width=\textwidth]{../thesis-tex/imgs-MSc-thesis/pureYM-2pts.pdf}
+                  $$G_{12}(x_4,y_4), G_{34}(x_4,y_4)$$
+            \end{column}
+            \begin{column}{.5\textwidth}
+                  \includegraphics[width=\textwidth]{../thesis-tex/imgs-MSc-thesis/pureYM-3pts.pdf}
+                  $$C_{i[+]}(14a,y_4,a)$$
+            \end{column}
+      \end{columns}
+      \vspace{\baselineskip}
+      \centering{$M \ne M_\text{crit} \Rightarrow$ not maximal twist.}
+\end{frame}
+
+\begin{frame}{Test \#4: Plaquette gauge action}
+      37 Gauge configurations - plaquette gauge action\newline
+      16x16x16x32 lattice, $\beta = 6.0$, OBCs, maximal twist achieved
+      \begin{columns}
+            \begin{column}{.5\textwidth}
+                  \includegraphics[width=\textwidth]{../thesis-tex/imgs-MSc-thesis/plaq-3pts.pdf}
+                  $$C_{i[+]}(14a,y_4,a)$$
+            \end{column}
+            \begin{column}{.5\textwidth}
+                  \includegraphics[width=\textwidth]{../thesis-tex/imgs-MSc-thesis/ratios.pdf}
+                  $$\mathcal{R}_i (14a,y_4,a) = \Lambda_{ij}\frac{C_{i[+]}(14a,y_4,a)}{C_{1[+]}(14a,y_4,a)}$$
+            \end{column}
+      \end{columns}
+\end{frame}
+
+\begin{frame}{Future developments}
+      \begin{itemize}
+            \item tests on faithful Gauge configurations with known parameters ($M_\text{crit}, c_{SW}, \mu_is$)
+            \item runs over the $N_f = 2+1$ CLS sea ensembles (many values of $a$)
+            \item data analysis 
+            \item continuum limit extrapolation of $B_i$ and $R_i$
+            \item renormalization procedure
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Bibliography}
+      \framesubtitle{\hspace*{1pt}}
+      \begin{enumerate}
+            \item C.R. Allton et al. ``B-parameters for $\Delta$S = 2 supersymmetric operators''. In: Physics Letters B 453.1-2 (Apr. 1999), pp. 30-39
+            \item R Frezzotti and G.C Rossi. ``Chirally improving Wilson fermions II. Four- quark operators''. In: Journal of High Energy Physics 2004.10 (Oct. 2004)
+            \item Martin Luscher and Stefan Schaefer. ``Lattice QCD with open boundary con- ditions and twisted-mass reweighting''. In: Computer Physics Communications 184.3 (Mar. 2013)
+            \item V. Bertone et al. ``Kaon mixing beyond the SM from Nf = 2 tmQCD and model independent constraints from the UTA''. In: Journal of High Energy Physics 2013.3 (Mar. 2013)
+      \end{enumerate}
+\end{frame}
+
+\begin{chapter}[assets/background_negative]{}{\emph{Thank you for listening!}}
+      \framesubtitle{\hspace*{1pt}}
 \end{chapter}
 
-\footlinecolor{sintefred}
-\begin{frame}[fragile]{Chapter slides}
-\begin{itemize}
-\item Similar to \verb|frame|s, but with a few more options
-\item Opened with \verb|\begin{chapter}[<image>]{<color>}{<title>}|
-\item Image is optional, colour and title are mandatory
-\item There are seven ``official'' colours: \testcolor{maincolor}, 
-\testcolor{sintefdarkgreen}, \testcolor{sintefgreen}, 
-\testcolor{sinteflightgreen}, \testcolor{sintefred}, \testcolor{sintefyellow}, 
-\testcolor{sinteflilla}.
-      \begin{itemize}
-      \item Strangely enough, these are \emph{more} than the official colours 
-      for the footline.
-      \item It may still be a nice touch to change the footline of following 
-      slides to the same color of a chapter slide. Your choice.
-      \end{itemize}
-\item Otherwise, \verb|chapter| behaves just like \verb|frame|.
-\end{itemize}
-\end{frame}
-
-\begin{sidepic}{assets/background_alternative}{Side-Picture Slides}
-\begin{itemize}
-\item Opened with \texttt{$\backslash$begin\{sidepic\}\{<image>\}\{<title>\}}
-\item Otherwise, \texttt{sidepic} works just like \texttt{frame}
-\end{itemize}
-\end{sidepic}
-
-\footlinecolor{}
-\begin{frame}
-\frametitle{Fonts}
-\begin{itemize}
-\item The paramount task of fonts is being readable
-\item There are good ones...
-  \begin{itemize}
-  \item {\textrm{Use serif fonts only with high-definition projectors}}
-  \item {\textsf{Use sans-serif fonts otherwise (or if you simply prefer 
-them)}}
-  \end{itemize}
-\item ... and not so good ones:
-  \begin{itemize}
-  \item {\texttt{Never use monospace for normal text}}
-  \item {\frakfamily Gothic, calligraphic or weird fonts: should always: be
-  avoided}
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Look}
-\begin{itemize}
-\item To insert a final slide with the title and final thanks, use \verb|\backmatter|.
-      \begin{itemize}
-      \item The title also appears in footlines along with the author name, you can change this text with \verb|\footlinepayoff|
-      \item You can remove the title from the final slide with \verb|\backmatter[notitle]|
-      \end{itemize}
-\item The aspect ratio defaults to 16:9, and you should not change it to 4:3
-      for old projectors as it is inherently impossible to perfectly convert a 
-      16:9 presentation to 4:3 one; spacings \emph{will} break
-      \begin{itemize}
-      \item The \texttt{aspectratio} argument to the \texttt{beamer} class is
-            overridden by the SINTEF theme
-      \item If you \emph{really} know what you are doing, check the package
-            code and look for the \texttt{geometry} class.
-      \end{itemize}
-\end{itemize}
-\end{frame}
-
-\section{Summary}
-
-\begin{frame}
-\frametitle{Good Luck!}
-\begin{itemize}
-\item Enough for an introduction! You should know enough by now
-\item If you have any suggestions or corrections, feel free to contribute on the \hrefcol{https://github.com/andrea-gasparini/sapienza-beamer-template}{GitHub repository}!
-You can \hrefcol{https://github.com/andrea-gasparini/sapienza-beamer-template/issues/new/choose}{open an issue} or \hrefcol{https://github.com/andrea-gasparini/sapienza-beamer-template/fork}{fork the project} and directly propose your changes with a Pull Request. 
-\end{itemize}
-\end{frame}
-
-\backmatter
 \end{document}
