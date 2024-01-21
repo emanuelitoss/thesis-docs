@@ -17,7 +17,7 @@
 \newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
 \title{Non-perturbative computation of Kaon oscillation amplitudes in Lattice QCD with $N_f = 2+1$ sea quarks and OBC}
 \course{Master's Degree in Theoretical Physics\vspace*{.1mm}}
-\author{{\rm Supervisor: Prof.} Mauro Papinutto \\ \href{mailto:emanuele.rosi@roma1.infn.it}{Emanuele Rosi}}
+\author{\\{\rm Supervisor: Prof.} \href{mailto:mauro.papinutto@uniroma1.it}{Mauro Papinutto} \\ \href{mailto:emanuele.rosi@roma1.infn.it}{Emanuele Rosi}}
 \IDnumber{1812180}
 \date{Academic Year 2022/2023}
 
@@ -81,9 +81,25 @@
       \centering
       Non perturbative computation of bare bag parameters $B_i$
       $$\downarrow$$
-      Path integral formalism - lattice QCD
+      Path integral formalism $-$ Lattice QCD
       $$\downarrow$$
       Coordinated Lattice Simulations (CLS) gauge configurations with $N_f = 2+1 $\\ sea quarks and open boundary conditions (OBC) in time direction
+\end{frame}
+
+\begin{frame}{Purpose of the work}
+      \framesubtitle{Introduction}
+      \begin{columns}
+            \begin{column}{0.7\textwidth}
+                  \includegraphics[width=\textwidth]{assets/Bi3GeV-falg2021.png}
+            \end{column}
+            \begin{column}{0.3\textwidth}
+                  Results for renormalized bag parameters in $\overline{MS}$ scheme at $\mu = 3$ GeV
+                  \\ \vspace{\baselineskip}
+                  Discrepancy between different collaborations
+                  \\ \vspace{\baselineskip}
+                  Strong discrepancies between simulations with different number of quark flavours
+            \end{column}
+      \end{columns}
 \end{frame}
 
 \section{Quantum Field Theories on the Lattice}
@@ -110,7 +126,8 @@
                         \begin{center}
                               $\downarrow$\\Theoretical advantages in lattice QCD
                         \end{center}
-                        \item Sea sector: $N_f = 2+1$ quarks + gluons\\Valence sector: $d,s$ quarks
+                        \item Sea sector: $N_f = 2+1$ quarks + gluons
+                        \item Valence sector: $d,s$ quarks
                   \end{itemize}
             \end{column}
             \begin{column}{0.45\textwidth}
@@ -122,23 +139,21 @@
 
 \begin{frame}{Sea sector}
       \begin{itemize}%[<+->]
-            \item Gauge configuration exhibit {\bf long autocorrelation times} as $a\rightarrow 0$
-            \item Zero modes of Dirac Wilson operator $D^W$ make the sea quarks simulation inefficient 
+            \item Gauge configurations exhibit {\bf long autocorrelation times} as $a\rightarrow 0$
+            \item Zero modes of Dirac Wilson operator make the sea quarks simulation {\bf inefficient} in the continuum limit $a\rightarrow 0$
             \item[]\begin{center}
                   $\Downarrow$\\
-                  {\bf Open boundary conditions (OBC) in time direction} $[4]$
+                  {\bf Open boundary conditions (OBC) in time direction} $[4]$\\
+                  instead of periodic boundary conditions
                   \end{center}\vspace{\baselineskip}
-            %% \item Restoration of connection of gauge fields space
-            %% \\IR protection against null eigenvalues of $D^W$
-            \item Gauge fields: Luscher-Weisz action
-            \item Sea quarks: Dirac-Wilson action + Sheikholeslami-Wohlert term ($O(a)$-improved)
+            \item Both gauge fields and sea quarks use $O(a)$-improved regularizations
       \end{itemize}
 \end{frame}
 
 \begin{frame}{Valence sector}
       \begin{itemize}
-            \item Valence quarks: Osterwalder-Seiler at Maximal twist + SW term
-            \item Flavours: $d,d',s,s'$ with different signs Wilson parameters $r_i$
+            \item Valence quarks regularization: twisted mass QCD
+            \item Quark flavours: $d,d',s,s'$
             \\ $\Longrightarrow$ R. Frezzotti \& G. Rossi strategy $[3]$
       \end{itemize}
       \vspace{\baselineskip}
@@ -222,15 +237,12 @@
             \left(S^{(f)}(y, x)[\Omega U \Omega^\dagger]\right)^{b,a}_{\beta,\alpha} = \Omega (y)^{b,c} \left(S^{(f)}(y,x)[U]\right)^{c,d}_{\beta,\alpha} \Omega^\dagger (x)^{d,a}
       \end{equation*}
       \begin{itemize}
-            \item Equation tested in three points integrated correlators $C_{i,[+]}$
+            \item Equation tested on three points integrated correlators $C_{i,[+]}$
             \item Link variables $U_\mu (x)$ are randomly generated and then transformed
             \item Pointlike sources instead of random spinors $\eta$
       \end{itemize}
       \begin{equation*}
-            \begin{gathered}
-                  \text{Relative errors: } \varepsilon_i \lesssim 10^{-13} \\
-                  \text{Mean relative error: } \bar \varepsilon = (1.313 \pm 1.634) \cdot 10^{-13}
-            \end{gathered}
+            \text{Relative errors: } \varepsilon_i \lesssim 10^{-13}
       \end{equation*}
 \end{frame}
 
@@ -287,13 +299,20 @@
 \end{frame}
 
 \begin{frame}{Future developments}
-      \begin{itemize}
-            \item Numerical simulations with the $N_f = 2+1$ CLS sea ensembles
-            \item Data analysis 
-            \item Renormalization procedure $[2]$
-            \item Continuum limit extrapolation of $B_i$ and $R_i$
-            \item Comparison with other lattice results $[6]$
-      \end{itemize}
+      \framesubtitle{Introduction}
+      \begin{columns}
+            \begin{column}{0.4\textwidth}
+                  \begin{itemize}
+                        \item Numerical simulations with the $N_f = 2+1$ CLS sea ensembles
+                        \item Renormalization procedure $[2]$
+                        \item Continuum limit extrapolation of $B_i$ and $R_i$
+                        \item Comparison with other lattice results $[6]$
+                  \end{itemize}
+            \end{column}
+            \begin{column}{0.65\textwidth}
+                  \includegraphics[width=\textwidth]{assets/Bi3GeV-falg2021.png}
+            \end{column}
+      \end{columns}
 \end{frame}
 
 \begin{frame}[noframenumbering]{Bibliography}
@@ -414,18 +433,6 @@
                         \item Results depend on both $B_K^\text{bare}$ and renormalisation
                         \item Strong deviation between simulations with different number of sea quarks
                   \end{itemize}
-            \end{column}
-      \end{columns}
-\end{frame}
-
-\begin{frame}[noframenumbering]{$\star$ Lattice results: $B_i, i \ge 2$}
-      \framesubtitle{\hspace*{1pt}}
-      \begin{columns}
-            \begin{column}{0.75\textwidth}
-                  \includegraphics[width=\textwidth]{assets/Bi3GeV-falg2021.png}
-            \end{column}
-            \begin{column}{0.3\textwidth}
-                  Results for renormalized bag parameters in $\overline{MS}$ scheme at $\mu = 3$ GeV
             \end{column}
       \end{columns}
 \end{frame}
