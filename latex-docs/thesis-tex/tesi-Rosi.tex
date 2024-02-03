@@ -2761,7 +2761,7 @@ where $\nabla_3^2$ is the Laplace operator in $\mathbb{E}^3$.
 A generic non homogeneous equation can be solved by using the associated Green function that must satisy the same boundary conditions of the field \cite{zaffaroni-pradisi}.
 The spatial part of the equation is solved through the Fourier transform method (as done in every course of quantum field theory) and helps to reduce the equation for the Green function in this way:
 \begin{equation*}
-    \left(-\frac{\partial^2}{\partial t^2} - \vec p^2 + m^2 \right) G_\omega(t,t') = \left(-\frac{\partial^2}{\partial t^2} - \omega^2 \right) G_\omega(t,t') = L_\omega G_\omega(t,t') = 0
+    \left(-\frac{\partial^2}{\partial t^2} + \vec p^2 + m^2 \right) G_\omega(t,t') = \left(-\frac{\partial^2}{\partial t^2} + \omega^2 \right) G_\omega(t,t') = L_\omega G_\omega(t,t') = \delta (t-t')
 \end{equation*}
 Notice that, in this case, we do not have $G_\omega(t-t')$ but $G_\omega(t,t')$ because these boundary conditions, unlike the periodic ones, break the time translation invariance.
 The generic solution is:
